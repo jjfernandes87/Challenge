@@ -43,4 +43,4 @@ Abaixo temos os wireframes das telas do app.
 
 | ![Page1](iOS/Characters.png)  | ![Page2](iOS/Favorites.png) | ![Page3](iOS/Detail.png) | ![Page4](iOS/iPad-Characters.png) | ![Page5](iOS/iPad-Favorites.png) |
 |:---:|:---:|:---:|:---:|:---:|
-| Lista de Personagens | Favoritos | Detalhes do Personagem | SplitView iPad | SplitView iPad |
+| Lista de Personagens | Favoritos | Detalhes do Personagem | SplitView iPad Personagens | SplitView iPad Favoritos |
