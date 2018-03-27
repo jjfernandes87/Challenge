@@ -39,8 +39,6 @@ A interface do app é dividida em 3 partes e deve ser desenvolvida conforme os p
 
 Abaixo temos os wireframes das telas do app.
 
-Se você pensou em alguma *killer feature* que acabamos deixando de fora do nosso backlog, sinta-se a vontade para implementar. **Use sua imaginação!** 🤓
-
 | ![Page1](iOS/Characters.png)  | ![Page2](iOS/Favorites.png) | ![Page3](iOS/Detail.png) |
 |:---:|:---:|:---:|
 | Lista de Personagens | Favoritos | Detalhes do Personagem |
