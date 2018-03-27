@@ -42,3 +42,12 @@ Abaixo temos os wireframes das telas do app.
 | ![Page1](iOS/Characters.png)  | ![Page2](iOS/Favorites.png) | ![Page3](iOS/Detail.png) |
 |:---:|:---:|:---:|
 | Lista de Personagens | Favoritos | Detalhes do Personagem |
+
+## Requisitos Essenciais
+
+* A definir
+
+## Observações
+
+* Você pode utilizar bibliotecas de terceiros e gerenciadores de dependências (CocoaPods, Carthage, etc) como preferir.
+* **Os requisitos essenciais são mais importantes**.
