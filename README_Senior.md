@@ -11,7 +11,7 @@ Mais informações: https://developer.marvel.com/docs.
 
 ## Interface
 
-A interface do app é dividida em 3 partes e deve ser desenvolvida conforme os pontos abaixo.
+A interface do app é dividida em 3 partes e deve ser desenvolvida conforme os pontos abaixo. Para iPad gostariamos de ver o uso do Splitview.
 
 ### Home - Characters
 
@@ -41,6 +41,6 @@ A interface do app é dividida em 3 partes e deve ser desenvolvida conforme os p
 
 Abaixo temos os wireframes das telas do app.
 
-| ![Page1](iOS/Characters.png)  | ![Page2](iOS/Favorites.png) | ![Page3](iOS/Detail.png) |
-|:---:|:---:|:---:|
-| Lista de Personagens | Favoritos | Detalhes do Personagem |
+| ![Page1](iOS/Characters.png)  | ![Page2](iOS/Favorites.png) | ![Page3](iOS/Detail.png) | ![Page4](iOS/iPad-Characters.png) | ![Page5](iOS/iPad-Favorites.png) |
+|:---:|:---:|:---:|:---:|:---:|
+| Lista de Personagens | Favoritos | Detalhes do Personagem | SplitView iPad | SplitView iPad |
