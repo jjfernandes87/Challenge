@@ -45,7 +45,11 @@ Abaixo temos os wireframes das telas do app.
 
 ## Requisitos Essenciais
 
-* A definir
+* Usar Swift 4.
+* Interface no Storyboard usando Auto Layout.
+* App universal, desenvolva uma interface que se adapte a telas maiores.
+* Tratamento para falha de conexão.
+* O teste não pode apresenter crash.
 
 ## Observações
 
