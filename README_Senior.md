@@ -47,11 +47,18 @@ Abaixo temos os wireframes das telas do app.
 
 ## Requisitos Essenciais
 
-* A definir
+* Usar Swift 4.
+* Interface no Storyboard usando Auto Layout.
+* App universal, desenvolva uma interface que se adapte a telas maiores.
+* Tratamento para falha de conexão.
+* O teste não pode apresenter crash.
+* Testes unitários e interface.
+* Widget com os 3 primeiros personagens com ação de abrir o app no detalhe do personagem.
+* Integração com fastlane para cobertura de testes.
 
 ## Bônus
 
-* A definir
+* Drag and drop para selecionar os personagens da lista principal e arrastar para a lista de favoritos.
 
 ## Observações
 
