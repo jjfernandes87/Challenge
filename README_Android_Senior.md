@@ -1,6 +1,6 @@
 # Desafio - Desenvolvedor iOS SENIOR
 
-Nós de mobile da XXXX somos fãs da Marvel, então por isso gostaríamos de um app para listar os personagens e saber mais sobre eles.
+Nós de mobile somos fãs da Marvel, então por isso gostaríamos de um app para listar os personagens e saber mais sobre eles.
 
 O objetivo é implementar um app onde podemos ver os a lista de personagens da Marvel. O app deve mostrar uma lista e ser possível navegar para os detalhes de cada personagem. Além disso, tanto na lista quanto na tela de detalhes, deve ser possível favoritar o personagem. Os personagens favoritados devem ser persistidos no device para que possam ser acessados offline e serem mostrados em uma aba própria.
 
@@ -47,13 +47,24 @@ Abaixo temos os wireframes das telas do app.
 
 ## Requisitos Essenciais
 
-* A definir
+* Usar Kotlin.
+* App universal, desenvolva uma interface que se adapte a telas maiores.
+* Tratamento para falha de conexão.
+* Desenvolver o App em uma arquitetura robusta.
+* O teste não pode apresenter crash.
+* Testes unitários e interface.
 
 ## Bônus
 
-* A definir
+* Gerar coverage com Jacoco.
+* Usar Clean Architecture com MVP.
+* Usar RxJava para requisições.
+* Usar Extension Functions.
+* Usar Dagger2 para injeções de dependência.
+* Usar Mockito para os testes unitários.
+* Usar Espresso para os testes de interface.
 
 ## Observações
 
-* A definir
+* Fique a vontade para usar quantas bibliotecas você achar pertinente em sua solução. Estamos interessados em saber se você está atualizado com as melhores práticas em desenvolvimento Android. Um código bem organizado e que se preocupe com o alto desempenho será um diferencial.
 * Foque o desenvolvimento nos requisitos essenciais. O bônus vai diferenciar você dos outros candidatos, mas **os requisitos essenciais são mais importantes**.
