@@ -17,14 +17,12 @@ class ComicsCollectionViewCell: UICollectionViewCell {
         didSet {
             if let data = object {
                 
-                if let name = data.name {
+                comicsImage.layer.cornerRadius = 10
+                comicsImage.image = #imageLiteral(resourceName: "comicsAndSeries")
+                
+                    if let name = data.name {
                     comicsName.text = name
                 }
-                
-                if let imageUrl = data.resourceURI {
-                    
-                }
-                
             }
         }
     }

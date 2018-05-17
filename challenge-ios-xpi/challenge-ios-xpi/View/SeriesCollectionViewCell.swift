@@ -17,6 +17,9 @@ class SeriesCollectionViewCell: UICollectionViewCell {
         didSet {
             if let data = object {
                 
+                seriesImage.layer.cornerRadius = 10
+                seriesImage.image = #imageLiteral(resourceName: "comicsAndSeries")
+                
                 if let name = data.name {
                     seriesName.text = name
                 }

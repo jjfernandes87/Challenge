@@ -16,22 +16,20 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var charactesArray = [[String:AnyObject]]()
     let pathArquivo = (NSHomeDirectory() as NSString).appendingPathComponent("Documents/arquivo.sqlite")
     var dataBase : OpaquePointer? = nil
-    let refreshControl = UIRefreshControl()
+    //let refreshControl = UIRefreshControl()
     var offset = 0
     var checkCaller = false
     
     @IBOutlet weak var HomeCollectionView: UICollectionView!
     
     override func viewWillAppear(_ animated: Bool) {
+        
         CheckInternetStatus()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       HomeCollectionView.refreshControl = refreshControl
-       refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-       refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
        HomeCollectionView.addSubview(refreshControl)
         
        HomeCollectionView.delegate = self
@@ -41,11 +39,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
        CheckDBIfExistIfNotCreateDB()
     }
     
-    @objc func refresh(sender:AnyObject){
-        self.charactesArray.removeAll()
-        DispatchQueue.main.async {
-           // self.getCharacters(offset: 0, presentLoadingView: true)
-        }
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(HomeViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        getCharacters()
+        self.HomeCollectionView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func addHeroAsFavorite(cell: HomeCollectionViewCell) {
@@ -116,9 +120,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 self.present(alert, animated: true, completion: nil)
                 
-                DispatchQueue.main.async {
-                    self.HomeCollectionView.reloadData()
-                }
             }
         }
     }
@@ -194,6 +195,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }else{
                 DispatchQueue.main.async {
                 self.noConnectionView.isHidden = true
+                self.HomeCollectionView.reloadData()
                 }
             }
         }
@@ -257,14 +259,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
 //CollectionView Delegates
     
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let actualPosition = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height - 1000
         
         if (actualPosition >= contentHeight) {
-            offset += 1
+            offset += 20
             DispatchQueue.main.async {
-                //self.getCharacters(offset: self.offset, presentLoadingView: false)
+                self.getCharacters(offset: self.offset, presentLoadingView: false)
             }
         }
     }
@@ -281,14 +284,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         if let cell = HomeCollectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollection", for: indexPath) as? HomeCollectionViewCell {
             
-             if !self.refreshControl.isRefreshing {
                 let charactes = DataObject(dictionary: charactesArray[indexPath.row])
                 cell.object = charactes
                 cell.delegate = self
                 
                 return cell
             }
-        }
         return UICollectionViewCell()
     }
     
@@ -329,6 +330,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func getCharacters(offset: Int = 0, presentLoadingView: Bool = true) {
         
         if presentLoadingView {
+        self.charactesArray = []
         Utils.setLoadingScreen(view: self.view)
         }
         
@@ -351,29 +353,30 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     if let data = jsonDict["data"] as? [String:AnyObject] {
                        
                         if let result = data["results"] as? [[String:AnyObject]] {
-                            self.charactesArray = result
-
+                            
                             for item in result {
                                 
-                                if let thumbnailObject = item["thumbnail"] as? [String:AnyObject] {
-                                    
-                                    if let path = thumbnailObject["path"] as? String {
-                                        
-                                        if let extensionThumb = thumbnailObject["extension"] as? String {
-                                            
-                                            let pathPlusExtension = "\(path).\(extensionThumb)"
-                                            
-                                            if let url = URL(string: pathPlusExtension) {
-                                                
-                                                if let data = try? Data(contentsOf: url) {
-                                                    if let imageToCache = UIImage(data: data) {
-                                                        Utils.imageCache.setObject(imageToCache, forKey: pathPlusExtension as AnyObject)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                self.charactesArray.append(item)
+                                
+//                                if let thumbnailObject = item["thumbnail"] as? [String:AnyObject] {
+//
+//                                    if let path = thumbnailObject["path"] as? String {
+//
+//                                        if let extensionThumb = thumbnailObject["extension"] as? String {
+//
+//                                            let pathPlusExtension = "\(path).\(extensionThumb)"
+//
+//                                            if let url = URL(string: pathPlusExtension) {
+//
+//                                                if let data = try? Data(contentsOf: url) {
+//                                                    if let imageToCache = UIImage(data: data) {
+//                                                        Utils.imageCache.setObject(imageToCache, forKey: pathPlusExtension as AnyObject)
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }
                             }
                         }
                     }

@@ -39,13 +39,11 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
 
                     if let path = data.extensionThumb {
                             
-                            self.favoritesImage.image = nil
+                            self.favoritesImage.image = #imageLiteral(resourceName: "loading")
+                            favoritesFavoriteBtn.setImage(#imageLiteral(resourceName: "favoritesSelected"), for: .normal)
                             
                             if let imageFromCache = Utils.imageCache.object(forKey: path as AnyObject) as? UIImage {
                                 favoritesImage.image = imageFromCache
-                                favoritesFavoriteBtn.setImage(#imageLiteral(resourceName: "favoritesSelected"), for: .normal)
-                            } else {
-                                favoritesImage.image = #imageLiteral(resourceName: "defaultImage")
                             }
                         }
                     }

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "challenge-ios-xpi/Controllers/HeroDetailsViewController.swift"
-            timestampString = "548223697.671677"
+            filePath = "challenge-ios-xpi/Controllers/HomeViewController.swift"
+            timestampString = "548274854.8638541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,30 +25,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "challenge-ios-xpi/Controllers/HeroDetailsViewController.swift"
-            timestampString = "548223697.672101"
+            filePath = "challenge-ios-xpi/Controllers/HomeViewController.swift"
+            timestampString = "548274854.866158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
+            landmarkName = "getCharacters(offset:presentLoadingView:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "challenge-ios-xpi/Controllers/HeroDetailsViewController.swift"
-            timestampString = "548223697.67219"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "challenge_ios_xpi.HomeViewController.getCharacters(offset: Swift.Int, presentLoadingView: Swift.Bool) -&gt; ()"
+                  moduleName = "challenge-ios-xpi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipemac/Desktop/challenge-ios-xpi/challenge-ios-xpi/challenge-ios-xpi/Controllers/HomeViewController.swift"
+                  timestampString = "548261042.526495"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "344"
+                  endingLineNumber = "344"
+                  offsetFromSymbolStart = "1596">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in challenge_ios_xpi.HomeViewController.getCharacters(offset: Swift.Int, presentLoadingView: Swift.Bool) -&gt; ()"
+                  moduleName = "challenge-ios-xpi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/felipemac/Desktop/challenge-ios-xpi/challenge-ios-xpi/challenge-ios-xpi/Controllers/HomeViewController.swift"
+                  timestampString = "548261042.533982"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "346"
+                  endingLineNumber = "346"
+                  offsetFromSymbolStart = "35">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
