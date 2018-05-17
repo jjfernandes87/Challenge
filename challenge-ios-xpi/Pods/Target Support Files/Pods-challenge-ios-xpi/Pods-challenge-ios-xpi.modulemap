@@ -1,0 +1,6 @@
+framework module Pods_challenge_ios_xpi {
+  umbrella header "Pods-challenge-ios-xpi-umbrella.h"
+
+  export *
+  module * { export * }
+}
