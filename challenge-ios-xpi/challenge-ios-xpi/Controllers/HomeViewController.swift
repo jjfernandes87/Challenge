@@ -10,13 +10,18 @@ import UIKit
 import Alamofire
 import SQLite3
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, GetIndexBtnFromCollectionCellHomeDelegate {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, GetIndexBtnFromCollectionCellHomeDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var noConnectionView: UIView!
+    
     var charactesArray = [[String:AnyObject]]()
+    var searchArray = [[String:AnyObject]]()
+    var isSearching = false
+    
     let pathArquivo = (NSHomeDirectory() as NSString).appendingPathComponent("Documents/arquivo.sqlite")
     var dataBase : OpaquePointer? = nil
-    //let refreshControl = UIRefreshControl()
+    
     var offset = 0
     var checkCaller = false
     
@@ -30,13 +35,23 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       HomeCollectionView.addSubview(refreshControl)
-        
-       HomeCollectionView.delegate = self
-       HomeCollectionView.dataSource = self
-        
-       Utils.formatNavigationTitleFontWithDefaultStyle(view: self, description: "Characters")
-       CheckDBIfExistIfNotCreateDB()
+        setDelegates()
+        setConfigurationsToDisplayInUI()
+        CheckDBIfExistIfNotCreateDB()
+    }
+    
+    func setDelegates() {
+        self.searchBar.delegate = self
+        HomeCollectionView.delegate = self
+        HomeCollectionView.dataSource = self
+    }
+    
+    func setConfigurationsToDisplayInUI() {
+        self.searchBar.searchBarStyle = .minimal
+        self.searchBar.returnKeyType = UIReturnKeyType.done
+        self.searchBar.placeholder = "Enter hero name..."
+        HomeCollectionView.addSubview(refreshControl)
+        Utils.formatNavigationTitleFontWithDefaultStyle(view: self, description: "Characters")
     }
     
     lazy var refreshControl: UIRefreshControl = {
@@ -57,7 +72,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if var name = cell.object?.name {
             
             if name.contains("'") {
-              name = name.replacingOccurrences(of: "'", with: "")
+                name = name.replacingOccurrences(of: "'", with: "")
             }
             
             if let path = cell.object?.thumbnail?.path {
@@ -73,36 +88,36 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         }
                         
                         if let idFromService = cell.object?.id {
-                        
-                        let comandoCadastro = "INSERT into MyHeros values (NULL, '\(idFromService)', '\(name)', '\(url)', '\(true)', '\(description)')"
-                        
-                        if(sqlite3_exec(dataBase, comandoCadastro, nil, nil, nil)) == SQLITE_OK  {
                             
-                            let alert = UIAlertController(title: "Marvel Heroes", message: "Heroi adiconado com sucesso aos seus Favoritos!", preferredStyle: UIAlertControllerStyle.alert)
+                            let comandoCadastro = "INSERT into MyHeros values (NULL, '\(idFromService)', '\(name)', '\(url)', '\(true)', '\(description)')"
                             
-                            let OKAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-                                print("Saved Successfully")
-                                self.HomeCollectionView.reloadData()
+                            if(sqlite3_exec(dataBase, comandoCadastro, nil, nil, nil)) == SQLITE_OK  {
+                                
+                                let alert = UIAlertController(title: "Marvel Heroes", message: "Heroi adiconado com sucesso aos seus Favoritos!", preferredStyle: UIAlertControllerStyle.alert)
+                                
+                                let OKAction = UIAlertAction(title: "Ok", style: .default) { (action) in
+                                    print("Saved Successfully")
+                                    self.HomeCollectionView.reloadData()
+                                }
+                                alert.addAction(OKAction)
+                                
+                                self.present(alert, animated: true, completion: nil)
+                                
+                            }else{
+                                print("SQL Insert Error")
+                                print(sqlite3_errmsg)
                             }
-                            alert.addAction(OKAction)
-                            
-                            self.present(alert, animated: true, completion: nil)
-                            
-                        }else{
-                            print("SQL Insert Error")
-                            print(sqlite3_errmsg)
                         }
                     }
                 }
             }
         }
     }
-}
     
     func removeHeroAsFavorite(cell: HomeCollectionViewCell) {
         
         if let idFromService = cell.object?.id {
-         
+            
             let comandoDelete = "DELETE from MyHeros WHERE IDFromService = '\(idFromService)'"
             
             if(sqlite3_exec(dataBase, comandoDelete, nil, nil, nil)) == SQLITE_OK  {
@@ -114,12 +129,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     DispatchQueue.main.async {
                         self.HomeCollectionView.reloadData()
                     }
-                    
                 }
                 alert.addAction(OKAction)
-                
                 self.present(alert, animated: true, completion: nil)
-                
             }
         }
     }
@@ -134,19 +146,19 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 if(sqlite3_exec(dataBase, comandoCheckIfIsFavoriteOrNot, nil, nil, nil)) == SQLITE_OK  {
                     
                     var resultado : OpaquePointer? = nil
-                  
+                    
                     if (sqlite3_prepare_v2(dataBase, comandoCheckIfIsFavoriteOrNot, -1, &resultado, nil) == SQLITE_OK) {
                         
                         if sqlite3_step(resultado) == SQLITE_ROW {
                             
                             self.removeHeroAsFavorite(cell: cell)
                         }else{
-                             self.addHeroAsFavorite(cell: cell)
+                            self.addHeroAsFavorite(cell: cell)
                         }
                         sqlite3_finalize(resultado)
                     }
                 }else{
-                  print("SQL Select Error")
+                    print("SQL Select Error")
                 }
             }
         }
@@ -155,7 +167,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func CheckDBIfExistIfNotCreateDB(){
         print("Path:\(pathArquivo)")
         if (FileManager.default.fileExists(atPath: pathArquivo)) {
-
+            
             if(sqlite3_open(pathArquivo, &dataBase) == SQLITE_OK)  {
                 print("Database opened successfully")
             }else{
@@ -164,12 +176,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }else{
             if (sqlite3_open(pathArquivo, &dataBase) == SQLITE_OK) {
                 print("Database created Successfully")
-
+                
                 let comando1 = " create table if not exists MyHeros (ID_Hero INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, IDFromService INTERGER, Hero_Name TEXT, Hero_Url TEXT, Favorite Bool, Hero_Description TEXT )"
-
+                
                 if (sqlite3_exec(dataBase, comando1, nil, nil, nil)) == SQLITE_OK {
                     print("Table created Successfully")
-
+                    
                 }else{
                     print("Table created Error \(sqlite3_errmsg(dataBase))")
                 }
@@ -185,38 +197,38 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         reachability.whenReachable = { _ in
             print("Connected")
-
+            
             if self.checkCaller == false {
                 self.checkCaller = true
-            DispatchQueue.main.async {
-                self.noConnectionView.isHidden = true
-                self.getCharacters(offset: 0, presentLoadingView: true)
+                DispatchQueue.main.async {
+                    self.noConnectionView.isHidden = true
+                    self.getCharacters(offset: 0, presentLoadingView: true)
                 }
             }else{
                 DispatchQueue.main.async {
-                self.noConnectionView.isHidden = true
-                self.HomeCollectionView.reloadData()
+                    self.noConnectionView.isHidden = true
+                    self.HomeCollectionView.reloadData()
                 }
             }
         }
         
         reachability.whenUnreachable = { _ in
-                print("Not Connected to Internet")
+            print("Not Connected to Internet")
             
             DispatchQueue.main.async {
                 self.noConnectionView.isHidden = false
                 self.HomeCollectionView.reloadData()
             }
+            
+            let alert = UIAlertController(title: "Conexão sem Internet", message: "Somente o modulo de favoritos se encontra disponivel enquanto não estiver conectado a internet", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 
-                let alert = UIAlertController(title: "Conexão sem Internet", message: "Somente o modulo de favoritos se encontra disponivel enquanto não estiver conectado a internet", preferredStyle: UIAlertControllerStyle.alert)
-                
-                let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-                    
-                }
-                alert.addAction(OKAction)
-                
-                self.present(alert, animated: true, completion: nil)
             }
+            alert.addAction(OKAction)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
         
@@ -234,13 +246,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if reachability2.isReachableViaWiFi {
                 print("Connected via Wifi")
                 
-        }else{
+            }else{
                 print("Not Connected to Wifi")
-                }
+            }
         }
     }
     
-     func validateResultZero() {
+    func validateResultZero() {
         if charactesArray.count == 0 {
             let alert = UIAlertController(title: "Marvel Heros", message: "Não temos herois neste momento, Por favor tentar mais tarde", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -256,8 +268,37 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    //SearchBar Delegates
     
-//CollectionView Delegates
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            isSearching = false
+            view.endEditing(true)
+            HomeCollectionView.reloadData()
+        }
+        else {
+            
+            isSearching = true
+            
+            for item in charactesArray {
+                
+                if let name = item["name"] as? String {
+                    
+                    if name == (searchText) {
+                        self.searchArray.append(item)
+                    }
+                }
+            }
+            self.HomeCollectionView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.endEditing(true)
+    }
+    
+    //CollectionView Delegates
     
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -271,25 +312,39 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
     }
-
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return charactesArray.count
+        
+        if isSearching == true {
+            return searchArray.count
+        }else {
+            return charactesArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = HomeCollectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollection", for: indexPath) as? HomeCollectionViewCell {
             
+            if isSearching == true {
+                
+                let charactes = DataObject(dictionary: searchArray[indexPath.row])
+                cell.object = charactes
+                cell.delegate = self
+                
+                return cell
+            }else{
                 let charactes = DataObject(dictionary: charactesArray[indexPath.row])
                 cell.object = charactes
                 cell.delegate = self
                 
                 return cell
             }
+        }
         return UICollectionViewCell()
     }
     
@@ -310,8 +365,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     if let thumbPath = cell.object?.thumbnail?.path {
                         
                         if let extensionThumb = cell.object?.thumbnail?.extensionThumb {
-                        
-                        let thumbPath = "\(thumbPath).\(extensionThumb)"
+                            
+                            let thumbPath = "\(thumbPath).\(extensionThumb)"
                             t.thumbPath = thumbPath
                         }
                     }
@@ -330,17 +385,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func getCharacters(offset: Int = 0, presentLoadingView: Bool = true) {
         
         if presentLoadingView {
-        self.charactesArray = []
-        Utils.setLoadingScreen(view: self.view)
+            self.charactesArray = []
+            Utils.setLoadingScreen(view: self.view)
         }
         
         let manager = Alamofire.SessionManager.default
         manager.session.configuration.timeoutIntervalForRequest = 30
-
+        
         let offset = offset
         let queryParams: [String:String] = ["offset": String(offset), "limit": String(ApiServiceURL.limit)]
         let url = ApiServiceURL.path + ApiServiceURL.pathCharacters + queryParams.queryString! + ApiServiceURL.getCredencial()
-
+        
         manager.request("\(url)", method: .get, parameters: nil).responseJSON { response in
             
             self.refreshControl.endRefreshing()
@@ -351,32 +406,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 if let jsonDict = response.result.value as? [String:AnyObject] {
                     
                     if let data = jsonDict["data"] as? [String:AnyObject] {
-                       
+                        
                         if let result = data["results"] as? [[String:AnyObject]] {
                             
                             for item in result {
                                 
                                 self.charactesArray.append(item)
                                 
-//                                if let thumbnailObject = item["thumbnail"] as? [String:AnyObject] {
-//
-//                                    if let path = thumbnailObject["path"] as? String {
-//
-//                                        if let extensionThumb = thumbnailObject["extension"] as? String {
-//
-//                                            let pathPlusExtension = "\(path).\(extensionThumb)"
-//
-//                                            if let url = URL(string: pathPlusExtension) {
-//
-//                                                if let data = try? Data(contentsOf: url) {
-//                                                    if let imageToCache = UIImage(data: data) {
-//                                                        Utils.imageCache.setObject(imageToCache, forKey: pathPlusExtension as AnyObject)
-//                                                    }
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//                                }
                             }
                         }
                     }

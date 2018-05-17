@@ -36,18 +36,18 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
                 favoritesImage.layer.cornerRadius = 10
                 
                 favoritesDescription.text = data.name
-
-                    if let path = data.extensionThumb {
-                            
-                            self.favoritesImage.image = #imageLiteral(resourceName: "loading")
-                            favoritesFavoriteBtn.setImage(#imageLiteral(resourceName: "favoritesSelected"), for: .normal)
-                            
-                            if let imageFromCache = Utils.imageCache.object(forKey: path as AnyObject) as? UIImage {
-                                favoritesImage.image = imageFromCache
-                            }
-                        }
+                
+                if let path = data.extensionThumb {
+                    
+                    self.favoritesImage.image = #imageLiteral(resourceName: "loading")
+                    favoritesFavoriteBtn.setImage(#imageLiteral(resourceName: "favoritesSelected"), for: .normal)
+                    
+                    if let imageFromCache = Utils.imageCache.object(forKey: path as AnyObject) as? UIImage {
+                        favoritesImage.image = imageFromCache
                     }
                 }
             }
         }
+    }
+}
 

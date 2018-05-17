@@ -10,7 +10,7 @@ import UIKit
 import SQLite3
 
 class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, GetIndexBtnFromCollectionCellFavoritesDelegate {
-
+    
     @IBOutlet weak var favoritesCollectionView: UICollectionView!
     
     let pathArquivo = (NSHomeDirectory() as NSString).appendingPathComponent("Documents/arquivo.sqlite")
@@ -22,12 +22,12 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var noHerosImage: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
-         getFavoritesFromDB()
+        getFavoritesFromDB()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         favoritesCollectionView.delegate = self
         favoritesCollectionView.dataSource = self
         
@@ -36,8 +36,8 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func GetIndexFromCellToController(cell: FavoritesCollectionViewCell) {
         if let indexPath = self.favoritesCollectionView.indexPath(for: cell) {
-        guard let _ = self.favoritesCollectionView.cellForItem(at: indexPath) as? FavoritesCollectionViewCell else { return }
-
+            guard let _ = self.favoritesCollectionView.cellForItem(at: indexPath) as? FavoritesCollectionViewCell else { return }
+            
             if let idFromService = cell.object?.id {
                 let comandoCheckIfIsFavoriteOrNot = "SELECT * from MyHeros WHERE Favorite = 'true' AND IDFromService = '\(idFromService)'"
                 
@@ -60,11 +60,11 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                 }
             }
             
+        }
     }
-}
     func validateResultZero() {
         if arrayFromDb.count == 0 {
-                self.noHerosView.isHidden = false
+            self.noHerosView.isHidden = false
             
             let alert = UIAlertController(title: "Marvel Heros", message: "Não há herois adicionados a sua lista de Favoritos", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -75,7 +75,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
             alert.addAction(OKAction)
             self.present(alert, animated: true, completion: nil)
         }else{
-                self.noHerosView.isHidden = true
+            self.noHerosView.isHidden = true
         }
     }
     
@@ -91,18 +91,18 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                 
                 let OKAction = UIAlertAction(title: "Ok", style: .default) { (action) in
                     print("Deleted Successfully")
-                     self.getFavoritesFromDB()
+                    self.getFavoritesFromDB()
                 }
                 alert.addAction(OKAction)
                 
                 self.present(alert, animated: true, completion: nil)
                 
-               
+                
             }
         }
     }
     
-//CollectionView Delegates
+    //CollectionView Delegates
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -115,7 +115,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = favoritesCollectionView.dequeueReusableCell(withReuseIdentifier: "FavoritesCollection", for: indexPath) as? FavoritesCollectionViewCell {
-
+            
             let charactes = DataBaseObject(dictionary: arrayFromDb[indexPath.row])
             cell.object = charactes
             cell.delegate = self
@@ -132,73 +132,73 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
             cell.object = hero
             
             if let t = storyboard?.instantiateViewController(withIdentifier: "HeroDetails") as? HeroDetailsViewController {
-            
-            if let id = cell.object?.idFromService {
-
-                if let heroName = cell.object?.name {
-                    t.heroName = heroName
-                }
-                if let heroDescription = cell.object?.description {
-                    t.heroDescriptionText = heroDescription
-                }                
-                if let thumPath = cell.object?.extensionThumb {
-                    t.thumbPath = thumPath
-                }
-                t.id = id
-                navigationController?.pushViewController(t, animated: true)
                 
+                if let id = cell.object?.idFromService {
+                    
+                    if let heroName = cell.object?.name {
+                        t.heroName = heroName
+                    }
+                    if let heroDescription = cell.object?.description {
+                        t.heroDescriptionText = heroDescription
+                    }                
+                    if let thumPath = cell.object?.extensionThumb {
+                        t.thumbPath = thumPath
+                    }
+                    t.id = id
+                    navigationController?.pushViewController(t, animated: true)
+                    
                 }
             }
         }
     }
     
     func getFavoritesFromDB() {
-      arrayFromDb = []
-    
+        arrayFromDb = []
+        
         if (FileManager.default.fileExists(atPath: pathArquivo)) {
             
             if(sqlite3_open(pathArquivo, &dataBase) == SQLITE_OK)  {
                 
-                    let selectAllHeroes = "SELECT * from MyHeros"
+                let selectAllHeroes = "SELECT * from MyHeros"
+                
+                //  if(sqlite3_exec(dataBase, comandoCheckIfIsFavoriteOrNot, nil, nil, nil)) == SQLITE_OK  {
+                
+                if (sqlite3_prepare_v2(dataBase, selectAllHeroes, -1, &resultado, nil) == SQLITE_OK) {
                     
-                  //  if(sqlite3_exec(dataBase, comandoCheckIfIsFavoriteOrNot, nil, nil, nil)) == SQLITE_OK  {
+                    if sqlite3_step(resultado) == SQLITE_ROW {
                         
-                        if (sqlite3_prepare_v2(dataBase, selectAllHeroes, -1, &resultado, nil) == SQLITE_OK) {
+                        while sqlite3_step(resultado) == SQLITE_ROW {
                             
-                            if sqlite3_step(resultado) == SQLITE_ROW {
-                                
-                                while sqlite3_step(resultado) == SQLITE_ROW {
-                                    
-                                    let ID_Hero = sqlite3_column_int(resultado, 0)
-                                    
-                                    let IDFromService = sqlite3_column_int(resultado, 1)
-                                    
-                                    let Hero_Name = String(cString: sqlite3_column_text(resultado, 2))
-                                
-                                    let Hero_Url  = String(cString: sqlite3_column_text(resultado, 3))
-                                    
-                                    var dicionario : [String:AnyObject] = [:]
-                                    
-                                    dicionario["id"] = ID_Hero as AnyObject?
-                                    dicionario["idFromService"] = IDFromService as AnyObject?
-                                    dicionario["name"] = Hero_Name as AnyObject?
-                                    dicionario["extensionThumb"] = Hero_Url as AnyObject?
-                                    
-                                     self.arrayFromDb.append(dicionario)
-                                    }
-                                }
-                                sqlite3_finalize(resultado)
-                                
-                            }else{
-                               //erropath
-                            }
-
-                            favoritesCollectionView.reloadData()
-                            self.validateResultZero()
+                            let ID_Hero = sqlite3_column_int(resultado, 0)
+                            
+                            let IDFromService = sqlite3_column_int(resultado, 1)
+                            
+                            let Hero_Name = String(cString: sqlite3_column_text(resultado, 2))
+                            
+                            let Hero_Url  = String(cString: sqlite3_column_text(resultado, 3))
+                            
+                            var dicionario : [String:AnyObject] = [:]
+                            
+                            dicionario["id"] = ID_Hero as AnyObject?
+                            dicionario["idFromService"] = IDFromService as AnyObject?
+                            dicionario["name"] = Hero_Name as AnyObject?
+                            dicionario["extensionThumb"] = Hero_Url as AnyObject?
+                            
+                            self.arrayFromDb.append(dicionario)
                         }
-
+                    }
+                    sqlite3_finalize(resultado)
+                    
                 }else{
-                print ("Database opened error")
+                    //erropath
                 }
+                
+                favoritesCollectionView.reloadData()
+                self.validateResultZero()
             }
+            
+        }else{
+            print ("Database opened error")
         }
+    }
+}

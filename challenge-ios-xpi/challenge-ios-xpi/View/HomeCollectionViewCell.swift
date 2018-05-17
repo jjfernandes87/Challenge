@@ -38,7 +38,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         if let name = object?.name {
             HomeDescription.text = name
         }
-
+        
         if let thumbnailData = object?.thumbnail {
             
             if let path = thumbnailData.path {
@@ -62,7 +62,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
                                 
                                 if let imageToCache = UIImage(data: data as Data) {
                                     Utils.imageCache.setObject(imageToCache, forKey: thumbPath as AnyObject)
-                                
+                                    
                                     DispatchQueue.main.async {
                                         self.homeImage.image = UIImage(data: data as Data)
                                     }
@@ -110,8 +110,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     var object : DataObject? {
         didSet {
             
-                updateUI()
-                checkFavoritesFromDB()
+            updateUI()
+            checkFavoritesFromDB()
             
         }
     }

@@ -20,7 +20,7 @@ class ComicsCollectionViewCell: UICollectionViewCell {
                 comicsImage.layer.cornerRadius = 10
                 comicsImage.image = #imageLiteral(resourceName: "comicsAndSeries")
                 
-                    if let name = data.name {
+                if let name = data.name {
                     comicsName.text = name
                 }
             }

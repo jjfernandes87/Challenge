@@ -8,7 +8,5 @@ target 'challenge-ios-xpi' do
   # Pods for challenge-ios-xpi
 
 pod 'Alamofire'
-pod 'ObjectMapper'
-pod 'AlamofireObjectMapper'
 pod 'CryptoSwift'
 end

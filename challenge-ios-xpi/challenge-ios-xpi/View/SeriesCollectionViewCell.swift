@@ -23,7 +23,6 @@ class SeriesCollectionViewCell: UICollectionViewCell {
                 if let name = data.name {
                     seriesName.text = name
                 }
-                
             }
         }
     }

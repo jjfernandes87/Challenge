@@ -59,7 +59,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SeriesCell" id="Oy7-Yw-NYN" customClass="SeriesCollectionViewCell" customModule="challenge_ios_xpi" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="203" height="71"/>
+                                                    <rect key="frame" x="0.0" y="-0.5" width="203" height="71"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                         <rect key="frame" x="0.0" y="0.0" width="203" height="71"/>
@@ -318,7 +318,7 @@
                                             </cells>
                                         </collectionView>
                                         <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQp-wQ-iEU">
-                                            <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                            <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarvelNotFound" translatesAutoresizingMaskIntoConstraints="NO" id="BdA-lW-fFw">
                                                     <rect key="frame" x="50" y="50" width="275" height="200"/>
@@ -342,7 +342,7 @@
                                         <constraint firstAttribute="bottom" secondItem="LQp-wQ-iEU" secondAttribute="bottom" id="Ijv-Ka-T7f"/>
                                         <constraint firstAttribute="trailing" secondItem="gT7-XN-RLd" secondAttribute="trailing" id="YCe-eG-XpY"/>
                                         <constraint firstItem="gT7-XN-RLd" firstAttribute="top" secondItem="Amt-xl-F9U" secondAttribute="top" constant="64" id="eQv-3o-xhd"/>
-                                        <constraint firstItem="LQp-wQ-iEU" firstAttribute="top" secondItem="Amt-xl-F9U" secondAttribute="top" constant="65" id="j21-6o-PV5"/>
+                                        <constraint firstItem="LQp-wQ-iEU" firstAttribute="top" secondItem="Amt-xl-F9U" secondAttribute="top" constant="64" id="j21-6o-PV5"/>
                                         <constraint firstAttribute="trailing" secondItem="LQp-wQ-iEU" secondAttribute="trailing" id="kcQ-x5-DlF"/>
                                         <constraint firstItem="LQp-wQ-iEU" firstAttribute="leading" secondItem="Amt-xl-F9U" secondAttribute="leading" id="uud-LI-kFK"/>
                                     </constraints>
@@ -393,8 +393,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XuS-hh-xSL">
+                                            <rect key="frame" x="0.0" y="65" width="375" height="56"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="56" id="2r6-de-gae"/>
+                                            </constraints>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EaS-94-24x">
-                                            <rect key="frame" x="5" y="64" width="365" height="547"/>
+                                            <rect key="frame" x="5" y="120" width="365" height="491"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="COb-K9-G3S">
                                                 <size key="itemSize" width="120" height="150"/>
@@ -462,7 +469,10 @@
                                         <constraint firstAttribute="trailing" secondItem="EaS-94-24x" secondAttribute="trailing" constant="5" id="3l1-Bo-13t"/>
                                         <constraint firstAttribute="bottom" secondItem="EaS-94-24x" secondAttribute="bottom" constant="7" id="5ms-2a-5qX"/>
                                         <constraint firstItem="EaS-94-24x" firstAttribute="leading" secondItem="etK-yb-hpG" secondAttribute="leading" constant="5" id="E2A-7s-XUc"/>
-                                        <constraint firstItem="EaS-94-24x" firstAttribute="top" secondItem="etK-yb-hpG" secondAttribute="top" constant="64" id="zsH-2h-LXB"/>
+                                        <constraint firstItem="XuS-hh-xSL" firstAttribute="leading" secondItem="etK-yb-hpG" secondAttribute="leading" id="Egn-4f-AtE"/>
+                                        <constraint firstItem="XuS-hh-xSL" firstAttribute="top" secondItem="etK-yb-hpG" secondAttribute="top" constant="65" id="Ero-Oe-nXJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="XuS-hh-xSL" secondAttribute="trailing" id="aLd-Ht-CPG"/>
+                                        <constraint firstItem="EaS-94-24x" firstAttribute="top" secondItem="etK-yb-hpG" secondAttribute="top" constant="120" id="zsH-2h-LXB"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -518,11 +528,12 @@
                     <connections>
                         <outlet property="HomeCollectionView" destination="EaS-94-24x" id="IuU-uh-htB"/>
                         <outlet property="noConnectionView" destination="eEp-73-97n" id="W7X-RK-806"/>
+                        <outlet property="searchBar" destination="XuS-hh-xSL" id="RSa-mQ-Oea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FoK-pV-wuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1710" y="-651"/>
+            <point key="canvasLocation" x="1709.5999999999999" y="-651.72413793103453"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8uw-JC-XRA">

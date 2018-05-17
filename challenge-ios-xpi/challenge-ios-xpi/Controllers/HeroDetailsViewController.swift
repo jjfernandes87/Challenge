@@ -26,7 +26,7 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
     var thumbPath = ""
     var heroDescriptionText = ""
     var id : Int?
-
+    
     override func viewWillAppear(_ animated: Bool) {
         CheckInternetStatus()
     }
@@ -50,14 +50,14 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
             self.SeriesLabel.font = UIFont(name: "Pacifico-Regular", size: 20)
             self.ComicsLabel.font = UIFont(name: "Pacifico-Regular", size: 20)
         }
-
+        
         if let imageFromCache = Utils.imageCache.object(forKey: thumbPath as AnyObject) as? UIImage {
-           DispatchQueue.main.async {
-            self.heroImageView.image = imageFromCache
+            DispatchQueue.main.async {
+                self.heroImageView.image = imageFromCache
             }
         } else {
             DispatchQueue.main.async {
-            self.heroImageView.image = #imageLiteral(resourceName: "MarvelNotFound")
+                self.heroImageView.image = #imageLiteral(resourceName: "MarvelNotFound")
             }
         }
     }
@@ -83,7 +83,7 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
                 Utils.removeLoadingScreen(view: self.view)
             }
             print("Not Connected to Internet")
-
+            
             let alert = UIAlertController(title: "Conexão sem Internet", message: "Somente o modulo de favoritos se encontra disponivel enquanto não estiver conectado a internet", preferredStyle: UIAlertControllerStyle.alert)
             
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -115,7 +115,7 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
     }
-
+    
     func validateResultZero() {
         if comicsArray.count == 0 {
             ComicsLabel.isHidden = true
@@ -174,9 +174,9 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
                 let object = Items(dictionary: comicsArray[indexPath.row])
                 cell.object = object
                 
-            return cell
+                return cell
             }
-        return UICollectionViewCell()
+            return UICollectionViewCell()
         }
         
         if collectionView == seriesCollectionView {
@@ -190,7 +190,7 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
         
-    return UICollectionViewCell()
+        return UICollectionViewCell()
     }
     
     //Apis
@@ -226,18 +226,18 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
                                     self.comicsArray = items
                                 }
                             }
-//
+                            //
                             if let series = result[0]["series"] as? [String:AnyObject] {
                                 if let items = series["items"] as? [[String:AnyObject]] {
-                                
-                                self.seriesArray = items
-                                    }
+                                    
+                                    self.seriesArray = items
                                 }
                             }
                         }
                     }
-                    Utils.removeLoadingScreen(view: self.view)
-                    self.validateResultZero()
+                }
+                Utils.removeLoadingScreen(view: self.view)
+                self.validateResultZero()
             case .failure(let error):
                 print(error)
                 break
