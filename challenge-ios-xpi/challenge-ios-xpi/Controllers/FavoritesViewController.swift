@@ -59,9 +59,9 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                     print("SQL Select Error")
                 }
             }
-            
         }
     }
+    
     func validateResultZero() {
         if arrayFromDb.count == 0 {
             self.noHerosView.isHidden = false
@@ -96,8 +96,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                 alert.addAction(OKAction)
                 
                 self.present(alert, animated: true, completion: nil)
-                
-                
             }
         }
     }
@@ -146,7 +144,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                     }
                     t.id = id
                     navigationController?.pushViewController(t, animated: true)
-                    
                 }
             }
         }
@@ -160,8 +157,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
             if(sqlite3_open(pathArquivo, &dataBase) == SQLITE_OK)  {
                 
                 let selectAllHeroes = "SELECT * from MyHeros"
-                
-                //  if(sqlite3_exec(dataBase, comandoCheckIfIsFavoriteOrNot, nil, nil, nil)) == SQLITE_OK  {
                 
                 if (sqlite3_prepare_v2(dataBase, selectAllHeroes, -1, &resultado, nil) == SQLITE_OK) {
                     
@@ -185,12 +180,14 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                             dicionario["extensionThumb"] = Hero_Url as AnyObject?
                             
                             self.arrayFromDb.append(dicionario)
+                        }else{
+                            print("Erro")
                         }
                     }
                     sqlite3_finalize(resultado)
                     
                 }else{
-                    //erropath
+                    print("Erro")
                 }
                 
                 favoritesCollectionView.reloadData()

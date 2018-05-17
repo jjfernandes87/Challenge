@@ -259,7 +259,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
                 
                 Utils.removeLoadingScreen(view: self.view)
-                
             }
             alert.addAction(OKAction)
             self.present(alert, animated: true, completion: nil)
@@ -373,7 +372,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     if let heroDescription = cell.object?.description {
                         t.heroDescriptionText = heroDescription
                     }
-                    
                     navigationController?.pushViewController(t, animated: true)
                 }
             }
@@ -411,8 +409,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             
                             for item in result {
                                 
-                                self.charactesArray.append(item)
-                                
+                                self.charactesArray.append(item)                                
                             }
                         }
                     }

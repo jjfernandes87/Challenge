@@ -34,13 +34,14 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setDelegates()
+    }
+    
+    func setDelegates() {
         comicsCollectionView.delegate = self
         comicsCollectionView.dataSource = self
-        
         seriesCollectionView.delegate = self
         seriesCollectionView.dataSource = self
-        
-        Utils.formatNavigationTitleFontWithDefaultStyle(view: self, description: heroName)
     }
     
     func displayHeroData() {
@@ -49,6 +50,7 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
             self.heroDescription.text = self.heroDescriptionText
             self.SeriesLabel.font = UIFont(name: "Pacifico-Regular", size: 20)
             self.ComicsLabel.font = UIFont(name: "Pacifico-Regular", size: 20)
+            Utils.formatNavigationTitleFontWithDefaultStyle(view: self, description: self.heroName)
         }
         
         if let imageFromCache = Utils.imageCache.object(forKey: thumbPath as AnyObject) as? UIImage {
@@ -226,7 +228,6 @@ class HeroDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
                                     self.comicsArray = items
                                 }
                             }
-                            //
                             if let series = result[0]["series"] as? [String:AnyObject] {
                                 if let items = series["items"] as? [[String:AnyObject]] {
                                     
