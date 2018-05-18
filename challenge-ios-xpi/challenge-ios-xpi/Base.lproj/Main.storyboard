@@ -393,14 +393,15 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XuS-hh-xSL">
-                                            <rect key="frame" x="0.0" y="88" width="320" height="56"/>
+                                            <rect key="frame" x="0.0" y="75" width="320" height="56"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="56" id="2r6-de-gae"/>
                                             </constraints>
+                                            <viewLayoutGuide key="safeArea" id="gty-Nm-5Gb"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EaS-94-24x">
-                                            <rect key="frame" x="5" y="144" width="310" height="368"/>
+                                            <rect key="frame" x="5" y="130" width="310" height="399"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="COb-K9-G3S">
                                                 <size key="itemSize" width="120" height="150"/>
@@ -466,12 +467,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="EaS-94-24x" secondAttribute="trailing" constant="5" id="3l1-Bo-13t"/>
-                                        <constraint firstAttribute="bottom" secondItem="EaS-94-24x" secondAttribute="bottom" constant="7" id="5ms-2a-5qX"/>
+                                        <constraint firstAttribute="bottom" secondItem="EaS-94-24x" secondAttribute="bottom" constant="-10" id="5ms-2a-5qX"/>
                                         <constraint firstItem="EaS-94-24x" firstAttribute="leading" secondItem="etK-yb-hpG" secondAttribute="leading" constant="5" id="E2A-7s-XUc"/>
                                         <constraint firstItem="XuS-hh-xSL" firstAttribute="leading" secondItem="etK-yb-hpG" secondAttribute="leading" id="Egn-4f-AtE"/>
-                                        <constraint firstItem="XuS-hh-xSL" firstAttribute="top" secondItem="etK-yb-hpG" secondAttribute="top" constant="88" id="Ero-Oe-nXJ"/>
+                                        <constraint firstItem="XuS-hh-xSL" firstAttribute="top" secondItem="etK-yb-hpG" secondAttribute="top" constant="75" id="Ero-Oe-nXJ"/>
                                         <constraint firstAttribute="trailing" secondItem="XuS-hh-xSL" secondAttribute="trailing" id="aLd-Ht-CPG"/>
-                                        <constraint firstItem="EaS-94-24x" firstAttribute="top" secondItem="etK-yb-hpG" secondAttribute="top" constant="144" id="zsH-2h-LXB"/>
+                                        <constraint firstItem="EaS-94-24x" firstAttribute="top" secondItem="etK-yb-hpG" secondAttribute="top" constant="130" id="zsH-2h-LXB"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -533,7 +534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FoK-pV-wuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709.5999999999999" y="-651.72413793103453"/>
+            <point key="canvasLocation" x="1708.125" y="-651.76056338028172"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8uw-JC-XRA">
