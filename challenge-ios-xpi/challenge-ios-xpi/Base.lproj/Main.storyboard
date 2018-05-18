@@ -170,30 +170,28 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teW-ji-aAL">
                                             <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noInternetConnection" translatesAutoresizingMaskIntoConstraints="NO" id="1QE-jB-Ogi">
-                                                    <rect key="frame" x="45" y="377" width="285" height="169"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="169" id="6VG-Zt-8cZ"/>
-                                                        <constraint firstAttribute="width" constant="285" id="7A3-oh-JPn"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarvelNotFound" translatesAutoresizingMaskIntoConstraints="NO" id="rSA-dq-byy">
                                                     <rect key="frame" x="50" y="50" width="275" height="200"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="200" id="a06-Fy-BzZ"/>
-                                                        <constraint firstAttribute="width" constant="275" id="iNb-vl-UyI"/>
+                                                        <constraint firstAttribute="height" constant="200" id="vGu-Lb-cLc"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noInternetConnection" translatesAutoresizingMaskIntoConstraints="NO" id="1QE-jB-Ogi">
+                                                    <rect key="frame" x="45" y="377" width="285" height="169"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="169" id="XSI-SJ-9Cb"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="1QE-jB-Ogi" firstAttribute="leading" secondItem="teW-ji-aAL" secondAttribute="leading" constant="45" id="c5R-IC-ga3"/>
-                                                <constraint firstAttribute="trailing" secondItem="1QE-jB-Ogi" secondAttribute="trailing" constant="45" id="dOp-T8-X6K"/>
-                                                <constraint firstItem="rSA-dq-byy" firstAttribute="top" secondItem="teW-ji-aAL" secondAttribute="top" constant="50" id="mOf-wy-YVn"/>
-                                                <constraint firstAttribute="trailing" secondItem="rSA-dq-byy" secondAttribute="trailing" constant="50" id="nVY-AJ-oVX"/>
-                                                <constraint firstAttribute="bottom" secondItem="1QE-jB-Ogi" secondAttribute="bottom" constant="56" id="sKO-Ms-zht"/>
-                                                <constraint firstItem="rSA-dq-byy" firstAttribute="leading" secondItem="teW-ji-aAL" secondAttribute="leading" constant="50" id="wW9-WY-S7B"/>
+                                                <constraint firstAttribute="trailing" secondItem="rSA-dq-byy" secondAttribute="trailing" constant="50" id="7sI-Pf-cPf"/>
+                                                <constraint firstItem="rSA-dq-byy" firstAttribute="top" secondItem="teW-ji-aAL" secondAttribute="top" constant="50" id="T7A-K6-4ll"/>
+                                                <constraint firstItem="1QE-jB-Ogi" firstAttribute="leading" secondItem="teW-ji-aAL" secondAttribute="leading" constant="45" id="TFT-Fe-s7b"/>
+                                                <constraint firstAttribute="bottom" secondItem="1QE-jB-Ogi" secondAttribute="bottom" constant="56" id="Yeo-Gs-WAZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="1QE-jB-Ogi" secondAttribute="trailing" constant="45" id="d88-0p-kS2"/>
+                                                <constraint firstItem="rSA-dq-byy" firstAttribute="leading" secondItem="teW-ji-aAL" secondAttribute="leading" constant="50" id="tS3-d1-5CZ"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -321,18 +319,17 @@
                                             <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarvelNotFound" translatesAutoresizingMaskIntoConstraints="NO" id="BdA-lW-fFw">
-                                                    <rect key="frame" x="50" y="50" width="275" height="200"/>
+                                                    <rect key="frame" x="50" y="128" width="275" height="200"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="275" id="V2V-jS-OCP"/>
-                                                        <constraint firstAttribute="height" constant="200" id="dJv-Kw-Dep"/>
+                                                        <constraint firstAttribute="height" constant="200" id="ZBw-Ss-t1E"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="BdA-lW-fFw" firstAttribute="top" secondItem="LQp-wQ-iEU" secondAttribute="top" constant="50" id="Tlw-Vr-MJQ"/>
-                                                <constraint firstItem="BdA-lW-fFw" firstAttribute="leading" secondItem="LQp-wQ-iEU" secondAttribute="leading" constant="50" id="d0J-bg-Hr7"/>
-                                                <constraint firstAttribute="trailing" secondItem="BdA-lW-fFw" secondAttribute="trailing" constant="50" id="kEa-vS-1M0"/>
+                                                <constraint firstItem="BdA-lW-fFw" firstAttribute="leading" secondItem="LQp-wQ-iEU" secondAttribute="leading" constant="50" id="Rhd-Jm-Qwk"/>
+                                                <constraint firstItem="BdA-lW-fFw" firstAttribute="top" secondItem="LQp-wQ-iEU" secondAttribute="top" constant="128" id="WBW-vx-mmd"/>
+                                                <constraint firstAttribute="trailing" secondItem="BdA-lW-fFw" secondAttribute="trailing" constant="50" id="WHi-HJ-IN5"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -480,28 +477,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-73-97n">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noInternetConnection" translatesAutoresizingMaskIntoConstraints="NO" id="8ue-Hp-HHh">
-                                        <rect key="frame" x="45" y="377" width="285" height="169"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="169" id="0ny-L3-8Sh"/>
-                                        </constraints>
-                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MarvelNotFound" translatesAutoresizingMaskIntoConstraints="NO" id="tLr-LI-959">
                                         <rect key="frame" x="50" y="50" width="275" height="200"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="a3U-65-cmy"/>
+                                            <constraint firstAttribute="height" constant="200" id="wLO-j8-CV9"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noInternetConnection" translatesAutoresizingMaskIntoConstraints="NO" id="8ue-Hp-HHh">
+                                        <rect key="frame" x="45" y="377" width="285" height="169"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="169" id="Qiy-vb-qJe"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="8ue-Hp-HHh" secondAttribute="trailing" constant="45" id="DN7-c7-MFB"/>
-                                    <constraint firstAttribute="bottom" secondItem="8ue-Hp-HHh" secondAttribute="bottom" constant="8" id="Et5-IM-M9l"/>
-                                    <constraint firstItem="tLr-LI-959" firstAttribute="leading" secondItem="eEp-73-97n" secondAttribute="leading" constant="50" id="YKL-Mz-uq8"/>
-                                    <constraint firstItem="tLr-LI-959" firstAttribute="top" secondItem="eEp-73-97n" secondAttribute="top" constant="50" id="tC5-DH-40r"/>
-                                    <constraint firstAttribute="trailing" secondItem="tLr-LI-959" secondAttribute="trailing" constant="50" id="xbd-WQ-pjp"/>
-                                    <constraint firstItem="8ue-Hp-HHh" firstAttribute="leading" secondItem="eEp-73-97n" secondAttribute="leading" constant="45" id="zKO-P3-q5u"/>
+                                    <constraint firstItem="8ue-Hp-HHh" firstAttribute="leading" secondItem="eEp-73-97n" secondAttribute="leading" constant="45" id="L6s-AG-gAX"/>
+                                    <constraint firstItem="tLr-LI-959" firstAttribute="leading" secondItem="eEp-73-97n" secondAttribute="leading" constant="50" id="MzT-Xg-Afh"/>
+                                    <constraint firstAttribute="bottom" secondItem="8ue-Hp-HHh" secondAttribute="bottom" constant="8" id="bMT-w1-ZrN"/>
+                                    <constraint firstAttribute="trailing" secondItem="tLr-LI-959" secondAttribute="trailing" constant="50" id="eMq-3L-f9m"/>
+                                    <constraint firstItem="tLr-LI-959" firstAttribute="top" secondItem="eEp-73-97n" secondAttribute="top" constant="50" id="snP-3M-BiD"/>
+                                    <constraint firstAttribute="trailing" secondItem="8ue-Hp-HHh" secondAttribute="trailing" constant="45" id="yQC-Jo-Ytt"/>
                                 </constraints>
                             </view>
                         </subviews>

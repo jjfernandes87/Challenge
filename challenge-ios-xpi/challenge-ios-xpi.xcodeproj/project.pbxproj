@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		16BF3F8D36E66C540E89DA70 /* Pods_challenge_ios_xpi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD719C0986EBA36ECAD1C9 /* Pods_challenge_ios_xpi.framework */; };
+		542FCD9320AF06EA00C872DE /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5444F64520AE5298009233D6 /* NotificationCenter.framework */; };
+		542FCD9620AF06EA00C872DE /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FCD9520AF06EA00C872DE /* TodayViewController.swift */; };
+		542FCD9920AF06EA00C872DE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 542FCD9720AF06EA00C872DE /* MainInterface.storyboard */; };
+		542FCD9D20AF06EA00C872DE /* MarvelChallengeWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 542FCD9220AF06EA00C872DE /* MarvelChallengeWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		542FCDAA20AF0C1000C872DE /* MarvelChallengeServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 542FCDA820AF0C1000C872DE /* MarvelChallengeServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		542FCDAD20AF0C1000C872DE /* MarvelChallengeServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542FCDA620AF0C1000C872DE /* MarvelChallengeServices.framework */; };
+		542FCDAE20AF0C1000C872DE /* MarvelChallengeServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 542FCDA620AF0C1000C872DE /* MarvelChallengeServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		542FCDB320AF0D1200C872DE /* MarvelChallengeServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 542FCDA620AF0C1000C872DE /* MarvelChallengeServices.framework */; };
+		542FCDB920AF0DA800C872DE /* WidgetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FCDB820AF0DA800C872DE /* WidgetCollectionViewCell.swift */; };
+		542FCDBC20AF206700C872DE /* ObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 542FCDBB20AF206700C872DE /* ObjectModel.swift */; };
 		544185A620A9D8EA00BC1BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544185A520A9D8EA00BC1BFB /* AppDelegate.swift */; };
 		544185AB20A9D8EB00BC1BFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 544185A920A9D8EA00BC1BFB /* Main.storyboard */; };
 		544185AD20A9D8EB00BC1BFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 544185AC20A9D8EB00BC1BFB /* Assets.xcassets */; };
@@ -34,8 +44,60 @@
 		5461C4E020AA63AC00923BA0 /* ApiServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5461C4DF20AA63AC00923BA0 /* ApiServiceUrl.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		542FCD9B20AF06EA00C872DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5441859A20A9D8EA00BC1BFB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 542FCD9120AF06EA00C872DE;
+			remoteInfo = MarvelChallengeWidget;
+		};
+		542FCDAB20AF0C1000C872DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5441859A20A9D8EA00BC1BFB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 542FCDA520AF0C1000C872DE;
+			remoteInfo = MarvelChallengeServices;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		542FCDB220AF0C1000C872DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				542FCDAE20AF0C1000C872DE /* MarvelChallengeServices.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5444F65420AE529A009233D6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				542FCD9D20AF06EA00C872DE /* MarvelChallengeWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4CC444A98F7E16CD6B94D72B /* Pods-challenge-ios-xpi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-challenge-ios-xpi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-challenge-ios-xpi/Pods-challenge-ios-xpi.debug.xcconfig"; sourceTree = "<group>"; };
+		542FCD9220AF06EA00C872DE /* MarvelChallengeWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MarvelChallengeWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		542FCD9520AF06EA00C872DE /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		542FCD9820AF06EA00C872DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		542FCD9A20AF06EA00C872DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		542FCDA620AF0C1000C872DE /* MarvelChallengeServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MarvelChallengeServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		542FCDA820AF0C1000C872DE /* MarvelChallengeServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarvelChallengeServices.h; sourceTree = "<group>"; };
+		542FCDA920AF0C1000C872DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		542FCDB520AF0D3600C872DE /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		542FCDB820AF0DA800C872DE /* WidgetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCollectionViewCell.swift; sourceTree = "<group>"; };
+		542FCDBB20AF206700C872DE /* ObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectModel.swift; sourceTree = "<group>"; };
 		544185A220A9D8EA00BC1BFB /* challenge-ios-xpi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "challenge-ios-xpi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		544185A520A9D8EA00BC1BFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		544185AA20A9D8EA00BC1BFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +117,9 @@
 		5444F63A20AD17EB009233D6 /* ComicsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsCollectionViewCell.swift; sourceTree = "<group>"; };
 		5444F63C20AD17F8009233D6 /* SeriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		5444F63E20ADE740009233D6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5444F64520AE5298009233D6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		5444F65620AE59D8009233D6 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5444F65820AE59DE009233D6 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5461C4CE20A9E4E600923BA0 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		5461C4D120A9E55C00923BA0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5461C4D720A9EC4000923BA0 /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -67,11 +132,28 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		542FCD8F20AF06EA00C872DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542FCDB320AF0D1200C872DE /* MarvelChallengeServices.framework in Frameworks */,
+				542FCD9320AF06EA00C872DE /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCDA220AF0C1000C872DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5441859F20A9D8EA00BC1BFB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5444F62F20AB273E009233D6 /* libsqlite3.0.tbd in Frameworks */,
+				542FCDAD20AF0C1000C872DE /* MarvelChallengeServices.framework in Frameworks */,
 				16BF3F8D36E66C540E89DA70 /* Pods_challenge_ios_xpi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,10 +161,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		542FCD9420AF06EA00C872DE /* MarvelChallengeWidget */ = {
+			isa = PBXGroup;
+			children = (
+				542FCDBA20AF0DC500C872DE /* Model */,
+				542FCDB720AF0D8E00C872DE /* View */,
+				542FCDB620AF0D8100C872DE /* Controller */,
+				542FCD9720AF06EA00C872DE /* MainInterface.storyboard */,
+				542FCD9A20AF06EA00C872DE /* Info.plist */,
+			);
+			path = MarvelChallengeWidget;
+			sourceTree = "<group>";
+		};
+		542FCDA720AF0C1000C872DE /* MarvelChallengeServices */ = {
+			isa = PBXGroup;
+			children = (
+				542FCDA820AF0C1000C872DE /* MarvelChallengeServices.h */,
+				542FCDA920AF0C1000C872DE /* Info.plist */,
+			);
+			path = MarvelChallengeServices;
+			sourceTree = "<group>";
+		};
+		542FCDB620AF0D8100C872DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				542FCD9520AF06EA00C872DE /* TodayViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		542FCDB720AF0D8E00C872DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				542FCDB820AF0DA800C872DE /* WidgetCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		542FCDBA20AF0DC500C872DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				542FCDBB20AF206700C872DE /* ObjectModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5441859920A9D8EA00BC1BFB = {
 			isa = PBXGroup;
 			children = (
 				544185A420A9D8EA00BC1BFB /* challenge-ios-xpi */,
+				542FCD9420AF06EA00C872DE /* MarvelChallengeWidget */,
+				542FCDA720AF0C1000C872DE /* MarvelChallengeServices */,
 				544185A320A9D8EA00BC1BFB /* Products */,
 				656CA936810B76E5146E26D6 /* Pods */,
 				7E01DBCF8208935BD38D0FEB /* Frameworks */,
@@ -93,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				544185A220A9D8EA00BC1BFB /* challenge-ios-xpi.app */,
+				542FCD9220AF06EA00C872DE /* MarvelChallengeWidget.appex */,
+				542FCDA620AF0C1000C872DE /* MarvelChallengeServices.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,15 +303,65 @@
 		7E01DBCF8208935BD38D0FEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				542FCDB520AF0D3600C872DE /* Alamofire.framework */,
+				5444F65820AE59DE009233D6 /* CryptoSwift.framework */,
+				5444F65620AE59D8009233D6 /* Alamofire.framework */,
 				5444F62E20AB273E009233D6 /* libsqlite3.0.tbd */,
 				E9DD719C0986EBA36ECAD1C9 /* Pods_challenge_ios_xpi.framework */,
+				5444F64520AE5298009233D6 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		542FCDA320AF0C1000C872DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542FCDAA20AF0C1000C872DE /* MarvelChallengeServices.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		542FCD9120AF06EA00C872DE /* MarvelChallengeWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 542FCDA020AF06EA00C872DE /* Build configuration list for PBXNativeTarget "MarvelChallengeWidget" */;
+			buildPhases = (
+				542FCD8E20AF06EA00C872DE /* Sources */,
+				542FCD8F20AF06EA00C872DE /* Frameworks */,
+				542FCD9020AF06EA00C872DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarvelChallengeWidget;
+			productName = MarvelChallengeWidget;
+			productReference = 542FCD9220AF06EA00C872DE /* MarvelChallengeWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		542FCDA520AF0C1000C872DE /* MarvelChallengeServices */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 542FCDAF20AF0C1000C872DE /* Build configuration list for PBXNativeTarget "MarvelChallengeServices" */;
+			buildPhases = (
+				542FCDA120AF0C1000C872DE /* Sources */,
+				542FCDA220AF0C1000C872DE /* Frameworks */,
+				542FCDA320AF0C1000C872DE /* Headers */,
+				542FCDA420AF0C1000C872DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarvelChallengeServices;
+			productName = MarvelChallengeServices;
+			productReference = 542FCDA620AF0C1000C872DE /* MarvelChallengeServices.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		544185A120A9D8EA00BC1BFB /* challenge-ios-xpi */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 544185B420A9D8EB00BC1BFB /* Build configuration list for PBXNativeTarget "challenge-ios-xpi" */;
@@ -191,10 +372,14 @@
 				544185A020A9D8EA00BC1BFB /* Resources */,
 				48AA423F037FC3A6D0286A8A /* [CP] Embed Pods Frameworks */,
 				072BC4FE40768A0A92C5028D /* [CP] Copy Pods Resources */,
+				5444F65420AE529A009233D6 /* Embed App Extensions */,
+				542FCDB220AF0C1000C872DE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				542FCD9C20AF06EA00C872DE /* PBXTargetDependency */,
+				542FCDAC20AF0C1000C872DE /* PBXTargetDependency */,
 			);
 			name = "challenge-ios-xpi";
 			productName = "challenge-ios-xpi";
@@ -211,6 +396,14 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Felipe Mac";
 				TargetAttributes = {
+					542FCD9120AF06EA00C872DE = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					542FCDA520AF0C1000C872DE = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					544185A120A9D8EA00BC1BFB = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -231,11 +424,28 @@
 			projectRoot = "";
 			targets = (
 				544185A120A9D8EA00BC1BFB /* challenge-ios-xpi */,
+				542FCD9120AF06EA00C872DE /* MarvelChallengeWidget */,
+				542FCDA520AF0C1000C872DE /* MarvelChallengeServices */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		542FCD9020AF06EA00C872DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542FCD9920AF06EA00C872DE /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCDA420AF0C1000C872DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		544185A020A9D8EA00BC1BFB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -298,6 +508,23 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		542FCD8E20AF06EA00C872DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542FCDB920AF0DA800C872DE /* WidgetCollectionViewCell.swift in Sources */,
+				542FCDBC20AF206700C872DE /* ObjectModel.swift in Sources */,
+				542FCD9620AF06EA00C872DE /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		542FCDA120AF0C1000C872DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5441859E20A9D8EA00BC1BFB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -326,7 +553,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		542FCD9C20AF06EA00C872DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 542FCD9120AF06EA00C872DE /* MarvelChallengeWidget */;
+			targetProxy = 542FCD9B20AF06EA00C872DE /* PBXContainerItemProxy */;
+		};
+		542FCDAC20AF0C1000C872DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 542FCDA520AF0C1000C872DE /* MarvelChallengeServices */;
+			targetProxy = 542FCDAB20AF0C1000C872DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		542FCD9720AF06EA00C872DE /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				542FCD9820AF06EA00C872DE /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		544185A920A9D8EA00BC1BFB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -346,6 +594,80 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		542FCD9E20AF06EA00C872DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MarvelChallengeWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "xpi.challenge-ios-xpi.MarvelChallengeWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		542FCD9F20AF06EA00C872DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MarvelChallengeWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "xpi.challenge-ios-xpi.MarvelChallengeWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		542FCDB020AF0C1000C872DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MarvelChallengeServices/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xpi.MarvelChallengeServices;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		542FCDB120AF0C1000C872DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MarvelChallengeServices/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xpi.MarvelChallengeServices;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		544185B220A9D8EB00BC1BFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -457,6 +779,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4CC444A98F7E16CD6B94D72B /* Pods-challenge-ios-xpi.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "challenge-ios-xpi/Info.plist";
@@ -473,6 +796,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A3915B5E482CE77E33FCDADF /* Pods-challenge-ios-xpi.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "challenge-ios-xpi/Info.plist";
@@ -488,6 +812,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		542FCDA020AF06EA00C872DE /* Build configuration list for PBXNativeTarget "MarvelChallengeWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				542FCD9E20AF06EA00C872DE /* Debug */,
+				542FCD9F20AF06EA00C872DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		542FCDAF20AF0C1000C872DE /* Build configuration list for PBXNativeTarget "MarvelChallengeServices" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				542FCDB020AF0C1000C872DE /* Debug */,
+				542FCDB120AF0C1000C872DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5441859D20A9D8EA00BC1BFB /* Build configuration list for PBXProject "challenge-ios-xpi" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -49,7 +49,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func setConfigurationsToDisplayInUI() {
         self.searchBar.searchBarStyle = .minimal
         self.searchBar.returnKeyType = UIReturnKeyType.done
-        self.searchBar.placeholder = "Enter hero name..."
+        self.searchBar.placeholder = "Enter complete hero name..."
         HomeCollectionView.addSubview(refreshControl)
         Utils.formatNavigationTitleFontWithDefaultStyle(view: self, description: "Characters")
     }
