@@ -180,7 +180,6 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                             dicionario["extensionThumb"] = Hero_Url as AnyObject?
                             
                             self.arrayFromDb.append(dicionario)
-                            print(dicionario)
                         }
                     }
                     sqlite3_finalize(resultado)
