@@ -67,6 +67,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         refreshControl.endRefreshing()
     }
     
+    func preparedb() {
+        let comm = "INSERT into MyHeros values (NULL, '999', 'Null', 'NUll', '\(true)', 'Null')"
+        if(sqlite3_exec(dataBase, comm, nil, nil, nil)) == SQLITE_OK  {}
+    }
+    
     func addHeroAsFavorite(cell: HomeCollectionViewCell) {
         
         if var name = cell.object?.name {
@@ -181,7 +186,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 if (sqlite3_exec(dataBase, comando1, nil, nil, nil)) == SQLITE_OK {
                     print("Table created Successfully")
-                    
+                    preparedb()
                 }else{
                     print("Table created Error \(sqlite3_errmsg(dataBase))")
                 }
@@ -278,7 +283,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         else {
             
             isSearching = true
-            
+            self.searchArray = []
             for item in charactesArray {
                 
                 if let name = item["name"] as? String {

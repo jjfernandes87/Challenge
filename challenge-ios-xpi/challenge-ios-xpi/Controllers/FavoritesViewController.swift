@@ -160,7 +160,7 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                 
                 if (sqlite3_prepare_v2(dataBase, selectAllHeroes, -1, &resultado, nil) == SQLITE_OK) {
                     
-                    if sqlite3_step(resultado) == SQLITE_ROW {
+                    if (sqlite3_step(resultado) == SQLITE_ROW) {
                         
                         while sqlite3_step(resultado) == SQLITE_ROW {
                             
@@ -180,14 +180,14 @@ class FavoritesViewController: UIViewController, UICollectionViewDelegate, UICol
                             dicionario["extensionThumb"] = Hero_Url as AnyObject?
                             
                             self.arrayFromDb.append(dicionario)
-                        }else{
-                            print("Erro")
+                            print(dicionario)
                         }
                     }
                     sqlite3_finalize(resultado)
                     
                 }else{
-                    print("Erro")
+                    let errorMessage = String(cString: sqlite3_errmsg(dataBase)!)
+                    print("Query could not be prepared! \(errorMessage)")
                 }
                 
                 favoritesCollectionView.reloadData()
