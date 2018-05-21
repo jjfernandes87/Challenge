@@ -1,4 +1,4 @@
-# Desafio - Desenvolvedor iOS SENIOR
+# Desafio - Desenvolvedor ANDROID SENIOR
 
 Nós de mobile somos fãs da Marvel, então por isso gostaríamos de um app para listar os personagens e saber mais sobre eles.
 
