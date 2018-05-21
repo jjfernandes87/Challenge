@@ -1,4 +1,4 @@
-# Desafio - Desenvolvedor iOS PLENO
+# Desafio - Desenvolvedor ANDROID PLENO
 
 Nós de mobile da XXXX somos fãs da Marvel, então por isso gostaríamos de um app para listar os personagens e saber mais sobre eles.
 
