@@ -16,7 +16,7 @@ bundle exec pod install
 
 ## Para testes e cobertura
 
-Para executar os testes e verificar a cobertura, execute os comandos abaixo:
+Para executar os testes e verificar a cobertura, execute o comando abaixo:
 ```
 bundle exec fastlane test
 ```
