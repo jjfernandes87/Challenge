@@ -1,20 +1,22 @@
-# Desafio
+# Challenge Marvel
 
-Escolha a vaga à qual está aplicando:
+Aplicado o teste:
 
 **iOS**
 
-[Desenvolvedor iOS **JÚNIOR**](./README_Junior.md)
-
-[Desenvolvedor iOS **PLENO**](./README_Pleno.md)
-
 [Desenvolvedor iOS **SENIOR**](./README_Senior.md)
 
-**Android**
+## Instruções de instalação
 
-[Desenvolvedor Android **JÚNIOR**](./README_Android_Junior.md)
+Este projeto utiliza [Bundler](http://bundler.io) e [CocoaPods](https://cocoapods.org), confira se já estão instalados e depois execute os comandos abaixo no terminal:
+```
+bundle
+bundle exec pod install
+```
 
-[Desenvolvedor Android **PLENO**](./README_Android_Pleno.md)
+## Para testes e cobertura
 
-[Desenvolvedor Android **SENIOR**](./README_Android_Senior.md)
-
+Para executar os testes e verificar a cobertura, execute o comando abaixo:
+```
+bundle exec fastlane test
+```

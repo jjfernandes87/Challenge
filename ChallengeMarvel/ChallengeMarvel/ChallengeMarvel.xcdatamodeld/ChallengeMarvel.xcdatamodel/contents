@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Character" representedClassName=".FavoriteCharacter" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="resultDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comics" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Comics" inverseName="characterComics" inverseEntity="Comics" syncable="YES"/>
+        <relationship name="series" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Comics" inverseName="characterSeries" inverseEntity="Comics" syncable="YES"/>
+        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Thumbnail" inverseName="character" inverseEntity="Thumbnail" syncable="YES"/>
+    </entity>
+    <entity name="Comics" representedClassName=".FavoriteComics" syncable="YES" codeGenerationType="class">
+        <relationship name="characterComics" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Character" inverseName="comics" inverseEntity="Character" syncable="YES"/>
+        <relationship name="characterSeries" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Character" inverseName="series" inverseEntity="Character" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ComicsItem" inverseName="comics" inverseEntity="ComicsItem" syncable="YES"/>
+    </entity>
+    <entity name="ComicsItem" representedClassName=".FavoriteComicsItem" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comics" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Comics" inverseName="items" inverseEntity="Comics" syncable="YES"/>
+    </entity>
+    <entity name="Thumbnail" representedClassName=".FavoriteThumbnail" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnailExtension" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="character" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Character" inverseName="thumbnail" inverseEntity="Character" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Character" positionX="165.625" positionY="-75.4375" width="128" height="133"/>
+        <element name="Comics" positionX="-62.6953125" positionY="-109.9609375" width="128" height="88"/>
+        <element name="ComicsItem" positionX="-209.640625" positionY="-237.48828125" width="128" height="73"/>
+        <element name="Thumbnail" positionX="-62.03125" positionY="17.265625" width="128" height="103"/>
+    </elements>
+</model>

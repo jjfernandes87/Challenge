@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<title>ApiProvider.swift - Slather</title>
+<link href="slather.css" media="all" rel="stylesheet">
+</head>
+<body>
+<header><div class="row"><a href="index.html"><img src="logo.jpg" alt="Slather logo"></a></div></header><div class="row"><div id="reports">
+<h2 class="cov_title">
+<span>Coverage for "ApiProvider.swift" : </span><span class="cov_high">90.91%</span>
+</h2>
+<h4 class="cov_subtitle">(30 of 33 relevant lines covered)</h4>
+<h4 class="cov_filepath">ChallengeMarvel/Provider/BaseProvider/ApiProvider.swift</h4>
+<table class="source_code">
+<tr class="never">
+<td class="num">1</td>
+<td class="src"><pre><code class="objc">//</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">2</td>
+<td class="src"><pre><code class="objc">//  ApiProvider.swift</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">3</td>
+<td class="src"><pre><code class="objc">//  ChallengeMarvel</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">4</td>
+<td class="src"><pre><code class="objc">//</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">5</td>
+<td class="src"><pre><code class="objc">//  Created by Dynara Rico Oliveira on 30/06/19.</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">6</td>
+<td class="src"><pre><code class="objc">//  Copyright &copy; 2019 Dynara Rico Oliveira. All rights reserved.</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">7</td>
+<td class="src"><pre><code class="objc">//</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">8</td>
+<td class="src"><pre><code class="objc"></code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">9</td>
+<td class="src"><pre><code class="objc">import Foundation</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">10</td>
+<td class="src"><pre><code class="objc">import CryptoSwift</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">11</td>
+<td class="src"><pre><code class="objc"></code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">12</td>
+<td class="src"><pre><code class="objc">struct ApiProvider {</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">13</td>
+<td class="src"><pre><code class="objc">    static private let privateKey = "80f9f79f5cb7f63f835933d9ab20b4346b9e4829"</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">14</td>
+<td class="src"><pre><code class="objc">    static private let publicKey = "ec371b767bf553d7a6e1c19dfc528f2d"</code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">15</td>
+<td class="src"><pre><code class="objc">    </code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="covered">
+<td class="num">16</td>
+<td class="src"><pre><code class="objc">    static func getCredencial(offset: Int, nameStartsWith: String, limit: Int) -&gt; String {</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">17</td>
+<td class="src"><pre><code class="objc">        let timestamp = Date().timeIntervalSince1970.description</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">18</td>
+<td class="src"><pre><code class="objc">        let hash = "\(timestamp)\(privateKey)\(publicKey)".md5()</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">19</td>
+<td class="src"><pre><code class="objc">        </code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">20</td>
+<td class="src"><pre><code class="objc">        var params = ["ts": timestamp,</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">21</td>
+<td class="src"><pre><code class="objc">                      "apikey": publicKey,</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">22</td>
+<td class="src"><pre><code class="objc">                      "hash": hash,</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">23</td>
+<td class="src"><pre><code class="objc">                      "orderBy": "name",</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">24</td>
+<td class="src"><pre><code class="objc">                      "limit": String(limit),</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">25</td>
+<td class="src"><pre><code class="objc">                      "offset": String(offset)]</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">26</td>
+<td class="src"><pre><code class="objc">        </code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">27</td>
+<td class="src"><pre><code class="objc">        if nameStartsWith.count &gt; 0 { params["nameStartsWith"] = nameStartsWith }</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">28</td>
+<td class="src"><pre><code class="objc">        </code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">29</td>
+<td class="src"><pre><code class="objc">        return params.queryString ?? ""</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">30</td>
+<td class="src"><pre><code class="objc">    }</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="never">
+<td class="num">31</td>
+<td class="src"><pre><code class="objc">    </code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="covered">
+<td class="num">32</td>
+<td class="src"><pre><code class="objc">    static func getCredencial() -&gt; String {</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">33</td>
+<td class="src"><pre><code class="objc">        let timestamp = Date().timeIntervalSince1970.description</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">34</td>
+<td class="src"><pre><code class="objc">        let hash = "\(timestamp)\(privateKey)\(publicKey)".md5()</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">35</td>
+<td class="src"><pre><code class="objc">        let authParams = ["ts": timestamp,</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">36</td>
+<td class="src"><pre><code class="objc">                          "apikey": publicKey,</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">37</td>
+<td class="src"><pre><code class="objc">                          "hash": hash]</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">38</td>
+<td class="src"><pre><code class="objc">        </code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">39</td>
+<td class="src"><pre><code class="objc">        return authParams.queryString ?? ""</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">40</td>
+<td class="src"><pre><code class="objc">    }</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="never">
+<td class="num">41</td>
+<td class="src"><pre><code class="objc">    </code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="covered">
+<td class="num">42</td>
+<td class="src"><pre><code class="objc">    static func marvelObjectUrl(offset: Int, nameStartsWith: String, limit: Int) -&gt; String {</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">43</td>
+<td class="src"><pre><code class="objc">        return "https://gateway.marvel.com/v1/public/characters?" + getCredencial(offset: offset, nameStartsWith: nameStartsWith, limit: limit)</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">44</td>
+<td class="src"><pre><code class="objc">    }</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="never">
+<td class="num">45</td>
+<td class="src"><pre><code class="objc">    </code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="covered">
+<td class="num">46</td>
+<td class="src"><pre><code class="objc">    static func comicsEventsUrl(url: String) -&gt; String {</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">47</td>
+<td class="src"><pre><code class="objc">        return "\(url)?" + getCredencial()</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="covered">
+<td class="num">48</td>
+<td class="src"><pre><code class="objc">    }</code></pre></td>
+<td class="coverage">4x</td>
+</tr>
+<tr class="never">
+<td class="num">49</td>
+<td class="src"><pre><code class="objc">    </code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="missed">
+<td class="num">50</td>
+<td class="src"><pre><code class="objc">    static func characterObjectUrl(id: Int) -&gt; String {</code></pre></td>
+<td class="coverage">!</td>
+</tr>
+<tr class="missed">
+<td class="num">51</td>
+<td class="src"><pre><code class="objc">        return "https://gateway.marvel.com/v1/public/characters/\(id)?" + getCredencial()</code></pre></td>
+<td class="coverage">!</td>
+</tr>
+<tr class="missed">
+<td class="num">52</td>
+<td class="src"><pre><code class="objc">    }</code></pre></td>
+<td class="coverage">!</td>
+</tr>
+<tr class="never">
+<td class="num">53</td>
+<td class="src"><pre><code class="objc">    </code></pre></td>
+<td class="coverage"></td>
+</tr>
+<tr class="never">
+<td class="num">54</td>
+<td class="src"><pre><code class="objc">}</code></pre></td>
+<td class="coverage"></td>
+</tr>
+</table>
+</div></div>
+<footer><div class="row">
+<p><a href="https://github.com/SlatherOrg/slather">Fork me on Github</a></p>
+<p>&copy; 2019 Slather</p>
+</div></footer><script src="highlight.pack.js"></script><script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
