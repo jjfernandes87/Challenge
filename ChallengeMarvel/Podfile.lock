@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (4.8.2)
+  - CryptoSwift (1.0.0)
+  - Nimble (7.3.4)
+  - Quick (1.3.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - CryptoSwift
+  - Nimble (~> 7.3.2)
+  - Quick (~> 1.3.2)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CryptoSwift
+    - Nimble
+    - Quick
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
+  Quick: f4f7f063c524394c73ed93ac70983c609805d481
+
+PODFILE CHECKSUM: aeb9162b07b2a3c1ca8ad4708ba83bc4abdc3ba3
+
+COCOAPODS: 1.7.0
