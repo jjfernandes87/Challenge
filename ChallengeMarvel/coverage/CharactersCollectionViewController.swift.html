@@ -7,9 +7,9 @@
 <body>
 <header><div class="row"><a href="index.html"><img src="logo.jpg" alt="Slather logo"></a></div></header><div class="row"><div id="reports">
 <h2 class="cov_title">
-<span>Coverage for "CharactersCollectionViewController.swift" : </span><span class="cov_medium">73.65%</span>
+<span>Coverage for "CharactersCollectionViewController.swift" : </span><span class="cov_medium">80.41%</span>
 </h2>
-<h4 class="cov_subtitle">(109 of 148 relevant lines covered)</h4>
+<h4 class="cov_subtitle">(119 of 148 relevant lines covered)</h4>
 <h4 class="cov_filepath">ChallengeMarvel/Character/Controller/CharactersCollectionViewController.swift</h4>
 <table class="source_code">
 <tr class="never">
@@ -165,17 +165,17 @@
 <tr class="covered">
 <td class="num">31</td>
 <td class="src"><pre><code class="objc">    var tabBarItemSelected: TabBarItemSelected {</code></pre></td>
-<td class="coverage">19x</td>
+<td class="coverage">9x</td>
 </tr>
 <tr class="covered">
 <td class="num">32</td>
 <td class="src"><pre><code class="objc">        return TabBarItemSelected(rawValue: self.parent?.navigationController?.restorationIdentifier ?? "") ?? .characters</code></pre></td>
-<td class="coverage">19x</td>
+<td class="coverage">9x</td>
 </tr>
 <tr class="covered">
 <td class="num">33</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">19x</td>
+<td class="coverage">9x</td>
 </tr>
 <tr class="never">
 <td class="num">34</td>
@@ -195,27 +195,27 @@
 <tr class="covered">
 <td class="num">37</td>
 <td class="src"><pre><code class="objc">    var refreshControl: UIRefreshControl {</code></pre></td>
-<td class="coverage">14x</td>
+<td class="coverage">18x</td>
 </tr>
 <tr class="covered">
 <td class="num">38</td>
 <td class="src"><pre><code class="objc">        let refreshControl = UIRefreshControl()</code></pre></td>
-<td class="coverage">14x</td>
+<td class="coverage">18x</td>
 </tr>
 <tr class="covered">
 <td class="num">39</td>
 <td class="src"><pre><code class="objc">        refreshControl.addTarget(self, action: #selector(self.fetchData), for: .valueChanged)</code></pre></td>
-<td class="coverage">14x</td>
+<td class="coverage">18x</td>
 </tr>
 <tr class="covered">
 <td class="num">40</td>
 <td class="src"><pre><code class="objc">        return refreshControl</code></pre></td>
-<td class="coverage">14x</td>
+<td class="coverage">18x</td>
 </tr>
 <tr class="covered">
 <td class="num">41</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">14x</td>
+<td class="coverage">18x</td>
 </tr>
 <tr class="never">
 <td class="num">42</td>
@@ -225,32 +225,32 @@
 <tr class="covered">
 <td class="num">43</td>
 <td class="src"><pre><code class="objc">    override func viewDidLoad() {</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">44</td>
 <td class="src"><pre><code class="objc">        super.viewDidLoad()</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">45</td>
 <td class="src"><pre><code class="objc">        setupNavBar()</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">46</td>
 <td class="src"><pre><code class="objc">        collectionView?.refreshControl = refreshControl</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">47</td>
 <td class="src"><pre><code class="objc">        collectionView.accessibilityIdentifier = "CharacterList"</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">48</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="never">
 <td class="num">49</td>
@@ -295,17 +295,17 @@
 <tr class="covered">
 <td class="num">57</td>
 <td class="src"><pre><code class="objc">    override func numberOfSections(in collectionView: UICollectionView) -&gt; Int {</code></pre></td>
-<td class="coverage">11x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">58</td>
 <td class="src"><pre><code class="objc">        return 1</code></pre></td>
-<td class="coverage">11x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">59</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">11x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="never">
 <td class="num">60</td>
@@ -315,17 +315,17 @@
 <tr class="covered">
 <td class="num">61</td>
 <td class="src"><pre><code class="objc">    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -&gt; Int {</code></pre></td>
-<td class="coverage">11x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">62</td>
 <td class="src"><pre><code class="objc">        return characterViewModel.count</code></pre></td>
-<td class="coverage">11x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">63</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">11x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="never">
 <td class="num">64</td>
@@ -335,47 +335,47 @@
 <tr class="covered">
 <td class="num">65</td>
 <td class="src"><pre><code class="objc">    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -&gt; UICollectionViewCell {</code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="covered">
 <td class="num">66</td>
 <td class="src"><pre><code class="objc">        let characterViewModel = self.characterViewModel[indexPath.row]</code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="covered">
 <td class="num">67</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="covered">
 <td class="num">68</td>
 <td class="src"><pre><code class="objc">        let cell: CharacterCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)</code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="covered">
 <td class="num">69</td>
 <td class="src"><pre><code class="objc">        cell.characterViewModel = characterViewModel</code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="covered">
 <td class="num">70</td>
 <td class="src"><pre><code class="objc">        cell.delegate = self</code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="covered">
 <td class="num">71</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="covered">
 <td class="num">72</td>
 <td class="src"><pre><code class="objc">        return cell</code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="covered">
 <td class="num">73</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">70x</td>
+<td class="coverage">36x</td>
 </tr>
 <tr class="never">
 <td class="num">74</td>
@@ -450,17 +450,17 @@
 <tr class="covered">
 <td class="num">88</td>
 <td class="src"><pre><code class="objc">                                 at indexPath: IndexPath) -&gt; UICollectionReusableView {</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">89</td>
 <td class="src"><pre><code class="objc">        return searchCollectionReusableView(ofKind: kind, at: indexPath)</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">90</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="never">
 <td class="num">91</td>
@@ -470,42 +470,42 @@
 <tr class="covered">
 <td class="num">92</td>
 <td class="src"><pre><code class="objc">    func searchCollectionReusableView(ofKind: String, at indexPath: IndexPath) -&gt; UICollectionReusableView {</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">93</td>
 <td class="src"><pre><code class="objc">        if (ofKind == UICollectionView.elementKindSectionHeader) {</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">94</td>
 <td class="src"><pre><code class="objc">            let searchView = collectionView.dequeueReusableSupplementaryView(ofKind: ofKind, withReuseIdentifier: SearchCollectionReusableView.reuseIdentifier, for: indexPath) as? SearchCollectionReusableView</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">95</td>
 <td class="src"><pre><code class="objc">            </code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">96</td>
 <td class="src"><pre><code class="objc">            self.searchView = searchView</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">97</td>
 <td class="src"><pre><code class="objc">            </code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">98</td>
 <td class="src"><pre><code class="objc">            return searchView ?? UICollectionReusableView()</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="covered">
 <td class="num">99</td>
 <td class="src"><pre><code class="objc">        }</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="missed">
 <td class="num">100</td>
@@ -520,7 +520,7 @@
 <tr class="covered">
 <td class="num">102</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">10x</td>
+<td class="coverage">8x</td>
 </tr>
 <tr class="never">
 <td class="num">103</td>
@@ -630,82 +630,82 @@
 <tr class="covered">
 <td class="num">124</td>
 <td class="src"><pre><code class="objc">    fileprivate func setCharacterViewModelList(_ characterViewModel: [CharacterViewModel]) {</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">125</td>
 <td class="src"><pre><code class="objc">        self.characterViewModel = characterViewModel</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">126</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">127</td>
 <td class="src"><pre><code class="objc">        if let character = self.characterViewModel.first {</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">128</td>
 <td class="src"><pre><code class="objc">            self.characterSelectionDelegate?.characterSelected(character)</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">129</td>
 <td class="src"><pre><code class="objc">        }</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">130</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">131</td>
 <td class="src"><pre><code class="objc">        self.collectionView?.reloadData()</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">132</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="never">
 <td class="num">133</td>
 <td class="src"><pre><code class="objc">    </code></pre></td>
 <td class="coverage"></td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">134</td>
-<td class="src"><pre><code class="objc">    fileprivate func clearList() {</code></pre></td>
-<td class="coverage">!</td>
+<td class="src"><pre><code class="objc">    func clearList() {</code></pre></td>
+<td class="coverage">1x</td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">135</td>
 <td class="src"><pre><code class="objc">        characterViewModel.removeAll()</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">1x</td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">136</td>
 <td class="src"><pre><code class="objc">        collectionView?.reloadData()</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">1x</td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">137</td>
 <td class="src"><pre><code class="objc">        self.stopLoading()</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">1x</td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">138</td>
 <td class="src"><pre><code class="objc">        collectionView?.refreshControl?.endRefreshing()</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">1x</td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">139</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">1x</td>
 </tr>
 <tr class="never">
 <td class="num">140</td>
@@ -720,42 +720,42 @@
 <tr class="covered">
 <td class="num">142</td>
 <td class="src"><pre><code class="objc">    func fetchData(offset: Int = 0, presentLoadingView: Bool = true, searchName: String = "") {</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">143</td>
 <td class="src"><pre><code class="objc">        let context = appDelegate.persistentContainer.viewContext</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">144</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">145</td>
 <td class="src"><pre><code class="objc">        if presentLoadingView { startLoading() }</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">146</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">147</td>
 <td class="src"><pre><code class="objc">        switch tabBarItemSelected {</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">148</td>
 <td class="src"><pre><code class="objc">        case .characters:</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">149</td>
 <td class="src"><pre><code class="objc">            if !Connectivity.isConnectedToInternet() {</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="missed">
 <td class="num">150</td>
@@ -770,37 +770,37 @@
 <tr class="covered">
 <td class="num">152</td>
 <td class="src"><pre><code class="objc">            } else {</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">153</td>
 <td class="src"><pre><code class="objc">                marvelObjectManager.fetchMarvelObject(offset: offset, nameStartsWith: searchName, limit: 20) { (result) in</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">154</td>
 <td class="src"><pre><code class="objc">                    switch result() {</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">155</td>
 <td class="src"><pre><code class="objc">                    case .success(let marvelObject):</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">156</td>
 <td class="src"><pre><code class="objc">                        let marvelObjectViewModel = MarvelObjectViewModel(context: context, marvelObject: marvelObject)</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">157</td>
 <td class="src"><pre><code class="objc">                        self.setCharacterViewModelList(marvelObjectViewModel.characterViewModel)</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">158</td>
 <td class="src"><pre><code class="objc">                    case .failure:</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="missed">
 <td class="num">159</td>
@@ -815,32 +815,32 @@
 <tr class="covered">
 <td class="num">161</td>
 <td class="src"><pre><code class="objc">                    }</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">162</td>
 <td class="src"><pre><code class="objc">                    if presentLoadingView { self.stopLoading() }</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">163</td>
 <td class="src"><pre><code class="objc">                    self.collectionView?.refreshControl?.endRefreshing()</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">164</td>
 <td class="src"><pre><code class="objc">                }</code></pre></td>
-<td class="coverage">15x</td>
+<td class="coverage">6x</td>
 </tr>
 <tr class="covered">
 <td class="num">165</td>
 <td class="src"><pre><code class="objc">            }</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">166</td>
 <td class="src"><pre><code class="objc">        case .favorites:</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="missed">
 <td class="num">167</td>
@@ -935,12 +935,12 @@
 <tr class="covered">
 <td class="num">185</td>
 <td class="src"><pre><code class="objc">        }</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="covered">
 <td class="num">186</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">17x</td>
+<td class="coverage">7x</td>
 </tr>
 <tr class="never">
 <td class="num">187</td>
@@ -1012,25 +1012,25 @@
 <td class="src"><pre><code class="objc">extension CharactersCollectionViewController: UICollectionViewDelegateFlowLayout {</code></pre></td>
 <td class="coverage"></td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">201</td>
 <td class="src"><pre><code class="objc">    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -&gt; CGSize {</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">80x</td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">202</td>
 <td class="src"><pre><code class="objc">        let width = ((self.view.frame.size.width) / 2) - 10</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">80x</td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">203</td>
 <td class="src"><pre><code class="objc">        return CGSize(width: width &gt; 200 ? 200 : width, height: 225)</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">80x</td>
 </tr>
-<tr class="missed">
+<tr class="covered">
 <td class="num">204</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">!</td>
+<td class="coverage">80x</td>
 </tr>
 <tr class="never">
 <td class="num">205</td>

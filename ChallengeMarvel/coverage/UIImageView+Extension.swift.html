@@ -70,57 +70,57 @@
 <tr class="covered">
 <td class="num">12</td>
 <td class="src"><pre><code class="objc">    func loadImage(withURL: String) {</code></pre></td>
-<td class="coverage">82x</td>
+<td class="coverage">45x</td>
 </tr>
 <tr class="covered">
 <td class="num">13</td>
 <td class="src"><pre><code class="objc">        guard let withURL = URL(string: withURL) else { return }</code></pre></td>
-<td class="coverage">82x</td>
+<td class="coverage">45x</td>
 </tr>
 <tr class="covered">
 <td class="num">14</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">82x</td>
+<td class="coverage">45x</td>
 </tr>
 <tr class="covered">
 <td class="num">15</td>
 <td class="src"><pre><code class="objc">        DispatchQueue.global().async { [weak self] in</code></pre></td>
-<td class="coverage">82x</td>
+<td class="coverage">45x</td>
 </tr>
 <tr class="covered">
 <td class="num">16</td>
 <td class="src"><pre><code class="objc">            if let data = try? Data(contentsOf: withURL), let image = UIImage(data: data) {</code></pre></td>
-<td class="coverage">82x</td>
+<td class="coverage">45x</td>
 </tr>
 <tr class="covered">
 <td class="num">17</td>
 <td class="src"><pre><code class="objc">                DispatchQueue.main.async {</code></pre></td>
-<td class="coverage">29x</td>
+<td class="coverage">31x</td>
 </tr>
 <tr class="covered">
 <td class="num">18</td>
 <td class="src"><pre><code class="objc">                    self?.image = image</code></pre></td>
-<td class="coverage">29x</td>
+<td class="coverage">31x</td>
 </tr>
 <tr class="covered">
 <td class="num">19</td>
 <td class="src"><pre><code class="objc">                }</code></pre></td>
-<td class="coverage">29x</td>
+<td class="coverage">31x</td>
 </tr>
 <tr class="covered">
 <td class="num">20</td>
 <td class="src"><pre><code class="objc">            }</code></pre></td>
-<td class="coverage">82x</td>
+<td class="coverage">45x</td>
 </tr>
 <tr class="covered">
 <td class="num">21</td>
 <td class="src"><pre><code class="objc">        }</code></pre></td>
-<td class="coverage">82x</td>
+<td class="coverage">45x</td>
 </tr>
 <tr class="covered">
 <td class="num">22</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">82x</td>
+<td class="coverage">45x</td>
 </tr>
 <tr class="never">
 <td class="num">23</td>

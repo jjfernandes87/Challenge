@@ -90,77 +90,77 @@
 <tr class="covered">
 <td class="num">16</td>
 <td class="src"><pre><code class="objc">    static func getCredencial(offset: Int, nameStartsWith: String, limit: Int) -&gt; String {</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">17</td>
 <td class="src"><pre><code class="objc">        let timestamp = Date().timeIntervalSince1970.description</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">18</td>
 <td class="src"><pre><code class="objc">        let hash = "\(timestamp)\(privateKey)\(publicKey)".md5()</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">19</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">20</td>
 <td class="src"><pre><code class="objc">        var params = ["ts": timestamp,</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">21</td>
 <td class="src"><pre><code class="objc">                      "apikey": publicKey,</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">22</td>
 <td class="src"><pre><code class="objc">                      "hash": hash,</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">23</td>
 <td class="src"><pre><code class="objc">                      "orderBy": "name",</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">24</td>
 <td class="src"><pre><code class="objc">                      "limit": String(limit),</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">25</td>
 <td class="src"><pre><code class="objc">                      "offset": String(offset)]</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">26</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">27</td>
 <td class="src"><pre><code class="objc">        if nameStartsWith.count &gt; 0 { params["nameStartsWith"] = nameStartsWith }</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">28</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">29</td>
 <td class="src"><pre><code class="objc">        return params.queryString ?? ""</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">30</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="never">
 <td class="num">31</td>
@@ -220,17 +220,17 @@
 <tr class="covered">
 <td class="num">42</td>
 <td class="src"><pre><code class="objc">    static func marvelObjectUrl(offset: Int, nameStartsWith: String, limit: Int) -&gt; String {</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">43</td>
 <td class="src"><pre><code class="objc">        return "https://gateway.marvel.com/v1/public/characters?" + getCredencial(offset: offset, nameStartsWith: nameStartsWith, limit: limit)</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="covered">
 <td class="num">44</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">8x</td>
+<td class="coverage">4x</td>
 </tr>
 <tr class="never">
 <td class="num">45</td>
@@ -264,7 +264,7 @@
 </tr>
 <tr class="missed">
 <td class="num">51</td>
-<td class="src"><pre><code class="objc">        return "https://gateway.marvel.com/v1/public/characters/\(id)" + getCredencial()</code></pre></td>
+<td class="src"><pre><code class="objc">        return "https://gateway.marvel.com/v1/public/characters/\(id)?" + getCredencial()</code></pre></td>
 <td class="coverage">!</td>
 </tr>
 <tr class="missed">

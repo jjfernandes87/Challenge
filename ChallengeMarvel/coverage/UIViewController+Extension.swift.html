@@ -90,37 +90,37 @@
 <tr class="covered">
 <td class="num">16</td>
 <td class="src"><pre><code class="objc">    func startLoading() {</code></pre></td>
-<td class="coverage">22x</td>
+<td class="coverage">14x</td>
 </tr>
 <tr class="covered">
 <td class="num">17</td>
 <td class="src"><pre><code class="objc">        activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y)</code></pre></td>
-<td class="coverage">22x</td>
+<td class="coverage">14x</td>
 </tr>
 <tr class="covered">
 <td class="num">18</td>
 <td class="src"><pre><code class="objc">        activityIndicator.color = UIColor.red</code></pre></td>
-<td class="coverage">22x</td>
+<td class="coverage">14x</td>
 </tr>
 <tr class="covered">
 <td class="num">19</td>
 <td class="src"><pre><code class="objc">        view.addSubview(activityIndicator)</code></pre></td>
-<td class="coverage">22x</td>
+<td class="coverage">14x</td>
 </tr>
 <tr class="covered">
 <td class="num">20</td>
 <td class="src"><pre><code class="objc">        view.bringSubviewToFront(activityIndicator)</code></pre></td>
-<td class="coverage">22x</td>
+<td class="coverage">14x</td>
 </tr>
 <tr class="covered">
 <td class="num">21</td>
 <td class="src"><pre><code class="objc">        activityIndicator.startAnimating()</code></pre></td>
-<td class="coverage">22x</td>
+<td class="coverage">14x</td>
 </tr>
 <tr class="covered">
 <td class="num">22</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">22x</td>
+<td class="coverage">14x</td>
 </tr>
 <tr class="never">
 <td class="num">23</td>
@@ -130,22 +130,22 @@
 <tr class="covered">
 <td class="num">24</td>
 <td class="src"><pre><code class="objc">    func stopLoading() {</code></pre></td>
-<td class="coverage">23x</td>
+<td class="coverage">13x</td>
 </tr>
 <tr class="covered">
 <td class="num">25</td>
 <td class="src"><pre><code class="objc">        activityIndicator.stopAnimating()</code></pre></td>
-<td class="coverage">23x</td>
+<td class="coverage">13x</td>
 </tr>
 <tr class="covered">
 <td class="num">26</td>
 <td class="src"><pre><code class="objc">        activityIndicator.removeFromSuperview()</code></pre></td>
-<td class="coverage">23x</td>
+<td class="coverage">13x</td>
 </tr>
 <tr class="covered">
 <td class="num">27</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">23x</td>
+<td class="coverage">13x</td>
 </tr>
 <tr class="never">
 <td class="num">28</td>
@@ -270,112 +270,112 @@
 <tr class="covered">
 <td class="num">52</td>
 <td class="src"><pre><code class="objc">    func setupNavBar() {</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">53</td>
 <td class="src"><pre><code class="objc">        let frame = CGRect(x: 0, y: 0, width: 280, height: 30)</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">54</td>
 <td class="src"><pre><code class="objc">        let logoContainer = UIView(frame: frame)</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">55</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">56</td>
 <td class="src"><pre><code class="objc">        let logoImage = UIImageView(frame: frame)</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">57</td>
 <td class="src"><pre><code class="objc">        logoImage.contentMode = .scaleAspectFit</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">58</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">59</td>
 <td class="src"><pre><code class="objc">        let image = UIImage(named: "logoNavbar")</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">60</td>
 <td class="src"><pre><code class="objc">        logoImage.image = image</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">61</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">62</td>
 <td class="src"><pre><code class="objc">        logoContainer.addSubview(logoImage)</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">63</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">64</td>
 <td class="src"><pre><code class="objc">        self.navigationItem.titleView = logoContainer</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">65</td>
 <td class="src"><pre><code class="objc">        self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">66</td>
 <td class="src"><pre><code class="objc">        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">67</td>
 <td class="src"><pre><code class="objc">        self.navigationController?.navigationBar.layer.shadowRadius = 2.0</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">68</td>
 <td class="src"><pre><code class="objc">        self.navigationController?.navigationBar.layer.shadowOpacity = 1.0</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">69</td>
 <td class="src"><pre><code class="objc">        self.navigationController?.navigationBar.layer.masksToBounds = false</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">70</td>
 <td class="src"><pre><code class="objc">        self.navigationController?.navigationBar.tintColor = .white</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">71</td>
 <td class="src"><pre><code class="objc">        self.navigationController?.navigationBar.isTranslucent = false</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">72</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="covered">
 <td class="num">73</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">13x</td>
+<td class="coverage">17x</td>
 </tr>
 <tr class="never">
 <td class="num">74</td>

@@ -75,22 +75,22 @@
 <tr class="covered">
 <td class="num">13</td>
 <td class="src"><pre><code class="objc">    func dequeueReusableCell&lt;T: UICollectionViewCell&gt;(for indexPath: IndexPath) -&gt; T where T: Identifiable {</code></pre></td>
-<td class="coverage">74x</td>
+<td class="coverage">40x</td>
 </tr>
 <tr class="covered">
 <td class="num">14</td>
 <td class="src"><pre><code class="objc">        self.register(UINib(nibName: T.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: T.reuseIdentifier)</code></pre></td>
-<td class="coverage">74x</td>
+<td class="coverage">40x</td>
 </tr>
 <tr class="covered">
 <td class="num">15</td>
 <td class="src"><pre><code class="objc">        </code></pre></td>
-<td class="coverage">74x</td>
+<td class="coverage">40x</td>
 </tr>
 <tr class="covered">
 <td class="num">16</td>
 <td class="src"><pre><code class="objc">        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {</code></pre></td>
-<td class="coverage">74x</td>
+<td class="coverage">40x</td>
 </tr>
 <tr class="missed">
 <td class="num">17</td>
@@ -100,17 +100,17 @@
 <tr class="covered">
 <td class="num">18</td>
 <td class="src"><pre><code class="objc">        }</code></pre></td>
-<td class="coverage">74x</td>
+<td class="coverage">40x</td>
 </tr>
 <tr class="covered">
 <td class="num">19</td>
 <td class="src"><pre><code class="objc">        return cell</code></pre></td>
-<td class="coverage">74x</td>
+<td class="coverage">40x</td>
 </tr>
 <tr class="covered">
 <td class="num">20</td>
 <td class="src"><pre><code class="objc">    }</code></pre></td>
-<td class="coverage">74x</td>
+<td class="coverage">40x</td>
 </tr>
 <tr class="never">
 <td class="num">21</td>
