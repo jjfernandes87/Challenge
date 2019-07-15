@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:MarvelXP.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DungeonKit/DungeonKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:PaladinKit/PaladinKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RogueKit/RogueKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WizardKit/WizardKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>
