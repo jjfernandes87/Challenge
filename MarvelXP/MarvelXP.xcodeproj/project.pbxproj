@@ -17,6 +17,16 @@
 		D835D99C22DD370200358E40 /* SeriesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99B22DD370200358E40 /* SeriesEntity.swift */; };
 		D835D99E22DD3C9200358E40 /* MarvelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99D22DD3C9200358E40 /* MarvelRepository.swift */; };
 		D835D9A022DD41E000358E40 /* MarvelRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99F22DD41E000358E40 /* MarvelRepositoryTests.swift */; };
+		D835D9A922DE8A7100358E40 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D9A822DE8A7100358E40 /* CoreDataManager.swift */; };
+		D835D9CD22DE8E7300358E40 /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D835D9CC22DE8E7300358E40 /* DungeonKit.framework */; };
+		D835D9CE22DE8E7300358E40 /* DungeonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D835D9CC22DE8E7300358E40 /* DungeonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D835D9D022DE8E7300358E40 /* PaladinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D835D9CF22DE8E7300358E40 /* PaladinKit.framework */; };
+		D835D9D122DE8E7300358E40 /* PaladinKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D835D9CF22DE8E7300358E40 /* PaladinKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D835D9D322DE8E7300358E40 /* RogueKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D835D9D222DE8E7300358E40 /* RogueKit.framework */; };
+		D835D9D422DE8E7300358E40 /* RogueKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D835D9D222DE8E7300358E40 /* RogueKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D835D9D622DE8E7300358E40 /* WizardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D835D9D522DE8E7300358E40 /* WizardKit.framework */; };
+		D835D9D722DE8E7300358E40 /* WizardKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D835D9D522DE8E7300358E40 /* WizardKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D835D9DA22DEAB4800358E40 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D9D922DEAB4800358E40 /* CoreDataManagerTests.swift */; };
 		D84D655722DBEC43008B5703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655622DBEC43008B5703 /* AppDelegate.swift */; };
 		D84D655922DBEC43008B5703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655822DBEC43008B5703 /* ViewController.swift */; };
 		D84D655C22DBEC43008B5703 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84D655A22DBEC43008B5703 /* Main.storyboard */; };
@@ -24,14 +34,6 @@
 		D84D656122DBEC49008B5703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D84D656022DBEC49008B5703 /* Assets.xcassets */; };
 		D84D656422DBEC49008B5703 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84D656222DBEC49008B5703 /* LaunchScreen.storyboard */; };
 		D84D657A22DBEC49008B5703 /* MarvelXPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D657922DBEC49008B5703 /* MarvelXPUITests.swift */; };
-		D87D78F122DBFBD3008C278F /* DungeonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87D78EE22DBFBCA008C278F /* DungeonKit.framework */; };
-		D87D78F222DBFBD3008C278F /* DungeonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D87D78EE22DBFBCA008C278F /* DungeonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D87D78FF22DBFC09008C278F /* WizardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87D78FD22DBFBFE008C278F /* WizardKit.framework */; };
-		D87D790022DBFC09008C278F /* WizardKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D87D78FD22DBFBFE008C278F /* WizardKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D87D790122DBFC09008C278F /* RogueKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87D78FE22DBFBFE008C278F /* RogueKit.framework */; };
-		D87D790222DBFC09008C278F /* RogueKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D87D78FE22DBFBFE008C278F /* RogueKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D87D790322DBFC09008C278F /* PaladinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87D78FC22DBFBFE008C278F /* PaladinKit.framework */; };
-		D87D790422DBFC09008C278F /* PaladinKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D87D78FC22DBFBFE008C278F /* PaladinKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F817732F6A27DFECAFBE2D8A /* Pods_MarvelXPUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90DB78CE55A78D4A732841 /* Pods_MarvelXPUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,16 +55,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D87D78ED22DBFBB3008C278F /* Embed Frameworks */ = {
+		D835D9D822DE8E7300358E40 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D87D790222DBFC09008C278F /* RogueKit.framework in Embed Frameworks */,
-				D87D790422DBFC09008C278F /* PaladinKit.framework in Embed Frameworks */,
-				D87D790022DBFC09008C278F /* WizardKit.framework in Embed Frameworks */,
-				D87D78F222DBFBD3008C278F /* DungeonKit.framework in Embed Frameworks */,
+				D835D9D722DE8E7300358E40 /* WizardKit.framework in Embed Frameworks */,
+				D835D9D422DE8E7300358E40 /* RogueKit.framework in Embed Frameworks */,
+				D835D9CE22DE8E7300358E40 /* DungeonKit.framework in Embed Frameworks */,
+				D835D9D122DE8E7300358E40 /* PaladinKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +88,12 @@
 		D835D99B22DD370200358E40 /* SeriesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesEntity.swift; sourceTree = "<group>"; };
 		D835D99D22DD3C9200358E40 /* MarvelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepository.swift; sourceTree = "<group>"; };
 		D835D99F22DD41E000358E40 /* MarvelRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepositoryTests.swift; sourceTree = "<group>"; };
+		D835D9A822DE8A7100358E40 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D835D9CC22DE8E7300358E40 /* DungeonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DungeonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D835D9CF22DE8E7300358E40 /* PaladinKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PaladinKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D835D9D222DE8E7300358E40 /* RogueKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RogueKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D835D9D522DE8E7300358E40 /* WizardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WizardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D835D9D922DEAB4800358E40 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		D84D655322DBEC43008B5703 /* MarvelXP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelXP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D655622DBEC43008B5703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D84D655822DBEC43008B5703 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,10 +107,6 @@
 		D84D657522DBEC49008B5703 /* MarvelXPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelXPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D657922DBEC49008B5703 /* MarvelXPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelXPUITests.swift; sourceTree = "<group>"; };
 		D84D657B22DBEC49008B5703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D87D78EE22DBFBCA008C278F /* DungeonKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DungeonKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MarvelXP-flpejcdkncnewwenvdlkhtzjemcy/Build/Products/Debug-iphoneos/DungeonKit.framework"; sourceTree = "<group>"; };
-		D87D78FC22DBFBFE008C278F /* PaladinKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PaladinKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MarvelXP-flpejcdkncnewwenvdlkhtzjemcy/Build/Products/Debug-iphoneos/PaladinKit.framework"; sourceTree = "<group>"; };
-		D87D78FD22DBFBFE008C278F /* WizardKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WizardKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MarvelXP-flpejcdkncnewwenvdlkhtzjemcy/Build/Products/Debug-iphoneos/WizardKit.framework"; sourceTree = "<group>"; };
-		D87D78FE22DBFBFE008C278F /* RogueKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RogueKit.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/MarvelXP-flpejcdkncnewwenvdlkhtzjemcy/Build/Products/Debug-iphoneos/RogueKit.framework"; sourceTree = "<group>"; };
 		FFF1ADBE9AF39E7D7B800597 /* Pods-MarvelXPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelXPTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelXPTests/Pods-MarvelXPTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,10 +115,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D87D790122DBFC09008C278F /* RogueKit.framework in Frameworks */,
-				D87D790322DBFC09008C278F /* PaladinKit.framework in Frameworks */,
-				D87D78FF22DBFC09008C278F /* WizardKit.framework in Frameworks */,
-				D87D78F122DBFBD3008C278F /* DungeonKit.framework in Frameworks */,
+				D835D9D322DE8E7300358E40 /* RogueKit.framework in Frameworks */,
+				D835D9D022DE8E7300358E40 /* PaladinKit.framework in Frameworks */,
+				D835D9D622DE8E7300358E40 /* WizardKit.framework in Frameworks */,
+				D835D9CD22DE8E7300358E40 /* DungeonKit.framework in Frameworks */,
 				B3EBD75DB7052AB382270F9C /* Pods_MarvelXP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,10 +158,6 @@
 		6F2AA81A6D0DAF80EAEBDFD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D87D78FD22DBFBFE008C278F /* WizardKit.framework */,
-				D87D78FE22DBFBFE008C278F /* RogueKit.framework */,
-				D87D78FC22DBFBFE008C278F /* PaladinKit.framework */,
-				D87D78EE22DBFBCA008C278F /* DungeonKit.framework */,
 				2863B58413B00BD5A493BC9D /* Pods_MarvelXP.framework */,
 				856E78E6C1EEB3A635965693 /* Pods_MarvelXPTests.framework */,
 				9A90DB78CE55A78D4A732841 /* Pods_MarvelXPUITests.framework */,
@@ -169,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				D835D99F22DD41E000358E40 /* MarvelRepositoryTests.swift */,
+				D835D9D922DEAB4800358E40 /* CoreDataManagerTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -183,6 +184,10 @@
 		D84D654A22DBEC43008B5703 = {
 			isa = PBXGroup;
 			children = (
+				D835D9D522DE8E7300358E40 /* WizardKit.framework */,
+				D835D9D222DE8E7300358E40 /* RogueKit.framework */,
+				D835D9CF22DE8E7300358E40 /* PaladinKit.framework */,
+				D835D9CC22DE8E7300358E40 /* DungeonKit.framework */,
 				D84D655522DBEC43008B5703 /* MarvelXP */,
 				D84D656D22DBEC49008B5703 /* MarvelXPTests */,
 				D84D657822DBEC49008B5703 /* MarvelXPUITests */,
@@ -302,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				D84D655D22DBEC43008B5703 /* MarvelXP.xcdatamodeld */,
+				D835D9A822DE8A7100358E40 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -317,7 +323,7 @@
 				D84D654F22DBEC43008B5703 /* Sources */,
 				D84D655022DBEC43008B5703 /* Frameworks */,
 				D84D655122DBEC43008B5703 /* Resources */,
-				D87D78ED22DBFBB3008C278F /* Embed Frameworks */,
+				D835D9D822DE8E7300358E40 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -520,6 +526,7 @@
 				D84D655722DBEC43008B5703 /* AppDelegate.swift in Sources */,
 				D84D655F22DBEC43008B5703 /* MarvelXP.xcdatamodeld in Sources */,
 				D835D99222DD32DF00358E40 /* BaseResponseEntity.swift in Sources */,
+				D835D9A922DE8A7100358E40 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D835D9DA22DEAB4800358E40 /* CoreDataManagerTests.swift in Sources */,
 				D835D9A022DD41E000358E40 /* MarvelRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

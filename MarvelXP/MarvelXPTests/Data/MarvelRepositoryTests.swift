@@ -24,7 +24,7 @@ class MarvelRepositoryTests: XCTestCase {
         
         let promise = expectation(description: "Generates a CharacterEntity array.")
         
-        RogueKit.request(MarvelRepository.listCharacters(offset: 0, limit: 20)) { (result: ListResult<CharacterEntity>) in
+        RogueKit.request(MarvelRepository.fetchCharacters(offset: 0, limit: 20)) { (result: ListResult<CharacterEntity>) in
             switch result {
             case let .success(responseEntity):
                 XCTAssertNotNil(responseEntity.data?.results, "Invalid data.")
@@ -71,7 +71,7 @@ class MarvelRepositoryTests: XCTestCase {
         
         let promise = expectation(description: "Generates a ComicEntity array.")
         
-        RogueKit.request(MarvelRepository.listComics(characterID: 1009351)) { (result: ListResult<ComicEntity>) in
+        RogueKit.request(MarvelRepository.fetchComics(characterID: 1009351)) { (result: ListResult<ComicEntity>) in
             switch result {
             case let .success(responseEntity):
                 XCTAssertNotNil(responseEntity.data?.results, "Invalid data.")
@@ -94,7 +94,7 @@ class MarvelRepositoryTests: XCTestCase {
         
         let promise = expectation(description: "Generates a SeriesEntity array.")
         
-        RogueKit.request(MarvelRepository.listSeries(characterID: 1009351)) { (result: ListResult<SeriesEntity>) in
+        RogueKit.request(MarvelRepository.fetchSerieses(characterID: 1009351)) { (result: ListResult<SeriesEntity>) in
             switch result {
             case let .success(responseEntity):
                 XCTAssertNotNil(responseEntity.data?.results, "Invalid data.")
@@ -112,5 +112,4 @@ class MarvelRepositoryTests: XCTestCase {
         
         self.wait(for: [promise], timeout: timeout)
     }
-
 }

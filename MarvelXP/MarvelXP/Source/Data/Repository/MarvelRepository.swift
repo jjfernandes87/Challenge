@@ -12,26 +12,26 @@ import PaladinKit
 
 public enum MarvelRepository: RKRepository {
     
-    case listCharacters(offset: Int, limit: Int),
+    case fetchCharacters(offset: Int, limit: Int),
     searchCharacters(offset: Int, limit: Int, name: String),
-    listComics(characterID: Int),
-    listSeries(characterID: Int)
+    fetchComics(characterID: Int),
+    fetchSerieses(characterID: Int)
     
     public var domain: String { return "https://gateway.marvel.com:443" }
     
     public func createRequest() throws -> RKRequest {
         switch self {
 
-        case let .listCharacters(offset, limit):
+        case let .fetchCharacters(offset, limit):
             return RKRequest.get("/v1/public/characters?orderBy=name&limit=\(limit)&offset=\(offset)\(generateAuthentication())")
             
         case let .searchCharacters(offset, limit, name):
             return RKRequest.get("/v1/public/characters?name=\(name)&orderBy=name&limit=\(limit)&offset=\(offset)\(generateAuthentication())")
             
-        case let .listComics(characterID):
+        case let .fetchComics(characterID):
             return RKRequest.get("/v1/public/comics?characters=\(characterID)\(generateAuthentication())")
             
-        case let .listSeries(characterID):
+        case let .fetchSerieses(characterID):
             return RKRequest.get("/v1/public/series?characters=\(characterID)\(generateAuthentication())")
 
         }

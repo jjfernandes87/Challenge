@@ -17,3 +17,20 @@ public struct ThumbnailEntity: Entity {
         return "\(path ?? "").\(`extension` ?? "")"
     }
 }
+
+import CoreData
+
+public extension ThumbnailEntity {
+    init(from coreDataManagedObject: NSManagedObject) {
+        self.path = coreDataManagedObject.value(forKey: "path") as? String
+        self.`extension` = coreDataManagedObject.value(forKey: "ext") as? String
+    }
+    
+    func toManagedObject(_ context: NSManagedObjectContext) -> NSManagedObject? {
+        guard let coreDataEntity = NSEntityDescription.entity(forEntityName: "Thumbnail", in: context) else { return nil }
+        let managedThumbnail = NSManagedObject(entity: coreDataEntity, insertInto: context)
+        managedThumbnail.setValue(self.path, forKey: "path")
+        managedThumbnail.setValue(self.extension, forKey: "ext")
+        return managedThumbnail
+    }
+}
