@@ -14,8 +14,9 @@ public struct CharacterEntity: Entity {
     var name: String?
     var description: String?
     var thumbnail: ThumbnailEntity?
-    var comics: [ComicEntity]?
-    var serieses: [SeriesEntity]?
+    
+    var favoriteComics: [ComicEntity]?
+    var favoriteSeries: [SerieEntity]?
 }
 
 import CoreData
@@ -32,16 +33,16 @@ public extension CharacterEntity {
         }
         
         if let managedComics = coreDataManagedObject.value(forKey: "comics") as? NSMutableOrderedSet {
-            self.comics = []
+            self.favoriteComics = []
             for case let managedComic as NSManagedObject in managedComics {
-                self.comics?.append(ComicEntity(from: managedComic))
+                self.favoriteComics?.append(ComicEntity(from: managedComic))
             }
         }
         
-        if let managedSerieses = coreDataManagedObject.value(forKey: "serieses") as? NSMutableOrderedSet {
-            self.serieses = []
-            for case let managedSeries as NSManagedObject in managedSerieses {
-                self.serieses?.append(SeriesEntity(from: managedSeries))
+        if let managedSeries = coreDataManagedObject.value(forKey: "series") as? NSMutableOrderedSet {
+            self.favoriteSeries = []
+            for case let managedSerie as NSManagedObject in managedSeries {
+                self.favoriteSeries?.append(SerieEntity(from: managedSerie))
             }
         }
     }
@@ -56,7 +57,7 @@ public extension CharacterEntity {
             managedCharacter.setValue(thumbnail, forKey: "thumbnail")
         }
         
-        if let comicEntities = self.comics {
+        if let comicEntities = self.favoriteComics {
             let managedComics = managedCharacter.mutableOrderedSetValue(forKey: "comics")
             for comicEntity in comicEntities {
                 if let comic = comicEntity.toManagedObject(context) {
@@ -66,14 +67,14 @@ public extension CharacterEntity {
             managedCharacter.setValue(managedComics, forKey: "comics")
         }
         
-        if let seriesEntities = self.serieses {
-            let managedSerieses = managedCharacter.mutableOrderedSetValue(forKey: "serieses")
-            for seriesEntity in seriesEntities {
-                if let series = seriesEntity.toManagedObject(context) {
-                    managedSerieses.add(series)
+        if let serieEntities = self.favoriteSeries {
+            let managedSeries = managedCharacter.mutableOrderedSetValue(forKey: "series")
+            for serieEntity in serieEntities {
+                if let serie = serieEntity.toManagedObject(context) {
+                    managedSeries.add(serie)
                 }
             }
-            managedCharacter.setValue(managedSerieses, forKey: "serieses")
+            managedCharacter.setValue(managedSeries, forKey: "series")
         }
         
         return managedCharacter

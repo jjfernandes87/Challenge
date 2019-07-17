@@ -12,8 +12,7 @@ import PaladinKit
 
 public enum MarvelRepository: RKRepository {
     
-    case fetchCharacters(offset: Int, limit: Int),
-    searchCharacters(offset: Int, limit: Int, name: String),
+    case fetchCharacters(offset: Int, limit: Int, searchName: String?),
     fetchComics(characterID: Int),
     fetchSerieses(characterID: Int)
     
@@ -22,11 +21,9 @@ public enum MarvelRepository: RKRepository {
     public func createRequest() throws -> RKRequest {
         switch self {
 
-        case let .fetchCharacters(offset, limit):
-            return RKRequest.get("/v1/public/characters?orderBy=name&limit=\(limit)&offset=\(offset)\(generateAuthentication())")
-            
-        case let .searchCharacters(offset, limit, name):
-            return RKRequest.get("/v1/public/characters?name=\(name)&orderBy=name&limit=\(limit)&offset=\(offset)\(generateAuthentication())")
+        case let .fetchCharacters(offset, limit, searchName):
+            let name = searchName == nil ? "" : "name=\(searchName ?? "")&"
+            return RKRequest.get("/v1/public/characters?\(name)orderBy=name&limit=\(limit)&offset=\(offset)\(generateAuthentication())")
             
         case let .fetchComics(characterID):
             return RKRequest.get("/v1/public/comics?characters=\(characterID)\(generateAuthentication())")

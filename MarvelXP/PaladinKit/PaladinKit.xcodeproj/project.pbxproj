@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D835D9DC22DFAE6E00358E40 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D9DB22DFAE6E00358E40 /* Reachability.swift */; };
 		D84D660722DBF387008B5703 /* PaladinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84D65FD22DBF387008B5703 /* PaladinKit.framework */; };
 		D84D660C22DBF387008B5703 /* PaladinKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D660B22DBF387008B5703 /* PaladinKitTests.swift */; };
 		D84D660E22DBF387008B5703 /* PaladinKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D84D660022DBF387008B5703 /* PaladinKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D835D9DB22DFAE6E00358E40 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		D84D65FD22DBF387008B5703 /* PaladinKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PaladinKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D660022DBF387008B5703 /* PaladinKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaladinKit.h; sourceTree = "<group>"; };
 		D84D660122DBF387008B5703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				D87D786D22DBF5F5008C278F /* UITextFieldExtensions.swift */,
 				D87D787122DBF5F5008C278F /* UIViewControllerExtensions.swift */,
 				D87D786F22DBF5F5008C278F /* UIViewExtensions.swift */,
+				D835D9DB22DFAE6E00358E40 /* Reachability.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				D87D787722DBF5F5008C278F /* UIViewExtensions.swift in Sources */,
 				D87D787922DBF5F5008C278F /* UIViewControllerExtensions.swift in Sources */,
 				D87D787A22DBF5F5008C278F /* UIImageExtensions.swift in Sources */,
+				D835D9DC22DFAE6E00358E40 /* Reachability.swift in Sources */,
 				D87D787522DBF5F5008C278F /* UITextFieldExtensions.swift in Sources */,
 				D87D787822DBF5F5008C278F /* UIColorExtensions.swift in Sources */,
 				D87D787C22DBF5F5008C278F /* UIScrollViewExtensions.swift in Sources */,

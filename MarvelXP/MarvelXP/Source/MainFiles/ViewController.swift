@@ -7,14 +7,29 @@
 //
 
 import UIKit
+import WizardKit
 
 class ViewController: UIViewController {
-
+    
+    //override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.perform(#selector(presentHome), with: nil, afterDelay: 2)
+    }
+    
+    @objc func presentHome() {
+        self.performSegue(withIdentifier: "MarvelXP", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MarvelXP" {
+            let bounds = CGRect.windowBounds()
+            segue.destination.setAnimation(.hole(x: bounds.midX, y: bounds.midY, size: 0))
+        }
+    }
 }
-

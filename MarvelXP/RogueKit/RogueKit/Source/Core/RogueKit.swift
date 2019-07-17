@@ -145,6 +145,7 @@ public final class RogueKit {
                 return .failure(RKError(.decodeFailed(message: "Key \(key.stringValue) not found in \(context.valuePath))")))
                 
             case let .typeMismatch(type, context):
+                print("Type mismatch (\(String(describing: type))) in \(context.valuePath))")
                 return .failure(RKError(.decodeFailed(message: "Type mismatch (\(String(describing: type))) in \(context.valuePath))")))
                 
             case let .valueNotFound(type, context):
