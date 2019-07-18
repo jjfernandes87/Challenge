@@ -19,10 +19,10 @@ class CharacterListInteractor: DKInteractor {
 }
 
 extension CharacterListInteractor: CharacterListInteractorProtocol {
-    func loadNextPage(searchFilter: String?) {
+    func fetchNextPage(searchFilter: String?) {
         
         guard Reachability.isConnectedToNetwork() else {
-            self.presenter?.connectionFailed()
+            self.presenter?.processError(.internetConnection)
             return
         }
         
@@ -31,9 +31,9 @@ extension CharacterListInteractor: CharacterListInteractorProtocol {
             case let .success(characterList):
                 self.offset += self.pageSize
                 let hasMore = self.offset < (characterList.data?.total ?? 0) && (characterList.data?.results?.count ?? 0) == self.pageSize
-                self.presenter?.processCharacters(characterList, hasMore: hasMore)
-            case let .failure(error):
-                self.presenter?.requestFailed(error)
+                self.presenter?.processCharacters(characterList.data?.results ?? [], hasMore: hasMore)
+            case .failure(_):
+                self.presenter?.processError(.fetch)
             }
         }
     }
@@ -41,14 +41,14 @@ extension CharacterListInteractor: CharacterListInteractorProtocol {
     func refresh(searchFilter: String?) {
         self.offset = 0
         self.presenter?.refresh()
-        self.loadNextPage(searchFilter: searchFilter)
+        self.fetchNextPage(searchFilter: searchFilter)
     }
     
     func addFavorite(character: CharacterEntity) {
         if CoreDataManager.addFavorite(character) {
             self.presenter?.processAddFavorite(character)
         } else {
-            self.presenter?.processAddFavoriteError(character)
+            self.presenter?.processError(.addFavorite)
         }
     }
     
@@ -56,7 +56,7 @@ extension CharacterListInteractor: CharacterListInteractorProtocol {
         if CoreDataManager.removeFavorite(character) {
             self.presenter?.processRemoveFavorite(character)
         } else {
-            self.presenter?.processRemoveFavoriteError(character)
+            self.presenter?.processError(.removeFavorite)
         }
     }
 }

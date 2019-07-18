@@ -94,7 +94,7 @@ class MarvelRepositoryTests: XCTestCase {
         
         let promise = expectation(description: "Generates a SeriesEntity array.")
         
-        RogueKit.request(MarvelRepository.fetchSerieses(characterID: 1009351)) { (result: ListResult<SerieEntity>) in
+        RogueKit.request(MarvelRepository.fetchSeries(characterID: 1009351)) { (result: ListResult<SerieEntity>) in
             switch result {
             case let .success(responseEntity):
                 XCTAssertNotNil(responseEntity.data?.results, "Invalid data.")

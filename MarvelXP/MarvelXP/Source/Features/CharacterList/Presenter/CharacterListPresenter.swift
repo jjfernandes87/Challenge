@@ -14,11 +14,7 @@ class CharacterListPresenter: DKPresenter {
 }
 
 extension CharacterListPresenter: CharacterListPresenterProtocol {
-    func requestFailed(_ error: Error) {
-        
-    }
-    
-    func processCharacters(_ characterList: BaseResponseEntity<CharacterEntity>, hasMore: Bool) {
+    func processCharacters(_ characterList: [CharacterEntity], hasMore: Bool) {
         
     }
     
@@ -30,19 +26,11 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
         
     }
     
-    func processAddFavoriteError(_ character: CharacterEntity) {
-        
-    }
-    
-    func processRemoveFavoriteError(_ character: CharacterEntity) {
-        
-    }
-    
     func refresh() {
         
     }
     
-    func connectionFailed() {
+    func processError(_ errorType: CharacterListPresenterErrorType) {
         
     }
 }

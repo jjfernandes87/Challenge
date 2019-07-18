@@ -14,5 +14,19 @@ class FavoriteListInteractor: DKInteractor {
 }
 
 extension FavoriteListInteractor: FavoriteListInteractorProtocol {
-
+    func fetchFavorites() {
+        if let favoriteList = CoreDataManager.fetchFavorites() {
+            self.presenter?.processFavoriteList(favoriteList)
+        } else {
+            self.presenter?.processError(.fetchFavorites)
+        }
+    }
+    
+    func removeFavorite(character: CharacterEntity) {
+        if CoreDataManager.removeFavorite(character) {
+            self.presenter?.processRemoveFavorite(character)
+        } else {
+            self.presenter?.processError(.removeFavorite)
+        }
+    }
 }

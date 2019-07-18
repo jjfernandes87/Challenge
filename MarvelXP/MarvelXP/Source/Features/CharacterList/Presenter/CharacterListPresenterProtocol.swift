@@ -9,13 +9,17 @@
 import Foundation
 import DungeonKit
 
+public enum CharacterListPresenterErrorType {
+    case fetch,
+    addFavorite,
+    removeFavorite,
+    internetConnection
+}
+
 protocol CharacterListPresenterProtocol: DKAbstractPresenter {
-    func requestFailed(_ error: Error)
-    func processCharacters(_ characterList: BaseResponseEntity<CharacterEntity>, hasMore: Bool)
+    func processCharacters(_ characterList: [CharacterEntity], hasMore: Bool)
     func processAddFavorite(_ character: CharacterEntity)
     func processRemoveFavorite(_ character: CharacterEntity)
-    func processAddFavoriteError(_ character: CharacterEntity)
-    func processRemoveFavoriteError(_ character: CharacterEntity)
     func refresh()
-    func connectionFailed()
+    func processError(_ errorType: CharacterListPresenterErrorType)
 }

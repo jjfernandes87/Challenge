@@ -14,5 +14,15 @@ class CharacterDetailPresenter: DKPresenter {
 }
 
 extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
-
+    func processComics(_ comicList: [ComicEntity]) {
+     
+    }
+    
+    func processSeries(_ serieList: [SerieEntity]) {
+     
+    }
+    
+    func processError(_ errorType: CharacterDetailPresenterErrorType) {
+     
+    }
 }

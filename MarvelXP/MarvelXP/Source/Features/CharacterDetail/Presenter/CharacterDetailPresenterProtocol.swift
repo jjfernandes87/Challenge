@@ -9,6 +9,13 @@
 import Foundation
 import DungeonKit
 
-protocol CharacterDetailPresenterProtocol: DKAbstractPresenter {
+public enum CharacterDetailPresenterErrorType {
+    case fetchComics,
+    fetchSeries
+}
 
+protocol CharacterDetailPresenterProtocol: DKAbstractPresenter {
+    func processComics(_ comicList: [ComicEntity])
+    func processSeries(_ serieList: [SerieEntity])
+    func processError(_ errorType: CharacterDetailPresenterErrorType)
 }

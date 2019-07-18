@@ -14,7 +14,7 @@ public enum MarvelRepository: RKRepository {
     
     case fetchCharacters(offset: Int, limit: Int, searchName: String?),
     fetchComics(characterID: Int),
-    fetchSerieses(characterID: Int)
+    fetchSeries(characterID: Int)
     
     public var domain: String { return "https://gateway.marvel.com:443" }
     
@@ -28,7 +28,7 @@ public enum MarvelRepository: RKRepository {
         case let .fetchComics(characterID):
             return RKRequest.get("/v1/public/comics?characters=\(characterID)\(generateAuthentication())")
             
-        case let .fetchSerieses(characterID):
+        case let .fetchSeries(characterID):
             return RKRequest.get("/v1/public/series?characters=\(characterID)\(generateAuthentication())")
 
         }

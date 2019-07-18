@@ -9,6 +9,14 @@
 import Foundation
 import DungeonKit
 
-protocol FavoriteListPresenterProtocol: DKAbstractPresenter {
-
+public enum FavoriteListPresenterErrorType {
+    case fetchFavorites,
+    removeFavorite
 }
+
+protocol FavoriteListPresenterProtocol: DKAbstractPresenter {
+    func processFavoriteList(_ favoriteList: [CharacterEntity])
+    func processRemoveFavorite(_ character: CharacterEntity)
+    func processError(_ errorType: FavoriteListPresenterErrorType)
+}
+

@@ -10,5 +10,6 @@ import Foundation
 import DungeonKit
 
 protocol FavoriteListInteractorProtocol: DKAbstractInteractor {
-
+    func fetchFavorites()
+    func removeFavorite(character: CharacterEntity)
 }

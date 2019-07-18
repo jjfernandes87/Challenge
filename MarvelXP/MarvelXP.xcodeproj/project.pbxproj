@@ -50,6 +50,8 @@
 		D835DA4122DFC61700358E40 /* FavoriteListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA3F22DFC61700358E40 /* FavoriteListPresenterProtocol.swift */; };
 		D835DA4222DFC61700358E40 /* FavoriteListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA4022DFC61700358E40 /* FavoriteListPresenter.swift */; };
 		D835DA4922DFD5BC00358E40 /* CharacterListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA4822DFD5BC00358E40 /* CharacterListInteractorTests.swift */; };
+		D835DA4B22DFEA7E00358E40 /* FavoriteListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA4A22DFEA7E00358E40 /* FavoriteListInteractorTests.swift */; };
+		D835DA4D22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA4C22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift */; };
 		D84D655722DBEC43008B5703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655622DBEC43008B5703 /* AppDelegate.swift */; };
 		D84D655922DBEC43008B5703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655822DBEC43008B5703 /* ViewController.swift */; };
 		D84D655C22DBEC43008B5703 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84D655A22DBEC43008B5703 /* Main.storyboard */; };
@@ -140,6 +142,8 @@
 		D835DA3F22DFC61700358E40 /* FavoriteListPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListPresenterProtocol.swift; sourceTree = "<group>"; };
 		D835DA4022DFC61700358E40 /* FavoriteListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListPresenter.swift; sourceTree = "<group>"; };
 		D835DA4822DFD5BC00358E40 /* CharacterListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListInteractorTests.swift; sourceTree = "<group>"; };
+		D835DA4A22DFEA7E00358E40 /* FavoriteListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListInteractorTests.swift; sourceTree = "<group>"; };
+		D835DA4C22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailInteractorTests.swift; sourceTree = "<group>"; };
 		D84D655322DBEC43008B5703 /* MarvelXP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelXP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D655622DBEC43008B5703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D84D655822DBEC43008B5703 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 		D835DA4422DFD4B500358E40 /* FavoriteList */ = {
 			isa = PBXGroup;
 			children = (
+				D835DA4A22DFEA7E00358E40 /* FavoriteListInteractorTests.swift */,
 			);
 			path = FavoriteList;
 			sourceTree = "<group>";
@@ -362,6 +367,7 @@
 		D835DA4522DFD4C300358E40 /* CharacterDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D835DA4C22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift */,
 			);
 			path = CharacterDetail;
 			sourceTree = "<group>";
@@ -747,6 +753,8 @@
 			files = (
 				D835DA4922DFD5BC00358E40 /* CharacterListInteractorTests.swift in Sources */,
 				D835D9DA22DEAB4800358E40 /* CoreDataManagerTests.swift in Sources */,
+				D835DA4B22DFEA7E00358E40 /* FavoriteListInteractorTests.swift in Sources */,
+				D835DA4D22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift in Sources */,
 				D835D9A022DD41E000358E40 /* MarvelRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

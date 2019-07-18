@@ -10,7 +10,7 @@ import Foundation
 import DungeonKit
 
 protocol CharacterListInteractorProtocol: DKAbstractInteractor {
-    func loadNextPage(searchFilter: String?)
+    func fetchNextPage(searchFilter: String?)
     func refresh(searchFilter: String?)
     func addFavorite(character: CharacterEntity)
     func removeFavorite(character: CharacterEntity)
