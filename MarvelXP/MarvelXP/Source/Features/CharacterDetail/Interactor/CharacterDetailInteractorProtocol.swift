@@ -10,6 +10,9 @@ import Foundation
 import DungeonKit
 
 protocol CharacterDetailInteractorProtocol: DKAbstractInteractor {
+    func fetchCharacter(characterID: Int)
     func fetchComics(characterID: Int)
     func fetchSeries(characterID: Int)
+    func addFavorite(characterID: Int)
+    func removeFavorite(characterID: Int)
 }

@@ -15,11 +15,20 @@ class CharacterListInteractorTests: XCTestCase {
     private let timeout = 60.0
     private var interactor: CharacterListInteractor!
     private var fetchPromise: XCTestExpectation?
-    private var addPromise: XCTestExpectation?
-    private var removePromise: XCTestExpectation?
-
+    private var addFavoritePromise: XCTestExpectation?
+    private var removeFavoritePromise: XCTestExpectation?
+    
+    private var removeAllPromise: XCTestExpectation?
+    
     override func setUp() {
-        CoreDataManager.removeAllFavorites()
+        continueAfterFailure = false
+        removeAllPromise = expectation(description: "Remove all favorites")
+        
+        CoreDataManager.removeAllFavorites() {
+            self.removeAllPromise?.fulfill()
+        }
+        
+        wait(for: [removeAllPromise!], timeout: 30)
         
         interactor = CharacterListInteractor()
         interactor.setPresenter(self)
@@ -35,34 +44,34 @@ class CharacterListInteractorTests: XCTestCase {
         self.wait(for: [self.fetchPromise!], timeout: timeout)
     }
     
-    func testAddFavorite() {
-        let mockCharacter = CharacterEntity(id: 3, name: "Iron Man", description: nil, thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
-        self.addPromise = expectation(description: "Add a Character to favorites")
-        interactor.addFavorite(character: mockCharacter)
-        self.wait(for: [self.addPromise!], timeout: timeout)
+    func testAddIronManToFavorites() {
+        self.addFavoritePromise = expectation(description: "Add Iron Man to favorites")
+        interactor.addFavorite(characterID: 1009368)
+        self.wait(for: [self.addFavoritePromise!], timeout: timeout)
     }
     
     func testRemoveFavorite() {
-        let mockCharacter = CharacterEntity(id: 3, name: "Iron Man", description: nil, thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
-        self.removePromise = expectation(description: "Remove a Character from favorites")
-        interactor.addFavorite(character: mockCharacter)
-        interactor.removeFavorite(character: mockCharacter)
-        self.wait(for: [self.removePromise!], timeout: timeout)
+        self.removeFavoritePromise = expectation(description: "Remove a Character from favorites")
+        let mockCharacter = CharacterEntity(id: 1009368, name: nil, description: nil, thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
+        CoreDataManager.addFavorite(mockCharacter) { [weak self] _ in
+            self?.interactor.removeFavorite(characterID: 1009368)
+        }
+        self.wait(for: [self.removeFavoritePromise!], timeout: timeout)
     }
 }
 
 extension CharacterListInteractorTests: CharacterListPresenterProtocol {
+    func processAddFavorite(_ characterID: Int) {
+        addFavoritePromise?.fulfill()
+    }
+    
+    func processRemoveFavorite(_ characterID: Int) {
+        removeFavoritePromise?.fulfill()
+    }
+    
     func processCharacters(_ characterList: [CharacterEntity], hasMore: Bool) {
         XCTAssertNotNil(characterList, "Should have a character list, even if is empty")
         fetchPromise?.fulfill()
-    }
-    
-    func processAddFavorite(_ character: CharacterEntity) {
-        addPromise?.fulfill()
-    }
-    
-    func processRemoveFavorite(_ character: CharacterEntity) {
-        removePromise?.fulfill()
     }
     
     func refresh() {}

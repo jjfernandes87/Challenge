@@ -16,9 +16,18 @@ class FavoriteListInteractorTests: XCTestCase {
     private var interactor: FavoriteListInteractor!
     private var fetchPromise: XCTestExpectation?
     private var removePromise: XCTestExpectation?
-
+    
+    private var removeAllPromise: XCTestExpectation?
+    
     override func setUp() {
-        CoreDataManager.removeAllFavorites()
+        continueAfterFailure = false
+        removeAllPromise = expectation(description: "Remove all favorites")
+        
+        CoreDataManager.removeAllFavorites() {
+            self.removeAllPromise?.fulfill()
+        }
+        
+        wait(for: [removeAllPromise!], timeout: 30)
         
         interactor = FavoriteListInteractor()
         interactor.setPresenter(self)
@@ -37,8 +46,10 @@ class FavoriteListInteractorTests: XCTestCase {
     func testRemoveFavorite() {
         let mockCharacter = CharacterEntity(id: 4, name: "Captain America", description: nil, thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
         self.removePromise = expectation(description: "Remove a Character from favorites")
-        CoreDataManager.addFavorite(mockCharacter)
-        interactor.removeFavorite(character: mockCharacter)
+        
+        CoreDataManager.addFavorite(mockCharacter) { _ in
+            self.interactor.removeFavorite(characterID: 4)
+        }
         self.wait(for: [self.removePromise!], timeout: timeout)
     }
 }
@@ -50,7 +61,7 @@ extension FavoriteListInteractorTests: FavoriteListPresenterProtocol {
         fetchPromise?.fulfill()
     }
     
-    func processRemoveFavorite(_ character: CharacterEntity) {
+    func processRemoveFavorite(_ characterID: Int) {
         removePromise?.fulfill()
     }
     

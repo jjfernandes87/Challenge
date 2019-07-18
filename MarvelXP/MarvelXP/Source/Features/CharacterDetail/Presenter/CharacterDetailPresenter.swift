@@ -14,6 +14,10 @@ class CharacterDetailPresenter: DKPresenter {
 }
 
 extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
+    func processCharacter(_ character: CharacterEntity) {
+        
+    }
+    
     func processComics(_ comicList: [ComicEntity]) {
      
     }
@@ -24,5 +28,13 @@ extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
     
     func processError(_ errorType: CharacterDetailPresenterErrorType) {
      
+    }
+    
+    func processAddFavorite(_ characterID: Int) {
+        
+    }
+    
+    func processRemoveFavorite(_ characterID: Int) {
+        
     }
 }

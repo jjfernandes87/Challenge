@@ -14,10 +14,24 @@ class CharacterDetailInteractorTests: XCTestCase {
 
     private let timeout = 60.0
     private var interactor: CharacterDetailInteractor!
+    private var fetchCharacterPromise: XCTestExpectation?
     private var fetchComicsPromise: XCTestExpectation?
     private var fetchSeriesPromise: XCTestExpectation?
+    private var addFavoritePromise: XCTestExpectation?
+    private var removeFavoritePromise: XCTestExpectation?
+    
+    private var removeAllPromise: XCTestExpectation?
     
     override func setUp() {
+        continueAfterFailure = false
+        removeAllPromise = expectation(description: "Remove all favorites")
+        
+        CoreDataManager.removeAllFavorites() {
+            self.removeAllPromise?.fulfill()
+        }
+        
+        wait(for: [removeAllPromise!], timeout: 30)
+        
         interactor = CharacterDetailInteractor()
         interactor.setPresenter(self)
     }
@@ -25,21 +39,48 @@ class CharacterDetailInteractorTests: XCTestCase {
     override func tearDown() {
         interactor = nil
     }
+    
+    func testFetchCaptainAmerica() {
+        self.fetchCharacterPromise = expectation(description: "Fetch Captain America data")
+        interactor.fetchCharacter(characterID: 1009220)
+        self.wait(for: [self.fetchCharacterPromise!], timeout: timeout)
+    }
 
     func testFetchComics() {
         self.fetchComicsPromise = expectation(description: "Generates a list of ComicEntity")
-        interactor.fetchComics(characterID: 1009351)
+        interactor.fetchComics(characterID: 1009220)
         self.wait(for: [self.fetchComicsPromise!], timeout: timeout)
     }
 
     func testFetchSeries() {
         self.fetchSeriesPromise = expectation(description: "Generates a list of SerieEntity")
-        interactor.fetchSeries(characterID: 1009351)
+        interactor.fetchSeries(characterID: 1009220)
         self.wait(for: [self.fetchSeriesPromise!], timeout: timeout)
+    }
+    
+    func testAddIronManToFavorites() {
+        self.addFavoritePromise = expectation(description: "Add Iron Man to favorites")
+        interactor.addFavorite(characterID: 1009368)
+        self.wait(for: [self.addFavoritePromise!], timeout: timeout)
+    }
+    
+    func testRemoveFavorite() {
+        self.removeFavoritePromise = expectation(description: "Remove a Character from favorites")
+        let mockCharacter = CharacterEntity(id: 1009368, name: nil, description: nil, thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
+        CoreDataManager.addFavorite(mockCharacter) { _ in
+            self.interactor.removeFavorite(characterID: 1009368)
+        }
+        self.wait(for: [self.removeFavoritePromise!], timeout: timeout)
     }
 }
 
 extension CharacterDetailInteractorTests: CharacterDetailPresenterProtocol {
+    func processCharacter(_ character: CharacterEntity) {
+        XCTAssertNotNil(character, "Captain exists!")
+        XCTAssertEqual(character.name, "Captain America", "Data inconsistency.")
+        fetchCharacterPromise?.fulfill()
+    }
+    
     func processComics(_ comicList: [ComicEntity]) {
         XCTAssertNotNil(comicList, "Should have a comic list, even if is empty")
         fetchComicsPromise?.fulfill()
@@ -50,12 +91,26 @@ extension CharacterDetailInteractorTests: CharacterDetailPresenterProtocol {
         fetchSeriesPromise?.fulfill()
     }
     
+    func processAddFavorite(_ characterID: Int) {
+        addFavoritePromise?.fulfill()
+    }
+    
+    func processRemoveFavorite(_ characterID: Int) {
+        removeFavoritePromise?.fulfill()
+    }
+    
     func processError(_ errorType: CharacterDetailPresenterErrorType) {
         switch errorType {
+        case .fetchCharacter:
+            XCTFail("Error fetching character.")
         case .fetchComics:
             XCTFail("Error fetching comics.")
         case .fetchSeries:
             XCTFail("Error fetching series.")
+        case .addFavorite:
+            XCTFail("Error adding favorite.")
+        case .removeFavorite:
+            XCTFail("Error removing favorite.")
         }
     }
     

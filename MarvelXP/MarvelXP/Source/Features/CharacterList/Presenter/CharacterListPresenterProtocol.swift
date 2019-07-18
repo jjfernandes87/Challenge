@@ -18,8 +18,8 @@ public enum CharacterListPresenterErrorType {
 
 protocol CharacterListPresenterProtocol: DKAbstractPresenter {
     func processCharacters(_ characterList: [CharacterEntity], hasMore: Bool)
-    func processAddFavorite(_ character: CharacterEntity)
-    func processRemoveFavorite(_ character: CharacterEntity)
+    func processAddFavorite(_ characterID: Int)
+    func processRemoveFavorite(_ characterID: Int)
     func refresh()
     func processError(_ errorType: CharacterListPresenterErrorType)
 }

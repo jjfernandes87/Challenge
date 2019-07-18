@@ -472,7 +472,7 @@
 			children = (
 				D87D790A22DBFC80008C278F /* Entity */,
 				D87D790B22DBFC8C008C278F /* Repository */,
-				D87D790C22DBFC95008C278F /* CoreData */,
+				D87D790C22DBFC95008C278F /* Database */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -498,13 +498,13 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		D87D790C22DBFC95008C278F /* CoreData */ = {
+		D87D790C22DBFC95008C278F /* Database */ = {
 			isa = PBXGroup;
 			children = (
 				D84D655D22DBEC43008B5703 /* MarvelXP.xcdatamodeld */,
 				D835D9A822DE8A7100358E40 /* CoreDataManager.swift */,
 			);
-			path = CoreData;
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

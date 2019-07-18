@@ -49,7 +49,7 @@ class MarvelRepositoryTests: XCTestCase {
         
         let promise = expectation(description: "To find Hulk.")
         
-        RogueKit.request(MarvelRepository.fetchCharacters(offset: 0, limit: 20, searchName: "Hulk")) { (result: ListResult<CharacterEntity>) in
+        RogueKit.request(MarvelRepository.fetchCharacters(offset: 0, limit: 20, searchName: "Hul")) { (result: ListResult<CharacterEntity>) in
             switch result {
             case let .success(responseEntity):
                 XCTAssertNotNil(responseEntity.data?.results, "Invalid data.")
@@ -61,6 +61,26 @@ class MarvelRepositoryTests: XCTestCase {
                 
             case let .failure(error):
                 XCTFail("Request Failed. Error: \(error.localizedDescription)")
+            }
+        }
+        
+        self.wait(for: [promise], timeout: timeout)
+    }
+    
+    func testWolverineFetch() {
+        let promise = expectation(description: "Fetch Wolverine from id.")
+        
+        RogueKit.request(MarvelRepository.fetchCharacter(characterID: 1009718)) { (result: ListResult<CharacterEntity>) in
+            switch result {
+                case let .success(responseEntity):
+                    XCTAssertNotNil(responseEntity.data?.results, "Invalid data.")
+                    guard let characters = responseEntity.data?.results else { return }
+                    XCTAssertNotNil(characters.first, "Something went wrong, Wolverine should exist.")
+                    guard let firstCharacter = characters.first else { return }
+                    XCTAssertEqual(firstCharacter.name, "Wolverine", "first match should be Wolverine.")
+                    promise.fulfill()
+                case let .failure(error):
+                    XCTFail("Request Failed. Error: \(error.localizedDescription)")
             }
         }
         

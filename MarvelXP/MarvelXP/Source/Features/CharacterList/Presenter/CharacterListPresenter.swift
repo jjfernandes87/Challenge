@@ -18,11 +18,11 @@ extension CharacterListPresenter: CharacterListPresenterProtocol {
         
     }
     
-    func processAddFavorite(_ character: CharacterEntity) {
+    func processAddFavorite(_ characterID: Int) {
         
     }
     
-    func processRemoveFavorite(_ character: CharacterEntity) {
+    func processRemoveFavorite(_ characterID: Int) {
         
     }
     

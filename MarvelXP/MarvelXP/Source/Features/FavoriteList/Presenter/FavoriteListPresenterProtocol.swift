@@ -16,7 +16,7 @@ public enum FavoriteListPresenterErrorType {
 
 protocol FavoriteListPresenterProtocol: DKAbstractPresenter {
     func processFavoriteList(_ favoriteList: [CharacterEntity])
-    func processRemoveFavorite(_ character: CharacterEntity)
+    func processRemoveFavorite(_ characterID: Int)
     func processError(_ errorType: FavoriteListPresenterErrorType)
 }
 

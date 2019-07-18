@@ -15,6 +15,30 @@ class CharacterDetailInteractor: DKInteractor {
 }
 
 extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
+    
+    func fetchCharacter(characterID: Int) {
+        
+        CoreDataManager.fetchFavorite(characterID) { [unowned self] (optionalCharacter) in
+            if let character = optionalCharacter {
+                self.presenter?.processCharacter(character)
+            } else {
+                RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
+                    switch result {
+                    case let .success(characterList):
+                        guard let character = characterList.data?.results?.first else {
+                            self.presenter?.processError(.fetchCharacter)
+                            return
+                        }
+                        
+                        self.presenter?.processCharacter(character)
+                    case .failure(_):
+                        self.presenter?.processError(.fetchCharacter)
+                    }
+                }
+            }
+        }
+    }
+    
     func fetchComics(characterID: Int) {
         RogueKit.request(MarvelRepository.fetchComics(characterID: characterID)) { [unowned self] (result: ListResult<ComicEntity>) in
             switch result {
@@ -33,6 +57,38 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
                 self.presenter?.processSeries(serieList.data?.results ?? [])
             case .failure(_):
                 self.presenter?.processError(.fetchSeries)
+            }
+        }
+    }
+    
+    func addFavorite(characterID: Int) {
+        RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
+            switch result {
+            case let .success(characterList):
+                guard let character = characterList.data?.results?.first else {
+                    self.presenter?.processError(.addFavorite)
+                    return
+                }
+                
+                CoreDataManager.addFavorite(character) { [weak self] (success) in
+                    if success {
+                        self?.presenter?.processAddFavorite(characterID)
+                    } else {
+                        self?.presenter?.processError(.addFavorite)
+                    }
+                }
+            case .failure(_):
+                self.presenter?.processError(.addFavorite)
+            }
+        }
+    }
+    
+    func removeFavorite(characterID: Int) {
+        CoreDataManager.removeFavorite(characterID) { [unowned self] (success) in
+            if success {
+                self.presenter?.processRemoveFavorite(characterID)
+            } else {
+                self.presenter?.processError(.removeFavorite)
             }
         }
     }

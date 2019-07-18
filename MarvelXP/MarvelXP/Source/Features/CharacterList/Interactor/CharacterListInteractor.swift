@@ -44,19 +44,36 @@ extension CharacterListInteractor: CharacterListInteractorProtocol {
         self.fetchNextPage(searchFilter: searchFilter)
     }
     
-    func addFavorite(character: CharacterEntity) {
-        if CoreDataManager.addFavorite(character) {
-            self.presenter?.processAddFavorite(character)
-        } else {
-            self.presenter?.processError(.addFavorite)
+    func addFavorite(characterID: Int) {
+        
+        RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
+            switch result {
+            case let .success(characterList):
+                guard let character = characterList.data?.results?.first else {
+                    self.presenter?.processError(.addFavorite)
+                    return
+                }
+                
+                CoreDataManager.addFavorite(character) { [unowned self] (success) in
+                    if success {
+                        self.presenter?.processAddFavorite(characterID)
+                    } else {
+                        self.presenter?.processError(.addFavorite)
+                    }
+                }
+            case .failure(_):
+                self.presenter?.processError(.addFavorite)
+            }
         }
     }
     
-    func removeFavorite(character: CharacterEntity) {
-        if CoreDataManager.removeFavorite(character) {
-            self.presenter?.processRemoveFavorite(character)
-        } else {
-            self.presenter?.processError(.removeFavorite)
+    func removeFavorite(characterID: Int) {
+        CoreDataManager.removeFavorite(characterID) { [unowned self] (success) in
+            if success {
+                self.presenter?.processRemoveFavorite(characterID)
+            } else {
+                self.presenter?.processError(.removeFavorite)
+            }
         }
     }
 }

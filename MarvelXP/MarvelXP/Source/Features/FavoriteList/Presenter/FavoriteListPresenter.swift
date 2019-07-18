@@ -14,11 +14,12 @@ class FavoriteListPresenter: DKPresenter {
 }
 
 extension FavoriteListPresenter: FavoriteListPresenterProtocol {
+    
     func processFavoriteList(_ favoriteList: [CharacterEntity]) {
         
     }
     
-    func processRemoveFavorite(_ character: CharacterEntity) {
+    func processRemoveFavorite(_ characterID: Int) {
         
     }
     
