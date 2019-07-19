@@ -26,5 +26,19 @@ class FavoriteListViewController: DKViewController<FavoriteListSceneFactory> {
 }
 
 extension FavoriteListViewController: FavoriteListViewControllerProtocol {
-
+    func showEmptyState() {
+     
+    }
+    
+    func showFavoriteList(_ viewModels: [FavoriteViewModel]) {
+     
+    }
+    
+    func showFetchError() {
+     
+    }
+    
+    func alertFavoriteError() {
+     
+    }
 }

@@ -15,8 +15,16 @@ public struct CharacterEntity: Entity {
     var description: String?
     var thumbnail: ThumbnailEntity?
     
+    var isFavorited: Bool?
     var favoriteComics: [ComicEntity]?
     var favoriteSeries: [SerieEntity]?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id,
+        name,
+        description,
+        thumbnail
+    }
 }
 
 import CoreData
@@ -27,6 +35,7 @@ public extension CharacterEntity {
         self.id = coreDataManagedObject.value(forKey: "id") as? Int
         self.name = coreDataManagedObject.value(forKey: "name") as? String
         self.description = coreDataManagedObject.value(forKey: "desc") as? String
+        self.isFavorited = true
         
         if let managedThumbnail = coreDataManagedObject.value(forKey: "thumbnail") as? NSManagedObject {
             self.thumbnail = ThumbnailEntity(from: managedThumbnail)

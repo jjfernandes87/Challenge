@@ -26,12 +26,15 @@ open class DKViewController<T: DKAbstractSceneFactory>: UIViewController, DKAbst
 
     internal var interactor: DKAbstractInteractor?
     
+    public var presenterArgs: Any? = nil
+    public var interactorArgs: Any? = nil
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         
         let factory: DKAbstractSceneFactory = T.init()
-        let presenter = factory.generatePresenter()
-        let interactor = factory.generateInteractor()
+        let presenter = factory.generatePresenter(presenterArgs)
+        let interactor = factory.generateInteractor(interactorArgs)
  
         interactor.setPresenter(presenter)
         presenter.setView(self)

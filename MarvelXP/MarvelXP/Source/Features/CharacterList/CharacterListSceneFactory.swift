@@ -13,11 +13,11 @@ class CharacterListSceneFactory: DKAbstractSceneFactory {
     
     required init() {}
     
-    func generateInteractor() -> DKAbstractInteractor {
+    func generateInteractor(_ args: Any?) -> DKAbstractInteractor {
         return CharacterListInteractor()
     }
     
-    func generatePresenter() -> DKAbstractPresenter {
+    func generatePresenter(_ args: Any?) -> DKAbstractPresenter {
         return CharacterListPresenter()
     }
 }

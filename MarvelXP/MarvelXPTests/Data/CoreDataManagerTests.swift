@@ -21,7 +21,7 @@ class CoreDataManagerTests: XCTestCase {
             self.removeAllPromise?.fulfill()
         }
         
-        wait(for: [removeAllPromise!], timeout: 30)
+        wait(for: [removeAllPromise!], timeout: 5)
     }
 
     override func tearDown() {}
@@ -32,8 +32,8 @@ class CoreDataManagerTests: XCTestCase {
         let mockComic2 = ComicEntity(title: "Comic 2", thumbnail: nil)
         let mockSerie1 = SerieEntity(title: "Serie 1", thumbnail: nil)
         let mockSerie2 = SerieEntity(title: "Serie 2", thumbnail: nil)
-        let mockCharacter = CharacterEntity(id: 1, name: "Spider Man", description: "Best hero ever.", thumbnail: mockThumbnail, favoriteComics: [mockComic1, mockComic2], favoriteSeries: [mockSerie1, mockSerie2])
-        let mockCharacter2 = CharacterEntity(id: 2, name: "Thor", description: nil, thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
+        let mockCharacter = CharacterEntity(id: 1, name: "Spider Man", description: "Best hero ever.", thumbnail: mockThumbnail, isFavorited: false, favoriteComics: [mockComic1, mockComic2], favoriteSeries: [mockSerie1, mockSerie2])
+        let mockCharacter2 = CharacterEntity(id: 2, name: "Thor", description: nil, thumbnail: nil, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
         
         let promise = expectation(description: "Retrieve favorited data with consistency.")
         
@@ -71,14 +71,14 @@ class CoreDataManagerTests: XCTestCase {
             }
         }
         
-        self.wait(for: [promise], timeout: 30)
+        self.wait(for: [promise], timeout: 5)
     }
     
     
     func testRemoveFavorite() {
         let promise = expectation(description: "Remove a character from favorites.")
         
-        let mockCharacter = CharacterEntity(id: 1, name: "Spider Man", description: "Best hero ever.", thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
+        let mockCharacter = CharacterEntity(id: 1, name: "Spider Man", description: "Best hero ever.", thumbnail: nil, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
         
         CoreDataManager.addFavorite(mockCharacter) { _ in
             
@@ -95,13 +95,13 @@ class CoreDataManagerTests: XCTestCase {
             }
         }
         
-        self.wait(for: [promise], timeout: 30)
+        self.wait(for: [promise], timeout: 5)
     }
     
     func testFetchByID() {
         let promise = expectation(description: "Fetch a character from favorites.")
         
-        let mockCharacter = CharacterEntity(id: 15, name: "Magneto", description: "Best villain ever.", thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
+        let mockCharacter = CharacterEntity(id: 15, name: "Magneto", description: "Best villain ever.", thumbnail: nil, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
         
         CoreDataManager.addFavorite(mockCharacter) { _ in
             CoreDataManager.fetchFavorite(15, completion: { (character) in
@@ -110,6 +110,6 @@ class CoreDataManagerTests: XCTestCase {
             })
         }
         
-        self.wait(for: [promise], timeout: 30)
+        self.wait(for: [promise], timeout: 5)
     }
 }

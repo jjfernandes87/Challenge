@@ -24,6 +24,6 @@ import Foundation
 
 public protocol DKAbstractSceneFactory {
     init()
-    func generateInteractor() -> DKAbstractInteractor
-    func generatePresenter() -> DKAbstractPresenter
+    func generateInteractor(_ args: Any?) -> DKAbstractInteractor
+    func generatePresenter(_ args: Any?) -> DKAbstractPresenter
 }

@@ -44,7 +44,7 @@ class FavoriteListInteractorTests: XCTestCase {
     }
     
     func testRemoveFavorite() {
-        let mockCharacter = CharacterEntity(id: 4, name: "Captain America", description: nil, thumbnail: nil, favoriteComics: nil, favoriteSeries: nil)
+        let mockCharacter = CharacterEntity(id: 4, name: "Captain America", description: nil, thumbnail: nil, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
         self.removePromise = expectation(description: "Remove a Character from favorites")
         
         CoreDataManager.addFavorite(mockCharacter) { _ in

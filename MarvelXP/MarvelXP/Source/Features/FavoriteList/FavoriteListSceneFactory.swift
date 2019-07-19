@@ -13,11 +13,11 @@ class FavoriteListSceneFactory: DKAbstractSceneFactory {
     
     required init() {}
     
-    func generateInteractor() -> DKAbstractInteractor {
+    func generateInteractor(_ args: Any?) -> DKAbstractInteractor {
         return FavoriteListInteractor()
     }
     
-    func generatePresenter() -> DKAbstractPresenter {
+    func generatePresenter(_ args: Any?) -> DKAbstractPresenter {
         return FavoriteListPresenter()
     }
 }

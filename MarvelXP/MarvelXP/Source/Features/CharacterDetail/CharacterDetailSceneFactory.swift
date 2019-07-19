@@ -13,11 +13,11 @@ class CharacterDetailSceneFactory: DKAbstractSceneFactory {
     
     required init() {}
     
-    func generateInteractor() -> DKAbstractInteractor {
+    func generateInteractor(_ args: Any?) -> DKAbstractInteractor {
         return CharacterDetailInteractor()
     }
     
-    func generatePresenter() -> DKAbstractPresenter {
-        return CharacterDetailPresenter()
+    func generatePresenter(_ args: Any?) -> DKAbstractPresenter {
+        return CharacterDetailPresenter(isFavoriteDetail: (args as? Bool) ?? false)
     }
 }

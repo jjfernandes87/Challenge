@@ -10,5 +10,8 @@ import Foundation
 import DungeonKit
 
 protocol FavoriteListViewControllerProtocol: DKAbstractView {
-
+    func showEmptyState()
+    func showFavoriteList(_ viewModels: [FavoriteViewModel])
+    func showFetchError()
+    func alertFavoriteError()
 }

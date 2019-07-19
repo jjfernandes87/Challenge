@@ -52,6 +52,17 @@
 		D835DA4922DFD5BC00358E40 /* CharacterListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA4822DFD5BC00358E40 /* CharacterListInteractorTests.swift */; };
 		D835DA4B22DFEA7E00358E40 /* FavoriteListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA4A22DFEA7E00358E40 /* FavoriteListInteractorTests.swift */; };
 		D835DA4D22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA4C22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift */; };
+		D835DA5022E12D4400358E40 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA4F22E12D4400358E40 /* CharacterViewModel.swift */; };
+		D835DA5322E12EC400358E40 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA5222E12EC400358E40 /* FavoriteViewModel.swift */; };
+		D835DA5722E12F1800358E40 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA5622E12F1800358E40 /* CharacterDetailViewModel.swift */; };
+		D835DA5922E12FE800358E40 /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA5822E12FE800358E40 /* ComicViewModel.swift */; };
+		D835DA5B22E1304500358E40 /* SerieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA5A22E1304500358E40 /* SerieViewModel.swift */; };
+		D835DA5D22E1308F00358E40 /* ComicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA5C22E1308F00358E40 /* ComicListViewModel.swift */; };
+		D835DA5F22E1314100358E40 /* SerieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA5E22E1314100358E40 /* SerieListViewModel.swift */; };
+		D835DA6122E13B0E00358E40 /* CharacterListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA6022E13B0E00358E40 /* CharacterListPresenterTests.swift */; };
+		D835DA6422E13D8400358E40 /* FavoriteObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA6322E13D8400358E40 /* FavoriteObserver.swift */; };
+		D835DA6622E155DC00358E40 /* FavoriteListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA6522E155DC00358E40 /* FavoriteListPresenterTests.swift */; };
+		D835DA6822E1624F00358E40 /* CharacterDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA6722E1624F00358E40 /* CharacterDetailPresenterTests.swift */; };
 		D84D655722DBEC43008B5703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655622DBEC43008B5703 /* AppDelegate.swift */; };
 		D84D655922DBEC43008B5703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655822DBEC43008B5703 /* ViewController.swift */; };
 		D84D655C22DBEC43008B5703 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84D655A22DBEC43008B5703 /* Main.storyboard */; };
@@ -144,6 +155,17 @@
 		D835DA4822DFD5BC00358E40 /* CharacterListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListInteractorTests.swift; sourceTree = "<group>"; };
 		D835DA4A22DFEA7E00358E40 /* FavoriteListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListInteractorTests.swift; sourceTree = "<group>"; };
 		D835DA4C22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailInteractorTests.swift; sourceTree = "<group>"; };
+		D835DA4F22E12D4400358E40 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
+		D835DA5222E12EC400358E40 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		D835DA5622E12F1800358E40 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
+		D835DA5822E12FE800358E40 /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
+		D835DA5A22E1304500358E40 /* SerieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieViewModel.swift; sourceTree = "<group>"; };
+		D835DA5C22E1308F00358E40 /* ComicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewModel.swift; sourceTree = "<group>"; };
+		D835DA5E22E1314100358E40 /* SerieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieListViewModel.swift; sourceTree = "<group>"; };
+		D835DA6022E13B0E00358E40 /* CharacterListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenterTests.swift; sourceTree = "<group>"; };
+		D835DA6322E13D8400358E40 /* FavoriteObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteObserver.swift; sourceTree = "<group>"; };
+		D835DA6522E155DC00358E40 /* FavoriteListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListPresenterTests.swift; sourceTree = "<group>"; };
+		D835DA6722E1624F00358E40 /* CharacterDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenterTests.swift; sourceTree = "<group>"; };
 		D84D655322DBEC43008B5703 /* MarvelXP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelXP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D655622DBEC43008B5703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D84D655822DBEC43008B5703 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +272,7 @@
 			children = (
 				D835DA1822DFC50400358E40 /* CharacterDetailPresenter.swift */,
 				D835DA1722DFC50400358E40 /* CharacterDetailPresenterProtocol.swift */,
+				D835DA5522E12EFD00358E40 /* ViewModels */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -288,6 +311,7 @@
 			children = (
 				D835DA4022DFC61700358E40 /* FavoriteListPresenter.swift */,
 				D835DA3F22DFC61700358E40 /* FavoriteListPresenterProtocol.swift */,
+				D835DA5122E12EA800358E40 /* ViewModels */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -326,6 +350,7 @@
 			children = (
 				D835DA2D22DFC5EE00358E40 /* CharacterListPresenter.swift */,
 				D835DA2E22DFC5EE00358E40 /* CharacterListPresenterProtocol.swift */,
+				D835DA4E22E12CC200358E40 /* ViewModels */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -352,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				D835DA4822DFD5BC00358E40 /* CharacterListInteractorTests.swift */,
+				D835DA6022E13B0E00358E40 /* CharacterListPresenterTests.swift */,
 			);
 			path = CharacterList;
 			sourceTree = "<group>";
@@ -360,6 +386,7 @@
 			isa = PBXGroup;
 			children = (
 				D835DA4A22DFEA7E00358E40 /* FavoriteListInteractorTests.swift */,
+				D835DA6522E155DC00358E40 /* FavoriteListPresenterTests.swift */,
 			);
 			path = FavoriteList;
 			sourceTree = "<group>";
@@ -368,8 +395,45 @@
 			isa = PBXGroup;
 			children = (
 				D835DA4C22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift */,
+				D835DA6722E1624F00358E40 /* CharacterDetailPresenterTests.swift */,
 			);
 			path = CharacterDetail;
+			sourceTree = "<group>";
+		};
+		D835DA4E22E12CC200358E40 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D835DA4F22E12D4400358E40 /* CharacterViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D835DA5122E12EA800358E40 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D835DA5222E12EC400358E40 /* FavoriteViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D835DA5522E12EFD00358E40 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D835DA5622E12F1800358E40 /* CharacterDetailViewModel.swift */,
+				D835DA5822E12FE800358E40 /* ComicViewModel.swift */,
+				D835DA5C22E1308F00358E40 /* ComicListViewModel.swift */,
+				D835DA5A22E1304500358E40 /* SerieViewModel.swift */,
+				D835DA5E22E1314100358E40 /* SerieListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D835DA6222E13D7000358E40 /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				D835DA6322E13D8400358E40 /* FavoriteObserver.swift */,
+			);
+			path = Observer;
 			sourceTree = "<group>";
 		};
 		D84D654A22DBEC43008B5703 = {
@@ -473,6 +537,7 @@
 				D87D790A22DBFC80008C278F /* Entity */,
 				D87D790B22DBFC8C008C278F /* Repository */,
 				D87D790C22DBFC95008C278F /* Database */,
+				D835DA6222E13D7000358E40 /* Observer */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -713,12 +778,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D835DA3322DFC5F400358E40 /* CharacterListViewController.swift in Sources */,
+				D835DA6422E13D8400358E40 /* FavoriteObserver.swift in Sources */,
 				D835D99022DD320B00358E40 /* ContainerEntity.swift in Sources */,
 				D84D655922DBEC43008B5703 /* ViewController.swift in Sources */,
 				D835DA0E22DFC4F100358E40 /* CharacterDetailSceneFactory.swift in Sources */,
 				D835DA3E22DFC61100358E40 /* FavoriteListInteractorProtocol.swift in Sources */,
 				D835DA1122DFC4F800358E40 /* CharacterDetailViewController.swift in Sources */,
+				D835DA5922E12FE800358E40 /* ComicViewModel.swift in Sources */,
 				D835D99422DD333800358E40 /* CharacterEntity.swift in Sources */,
+				D835DA5F22E1314100358E40 /* SerieListViewModel.swift in Sources */,
+				D835DA5D22E1308F00358E40 /* ComicListViewModel.swift in Sources */,
+				D835DA5722E12F1800358E40 /* CharacterDetailViewModel.swift in Sources */,
 				D835DA1222DFC4F800358E40 /* CharacterDetailViewControllerProtocol.swift in Sources */,
 				D835D99822DD355B00358E40 /* ThumbnailEntity.swift in Sources */,
 				D835DA3422DFC5F400358E40 /* CharacterListViewControllerProtocol.swift in Sources */,
@@ -740,7 +810,10 @@
 				D835DA3622DFC60600358E40 /* FavoriteListSceneFactory.swift in Sources */,
 				D835DA2822DFC5E400358E40 /* CharacterListSceneFactory.swift in Sources */,
 				D835DA4122DFC61700358E40 /* FavoriteListPresenterProtocol.swift in Sources */,
+				D835DA5022E12D4400358E40 /* CharacterViewModel.swift in Sources */,
 				D84D655F22DBEC43008B5703 /* MarvelXP.xcdatamodeld in Sources */,
+				D835DA5B22E1304500358E40 /* SerieViewModel.swift in Sources */,
+				D835DA5322E12EC400358E40 /* FavoriteViewModel.swift in Sources */,
 				D835D99222DD32DF00358E40 /* BaseResponseEntity.swift in Sources */,
 				D835D9A922DE8A7100358E40 /* CoreDataManager.swift in Sources */,
 				D835DA3D22DFC61100358E40 /* FavoriteListInteractor.swift in Sources */,
@@ -751,7 +824,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D835DA6122E13B0E00358E40 /* CharacterListPresenterTests.swift in Sources */,
+				D835DA6822E1624F00358E40 /* CharacterDetailPresenterTests.swift in Sources */,
 				D835DA4922DFD5BC00358E40 /* CharacterListInteractorTests.swift in Sources */,
+				D835DA6622E155DC00358E40 /* FavoriteListPresenterTests.swift in Sources */,
 				D835D9DA22DEAB4800358E40 /* CoreDataManagerTests.swift in Sources */,
 				D835DA4B22DFEA7E00358E40 /* FavoriteListInteractorTests.swift in Sources */,
 				D835DA4D22DFF2EB00358E40 /* CharacterDetailInteractorTests.swift in Sources */,

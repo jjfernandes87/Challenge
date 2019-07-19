@@ -26,5 +26,24 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
 }
 
 extension CharacterListViewController: CharacterListViewControllerProtocol {
-
+    
+    func showEmptyState() {
+        
+    }
+    
+    func updateCharacterList(_ viewModels: [CharacterViewModel], hasMore: Bool) {
+        
+    }
+    
+    func showFetchError() {
+        
+    }
+    
+    func showInternetError() {
+        
+    }
+    
+    func alertFavoriteError(adding: Bool) {
+        
+    }
 }

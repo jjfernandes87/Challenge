@@ -21,6 +21,14 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
         CoreDataManager.fetchFavorite(characterID) { [unowned self] (optionalCharacter) in
             if let character = optionalCharacter {
                 self.presenter?.processCharacter(character)
+                
+                if let comics = character.favoriteComics {
+                    self.presenter?.processComics(comics)
+                }
+                
+                if let series = character.favoriteSeries {
+                    self.presenter?.processSeries(series)
+                }
             } else {
                 RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
                     switch result {
@@ -62,6 +70,9 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
     }
     
     func addFavorite(characterID: Int) {
+        
+        //TODO: Fetch comics and series before favoriting
+        
         RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
             switch result {
             case let .success(characterList):
@@ -70,11 +81,11 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
                     return
                 }
                 
-                CoreDataManager.addFavorite(character) { [weak self] (success) in
+                CoreDataManager.addFavorite(character) { [unowned self] (success) in
                     if success {
-                        self?.presenter?.processAddFavorite(characterID)
+                        self.presenter?.processAddFavorite(characterID)
                     } else {
-                        self?.presenter?.processError(.addFavorite)
+                        self.presenter?.processError(.addFavorite)
                     }
                 }
             case .failure(_):
@@ -82,6 +93,22 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
             }
         }
     }
+    
+    /*private func fetchCharacterByID(characterID: Int, completion: @escaping (CharacterEntity) -> Void) {
+        RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
+            switch result {
+            case let .success(characterList):
+                guard let character = characterList.data?.results?.first else {
+                    self.presenter?.processError(.addFavorite)
+                    return
+                }
+                
+                completion(character)
+            case .failure(_):
+                self.presenter?.processError(.addFavorite)
+            }
+        }
+    }*/
     
     func removeFavorite(characterID: Int) {
         CoreDataManager.removeFavorite(characterID) { [unowned self] (success) in

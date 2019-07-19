@@ -26,14 +26,24 @@ extension CharacterListInteractor: CharacterListInteractorProtocol {
             return
         }
         
-        RogueKit.request(MarvelRepository.fetchCharacters(offset: self.offset, limit: self.offset + self.pageSize, searchName: searchFilter)) { [unowned self] (result: ListResult<CharacterEntity>) in
-            switch result {
-            case let .success(characterList):
-                self.offset += self.pageSize
-                let hasMore = self.offset < (characterList.data?.total ?? 0) && (characterList.data?.results?.count ?? 0) == self.pageSize
-                self.presenter?.processCharacters(characterList.data?.results ?? [], hasMore: hasMore)
-            case .failure(_):
-                self.presenter?.processError(.fetch)
+        CoreDataManager.fetchFavorites { (optionalFavoriteList) in
+            
+            let favoriteList = optionalFavoriteList ?? []
+            
+            RogueKit.request(MarvelRepository.fetchCharacters(offset: self.offset, limit: self.offset + self.pageSize, searchName: searchFilter)) { [unowned self] (result: ListResult<CharacterEntity>) in
+                switch result {
+                case let .success(characterList):
+                    self.offset += self.pageSize
+                    let hasMore = self.offset < (characterList.data?.total ?? 0) && (characterList.data?.results?.count ?? 0) == self.pageSize
+                    var entityList = characterList.data?.results ?? []
+                    for (index, entity) in entityList.enumerated() {
+                        let favoriteCharacter = favoriteList.first(where: { $0.id == entity.id })
+                        entityList[index].isFavorited = favoriteCharacter != nil
+                    }
+                    self.presenter?.processCharacters(entityList, hasMore: hasMore)
+                case .failure(_):
+                    self.presenter?.processError(.fetch)
+                }
             }
         }
     }
