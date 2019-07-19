@@ -1,5 +1,5 @@
 //
-//  CharacterCell.swift
+//  FavoriteCell.swift
 //  MarvelXP
 //
 //  Created by Roger Sanoli on 19/07/19.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CharacterCell: UICollectionViewCell {
+class FavoriteCell: UICollectionViewCell {
     
     @IBOutlet weak private var characterImage: UIImageView!
     @IBOutlet weak private var characterNameLabel: UILabel!
@@ -18,7 +18,7 @@ class CharacterCell: UICollectionViewCell {
     private(set) var characterID: Int = 0
     public var onFavorite: ((Int, Bool) -> Void)?
     
-    public func setup(_ viewModel: CharacterViewModel) {
+    public func setup(_ viewModel: FavoriteViewModel) {
         self.characterID = viewModel.id
         self.characterImage.download(viewModel.photoULR, errorImage: "download_error")
         self.characterNameLabel.text = viewModel.name

@@ -69,6 +69,18 @@
 		D835DA7422E21CF900358E40 /* Marvel-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D835DA7222E21A9000358E40 /* Marvel-BoldItalic.ttf */; };
 		D835DA7522E21CFE00358E40 /* Marvel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D835DA6F22E21A9000358E40 /* Marvel-Regular.ttf */; };
 		D835DA7622E21D0200358E40 /* Marvel-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D835DA7022E21A9000358E40 /* Marvel-RegularItalic.ttf */; };
+		D835DA7922E229F900358E40 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA7822E229F900358E40 /* FavoriteCell.swift */; };
+		D835DA7B22E22A1400358E40 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D835DA7A22E22A1400358E40 /* FavoriteCell.xib */; };
+		D835DA7E22E2321A00358E40 /* CharacterDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D835DA7D22E2321A00358E40 /* CharacterDetailCell.xib */; };
+		D835DA8022E2322F00358E40 /* CharacterDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA7F22E2322F00358E40 /* CharacterDetailCell.swift */; };
+		D835DA8222E2358C00358E40 /* ComicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA8122E2358C00358E40 /* ComicListCell.swift */; };
+		D835DA8422E2359B00358E40 /* ComicListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D835DA8322E2359B00358E40 /* ComicListCell.xib */; };
+		D835DA8622E23A9200358E40 /* ComicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA8522E23A9200358E40 /* ComicCell.swift */; };
+		D835DA8822E23A9E00358E40 /* ComicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D835DA8722E23A9E00358E40 /* ComicCell.xib */; };
+		D835DA8A22E23D6E00358E40 /* SerieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D835DA8922E23D6E00358E40 /* SerieCell.xib */; };
+		D835DA8C22E23D7D00358E40 /* SerieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA8B22E23D7D00358E40 /* SerieCell.swift */; };
+		D835DA8E22E23D9100358E40 /* SerieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835DA8D22E23D9100358E40 /* SerieListCell.swift */; };
+		D835DA9022E23D9D00358E40 /* SerieListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D835DA8F22E23D9D00358E40 /* SerieListCell.xib */; };
 		D84D655722DBEC43008B5703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655622DBEC43008B5703 /* AppDelegate.swift */; };
 		D84D655922DBEC43008B5703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655822DBEC43008B5703 /* ViewController.swift */; };
 		D84D655C22DBEC43008B5703 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84D655A22DBEC43008B5703 /* Main.storyboard */; };
@@ -178,6 +190,18 @@
 		D835DA7022E21A9000358E40 /* Marvel-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-RegularItalic.ttf"; sourceTree = "<group>"; };
 		D835DA7122E21A9000358E40 /* Marvel-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-Bold.ttf"; sourceTree = "<group>"; };
 		D835DA7222E21A9000358E40 /* Marvel-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marvel-BoldItalic.ttf"; sourceTree = "<group>"; };
+		D835DA7822E229F900358E40 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		D835DA7A22E22A1400358E40 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
+		D835DA7D22E2321A00358E40 /* CharacterDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterDetailCell.xib; sourceTree = "<group>"; };
+		D835DA7F22E2322F00358E40 /* CharacterDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCell.swift; sourceTree = "<group>"; };
+		D835DA8122E2358C00358E40 /* ComicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListCell.swift; sourceTree = "<group>"; };
+		D835DA8322E2359B00358E40 /* ComicListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicListCell.xib; sourceTree = "<group>"; };
+		D835DA8522E23A9200358E40 /* ComicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCell.swift; sourceTree = "<group>"; };
+		D835DA8722E23A9E00358E40 /* ComicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicCell.xib; sourceTree = "<group>"; };
+		D835DA8922E23D6E00358E40 /* SerieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieCell.xib; sourceTree = "<group>"; };
+		D835DA8B22E23D7D00358E40 /* SerieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieCell.swift; sourceTree = "<group>"; };
+		D835DA8D22E23D9100358E40 /* SerieListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieListCell.swift; sourceTree = "<group>"; };
+		D835DA8F22E23D9D00358E40 /* SerieListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SerieListCell.xib; sourceTree = "<group>"; };
 		D84D655322DBEC43008B5703 /* MarvelXP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelXP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D655622DBEC43008B5703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D84D655822DBEC43008B5703 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +327,7 @@
 			children = (
 				D835DA0F22DFC4F800358E40 /* CharacterDetailViewController.swift */,
 				D835DA1022DFC4F800358E40 /* CharacterDetailViewControllerProtocol.swift */,
+				D835DA7C22E2320100358E40 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,6 +367,7 @@
 			children = (
 				D835DA3722DFC60B00358E40 /* FavoriteListViewController.swift */,
 				D835DA3822DFC60B00358E40 /* FavoriteListViewControllerProtocol.swift */,
+				D835DA7722E229E200358E40 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -467,6 +493,32 @@
 				D835DA7022E21A9000358E40 /* Marvel-RegularItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D835DA7722E229E200358E40 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D835DA7822E229F900358E40 /* FavoriteCell.swift */,
+				D835DA7A22E22A1400358E40 /* FavoriteCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D835DA7C22E2320100358E40 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D835DA7F22E2322F00358E40 /* CharacterDetailCell.swift */,
+				D835DA7D22E2321A00358E40 /* CharacterDetailCell.xib */,
+				D835DA8122E2358C00358E40 /* ComicListCell.swift */,
+				D835DA8322E2359B00358E40 /* ComicListCell.xib */,
+				D835DA8522E23A9200358E40 /* ComicCell.swift */,
+				D835DA8722E23A9E00358E40 /* ComicCell.xib */,
+				D835DA8D22E23D9100358E40 /* SerieListCell.swift */,
+				D835DA8F22E23D9D00358E40 /* SerieListCell.xib */,
+				D835DA8B22E23D7D00358E40 /* SerieCell.swift */,
+				D835DA8922E23D6E00358E40 /* SerieCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		D84D654A22DBEC43008B5703 = {
@@ -714,15 +766,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D835DA8822E23A9E00358E40 /* ComicCell.xib in Resources */,
 				D84D656422DBEC49008B5703 /* LaunchScreen.storyboard in Resources */,
+				D835DA8422E2359B00358E40 /* ComicListCell.xib in Resources */,
 				D835DA7622E21D0200358E40 /* Marvel-RegularItalic.ttf in Resources */,
 				D835D9F222DFC12100358E40 /* MarvelXP.storyboard in Resources */,
+				D835DA7E22E2321A00358E40 /* CharacterDetailCell.xib in Resources */,
 				D835DA7322E21CF200358E40 /* Marvel-Bold.ttf in Resources */,
 				D835DA7422E21CF900358E40 /* Marvel-BoldItalic.ttf in Resources */,
+				D835DA8A22E23D6E00358E40 /* SerieCell.xib in Resources */,
+				D835DA9022E23D9D00358E40 /* SerieListCell.xib in Resources */,
 				D835DA7522E21CFE00358E40 /* Marvel-Regular.ttf in Resources */,
 				D835DA6D22E2133500358E40 /* CharacterCell.xib in Resources */,
 				D84D656122DBEC49008B5703 /* Assets.xcassets in Resources */,
 				D84D655C22DBEC43008B5703 /* Main.storyboard in Resources */,
+				D835DA7B22E22A1400358E40 /* FavoriteCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,13 +876,16 @@
 			files = (
 				D835DA3322DFC5F400358E40 /* CharacterListViewController.swift in Sources */,
 				D835DA6422E13D8400358E40 /* FavoriteObserver.swift in Sources */,
+				D835DA8C22E23D7D00358E40 /* SerieCell.swift in Sources */,
 				D835D99022DD320B00358E40 /* ContainerEntity.swift in Sources */,
+				D835DA8022E2322F00358E40 /* CharacterDetailCell.swift in Sources */,
 				D84D655922DBEC43008B5703 /* ViewController.swift in Sources */,
 				D835DA0E22DFC4F100358E40 /* CharacterDetailSceneFactory.swift in Sources */,
 				D835DA3E22DFC61100358E40 /* FavoriteListInteractorProtocol.swift in Sources */,
 				D835DA1122DFC4F800358E40 /* CharacterDetailViewController.swift in Sources */,
 				D835DA5922E12FE800358E40 /* ComicViewModel.swift in Sources */,
 				D835D99422DD333800358E40 /* CharacterEntity.swift in Sources */,
+				D835DA7922E229F900358E40 /* FavoriteCell.swift in Sources */,
 				D835DA5F22E1314100358E40 /* SerieListViewModel.swift in Sources */,
 				D835DA5D22E1308F00358E40 /* ComicListViewModel.swift in Sources */,
 				D835DA5722E12F1800358E40 /* CharacterDetailViewModel.swift in Sources */,
@@ -853,8 +914,11 @@
 				D835DA5022E12D4400358E40 /* CharacterViewModel.swift in Sources */,
 				D84D655F22DBEC43008B5703 /* MarvelXP.xcdatamodeld in Sources */,
 				D835DA5B22E1304500358E40 /* SerieViewModel.swift in Sources */,
+				D835DA8622E23A9200358E40 /* ComicCell.swift in Sources */,
 				D835DA5322E12EC400358E40 /* FavoriteViewModel.swift in Sources */,
 				D835D99222DD32DF00358E40 /* BaseResponseEntity.swift in Sources */,
+				D835DA8E22E23D9100358E40 /* SerieListCell.swift in Sources */,
+				D835DA8222E2358C00358E40 /* ComicListCell.swift in Sources */,
 				D835D9A922DE8A7100358E40 /* CoreDataManager.swift in Sources */,
 				D835DA3D22DFC61100358E40 /* FavoriteListInteractor.swift in Sources */,
 			);
