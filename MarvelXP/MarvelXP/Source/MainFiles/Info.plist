@@ -35,6 +35,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Marvel-Bold.ttf</string>
+		<string>Marvel-BoldItalic.ttf</string>
+		<string>Marve-Regular.ttf</string>
+		<string>Marvel-RegularItalic.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
