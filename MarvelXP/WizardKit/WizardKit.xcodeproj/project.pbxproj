@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D800D24922E287EE00E702C7 /* CGSizeAnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D800D24822E287EE00E702C7 /* CGSizeAnimationExtensions.swift */; };
 		D84D662B22DBF39F008B5703 /* WizardKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D84D662122DBF39F008B5703 /* WizardKit.framework */; };
 		D84D663022DBF39F008B5703 /* WizardKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D662F22DBF39F008B5703 /* WizardKitTests.swift */; };
 		D84D663222DBF39F008B5703 /* WizardKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D84D662422DBF39F008B5703 /* WizardKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D800D24822E287EE00E702C7 /* CGSizeAnimationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeAnimationExtensions.swift; sourceTree = "<group>"; };
 		D84D662122DBF39F008B5703 /* WizardKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WizardKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D662422DBF39F008B5703 /* WizardKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WizardKit.h; sourceTree = "<group>"; };
 		D84D662522DBF39F008B5703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		D84D665B22DBF56D008B5703 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D800D24822E287EE00E702C7 /* CGSizeAnimationExtensions.swift */,
 				D87D78AA22DBF7A1008C278F /* CGRectAnimationExtensions.swift */,
 				D87D78A922DBF7A1008C278F /* UIViewControllerAnimationExtensions.swift */,
 			);
@@ -285,6 +288,7 @@
 				D87D789F22DBF735008C278F /* AlphaAnimation.swift in Sources */,
 				D87D78A722DBF73F008C278F /* AnimationManager.swift in Sources */,
 				D87D78A322DBF735008C278F /* NoneAnimation.swift in Sources */,
+				D800D24922E287EE00E702C7 /* CGSizeAnimationExtensions.swift in Sources */,
 				D87D78AB22DBF7A2008C278F /* UIViewControllerAnimationExtensions.swift in Sources */,
 				D87D78A422DBF735008C278F /* TranslateTopAnimation.swift in Sources */,
 			);

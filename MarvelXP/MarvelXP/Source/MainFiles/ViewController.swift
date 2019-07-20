@@ -11,7 +11,7 @@ import WizardKit
 
 class ViewController: UIViewController {
     
-    //override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MarvelXP" {
-            let bounds = CGRect.windowBounds()
+            let bounds = CGRect.screenBounds()
             segue.destination.setAnimation(.hole(x: bounds.midX, y: bounds.midY, size: 0))
         }
     }

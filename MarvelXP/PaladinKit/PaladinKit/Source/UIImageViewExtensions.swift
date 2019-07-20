@@ -13,6 +13,9 @@ let imageCache = NSCache<NSString, UIImage>()
 public extension UIImageView {
     
     func download(_ imageURL: String, errorImage: String? = nil, showLoading: Bool = false) {
+        
+        self.image = nil
+        
         guard let url = URL(string: imageURL) else {
             DispatchQueue.main.async { self.image = UIImage(named: errorImage ?? "") }
             return

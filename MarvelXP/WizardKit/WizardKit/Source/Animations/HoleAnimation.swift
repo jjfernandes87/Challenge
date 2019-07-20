@@ -33,7 +33,8 @@ class HoleAnimation: NSObject, UIViewControllerAnimationProtocol, CAAnimationDel
     private var initialRect: CGRect
     private var initialCircle: UIBezierPath
     private var finalCircle: UIBezierPath
-    private let duration = 0.25
+    private let duration = 0.4
+    private weak var destinationView: UIView?
     
     init(x: CGFloat, y: CGFloat, size: CGFloat) {
         self.x = x
@@ -42,9 +43,9 @@ class HoleAnimation: NSObject, UIViewControllerAnimationProtocol, CAAnimationDel
         self.initialRect = CGRect(x: self.x - self.size/2, y: self.y - self.size/2, width: self.size, height: self.size)
         self.initialCircle = UIBezierPath(ovalIn: initialRect)
         
-        let bounds = CGRect.windowBounds()
+        let bounds = CGSize.screenSize()
         let fullHeight = bounds.height
-        let extremePoint = CGPoint(x: self.x, y: self.y - fullHeight * 1.2)
+        let extremePoint = CGPoint(x: self.x, y: self.y - fullHeight * 1.5)
         let radius = sqrt((extremePoint.x * extremePoint.x) + (extremePoint.y*extremePoint.y))
         self.finalCircle = UIBezierPath(ovalIn: initialRect.insetBy(dx: -radius, dy: -radius))
     }
@@ -73,6 +74,7 @@ class HoleAnimation: NSObject, UIViewControllerAnimationProtocol, CAAnimationDel
         let maskLayer = CAShapeLayer()
         maskLayer.path = finalCircle.cgPath
         toVC.view.layer.mask = maskLayer
+        destinationView = toVC.view
         
         let animation = generateAnimation(fromPath: initialCircle.cgPath, toPath: finalCircle.cgPath)
         maskLayer.add(animation, forKey: "path")
@@ -96,6 +98,7 @@ class HoleAnimation: NSObject, UIViewControllerAnimationProtocol, CAAnimationDel
         let minimumCircle = UIBezierPath(ovalIn: CGRect(x: initialRect.minX, y: initialRect.minY, width: 1, height: 1))
         maskLayer.path = minimumCircle.cgPath
         screenShot.layer.mask = maskLayer
+        destinationView = screenShot
         
         let animation = generateAnimation(fromPath: finalCircle.cgPath, toPath: minimumCircle.cgPath)
         maskLayer.add(animation, forKey: "path")
@@ -111,6 +114,7 @@ class HoleAnimation: NSObject, UIViewControllerAnimationProtocol, CAAnimationDel
     }
     
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        destinationView?.layer.mask = nil
         context?.completeTransition(true)
     }
 }
