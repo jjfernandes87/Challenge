@@ -1,0 +1,6 @@
+framework module Pods_MarvelXPUITests {
+  umbrella header "Pods-MarvelXPUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

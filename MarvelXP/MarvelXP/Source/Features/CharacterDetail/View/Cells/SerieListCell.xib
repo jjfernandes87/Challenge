@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Marvel-BoldItalic.ttf">
+            <string>Marvel-BoldItalic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SerieListCell" rowHeight="209" id="MaS-ly-GDw" customClass="SerieListCell" customModule="MarvelXP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="484" height="341"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MaS-ly-GDw" id="dxr-Z8-pwT">
+                <rect key="frame" x="0.0" y="0.0" width="484" height="340.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Series" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAQ-by-NXI">
+                        <rect key="frame" x="20" y="8" width="73" height="37.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73" id="Ise-0H-0JJ"/>
+                            <constraint firstAttribute="height" constant="37.5" id="OiN-SJ-BbR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Marvel-BoldItalic" family="Marvel" pointSize="30"/>
+                        <color key="textColor" red="0.85490196080000003" green="0.21698558330000001" blue="0.2038683295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="-2" height="-2"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="V76-yX-MXJ">
+                        <rect key="frame" x="50" y="145.5" width="384" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="sZr-yN-7WB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Marvel-BoldItalic" family="Marvel" pointSize="30"/>
+                        <color key="textColor" red="0.85490196080000003" green="0.21698558330000001" blue="0.2038683295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="-2" height="-2"/>
+                    </label>
+                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Zzy-nd-n9G">
+                        <rect key="frame" x="15" y="50.5" width="454" height="270"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="270" id="ehQ-Kz-KhQ"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="muw-dp-itx">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Zzy-nd-n9G" firstAttribute="leading" secondItem="dxr-Z8-pwT" secondAttribute="leading" constant="15" id="Czy-HE-6we"/>
+                    <constraint firstAttribute="trailing" secondItem="Zzy-nd-n9G" secondAttribute="trailing" constant="15" id="SoS-Nk-lb4"/>
+                    <constraint firstAttribute="bottom" secondItem="Zzy-nd-n9G" secondAttribute="bottom" constant="20" id="XyT-tA-6iW"/>
+                    <constraint firstItem="bAQ-by-NXI" firstAttribute="leading" secondItem="dxr-Z8-pwT" secondAttribute="leading" constant="20" id="Z2P-KB-Bzu"/>
+                    <constraint firstItem="bAQ-by-NXI" firstAttribute="top" secondItem="dxr-Z8-pwT" secondAttribute="top" constant="8" id="axL-6r-xE1"/>
+                    <constraint firstItem="V76-yX-MXJ" firstAttribute="leading" secondItem="dxr-Z8-pwT" secondAttribute="leading" constant="50" id="ocK-pY-Btc"/>
+                    <constraint firstAttribute="trailing" secondItem="V76-yX-MXJ" secondAttribute="trailing" constant="50" id="s4N-ni-lOq"/>
+                    <constraint firstItem="V76-yX-MXJ" firstAttribute="centerY" secondItem="Zzy-nd-n9G" secondAttribute="centerY" id="xaF-zy-lA6"/>
+                    <constraint firstItem="Zzy-nd-n9G" firstAttribute="top" secondItem="bAQ-by-NXI" secondAttribute="bottom" constant="5" id="xyH-Xz-wV9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <accessibility key="accessibilityConfiguration" identifier="CategoryList">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
+            <connections>
+                <outlet property="collectionView" destination="Zzy-nd-n9G" id="ya8-58-A7B"/>
+                <outlet property="errorLabel" destination="V76-yX-MXJ" id="mII-7l-kIn"/>
+            </connections>
+            <point key="canvasLocation" x="-201.44927536231884" y="-11.71875"/>
+        </tableViewCell>
+    </objects>
+</document>
