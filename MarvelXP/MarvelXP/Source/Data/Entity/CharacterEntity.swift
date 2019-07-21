@@ -10,14 +10,14 @@ import Foundation
 import RogueKit
 
 public struct CharacterEntity: Entity {
-    var id: Int?
-    var name: String?
-    var description: String?
-    var thumbnail: ThumbnailEntity?
+    public var id: Int?
+    public var name: String?
+    public var description: String?
+    public var thumbnail: ThumbnailEntity?
     
-    var isFavorited: Bool?
-    var favoriteComics: [ComicEntity]?
-    var favoriteSeries: [SerieEntity]?
+    public var isFavorited: Bool?
+    public var favoriteComics: [ComicEntity]?
+    public var favoriteSeries: [SerieEntity]?
     
     private enum CodingKeys: String, CodingKey {
         case id,

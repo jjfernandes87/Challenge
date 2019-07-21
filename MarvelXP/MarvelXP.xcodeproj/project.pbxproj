@@ -98,6 +98,17 @@
 		D888ACB122E436F4000C416B /* ComicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99922DD36DA00358E40 /* ComicEntity.swift */; };
 		D888ACB222E436F4000C416B /* SerieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99B22DD370200358E40 /* SerieEntity.swift */; };
 		D888ACB322E436F4000C416B /* ThumbnailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99722DD355B00358E40 /* ThumbnailEntity.swift */; };
+		D88C371A22E4F30900D48B2E /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88C371922E4F30900D48B2E /* NotificationCenter.framework */; };
+		D88C371D22E4F30900D48B2E /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88C371C22E4F30900D48B2E /* TodayViewController.swift */; };
+		D88C372022E4F30900D48B2E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D88C371E22E4F30900D48B2E /* MainInterface.storyboard */; };
+		D88C372422E4F30900D48B2E /* MarvelXP Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D88C371822E4F30900D48B2E /* MarvelXP Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D88C372A22E4F32800D48B2E /* RogueKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88C372922E4F32800D48B2E /* RogueKit.framework */; };
+		D88C372C22E4FD8E00D48B2E /* WidgetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88C372B22E4FD8E00D48B2E /* WidgetRepository.swift */; };
+		D88C373022E4FDF400D48B2E /* WidgetCharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88C372F22E4FDF400D48B2E /* WidgetCharacterEntity.swift */; };
+		D88C373222E4FE0800D48B2E /* WidgetThumbnailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88C373122E4FE0800D48B2E /* WidgetThumbnailEntity.swift */; };
+		D88C373422E4FE2B00D48B2E /* WidgetBaseResponseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88C373322E4FE2B00D48B2E /* WidgetBaseResponseEntity.swift */; };
+		D88C373622E4FE3900D48B2E /* WidgetContainerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88C373522E4FE3900D48B2E /* WidgetContainerEntity.swift */; };
+		D88C373822E4FEEE00D48B2E /* PaladinKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88C373722E4FEEE00D48B2E /* PaladinKit.framework */; };
 		D8DB157822E2522A00B0EA3F /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DB157722E2522A00B0EA3F /* MainSplitViewController.swift */; };
 		F817732F6A27DFECAFBE2D8A /* Pods_MarvelXPUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90DB78CE55A78D4A732841 /* Pods_MarvelXPUITests.framework */; };
 /* End PBXBuildFile section */
@@ -117,6 +128,13 @@
 			remoteGlobalIDString = D84D655222DBEC43008B5703;
 			remoteInfo = MarvelXP;
 		};
+		D88C372222E4F30900D48B2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D84D654B22DBEC43008B5703 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D88C371722E4F30900D48B2E;
+			remoteInfo = "MarvelXP Widget";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -132,6 +150,17 @@
 				D835D9D122DE8E7300358E40 /* PaladinKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D88C372822E4F30900D48B2E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D88C372422E4F30900D48B2E /* MarvelXP Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -229,6 +258,18 @@
 		D84D657B22DBEC49008B5703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D856FEB922E4230800B32956 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		D877427922E2ACFD0037C48B /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
+		D88C371822E4F30900D48B2E /* MarvelXP Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MarvelXP Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D88C371922E4F30900D48B2E /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D88C371C22E4F30900D48B2E /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		D88C371F22E4F30900D48B2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		D88C372122E4F30900D48B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D88C372922E4F32800D48B2E /* RogueKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RogueKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D88C372B22E4FD8E00D48B2E /* WidgetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetRepository.swift; sourceTree = "<group>"; };
+		D88C372F22E4FDF400D48B2E /* WidgetCharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCharacterEntity.swift; sourceTree = "<group>"; };
+		D88C373122E4FE0800D48B2E /* WidgetThumbnailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetThumbnailEntity.swift; sourceTree = "<group>"; };
+		D88C373322E4FE2B00D48B2E /* WidgetBaseResponseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBaseResponseEntity.swift; sourceTree = "<group>"; };
+		D88C373522E4FE3900D48B2E /* WidgetContainerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetContainerEntity.swift; sourceTree = "<group>"; };
+		D88C373722E4FEEE00D48B2E /* PaladinKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PaladinKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DB157722E2522A00B0EA3F /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		FFF1ADBE9AF39E7D7B800597 /* Pods-MarvelXPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelXPTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelXPTests/Pods-MarvelXPTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -262,6 +303,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D88C371522E4F30900D48B2E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D88C373822E4FEEE00D48B2E /* PaladinKit.framework in Frameworks */,
+				D88C372A22E4F32800D48B2E /* RogueKit.framework in Frameworks */,
+				D88C371A22E4F30900D48B2E /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -281,9 +332,12 @@
 		6F2AA81A6D0DAF80EAEBDFD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D88C373722E4FEEE00D48B2E /* PaladinKit.framework */,
+				D88C372922E4F32800D48B2E /* RogueKit.framework */,
 				2863B58413B00BD5A493BC9D /* Pods_MarvelXP.framework */,
 				856E78E6C1EEB3A635965693 /* Pods_MarvelXPTests.framework */,
 				9A90DB78CE55A78D4A732841 /* Pods_MarvelXPUITests.framework */,
+				D88C371922E4F30900D48B2E /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -555,6 +609,7 @@
 				D84D655522DBEC43008B5703 /* MarvelXP */,
 				D84D656D22DBEC49008B5703 /* MarvelXPTests */,
 				D84D657822DBEC49008B5703 /* MarvelXPUITests */,
+				D88C371B22E4F30900D48B2E /* MarvelXP Widget */,
 				D84D655422DBEC43008B5703 /* Products */,
 				12226FEB670B776AFC99AC27 /* Pods */,
 				6F2AA81A6D0DAF80EAEBDFD7 /* Frameworks */,
@@ -567,6 +622,7 @@
 				D84D655322DBEC43008B5703 /* MarvelXP.app */,
 				D84D656A22DBEC49008B5703 /* MarvelXPTests.xctest */,
 				D84D657522DBEC49008B5703 /* MarvelXPUITests.xctest */,
+				D88C371822E4F30900D48B2E /* MarvelXP Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -683,6 +739,37 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		D88C371B22E4F30900D48B2E /* MarvelXP Widget */ = {
+			isa = PBXGroup;
+			children = (
+				D88C372E22E4FDDE00D48B2E /* Entity */,
+				D88C372D22E4FDD300D48B2E /* Repository */,
+				D88C371C22E4F30900D48B2E /* TodayViewController.swift */,
+				D88C371E22E4F30900D48B2E /* MainInterface.storyboard */,
+				D88C372122E4F30900D48B2E /* Info.plist */,
+			);
+			path = "MarvelXP Widget";
+			sourceTree = "<group>";
+		};
+		D88C372D22E4FDD300D48B2E /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D88C372B22E4FD8E00D48B2E /* WidgetRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D88C372E22E4FDDE00D48B2E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D88C373322E4FE2B00D48B2E /* WidgetBaseResponseEntity.swift */,
+				D88C373522E4FE3900D48B2E /* WidgetContainerEntity.swift */,
+				D88C372F22E4FDF400D48B2E /* WidgetCharacterEntity.swift */,
+				D88C373122E4FE0800D48B2E /* WidgetThumbnailEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		D8DB157922E252F500B0EA3F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,10 +792,12 @@
 				D84D655022DBEC43008B5703 /* Frameworks */,
 				D84D655122DBEC43008B5703 /* Resources */,
 				D835D9D822DE8E7300358E40 /* Embed Frameworks */,
+				D88C372822E4F30900D48B2E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D88C372322E4F30900D48B2E /* PBXTargetDependency */,
 			);
 			name = MarvelXP;
 			productName = MarvelXP;
@@ -753,6 +842,23 @@
 			productReference = D84D657522DBEC49008B5703 /* MarvelXPUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D88C371722E4F30900D48B2E /* MarvelXP Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D88C372722E4F30900D48B2E /* Build configuration list for PBXNativeTarget "MarvelXP Widget" */;
+			buildPhases = (
+				D88C371422E4F30900D48B2E /* Sources */,
+				D88C371522E4F30900D48B2E /* Frameworks */,
+				D88C371622E4F30900D48B2E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MarvelXP Widget";
+			productName = "MarvelXP Widget";
+			productReference = D88C371822E4F30900D48B2E /* MarvelXP Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -774,6 +880,9 @@
 						CreatedOnToolsVersion = 10.2.1;
 						TestTargetID = D84D655222DBEC43008B5703;
 					};
+					D88C371722E4F30900D48B2E = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 				};
 			};
 			buildConfigurationList = D84D654E22DBEC43008B5703 /* Build configuration list for PBXProject "MarvelXP" */;
@@ -792,6 +901,7 @@
 				D84D655222DBEC43008B5703 /* MarvelXP */,
 				D84D656922DBEC49008B5703 /* MarvelXPTests */,
 				D84D657422DBEC49008B5703 /* MarvelXPUITests */,
+				D88C371722E4F30900D48B2E /* MarvelXP Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -831,6 +941,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D88C371622E4F30900D48B2E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D88C372022E4F30900D48B2E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,6 +1111,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D88C371422E4F30900D48B2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D88C371D22E4F30900D48B2E /* TodayViewController.swift in Sources */,
+				D88C373022E4FDF400D48B2E /* WidgetCharacterEntity.swift in Sources */,
+				D88C373622E4FE3900D48B2E /* WidgetContainerEntity.swift in Sources */,
+				D88C372C22E4FD8E00D48B2E /* WidgetRepository.swift in Sources */,
+				D88C373222E4FE0800D48B2E /* WidgetThumbnailEntity.swift in Sources */,
+				D88C373422E4FE2B00D48B2E /* WidgetBaseResponseEntity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1005,6 +1136,11 @@
 			isa = PBXTargetDependency;
 			target = D84D655222DBEC43008B5703 /* MarvelXP */;
 			targetProxy = D84D657622DBEC49008B5703 /* PBXContainerItemProxy */;
+		};
+		D88C372322E4F30900D48B2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D88C371722E4F30900D48B2E /* MarvelXP Widget */;
+			targetProxy = D88C372222E4F30900D48B2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1023,6 +1159,14 @@
 				D84D656322DBEC49008B5703 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D88C371E22E4F30900D48B2E /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D88C371F22E4F30900D48B2E /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1148,6 +1292,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 516945E282416F6DCCDD4BE5 /* Pods-MarvelXP.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9QSTG3492K;
@@ -1167,6 +1312,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9522233EAA7D7C0D54F9F6E0 /* Pods-MarvelXP.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9QSTG3492K;
@@ -1268,6 +1414,44 @@
 			};
 			name = Release;
 		};
+		D88C372522E4F30900D48B2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9QSTG3492K;
+				INFOPLIST_FILE = "MarvelXP Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RogerSanoli.MarvelXP.MarvelXP-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D88C372622E4F30900D48B2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9QSTG3492K;
+				INFOPLIST_FILE = "MarvelXP Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "RogerSanoli.MarvelXP.MarvelXP-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1303,6 +1487,15 @@
 			buildConfigurations = (
 				D84D658522DBEC49008B5703 /* Debug */,
 				D84D658622DBEC49008B5703 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D88C372722E4F30900D48B2E /* Build configuration list for PBXNativeTarget "MarvelXP Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D88C372522E4F30900D48B2E /* Debug */,
+				D88C372622E4F30900D48B2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

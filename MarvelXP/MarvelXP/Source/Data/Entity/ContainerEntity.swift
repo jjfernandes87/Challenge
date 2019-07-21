@@ -10,6 +10,6 @@ import Foundation
 import RogueKit
 
 public struct ContainerEntity<T: Entity>: Entity {
-    var results: [T]?
-    var total: Int?
+    public var results: [T]?
+    public var total: Int?
 }

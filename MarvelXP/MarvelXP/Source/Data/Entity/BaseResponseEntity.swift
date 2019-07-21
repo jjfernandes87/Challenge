@@ -12,5 +12,5 @@ import RogueKit
 public typealias ListResult<T: Entity> = Result<BaseResponseEntity<T>, Error>
 
 public struct BaseResponseEntity<T: Entity>: Entity {
-    var data: ContainerEntity<T>?
+    public var data: ContainerEntity<T>?
 }
