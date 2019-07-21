@@ -78,6 +78,7 @@ class CharacterDetailPresenterTests: XCTestCase {
     func testAddFavorite() {
         self.addFavoritePromise = expectation(description: "The view should update the favorite element")
         let characterMock = CharacterEntity(id: 6, name: "Storm", description: "Coolest X-men", thumbnail: nil, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
+        self.presenter.addFavoriteObserver(true)
         self.presenter.processCharacter(characterMock)
         self.presenter.processAddFavorite(6)
         self.wait(for: [self.addFavoritePromise!], timeout: timeout)
@@ -85,6 +86,7 @@ class CharacterDetailPresenterTests: XCTestCase {
     
     func testRemoveFavorite() {
         let characterMock = CharacterEntity(id: 6, name: "Storm", description: "Coolest X-men", thumbnail: nil, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
+        self.presenter.addFavoriteObserver(true)
         self.presenter.processCharacter(characterMock)
         self.removeFavoritePromise = expectation(description: "The view should update the favorite element")
         self.presenter.processRemoveFavorite(6)
