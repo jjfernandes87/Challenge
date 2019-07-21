@@ -52,6 +52,12 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
     
     override func viewDidAppear(_ animated: Bool) {
         self.collectionView.setCollectionViewLayout(CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation), animated: false)
+        
+        let widgetCharacterID = UserDefaults.standard.integer(forKey: "widgetCharacterID")
+        if widgetCharacterID != 0 {
+            UserDefaults.standard.removeObject(forKey: "widgetCharacterID")
+            self.openDetailViewController(widgetCharacterID)
+        }
     }
     
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -131,6 +137,15 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
             let storyboard = UIStoryboard(name: "MarvelXP", bundle: nil)
             return storyboard.instantiateViewController(withIdentifier: "CharacterDetailNavigation") as? UINavigationController
         }
+    }
+    
+    private func openDetailViewController(_ characterID: Int) {
+        guard let navigationVC = getDetailViewControler(),
+            let detailViewController = navigationVC.viewControllers.first as? CharacterDetailViewController
+            else { return }
+        detailViewController.characterID = characterID
+        detailViewController.isFavoriteDetail = false
+        self.splitViewController?.showDetailViewController(navigationVC, sender: nil)
     }
 }
 
@@ -226,12 +241,7 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let navigationVC = getDetailViewControler(),
-            let detailViewController = navigationVC.viewControllers.first as? CharacterDetailViewController
-            else { return }
-        detailViewController.characterID = self.characterViewModels[indexPath.row].id
-        detailViewController.isFavoriteDetail = false
-        self.splitViewController?.showDetailViewController(navigationVC, sender: nil)
+        self.openDetailViewController(self.characterViewModels[indexPath.row].id)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
