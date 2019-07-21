@@ -89,6 +89,7 @@
 		D84D656122DBEC49008B5703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D84D656022DBEC49008B5703 /* Assets.xcassets */; };
 		D84D656422DBEC49008B5703 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D84D656222DBEC49008B5703 /* LaunchScreen.storyboard */; };
 		D84D657A22DBEC49008B5703 /* MarvelXPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D657922DBEC49008B5703 /* MarvelXPUITests.swift */; };
+		D856FEBA22E4230800B32956 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D856FEB922E4230800B32956 /* CollectionViewLayout.swift */; };
 		D877427A22E2ACFD0037C48B /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D877427922E2ACFD0037C48B /* ErrorView.xib */; };
 		D8DB157822E2522A00B0EA3F /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DB157722E2522A00B0EA3F /* MainSplitViewController.swift */; };
 		F817732F6A27DFECAFBE2D8A /* Pods_MarvelXPUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90DB78CE55A78D4A732841 /* Pods_MarvelXPUITests.framework */; };
@@ -219,6 +220,7 @@
 		D84D657522DBEC49008B5703 /* MarvelXPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelXPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D657922DBEC49008B5703 /* MarvelXPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelXPUITests.swift; sourceTree = "<group>"; };
 		D84D657B22DBEC49008B5703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D856FEB922E4230800B32956 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		D877427922E2ACFD0037C48B /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
 		D8DB157722E2522A00B0EA3F /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		FFF1ADBE9AF39E7D7B800597 /* Pods-MarvelXPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelXPTests.debug.xcconfig"; path = "Target Support Files/Pods-MarvelXPTests/Pods-MarvelXPTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -279,14 +281,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D800D24C22E2A99300E702C7 /* View */ = {
+		D800D24C22E2A99300E702C7 /* ErrorView */ = {
 			isa = PBXGroup;
 			children = (
-				D8DB157722E2522A00B0EA3F /* MainSplitViewController.swift */,
 				D800D24A22E2A98400E702C7 /* ErrorView.swift */,
 				D877427922E2ACFD0037C48B /* ErrorView.xib */,
 			);
-			path = View;
+			path = ErrorView;
 			sourceTree = "<group>";
 		};
 		D835D9A122DD41ED00358E40 /* Data */ = {
@@ -678,7 +679,9 @@
 		D8DB157922E252F500B0EA3F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D800D24C22E2A99300E702C7 /* View */,
+				D8DB157722E2522A00B0EA3F /* MainSplitViewController.swift */,
+				D856FEB922E4230800B32956 /* CollectionViewLayout.swift */,
+				D800D24C22E2A99300E702C7 /* ErrorView */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -914,6 +917,7 @@
 				D835D99422DD333800358E40 /* CharacterEntity.swift in Sources */,
 				D835DA7922E229F900358E40 /* FavoriteCell.swift in Sources */,
 				D835DA5F22E1314100358E40 /* SerieListViewModel.swift in Sources */,
+				D856FEBA22E4230800B32956 /* CollectionViewLayout.swift in Sources */,
 				D835DA5D22E1308F00358E40 /* ComicListViewModel.swift in Sources */,
 				D835DA5722E12F1800358E40 /* CharacterDetailViewModel.swift in Sources */,
 				D835DA1222DFC4F800358E40 /* CharacterDetailViewControllerProtocol.swift in Sources */,

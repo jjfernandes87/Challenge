@@ -14,6 +14,7 @@ class CharacterListPresenterTests: XCTestCase {
     
     private var presenter: CharacterListPresenter!
     
+    private let timeout = 30.0
     private var fetchPromise: XCTestExpectation?
     private var emptyPromise: XCTestExpectation?
     private var addFavoritePromise: XCTestExpectation?
@@ -38,13 +39,13 @@ class CharacterListPresenterTests: XCTestCase {
         let thumbnailMock = ThumbnailEntity(path: "www.somepath.com/file", extension: "jpg")
         let characterMock = CharacterEntity(id: 6, name: "Storm", description: "Coolest X-men", thumbnail: thumbnailMock, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
         self.presenter.processCharacters([characterMock], hasMore: false)
-        self.wait(for: [self.fetchPromise!], timeout: 5)
+        self.wait(for: [self.fetchPromise!], timeout: timeout)
     }
     
     func testEmptyState() {
         self.emptyPromise = expectation(description: "The view should alert an empty state")
         self.presenter.processCharacters([], hasMore: false)
-        self.wait(for: [self.emptyPromise!], timeout: 5)
+        self.wait(for: [self.emptyPromise!], timeout: timeout)
     }
     
     func testAddFavorite() {
@@ -52,7 +53,7 @@ class CharacterListPresenterTests: XCTestCase {
         self.presenter.processCharacters([characterMock], hasMore: false)
         self.addFavoritePromise = expectation(description: "The view should update the favorite element")
         self.presenter.processAddFavorite(6)
-        self.wait(for: [self.addFavoritePromise!], timeout: 5)
+        self.wait(for: [self.addFavoritePromise!], timeout: timeout)
     }
     
     func testRemoveFavorite() {
@@ -60,31 +61,31 @@ class CharacterListPresenterTests: XCTestCase {
         self.presenter.processCharacters([characterMock], hasMore: false)
         self.removeFavoritePromise = expectation(description: "The view should update the favorite element")
         self.presenter.processAddFavorite(6)
-        self.wait(for: [self.removeFavoritePromise!], timeout: 5)
+        self.wait(for: [self.removeFavoritePromise!], timeout: timeout)
     }
     
     func testInternetError() {
         self.internetErrorPromise = expectation(description: "The view should alert an internet error")
         self.presenter.processError(.internetConnection)
-        self.wait(for: [self.internetErrorPromise!], timeout: 5)
+        self.wait(for: [self.internetErrorPromise!], timeout: timeout)
     }
     
     func testFetchError() {
         self.fetchErrorPromise = expectation(description: "The view should alert a fetch error")
         self.presenter.processError(.fetch)
-        self.wait(for: [self.fetchErrorPromise!], timeout: 5)
+        self.wait(for: [self.fetchErrorPromise!], timeout: timeout)
     }
     
     func testAddFavoriteError() {
         self.addFavoriteErrorPromise = expectation(description: "The view should alert an add favorite error")
         self.presenter.processError(.addFavorite)
-        self.wait(for: [self.addFavoriteErrorPromise!], timeout: 5)
+        self.wait(for: [self.addFavoriteErrorPromise!], timeout: timeout)
     }
     
     func testRemoveFavoriteError() {
         self.removeFavoriteErrorPromise = expectation(description: "The view should alert an remove favorite error")
         self.presenter.processError(.removeFavorite)
-        self.wait(for: [self.removeFavoriteErrorPromise!], timeout: 5)
+        self.wait(for: [self.removeFavoriteErrorPromise!], timeout: timeout)
     }
 }
 

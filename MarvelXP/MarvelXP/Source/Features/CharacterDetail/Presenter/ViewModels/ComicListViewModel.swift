@@ -12,14 +12,22 @@ public struct ComicListViewModel {
     
     var isLoading: Bool
     var comicList: [ComicViewModel]
+    var hasError: Bool
+    var isEmpty: Bool
     
-    init(_ entities: [ComicEntity]?) {
-        isLoading = entities == nil
-        comicList = []
+    init() {
+        self.init(nil, hasError: false)
+    }
+    
+    init(_ entities: [ComicEntity]?, hasError: Bool) {
+        self.isLoading = entities == nil
+        self.comicList = []
+        self.hasError = hasError
+        self.isEmpty = entities?.isEmpty ?? false
         
         guard let comicEntityList = entities else { return }
         for comicEntity in comicEntityList {
-            comicList.append(ComicViewModel(comicEntity))
+            self.comicList.append(ComicViewModel(comicEntity))
         }
     }
 }

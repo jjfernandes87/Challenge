@@ -14,7 +14,8 @@ public enum CharacterDetailPresenterErrorType {
     fetchComics,
     fetchSeries,
     addFavorite,
-    removeFavorite
+    removeFavorite,
+    internetConnection
 }
 
 protocol CharacterDetailPresenterProtocol: DKAbstractPresenter {

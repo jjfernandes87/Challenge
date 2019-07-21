@@ -56,6 +56,11 @@ extension CharacterListInteractor: CharacterListInteractorProtocol {
     
     func addFavorite(characterID: Int) {
         
+        guard Reachability.isConnectedToNetwork() else {
+            self.presenter?.processError(.internetConnection)
+            return
+        }
+        
         RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
             switch result {
             case let .success(characterList):

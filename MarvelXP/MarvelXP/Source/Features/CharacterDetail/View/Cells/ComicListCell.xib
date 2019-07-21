@@ -16,29 +16,39 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicListCell" rowHeight="209" id="ZgY-Za-bwt" customClass="CategoryListCell" customModule="MarvelXP" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="484" height="216"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComicListCell" rowHeight="209" id="ZgY-Za-bwt" customClass="ComicListCell" customModule="MarvelXP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="484" height="326"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZgY-Za-bwt" id="6K4-h1-w2A">
-                <rect key="frame" x="0.0" y="0.0" width="484" height="215.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="484" height="325.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfh-Ca-gq2">
-                        <rect key="frame" x="15" y="8" width="73" height="37.5"/>
+                        <rect key="frame" x="20" y="8" width="73" height="37.5"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73" id="19I-sT-YTG"/>
                             <constraint firstAttribute="height" constant="37.5" id="ncN-oq-SgF"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Marvel-BoldItalic" family="Marvel" pointSize="30"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="textColor" red="0.85490196080000003" green="0.21698558330000001" blue="0.2038683295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="-2" height="-2"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="vS2-Zl-NCJ">
+                        <rect key="frame" x="50" y="145.5" width="384" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="OGa-eH-k9s"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Marvel-BoldItalic" family="Marvel" pointSize="30"/>
+                        <color key="textColor" red="0.85490196080000003" green="0.21698558330000001" blue="0.2038683295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="-2" height="-2"/>
                     </label>
                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2Sb-uu-xT4">
-                        <rect key="frame" x="15" y="50.5" width="454" height="150"/>
+                        <rect key="frame" x="15" y="50.5" width="454" height="270"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="150" id="o5b-qn-PNL"/>
+                            <constraint firstAttribute="height" constant="270" id="o5b-qn-PNL"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sXq-T3-x3k">
                             <size key="itemSize" width="50" height="50"/>
@@ -48,7 +58,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IFd-J3-jcb">
-                        <rect key="frame" x="223.5" y="107" width="37" height="37"/>
+                        <rect key="frame" x="223.5" y="167" width="37" height="37"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="37" id="J33-jO-dF7"/>
                             <constraint firstAttribute="height" constant="37" id="hQS-KP-RQT"/>
@@ -58,20 +68,25 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Qfh-Ca-gq2" firstAttribute="top" secondItem="6K4-h1-w2A" secondAttribute="top" constant="8" id="AIy-Sn-VLM"/>
+                    <constraint firstAttribute="trailing" secondItem="vS2-Zl-NCJ" secondAttribute="trailing" constant="50" id="HZ6-kG-qdL"/>
                     <constraint firstAttribute="trailing" secondItem="2Sb-uu-xT4" secondAttribute="trailing" constant="15" id="Ips-UU-yLG"/>
-                    <constraint firstItem="Qfh-Ca-gq2" firstAttribute="leading" secondItem="6K4-h1-w2A" secondAttribute="leading" constant="15" id="KZX-ft-7Uf"/>
+                    <constraint firstItem="Qfh-Ca-gq2" firstAttribute="leading" secondItem="6K4-h1-w2A" secondAttribute="leading" constant="20" id="KZX-ft-7Uf"/>
+                    <constraint firstItem="vS2-Zl-NCJ" firstAttribute="centerY" secondItem="2Sb-uu-xT4" secondAttribute="centerY" id="WGe-Q0-11e"/>
                     <constraint firstItem="IFd-J3-jcb" firstAttribute="centerY" secondItem="2Sb-uu-xT4" secondAttribute="centerY" id="YiE-z2-jco"/>
-                    <constraint firstAttribute="bottom" secondItem="2Sb-uu-xT4" secondAttribute="bottom" constant="15" id="aGx-id-MeD"/>
+                    <constraint firstAttribute="bottom" secondItem="2Sb-uu-xT4" secondAttribute="bottom" constant="5" id="aGx-id-MeD"/>
                     <constraint firstItem="IFd-J3-jcb" firstAttribute="centerX" secondItem="2Sb-uu-xT4" secondAttribute="centerX" id="cO7-aF-qXl"/>
                     <constraint firstItem="2Sb-uu-xT4" firstAttribute="leading" secondItem="6K4-h1-w2A" secondAttribute="leading" constant="15" id="h0k-0h-LAA"/>
                     <constraint firstItem="2Sb-uu-xT4" firstAttribute="top" secondItem="Qfh-Ca-gq2" secondAttribute="bottom" constant="5" id="ikP-0y-vuq"/>
+                    <constraint firstItem="vS2-Zl-NCJ" firstAttribute="leading" secondItem="6K4-h1-w2A" secondAttribute="leading" constant="50" id="tX8-ss-Mc5"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <accessibility key="accessibilityConfiguration" identifier="CategoryList">
                 <bool key="isElement" value="YES"/>
             </accessibility>
             <connections>
                 <outlet property="collectionView" destination="2Sb-uu-xT4" id="Ycz-Ax-jyC"/>
+                <outlet property="errorLabel" destination="vS2-Zl-NCJ" id="PAt-Xq-oou"/>
                 <outlet property="loading" destination="IFd-J3-jcb" id="Qad-XP-1lj"/>
             </connections>
             <point key="canvasLocation" x="-201.44927536231884" y="-11.71875"/>

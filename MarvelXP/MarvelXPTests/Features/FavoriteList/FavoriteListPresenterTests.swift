@@ -14,6 +14,7 @@ class FavoriteListPresenterTests: XCTestCase {
     
     private var presenter: FavoriteListPresenter!
     
+    private let timeout = 30.0
     private var fetchPromise: XCTestExpectation?
     private var emptyPromise: XCTestExpectation?
     private var favoritePromise: XCTestExpectation?
@@ -35,13 +36,13 @@ class FavoriteListPresenterTests: XCTestCase {
         let thumbnailMock = ThumbnailEntity(path: "www.somepath.com/file", extension: "jpg")
         let characterMock = CharacterEntity(id: 7, name: "Gambit", description: "Also a cool X-men", thumbnail: thumbnailMock, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
         self.presenter.processFavoriteList([characterMock])
-        self.wait(for: [self.fetchPromise!], timeout: 5)
+        self.wait(for: [self.fetchPromise!], timeout: timeout)
     }
     
     func testEmptyState() {
         self.emptyPromise = expectation(description: "The view should alert an empty state")
         self.presenter.processFavoriteList([])
-        self.wait(for: [self.emptyPromise!], timeout: 5)
+        self.wait(for: [self.emptyPromise!], timeout: timeout)
     }
     
     func testRemoveFavorite() {
@@ -49,19 +50,19 @@ class FavoriteListPresenterTests: XCTestCase {
         self.presenter.processFavoriteList([characterMock])
         self.favoritePromise = expectation(description: "The view should update the favorite element")
         self.presenter.processRemoveFavorite(7)
-        self.wait(for: [self.favoritePromise!], timeout: 5)
+        self.wait(for: [self.favoritePromise!], timeout: timeout)
     }
     
     func testFetchError() {
         self.fetchErrorPromise = expectation(description: "The view should alert a fetch error")
         self.presenter.processError(.fetchFavorites)
-        self.wait(for: [self.fetchErrorPromise!], timeout: 5)
+        self.wait(for: [self.fetchErrorPromise!], timeout: timeout)
     }
     
     func testRemoveFavoriteError() {
         self.removeFavoriteErrorPromise = expectation(description: "The view should alert a remove favorite error")
         self.presenter.processError(.removeFavorite)
-        self.wait(for: [self.removeFavoriteErrorPromise!], timeout: 5)
+        self.wait(for: [self.removeFavoriteErrorPromise!], timeout: timeout)
     }
 }
 
@@ -85,7 +86,6 @@ extension FavoriteListPresenterTests: FavoriteListViewControllerProtocol {
         XCTAssertNotNil(viewModel.isFavorite, "Should have favorite info")
         
         self.fetchPromise?.fulfill()
-        self.favoritePromise?.fulfill()
     }
     
     func showFetchError() {
@@ -94,6 +94,10 @@ extension FavoriteListPresenterTests: FavoriteListViewControllerProtocol {
     
     func alertFavoriteError() {
         self.removeFavoriteErrorPromise?.fulfill()
+    }
+    
+    func updateFavorites() {
+        self.favoritePromise?.fulfill()
     }
     
     func setInteractor(_ abstractInteractor: DKAbstractInteractor) {}

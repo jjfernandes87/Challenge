@@ -46,6 +46,7 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
         self.setupSearchBar()
         self.setupCollectionView()
         self.setupRefreshControl()
+        self.setupErrorView()
         self.refresh()
     }
     
@@ -69,16 +70,8 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
         self.collectionView.register(UINib(nibName: "CharacterCell", bundle: nil), forCellWithReuseIdentifier: "CharacterCell")
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
-        let screenSize = CGSize.screenSize(forcePortrait: true)
-        let border: CGFloat = 10
-        let cellSize = CGSize(width: screenSize.width/2 - border, height: screenSize.width/2 - border)
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = cellSize
-        layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        layout.minimumLineSpacing = 1.0
-        layout.minimumInteritemSpacing = 1.0
+
+        let layout = CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation)
         collectionView.setCollectionViewLayout(layout, animated: false)
     }
     
@@ -93,10 +86,23 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
         self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
+    private func setupErrorView() {
+        self.errorView.onTryAgain = {
+            if !self.isLoading {
+                self.state = .loading
+                self.isLoading = true
+                self.async {
+                    self.interactor?.fetchNextPage(searchFilter: self.searchText)
+                }
+            }
+        }
+    }
+    
     @objc private func refresh() {
         
         if !self.isLoading {
             
+            self.isLoading = true
             self.hasMore = true
             self.state = .loading
             
@@ -109,19 +115,24 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
         }
     }
     
-    private func getDetailViewControler() -> CharacterDetailViewController? {
+    private func getDetailViewControler() -> UINavigationController? {
         if (self.splitViewController?.viewControllers.count ?? 0) > 1 {
-            return self.splitViewController?.viewControllers[1] as? CharacterDetailViewController
+            return self.splitViewController?.viewControllers[1] as? UINavigationController
         } else {
             let storyboard = UIStoryboard(name: "MarvelXP", bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: "CharacterDetailViewController") as? CharacterDetailViewController
+            return storyboard.instantiateViewController(withIdentifier: "CharacterDetailNavigation") as? UINavigationController
         }
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.collectionView.setCollectionViewLayout(CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation), animated: false)
     }
 }
 
 extension CharacterListViewController: CharacterListViewControllerProtocol {
     
     func showEmptyState() {
+        self.isLoading = false
         self.errorView.error = .empty
         self.state = .error
     }
@@ -136,11 +147,13 @@ extension CharacterListViewController: CharacterListViewControllerProtocol {
     }
     
     func showFetchError() {
+        self.isLoading = false
         self.errorView.error = .unknow
         self.state = .error
     }
     
     func showInternetError() {
+        self.isLoading = false
         self.errorView.error = .internet
         self.state = .error
     }
@@ -203,11 +216,11 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("------> selecionou o \(self.characterViewModels[indexPath.row].name). id: \(self.characterViewModels[indexPath.row].id)")
-        
-        guard let detailViewController = getDetailViewControler() else { return }
-        //detailViewController.characterID = self.characterViewModels[indexPath.row].id
-        self.splitViewController?.showDetailViewController(detailViewController, sender: nil)
+        guard let navigationVC = getDetailViewControler(),
+            let detailViewController = navigationVC.viewControllers.first as? CharacterDetailViewController
+            else { return }
+        detailViewController.characterID = self.characterViewModels[indexPath.row].id
+        self.splitViewController?.showDetailViewController(navigationVC, sender: nil)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

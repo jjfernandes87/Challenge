@@ -60,11 +60,8 @@ extension FavoriteListPresenter: FavoriteListPresenterProtocol {
 
 extension FavoriteListPresenter: FavoriteObservable {
     func favoriteUpdated(characterID: Int) {
-        if let index = self.favoriteViewModels.firstIndex(where: { $0.id == characterID }) {
-            self.favoriteViewModels[index].isFavorite.toggle()
-            sync {
-                self.view?.showFavoriteList(self.favoriteViewModels)
-            }
+        sync {
+            self.view?.updateFavorites()
         }
     }
 }

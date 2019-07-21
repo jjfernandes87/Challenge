@@ -12,8 +12,9 @@ import XCTest
 
 class CharacterDetailInteractorTests: XCTestCase {
 
-    private let timeout = 60.0
     private var interactor: CharacterDetailInteractor!
+    
+    private let timeout = 60.0
     private var fetchCharacterPromise: XCTestExpectation?
     private var fetchComicsPromise: XCTestExpectation?
     private var fetchSeriesPromise: XCTestExpectation?
@@ -30,7 +31,7 @@ class CharacterDetailInteractorTests: XCTestCase {
             self.removeAllPromise?.fulfill()
         }
         
-        wait(for: [removeAllPromise!], timeout: 30)
+        wait(for: [removeAllPromise!], timeout: timeout)
         
         interactor = CharacterDetailInteractor()
         interactor.setPresenter(self)
@@ -111,6 +112,8 @@ extension CharacterDetailInteractorTests: CharacterDetailPresenterProtocol {
             XCTFail("Error adding favorite.")
         case .removeFavorite:
             XCTFail("Error removing favorite.")
+        case .internetConnection:
+            XCTFail("Internet error.")
         }
     }
     

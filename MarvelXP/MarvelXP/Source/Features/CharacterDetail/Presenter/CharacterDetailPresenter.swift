@@ -26,47 +26,22 @@ class CharacterDetailPresenter: DKPresenter {
 
 extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
     func processCharacter(_ character: CharacterEntity) {
-        self.character = CharacterDetailViewModel(character)
-        
-        guard let character = self.character else { return }
+        let viewModel = CharacterDetailViewModel(character, hasError: false)
+        self.character = viewModel
         sync {
-            self.view?.showCharacter(character)
+            self.view?.showCharacter(viewModel)
         }
     }
     
     func processComics(_ comicList: [ComicEntity]) {
-        var viewModels: [ComicViewModel] = []
-        
-        for entity in comicList {
-            viewModels.append(ComicViewModel(entity))
-        }
-        
-        if viewModels.isEmpty {
-            sync {
-                self.view?.showEmptyComics()
-            }
-        } else {
-            sync {
-                self.view?.showComics(viewModels)
-            }
+        sync {
+            self.view?.showComics(ComicListViewModel(comicList, hasError: false))
         }
     }
     
     func processSeries(_ serieList: [SerieEntity]) {
-        var viewModels: [SerieViewModel] = []
-        
-        for entity in serieList {
-            viewModels.append(SerieViewModel(entity))
-        }
-        
-        if viewModels.isEmpty {
-            sync {
-                self.view?.showEmptySeries()
-            }
-        } else {
-            sync {
-                self.view?.showSeries(viewModels)
-            }
+        sync {
+            self.view?.showSeries(SerieListViewModel(serieList, hasError: false))
         }
     }
     
@@ -74,15 +49,15 @@ extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
         switch errorType {
         case .fetchCharacter:
             sync {
-                self.view?.showFetchError()
+                self.view?.showCharacter(CharacterDetailViewModel(nil, hasError: true))
             }
         case .fetchComics:
             sync {
-                self.view?.showFetchComicsError()
+                self.view?.showComics(ComicListViewModel(nil, hasError: true))
             }
         case .fetchSeries:
             sync {
-                self.view?.showFetchSeriesError()
+                self.view?.showSeries(SerieListViewModel(nil, hasError: true))
             }
         case .addFavorite:
             sync {
@@ -91,6 +66,10 @@ extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
         case .removeFavorite:
             sync {
                 self.view?.alertFavoriteError(adding: false)
+            }
+        case .internetConnection:
+            sync {
+                self.view?.showInternetError()
             }
         }
     }

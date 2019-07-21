@@ -15,7 +15,7 @@ class MainSplitViewController: UISplitViewController, UISplitViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.preferredDisplayMode = .allVisible
-        self.preferredPrimaryColumnWidthFraction = 0.3
+        self.preferredPrimaryColumnWidthFraction = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad ? 0.3 : 0.4
         self.delegate = self
     }
     

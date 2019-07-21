@@ -11,13 +11,9 @@ import DungeonKit
 
 protocol CharacterDetailViewControllerProtocol: DKAbstractView {
     func showCharacter(_ viewModel: CharacterDetailViewModel)
-    func showFetchError()
-    func showComics(_ viewModels: [ComicViewModel])
-    func showEmptyComics()
-    func showFetchComicsError()
-    func showSeries(_ viewModels: [SerieViewModel])
-    func showEmptySeries()
-    func showFetchSeriesError()
+    func showComics(_ viewModel: ComicListViewModel)
+    func showSeries(_ viewModel: SerieListViewModel)
     func alertFavoriteError(adding: Bool)
     func toogleFavorite()
+    func showInternetError()
 }

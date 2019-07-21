@@ -12,14 +12,22 @@ public struct SerieListViewModel {
     
     var isLoading: Bool
     var serieList: [SerieViewModel]
+    var hasError: Bool
+    var isEmpty: Bool
     
-    init(_ entities: [SerieEntity]?) {
-        isLoading = entities == nil
-        serieList = []
+    init() {
+        self.init(nil, hasError: false)
+    }
+    
+    init(_ entities: [SerieEntity]?, hasError: Bool) {
+        self.isLoading = entities == nil
+        self.serieList = []
+        self.hasError = hasError
+        self.isEmpty = entities?.isEmpty ?? false
         
         guard let serieEntityList = entities else { return }
         for serieEntity in serieEntityList {
-            serieList.append(SerieViewModel(serieEntity))
+            self.serieList.append(SerieViewModel(serieEntity))
         }
     }
 }

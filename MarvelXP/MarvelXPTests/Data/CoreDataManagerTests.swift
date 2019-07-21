@@ -11,6 +11,7 @@ import XCTest
 
 class CoreDataManagerTests: XCTestCase {
     
+    private let timeout = 30.0
     private var removeAllPromise: XCTestExpectation?
     
     override func setUp() {
@@ -21,7 +22,7 @@ class CoreDataManagerTests: XCTestCase {
             self.removeAllPromise?.fulfill()
         }
         
-        wait(for: [removeAllPromise!], timeout: 5)
+        wait(for: [removeAllPromise!], timeout: timeout)
     }
 
     override func tearDown() {}
@@ -71,7 +72,7 @@ class CoreDataManagerTests: XCTestCase {
             }
         }
         
-        self.wait(for: [promise], timeout: 5)
+        self.wait(for: [promise], timeout: timeout)
     }
     
     
@@ -95,7 +96,7 @@ class CoreDataManagerTests: XCTestCase {
             }
         }
         
-        self.wait(for: [promise], timeout: 5)
+        self.wait(for: [promise], timeout: timeout)
     }
     
     func testFetchByID() {
@@ -110,6 +111,6 @@ class CoreDataManagerTests: XCTestCase {
             })
         }
         
-        self.wait(for: [promise], timeout: 5)
+        self.wait(for: [promise], timeout: timeout)
     }
 }

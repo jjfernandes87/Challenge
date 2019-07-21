@@ -12,8 +12,9 @@ import XCTest
 
 class FavoriteListInteractorTests: XCTestCase {
     
-    private let timeout = 60.0
     private var interactor: FavoriteListInteractor!
+    
+    private let timeout = 60.0
     private var fetchPromise: XCTestExpectation?
     private var removePromise: XCTestExpectation?
     
@@ -27,7 +28,7 @@ class FavoriteListInteractorTests: XCTestCase {
             self.removeAllPromise?.fulfill()
         }
         
-        wait(for: [removeAllPromise!], timeout: 30)
+        wait(for: [removeAllPromise!], timeout: timeout)
         
         interactor = FavoriteListInteractor()
         interactor.setPresenter(self)

@@ -19,7 +19,9 @@ public enum ErrorViewType {
     
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var errorImage: UIImageView!
+    @IBOutlet private weak var tryAgainButton: UIButton!
     
+    public var onTryAgain: (() -> Void)?
     public var error: ErrorViewType? {
         didSet {
             guard let errorType = error else { return }
@@ -50,5 +52,10 @@ public enum ErrorViewType {
     
     private func create() {
         UIView.fromNib(String(describing: self.classForCoder), base: self).insert(to: self)
+        self.tryAgainButton.setAttributedTitle("Try Again".underline(), for: .normal)
+    }
+    
+    @IBAction func tryAgainPressed(_ sender: Any) {
+        self.onTryAgain?()
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import DungeonKit
 import RogueKit
+import PaladinKit
 
 class CharacterDetailInteractor: DKInteractor {
     fileprivate var presenter: CharacterDetailPresenterProtocol? { return self.getAbstractPresenter() as? CharacterDetailPresenterProtocol }
@@ -20,15 +21,21 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
         CoreDataManager.fetchFavorite(characterID) { [unowned self] (optionalCharacter) in
             if let character = optionalCharacter {
                 self.presenter?.processCharacter(character)
-                
-                if let comics = character.favoriteComics {
+                //TODO: arrumar aqui
+                /*if let comics = character.favoriteComics {
                     self.presenter?.processComics(comics)
                 }
                 
                 if let series = character.favoriteSeries {
                     self.presenter?.processSeries(series)
-                }
+                }*/
             } else {
+                
+                guard Reachability.isConnectedToNetwork() else {
+                    self.presenter?.processError(.internetConnection)
+                    return
+                }
+                
                 self.requestFetchCharacter(characterID: characterID, errorType: .fetchCharacter) { [unowned self] (character: CharacterEntity) in
                      self.presenter?.processCharacter(character)
                 }
@@ -37,18 +44,41 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
     }
     
     func fetchComics(characterID: Int) {
-        self.requestFetchComics(characterID: characterID, errorType: .fetchComics) { (comics) in
+        
+        CoreDataManager.fetchFavorite(characterID) { [unowned self] (optionalCharacter) in
+            guard let character = optionalCharacter,
+                let comics = character.favoriteComics else {
+                    self.requestFetchComics(characterID: characterID, errorType: .fetchComics) { [unowned self] (comics) in
+                        self.presenter?.processComics(comics)
+                    }
+                    return
+            }
+            
             self.presenter?.processComics(comics)
         }
     }
     
     func fetchSeries(characterID: Int) {
-        self.requestFetchSeries(characterID: characterID, errorType: .fetchSeries) { (series) in
+        
+        CoreDataManager.fetchFavorite(characterID) { [unowned self] (optionalCharacter) in
+            guard let character = optionalCharacter,
+                let series = character.favoriteSeries else {
+                    self.requestFetchSeries(characterID: characterID, errorType: .fetchSeries) { [unowned self] (series) in
+                        self.presenter?.processSeries(series)
+                    }
+                    return
+            }
+            
             self.presenter?.processSeries(series)
         }
     }
     
     func addFavorite(characterID: Int) {
+        
+        guard Reachability.isConnectedToNetwork() else {
+            self.presenter?.processError(.internetConnection)
+            return
+        }
         
         var favorite: CharacterEntity = CharacterEntity(id: 0, name: nil, description: nil, thumbnail: nil, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
         
