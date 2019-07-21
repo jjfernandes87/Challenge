@@ -12,16 +12,6 @@ import DungeonKit
 class CharacterDetailPresenter: DKPresenter {
     fileprivate var view: CharacterDetailViewControllerProtocol? { return self.getAbstractView() as? CharacterDetailViewControllerProtocol }
     fileprivate var character: CharacterDetailViewModel?
-    
-    init(isFavoriteDetail: Bool) {
-        super.init()
-        
-        if isFavoriteDetail {
-            FavoriteObserver.shared.favoriteDetail = self
-        } else {
-            FavoriteObserver.shared.characterDetail = self
-        }
-    }
 }
 
 extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
@@ -80,6 +70,14 @@ extension CharacterDetailPresenter: CharacterDetailPresenterProtocol {
     
     func processRemoveFavorite(_ characterID: Int) {
         FavoriteObserver.shared.notifyFavoriteChange(characterID: characterID)
+    }
+    
+    func addFavoriteObserver(_ isFavoriteDetail: Bool) {
+        if isFavoriteDetail {
+            FavoriteObserver.shared.favoriteDetail = self
+        } else {
+            FavoriteObserver.shared.characterDetail = self
+        }
     }
 }
 

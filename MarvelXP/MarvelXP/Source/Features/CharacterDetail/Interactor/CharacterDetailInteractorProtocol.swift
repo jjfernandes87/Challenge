@@ -15,4 +15,5 @@ protocol CharacterDetailInteractorProtocol: DKAbstractInteractor {
     func fetchSeries(characterID: Int)
     func addFavorite(characterID: Int)
     func removeFavorite(characterID: Int)
+    func addFavoriteObserver(_ isFavoriteDetail: Bool)
 }

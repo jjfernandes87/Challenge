@@ -91,6 +91,13 @@
 		D84D657A22DBEC49008B5703 /* MarvelXPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D657922DBEC49008B5703 /* MarvelXPUITests.swift */; };
 		D856FEBA22E4230800B32956 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D856FEB922E4230800B32956 /* CollectionViewLayout.swift */; };
 		D877427A22E2ACFD0037C48B /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D877427922E2ACFD0037C48B /* ErrorView.xib */; };
+		D888ACAD22E436A0000C416B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D655622DBEC43008B5703 /* AppDelegate.swift */; };
+		D888ACAE22E436A0000C416B /* MarvelXP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D84D655D22DBEC43008B5703 /* MarvelXP.xcdatamodeld */; };
+		D888ACAF22E436A0000C416B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D9A822DE8A7100358E40 /* CoreDataManager.swift */; };
+		D888ACB022E436F4000C416B /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99322DD333800358E40 /* CharacterEntity.swift */; };
+		D888ACB122E436F4000C416B /* ComicEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99922DD36DA00358E40 /* ComicEntity.swift */; };
+		D888ACB222E436F4000C416B /* SerieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99B22DD370200358E40 /* SerieEntity.swift */; };
+		D888ACB322E436F4000C416B /* ThumbnailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D835D99722DD355B00358E40 /* ThumbnailEntity.swift */; };
 		D8DB157822E2522A00B0EA3F /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8DB157722E2522A00B0EA3F /* MainSplitViewController.swift */; };
 		F817732F6A27DFECAFBE2D8A /* Pods_MarvelXPUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A90DB78CE55A78D4A732841 /* Pods_MarvelXPUITests.framework */; };
 /* End PBXBuildFile section */
@@ -975,6 +982,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D888ACB022E436F4000C416B /* CharacterEntity.swift in Sources */,
+				D888ACB122E436F4000C416B /* ComicEntity.swift in Sources */,
+				D888ACB222E436F4000C416B /* SerieEntity.swift in Sources */,
+				D888ACB322E436F4000C416B /* ThumbnailEntity.swift in Sources */,
+				D888ACAD22E436A0000C416B /* AppDelegate.swift in Sources */,
+				D888ACAE22E436A0000C416B /* MarvelXP.xcdatamodeld in Sources */,
+				D888ACAF22E436A0000C416B /* CoreDataManager.swift in Sources */,
 				D84D657A22DBEC49008B5703 /* MarvelXPUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -57,14 +57,6 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EtR-Uj-GzU">
-                        <rect key="frame" x="223.5" y="167" width="37" height="37"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="37" id="ZoZ-cy-hNU"/>
-                            <constraint firstAttribute="height" constant="37" id="jXv-Kw-B1Y"/>
-                        </constraints>
-                        <color key="color" red="0.85490196080000003" green="0.21698558330000001" blue="0.2038683295" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </activityIndicatorView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -73,9 +65,7 @@
                     <constraint firstAttribute="bottom" secondItem="Zzy-nd-n9G" secondAttribute="bottom" constant="20" id="XyT-tA-6iW"/>
                     <constraint firstItem="bAQ-by-NXI" firstAttribute="leading" secondItem="dxr-Z8-pwT" secondAttribute="leading" constant="20" id="Z2P-KB-Bzu"/>
                     <constraint firstItem="bAQ-by-NXI" firstAttribute="top" secondItem="dxr-Z8-pwT" secondAttribute="top" constant="8" id="axL-6r-xE1"/>
-                    <constraint firstItem="EtR-Uj-GzU" firstAttribute="centerX" secondItem="Zzy-nd-n9G" secondAttribute="centerX" id="dvZ-Lv-MUd"/>
                     <constraint firstItem="V76-yX-MXJ" firstAttribute="leading" secondItem="dxr-Z8-pwT" secondAttribute="leading" constant="50" id="ocK-pY-Btc"/>
-                    <constraint firstItem="EtR-Uj-GzU" firstAttribute="centerY" secondItem="Zzy-nd-n9G" secondAttribute="centerY" id="qUQ-9u-v2M"/>
                     <constraint firstAttribute="trailing" secondItem="V76-yX-MXJ" secondAttribute="trailing" constant="50" id="s4N-ni-lOq"/>
                     <constraint firstItem="V76-yX-MXJ" firstAttribute="centerY" secondItem="Zzy-nd-n9G" secondAttribute="centerY" id="xaF-zy-lA6"/>
                     <constraint firstItem="Zzy-nd-n9G" firstAttribute="top" secondItem="bAQ-by-NXI" secondAttribute="bottom" constant="5" id="xyH-Xz-wV9"/>
@@ -88,7 +78,6 @@
             <connections>
                 <outlet property="collectionView" destination="Zzy-nd-n9G" id="ya8-58-A7B"/>
                 <outlet property="errorLabel" destination="V76-yX-MXJ" id="mII-7l-kIn"/>
-                <outlet property="loading" destination="EtR-Uj-GzU" id="Ktj-Fv-RZo"/>
             </connections>
             <point key="canvasLocation" x="-201.44927536231884" y="-11.71875"/>
         </tableViewCell>

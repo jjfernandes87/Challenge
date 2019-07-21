@@ -50,6 +50,14 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
         self.refresh()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.collectionView.setCollectionViewLayout(CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation), animated: false)
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.collectionView.setCollectionViewLayout(CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation), animated: false)
+    }
+    
     private func setupNavigationController() {
         let imageView = UIImageView(image:UIImage(named: "logo_navbar"))
         imageView.frame = CGRect(x: imageView.frame.origin.x, y: imageView.frame.origin.y, width: 145, height: 30)
@@ -70,6 +78,7 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
         self.collectionView.register(UINib(nibName: "CharacterCell", bundle: nil), forCellWithReuseIdentifier: "CharacterCell")
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.keyboardDismissMode = .onDrag
 
         let layout = CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation)
         collectionView.setCollectionViewLayout(layout, animated: false)
@@ -123,10 +132,6 @@ class CharacterListViewController: DKViewController<CharacterListSceneFactory> {
             return storyboard.instantiateViewController(withIdentifier: "CharacterDetailNavigation") as? UINavigationController
         }
     }
-    
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        self.collectionView.setCollectionViewLayout(CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation), animated: false)
-    }
 }
 
 extension CharacterListViewController: CharacterListViewControllerProtocol {
@@ -169,7 +174,12 @@ extension CharacterListViewController: UISearchBarDelegate {
         searchTypingTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(searchTextDidChange(timer:)), userInfo: searchText, repeats: false)
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
+    
     @objc private func searchTextDidChange(timer: Timer) {
+        
         var text = timer.userInfo as? String
         
         if text?.trim().isEmpty ?? true {
@@ -220,6 +230,7 @@ extension CharacterListViewController: UICollectionViewDelegate, UICollectionVie
             let detailViewController = navigationVC.viewControllers.first as? CharacterDetailViewController
             else { return }
         detailViewController.characterID = self.characterViewModels[indexPath.row].id
+        detailViewController.isFavoriteDetail = false
         self.splitViewController?.showDetailViewController(navigationVC, sender: nil)
     }
     

@@ -19,16 +19,27 @@ class ComicListCell: UITableViewCell {
     private var initialized = false
     
     public func setup(_ viewModel: ComicListViewModel) {
-        
         self.collectionView.isHidden = viewModel.isLoading && !viewModel.hasError && !viewModel.isEmpty
-        self.loading.isHidden = !viewModel.isLoading
+        self.errorLabel.text = "Loading..."
         
         guard !viewModel.isLoading else { return }
-
-        self.errorLabel.text = viewModel.hasError ? "Error fetching comic data, please try again." : ""
-        self.errorLabel.text = viewModel.isEmpty ? "This character has no comics." : ""
+        
+        self.errorLabel.text = errorLabelText(viewModel)
         self.comics = viewModel.comicList
         self.setupCollectionView()
+    }
+    
+    private func errorLabelText(_ viewModel: ComicListViewModel) -> String {
+        var text = ""
+        
+        if viewModel.hasError {
+            text = "Error fetching comic data, please try again."
+        }
+        else if viewModel.isEmpty {
+            text = "This character has no comics."
+        }
+        
+        return text
     }
     
     private func setupCollectionView() {

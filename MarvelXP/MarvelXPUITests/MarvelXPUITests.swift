@@ -7,28 +7,52 @@
 //
 
 import XCTest
+@testable import MarvelXP
 
 class MarvelXPUITests: XCTestCase {
-
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func tearDown() {}
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testFavorites() {
+        //XCUIApplication().collectionViews.children(matching: .cell).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
+        //let app = XCUIApplication()
+        
+        //app.tabBars.buttons["Favorites"].tap()
+        //app.buttons["Try Again"].tap()
+        
+        //let app = XCUIApplication()
+        //sleep(3)
+        //let tabBarsQuery = app.tabBars
+        XCUIApplication().searchFields["search characters..."].tap()
+        
+        
+        //tabBarsQuery.buttons["Favorites"].tap()
+        //XCTAssert(app.buttons["Try Again"].exists, "Should have empty message with try again button.")
+        
+        
+        
+        /*tabBarsQuery.buttons["Characters"].tap()
+        
+        let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
+        
+        let aBombHasNavigationBar = app.navigationBars["A-Bomb (HAS)"]
+        let itemButton = aBombHasNavigationBar.buttons["Item"]
+        itemButton.tap()
+        aBombHasNavigationBar.buttons["Back"].tap()
+        favoritesButton.tap()
+        collectionViewsQuery.cells.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
+        XCUIDevice.shared.orientation = .landscapeRight
+        itemButton.tap()
+        app.buttons["Try Again"].tap()*/
+        
+        
+        
     }
 
 }

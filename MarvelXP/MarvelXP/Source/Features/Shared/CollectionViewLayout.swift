@@ -21,6 +21,8 @@ public class CollectionViewLayout {
      Existem alguns workarounds, como chamar reloadData antes de mudar o layout, mas isto interfiriria na experiência do usuário.
      Preferi neste caso gerar um novo layout a cada mudança de orientação, o que gera um pouco mais de memória mas mantém a experiência intacta.
      
+     Referência: https://forums.developer.apple.com/thread/19944
+     
      */
     
     public static func layoutFor(orientation: UIInterfaceOrientation) -> UICollectionViewFlowLayout {

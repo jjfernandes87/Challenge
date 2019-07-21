@@ -21,14 +21,14 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
         CoreDataManager.fetchFavorite(characterID) { [unowned self] (optionalCharacter) in
             if let character = optionalCharacter {
                 self.presenter?.processCharacter(character)
-                //TODO: arrumar aqui
-                /*if let comics = character.favoriteComics {
+                
+                if let comics = character.favoriteComics {
                     self.presenter?.processComics(comics)
                 }
                 
                 if let series = character.favoriteSeries {
                     self.presenter?.processSeries(series)
-                }*/
+                }
             } else {
                 
                 guard Reachability.isConnectedToNetwork() else {
@@ -109,6 +109,10 @@ extension CharacterDetailInteractor: CharacterDetailInteractorProtocol {
                 self.presenter?.processError(.removeFavorite)
             }
         }
+    }
+    
+    func addFavoriteObserver(_ isFavoriteDetail: Bool) {
+        self.presenter?.addFavoriteObserver(isFavoriteDetail)
     }
     
     private func requestFetchCharacter(characterID: Int, errorType: CharacterDetailPresenterErrorType, completion: @escaping (CharacterEntity) -> Void) {

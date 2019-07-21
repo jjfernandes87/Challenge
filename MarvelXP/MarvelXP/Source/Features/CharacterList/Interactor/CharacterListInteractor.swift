@@ -61,23 +61,23 @@ extension CharacterListInteractor: CharacterListInteractorProtocol {
             return
         }
         
-        RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
-            switch result {
-            case let .success(characterList):
-                guard let character = characterList.data?.results?.first else {
-                    self.presenter?.processError(.addFavorite)
-                    return
-                }
-                
-                CoreDataManager.addFavorite(character) { [unowned self] (success) in
-                    if success {
-                        self.presenter?.processAddFavorite(characterID)
-                    } else {
-                        self.presenter?.processError(.addFavorite)
+        var favorite: CharacterEntity = CharacterEntity(id: 0, name: nil, description: nil, thumbnail: nil, isFavorited: false, favoriteComics: nil, favoriteSeries: nil)
+        
+        self.requestFetchCharacter(characterID: characterID) { [unowned self] (character) in
+            favorite = character
+            self.requestFetchComics(characterID: characterID) { [unowned self] (comics) in
+                favorite.favoriteComics = comics
+                self.requestFetchSeries(characterID: characterID) { [unowned self] (series) in
+                    favorite.favoriteSeries = series
+                    
+                    CoreDataManager.addFavorite(favorite) { [unowned self] (success) in
+                        if success {
+                            self.presenter?.processAddFavorite(characterID)
+                        } else {
+                            self.presenter?.processError(.addFavorite)
+                        }
                     }
                 }
-            case .failure(_):
-                self.presenter?.processError(.addFavorite)
             }
         }
     }
@@ -88,6 +88,44 @@ extension CharacterListInteractor: CharacterListInteractorProtocol {
                 self.presenter?.processRemoveFavorite(characterID)
             } else {
                 self.presenter?.processError(.removeFavorite)
+            }
+        }
+    }
+    
+    private func requestFetchCharacter(characterID: Int, completion: @escaping (CharacterEntity) -> Void) {
+        RogueKit.request(MarvelRepository.fetchCharacter(characterID: characterID)) { [unowned self] (result: ListResult<CharacterEntity>) in
+            switch result {
+            case let .success(characterList):
+                guard let character = characterList.data?.results?.first else {
+                    self.presenter?.processError(.addFavorite)
+                    return
+                }
+                
+                completion(character)
+            case .failure(_):
+                self.presenter?.processError(.addFavorite)
+            }
+        }
+    }
+    
+    private func requestFetchComics(characterID: Int, completion: @escaping ([ComicEntity]) -> Void) {
+        RogueKit.request(MarvelRepository.fetchComics(characterID: characterID)) { [unowned self] (result: ListResult<ComicEntity>) in
+            switch result {
+            case let .success(comicList):
+                completion(comicList.data?.results ?? [])
+            case .failure(_):
+                self.presenter?.processError(.addFavorite)
+            }
+        }
+    }
+    
+    private func requestFetchSeries(characterID: Int, completion: @escaping ([SerieEntity]) -> Void) {
+        RogueKit.request(MarvelRepository.fetchSeries(characterID: characterID)) { [unowned self] (result: ListResult<SerieEntity>) in
+            switch result {
+            case let .success(serieList):
+                completion(serieList.data?.results ?? [])
+            case .failure(_):
+                self.presenter?.processError(.addFavorite)
             }
         }
     }

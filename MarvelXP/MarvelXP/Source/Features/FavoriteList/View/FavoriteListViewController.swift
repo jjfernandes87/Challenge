@@ -45,7 +45,12 @@ class FavoriteListViewController: DKViewController<FavoriteListSceneFactory> {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.collectionView.setCollectionViewLayout(CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation), animated: false)
         self.refresh()
+    }
+    
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.collectionView.setCollectionViewLayout(CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation), animated: false)
     }
     
     private func setupCollectionView() {
@@ -103,10 +108,6 @@ class FavoriteListViewController: DKViewController<FavoriteListSceneFactory> {
             let storyboard = UIStoryboard(name: "MarvelXP", bundle: nil)
             return storyboard.instantiateViewController(withIdentifier: "FavoriteDetailNavigation") as? UINavigationController
         }
-    }
-    
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        collectionView.setCollectionViewLayout(CollectionViewLayout.layoutFor(orientation: UIApplication.shared.statusBarOrientation), animated: false)
     }
 }
 
@@ -173,6 +174,7 @@ extension FavoriteListViewController: UICollectionViewDelegate, UICollectionView
             let detailViewController = navigationVC.viewControllers.first as? CharacterDetailViewController
             else { return }
         detailViewController.characterID = self.favoriteViewModels[indexPath.row].id
+        detailViewController.isFavoriteDetail = true
         self.splitViewController?.showDetailViewController(navigationVC, sender: nil)
     }
 }

@@ -28,6 +28,16 @@ class CharacterDetailViewController: DKViewController<CharacterDetailSceneFactor
         }
     }
     
+    public var isFavoriteDetail: Bool? {
+        didSet{
+            guard let isFavorite = isFavoriteDetail else { return }
+            
+            async {
+                self.interactor?.addFavoriteObserver(isFavorite)
+            }
+        }
+    }
+    
     @IBOutlet weak private var tableView: UITableView!
     @IBOutlet weak private var errorView: ErrorView!
     @IBOutlet weak private var favoriteButton: UIBarButtonItem!
@@ -59,6 +69,7 @@ class CharacterDetailViewController: DKViewController<CharacterDetailSceneFactor
     private func setupTableView() {
         //self.tableView.isAccessibilityElement = true
         self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 350
         
         self.tableView.register(UINib(nibName: "CharacterDetailCell", bundle: nil), forCellReuseIdentifier: "CharacterDetailCell")
         self.tableView.register(UINib(nibName: "ComicListCell", bundle: nil), forCellReuseIdentifier: "ComicListCell")
@@ -156,6 +167,7 @@ extension CharacterDetailViewController: CharacterDetailViewControllerProtocol {
     }
     
     func showInternetError() {
+        self.isLoading = false
         self.errorView.error = .internet
         self.state = .error
     }

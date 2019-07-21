@@ -25,4 +25,5 @@ protocol CharacterDetailPresenterProtocol: DKAbstractPresenter {
     func processAddFavorite(_ characterID: Int)
     func processRemoveFavorite(_ characterID: Int)
     func processError(_ errorType: CharacterDetailPresenterErrorType)
+    func addFavoriteObserver(_ isFavoriteDetail: Bool)
 }

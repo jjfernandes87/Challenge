@@ -12,24 +12,33 @@ import UIKit
 class SerieListCell: UITableViewCell {
     
     @IBOutlet weak private var collectionView: UICollectionView!
-    @IBOutlet weak private var loading: UIActivityIndicatorView!
     @IBOutlet weak private var errorLabel: UILabel!
     
     private var series: [SerieViewModel]?
     private var initialized: Bool = false
     
     public func setup(_ viewModel: SerieListViewModel) {
-        
         self.collectionView.isHidden = viewModel.isLoading && !viewModel.hasError && !viewModel.isEmpty
-        self.loading.isHidden = !viewModel.isLoading
+        self.errorLabel.text = "Loading..."
         
         guard !viewModel.isLoading else { return }
         
-        self.errorLabel.text = viewModel.hasError ? "Error fetching serie data, please try again." : ""
-        self.errorLabel.text = viewModel.isEmpty ? "This character has no series." : ""
-        
+        self.errorLabel.text = errorLabelText(viewModel)
         self.series = viewModel.serieList
         self.setupCollectionView()
+    }
+    
+    private func errorLabelText(_ viewModel: SerieListViewModel) -> String {
+        var text = ""
+        
+        if viewModel.hasError {
+            text = "Error fetching serie data, please try again."
+        }
+        else if viewModel.isEmpty {
+            text = "This character has no series."
+        }
+
+        return text
     }
     
     private func setupCollectionView() {

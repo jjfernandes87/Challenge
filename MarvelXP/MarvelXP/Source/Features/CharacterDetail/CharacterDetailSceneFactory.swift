@@ -18,6 +18,6 @@ class CharacterDetailSceneFactory: DKAbstractSceneFactory {
     }
     
     func generatePresenter(_ args: Any?) -> DKAbstractPresenter {
-        return CharacterDetailPresenter(isFavoriteDetail: (args as? Bool) ?? false)
+        return CharacterDetailPresenter()
     }
 }
