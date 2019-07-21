@@ -31,7 +31,7 @@ class CharacterDetailPresenterTests: XCTestCase {
 
     override func setUp() {
         continueAfterFailure = false
-        presenter = CharacterDetailPresenter(isFavoriteDetail: false)
+        presenter = CharacterDetailPresenter()
         presenter.setView(self)
     }
 

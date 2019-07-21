@@ -76,6 +76,7 @@ class CharacterDetailInteractorTests: XCTestCase {
 }
 
 extension CharacterDetailInteractorTests: CharacterDetailPresenterProtocol {
+    
     func processCharacter(_ character: CharacterEntity) {
         XCTAssertNotNil(character, "Captain exists!")
         XCTAssertEqual(character.name, "Captain America", "Data inconsistency.")
@@ -118,4 +119,5 @@ extension CharacterDetailInteractorTests: CharacterDetailPresenterProtocol {
     }
     
     func setView(_ abstractView: DKAbstractView) {}
+    func addFavoriteObserver(_ isFavoriteDetail: Bool) {}
 }
