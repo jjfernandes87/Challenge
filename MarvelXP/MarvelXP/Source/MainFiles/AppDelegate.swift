@@ -42,6 +42,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
+        
+        guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+            let params = components.queryItems else {
+                return false
+        }
+        
+        if let characterID = params.first(where: { $0.name == "characterID" })?.value {
+            UserDefaults.standard.set(characterID, forKey: "widgetCharacterID")
+            return true
+        }
+        
+        return true
+    }
 
     // MARK: - Core Data stack
 
