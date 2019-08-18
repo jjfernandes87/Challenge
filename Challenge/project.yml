@@ -1,0 +1,90 @@
+name: Challenge
+targets:
+  Challenge:
+    type: application
+    platform: iOS
+    deploymentTarget: "12.4"
+    scheme:
+      testTargets:
+        - MarvelTests
+        - ChallengeTests
+        - ChallengeUITests
+        - ChallengeCoreTests
+      gatherCoverageData: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ezequiel.Challenge
+    sources: [Challenge]
+    dependencies:
+      - target: Marvel
+      - carthage: Reusable
+      - carthage: SDWebImage
+      - target: ChallengeCore
+      - target: SimpleListCharacters
+  SimpleListCharacters:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "12.4"
+    configFiles:
+      Debug: SimpleListCharacters/debug.xcconfig
+      Release: SimpleListCharacters/release.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ezequiel.Challenge.SimpleListCharacters
+    sources: [SimpleListCharacters]
+    dependencies:
+      - target: Marvel
+      - target: ChallengeCore
+      - sdk: NotificationCenter.framework
+  ChallengeCore:
+    type: framework
+    platform: iOS
+    deploymentTarget: "12.4"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ezequiel.ChallengeCore
+    sources: [ChallengeCore]
+    dependencies:
+      - carthage: Reusable
+  Marvel:
+    type: framework
+    platform: iOS
+    deploymentTarget: "12.4"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ezequiel.Challenge.Marvel
+    sources: [Marvel]
+    dependencies:
+      - target: ChallengeCore
+  ChallengeTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "12.4"
+    sources: [ChallengeTests]
+    dependencies:
+      - carthage: Nimble
+      - target: Challenge
+  ChallengeCoreTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "12.4"
+    sources: [ChallengeCoreTests]
+    dependencies:
+      - carthage: Nimble
+      - target: ChallengeCore
+  MarvelTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "12.4"
+    sources: [MarvelTests]
+    dependencies:
+      - carthage: Nimble
+      - target: Challenge
+  ChallengeUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "12.4"
+    sources: [ChallengeUITests]
+    dependencies:
+      - carthage: Nimble
+      - target: Challenge
