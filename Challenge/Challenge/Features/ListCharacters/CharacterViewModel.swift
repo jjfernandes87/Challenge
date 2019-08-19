@@ -3,7 +3,7 @@ import Marvel
 struct CharacterViewModel {
     let id: Int
     let name: String
-    let isFavorited: Bool
+    var isFavorited: Bool
     let thumbnail: String
     let description: String
 }

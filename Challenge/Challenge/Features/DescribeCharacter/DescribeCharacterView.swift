@@ -13,6 +13,8 @@ class DescribeCharacterView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        scrollableView.contentInset = UIEdgeInsets(top: 60.0, left: 0.0, bottom: 0.0, right: 0.0)
+
         seriesCollection = CharacterResourceSectionView.loadFromNib()
         seriesCollection.title.text = "Series"
         seriesCollection.heightAnchor.constraint(equalToConstant: 240.0).isActive = true

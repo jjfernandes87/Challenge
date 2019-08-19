@@ -29,7 +29,7 @@ class CharactersDataSource: NSObject, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let model = items[indexPath.row]
+        var model = items[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "character-cell", for: indexPath) as! CharacterCollectionViewCell
 
         cell.name.text = model.name
@@ -38,8 +38,9 @@ class CharactersDataSource: NSObject, UICollectionViewDataSource {
         cell.thumbnail.sd_setImage(with: URL(string: model.thumbnail), placeholderImage: nil, options: SDWebImageOptions.continueInBackground, context: nil)
 
         cell.starAction = {
+            model.isFavorited = !model.isFavorited
             self.delegate?.star(index: indexPath.row)
-            collectionView.reloadItems(at: [ indexPath ])
+            cell.star.setImage(UIImage(named: model.isFavorited ? "pixel-starred" : "pixel-star"), for: UIControl.State.normal)
         }
 
         if model.isFavorited {

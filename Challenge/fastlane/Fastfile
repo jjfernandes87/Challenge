@@ -1,6 +1,3 @@
 lane :tests do
   run_tests(scheme: "ChallengeTests")
-  run_tests(scheme: "ChallengeCoreTests")
-  run_tests(scheme: "MarvelTests")
-  run_tests(scheme: "ChallengeUITests")
 end
