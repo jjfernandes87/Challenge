@@ -16,9 +16,15 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "MARVEL_BASE_URL", MARVEL_BASE_URL)
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "MARVEL_BASE_URL", MARVEL_BASE_URL)
         }
     }
 
