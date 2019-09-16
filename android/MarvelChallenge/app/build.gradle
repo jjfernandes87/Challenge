@@ -16,9 +16,15 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "MARVEL_BASE_URL", MARVEL_BASE_URL)
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "MARVEL_BASE_URL", MARVEL_BASE_URL)
         }
     }
 
@@ -30,12 +36,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //Android
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //Anko
     implementation "org.jetbrains.anko:anko:0.10.8"
@@ -45,10 +50,26 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
     implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
 
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.4.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.4.0"
+
+    //OkHttp3
+    implementation "com.squareup.okhttp3:okhttp:3.11.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.11.0"
+
     //Dagger
     implementation "com.google.dagger:dagger:2.24"
     implementation "com.google.dagger:dagger-android:2.24"
     implementation "com.google.dagger:dagger-android-support:2.24"
     kapt "com.google.dagger:dagger-compiler:2.24"
     kapt "com.google.dagger:dagger-android-processor:2.24"
+
+    //JUnit
+    testImplementation 'junit:junit:4.12'
+
+    //Espresso
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
