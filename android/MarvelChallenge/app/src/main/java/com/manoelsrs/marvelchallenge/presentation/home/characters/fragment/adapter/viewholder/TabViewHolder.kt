@@ -1,8 +1,8 @@
-package com.manoelsrs.marvelchallenge.presentation.home.characters.adapter.viewholder
+package com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.viewholder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.manoelsrs.marvelchallenge.presentation.home.characters.adapter.ItemViewModel
+import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.ItemViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.character_item.view.*
 

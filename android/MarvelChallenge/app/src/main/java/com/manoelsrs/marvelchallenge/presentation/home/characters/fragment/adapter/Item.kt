@@ -1,4 +1,4 @@
-package com.manoelsrs.marvelchallenge.presentation.home.characters.adapter
+package com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter
 
 import com.manoelsrs.marvelchallenge.model.Character
 

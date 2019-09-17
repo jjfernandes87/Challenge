@@ -2,17 +2,13 @@ package com.manoelsrs.marvelchallenge.presentation.home.characters
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.core.common.BaseActivity
 import com.manoelsrs.marvelchallenge.databinding.ActivityCharactersBinding
-import com.manoelsrs.marvelchallenge.model.Character
-import com.manoelsrs.marvelchallenge.presentation.home.characters.adapter.ItemViewPagerAdapter
-import com.manoelsrs.marvelchallenge.presentation.home.characters.adapter.TabAdapter
+import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.TabAdapter
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_characters.*
-import kotlinx.android.synthetic.main.fragment_characters.*
 import javax.inject.Inject
 
 class CharactersActivity : BaseActivity(), CharactersContract {

@@ -1,11 +1,11 @@
-package com.manoelsrs.marvelchallenge.presentation.home.characters.adapter
+package com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.model.Character
-import com.manoelsrs.marvelchallenge.presentation.home.characters.adapter.viewholder.TabViewHolder
+import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.viewholder.TabViewHolder
 
 class ItemViewPagerAdapter : RecyclerView.Adapter<TabViewHolder>() {
 

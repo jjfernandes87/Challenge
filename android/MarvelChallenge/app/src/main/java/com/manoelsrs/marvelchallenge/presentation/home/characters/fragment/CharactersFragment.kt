@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.model.Character
-import com.manoelsrs.marvelchallenge.presentation.home.characters.adapter.ItemViewPagerAdapter
+import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.ItemViewPagerAdapter
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_characters.*
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.manoelsrs.marvelchallenge.presentation.home.characters.adapter
+package com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
