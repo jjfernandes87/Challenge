@@ -3,4 +3,6 @@
 
     <!-- Splash screen -->
     <string name="splash_text">MARVEL</string>
+    <string name="characters_text">CHARACTERS</string>
+    <string name="favorites_text">FAVORITES</string>
 </resources>

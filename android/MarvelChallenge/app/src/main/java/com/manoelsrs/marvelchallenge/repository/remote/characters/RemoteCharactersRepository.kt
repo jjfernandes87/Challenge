@@ -5,7 +5,6 @@ import com.manoelsrs.marvelchallenge.repository.remote.characters.resources.Remo
 import com.manoelsrs.marvelchallenge.repository.remote.characters.responses.CharactersResponse
 import com.manoelsrs.marvelchallenge.repository.remote.characters.services.CharactersServices
 import io.reactivex.Single
-import retrofit2.Response
 
 class RemoteCharactersRepository(
     private val charactersServices: CharactersServices,
@@ -17,7 +16,7 @@ class RemoteCharactersRepository(
         private const val privateKey = "cd06400f1b3a06ad536b3df852e919ecc6bdeaba"
     }
 
-    override fun getCharacters(limit: Int, offset: Int): Single<Response<CharactersResponse>> {
+    override fun getCharacters(limit: Int, offset: Int): Single<CharactersResponse> {
         val ts = System.currentTimeMillis().toString()
         return charactersServices.getCharacters(
             timestamp = ts,
