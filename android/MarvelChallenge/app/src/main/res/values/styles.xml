@@ -6,4 +6,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TabTheme" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/marvel_regular</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
 </resources>
