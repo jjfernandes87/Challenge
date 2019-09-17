@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.model.Character
 import dagger.android.support.AndroidSupportInjection
