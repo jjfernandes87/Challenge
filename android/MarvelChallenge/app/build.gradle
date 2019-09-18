@@ -82,6 +82,12 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:2.24"
     kapt "com.google.dagger:dagger-android-processor:2.24"
 
+    //Room libraries
+    implementation "androidx.room:room-runtime:2.2.0-rc01"
+    implementation "androidx.room:room-rxjava2:2.2.0-rc01"
+    kapt "androidx.room:room-compiler:2.2.0-rc01"
+    androidTestImplementation "androidx.room:room-testing:2.2.0-rc01"
+
     //JUnit
     testImplementation 'junit:junit:4.12'
 
