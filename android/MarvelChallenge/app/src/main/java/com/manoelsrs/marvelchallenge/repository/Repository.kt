@@ -2,10 +2,13 @@ package com.manoelsrs.marvelchallenge.repository
 
 import com.manoelsrs.marvelchallenge.repository.local.LocalFactory
 import com.manoelsrs.marvelchallenge.repository.local.LocalRepository
+import com.manoelsrs.marvelchallenge.repository.local.character.entity.CharactersDatabase
 import com.manoelsrs.marvelchallenge.repository.remote.RemoteFactory
 import com.manoelsrs.marvelchallenge.repository.remote.RemoteRepository
 
-class Repository : RepositoryFactory {
-    override val local: LocalFactory = LocalRepository()
+class Repository(
+    charactersDatabase: CharactersDatabase
+) : RepositoryFactory {
+    override val local: LocalFactory = LocalRepository(charactersDatabase)
     override val remote: RemoteFactory = RemoteRepository()
 }

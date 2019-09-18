@@ -15,12 +15,12 @@ import javax.inject.Inject
 
 class FavoritesFragment : Fragment(), CharactersFragmentContract {
 
-    @Inject
-    lateinit var presenter: FavoritesFragmentPresenter
+//    @Inject
+//    lateinit var presenter: FavoritesFragmentPresenter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        AndroidSupportInjection.inject(this)
+//        AndroidSupportInjection.inject(this)
     }
 
     override fun onCreateView(
@@ -32,7 +32,7 @@ class FavoritesFragment : Fragment(), CharactersFragmentContract {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.onCreate()
+//        presenter.onCreate()
     }
 
     override fun updateCharacters(characters: List<Character>) {
@@ -40,7 +40,7 @@ class FavoritesFragment : Fragment(), CharactersFragmentContract {
     }
 
     override fun onDetach() {
-        presenter.dispose()
+//        presenter.dispose()
         super.onDetach()
     }
 }
