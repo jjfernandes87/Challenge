@@ -16,8 +16,6 @@ class GetCharacters(
         private const val LIMIT = 20
     }
 
-    private var offset = 0
-
     fun execute() = repository.local.character.getCharacters().toLiveData(
         Config(
             20,
