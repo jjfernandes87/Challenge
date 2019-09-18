@@ -2,11 +2,15 @@ package com.manoelsrs.marvelchallenge.repository.local.character.entity
 
 import androidx.paging.DataSource
 import androidx.room.*
+import io.reactivex.Single
 
 @Dao
 interface CharactersDao {
 
-    @Query("SELECT * FROM ${CharactersDto.TABLE}")
+    @Query("SELECT COUNT(*) FROM ${CharactersDto.TABLE}")
+    fun getCharactersCount(): Single<Int>
+
+    @Query("SELECT * FROM ${CharactersDto.TABLE} ORDER BY name")
     fun getCharacters(): DataSource.Factory<Int, CharactersDto>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

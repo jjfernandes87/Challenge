@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.ItemViewPagerAdapter
@@ -38,13 +38,16 @@ class CharactersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        swipeRefreshLayout.setOnRefreshListener { viewModel.loadMoreItems() }
+
         viewModel.viewState().observe(this, Observer { viewState: CharactersViewState ->
             return@Observer when (viewState) {
                 is CharactersViewState.Error -> {
                     /** Todo */
                 }
                 is CharactersViewState.Loading -> {
-                    swipe.isRefreshing = viewState.isLoading
+                    swipeRefreshLayout.isRefreshing = viewState.isLoading
                 }
             }
         })
@@ -54,12 +57,17 @@ class CharactersFragment : Fragment() {
         rvCharacters.layoutManager = GridLayoutManager(context, 2)
         rvCharacters.adapter = adapter
 
+        rvCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!rvCharacters.canScrollVertically(1)) viewModel.loadMoreItems()
+            }
+        })
+
         // Subscribe the adapter to the viewmodel, so the items in the adapter are refreshed
         // when the list changes
         viewModel.characters.observe(this, Observer { item: PagedList<Character> ->
             adapter.submitList(item)
         })
-
-        swipe.setOnRefreshListener { viewModel.loadMoreItems() }
     }
 }

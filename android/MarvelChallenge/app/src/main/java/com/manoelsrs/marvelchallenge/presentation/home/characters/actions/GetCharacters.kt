@@ -7,13 +7,16 @@ import com.manoelsrs.marvelchallenge.repository.Repository
 import com.manoelsrs.marvelchallenge.repository.remote.characters.responses.CharactersResponse
 import io.reactivex.Single
 
-class GetCharacters(private val repository: Repository) {
+class GetCharacters(
+    private val repository: Repository,
+    private val getOffset: GetOffset
+) {
 
     companion object {
         private const val LIMIT = 20
     }
 
-    private var offset: Int = 0
+    private var offset = 0
 
     fun execute() = repository.local.character.getCharacters().toLiveData(
         Config(
@@ -24,9 +27,9 @@ class GetCharacters(private val repository: Repository) {
     )
 
     fun loadMoreItems(): Single<CharactersResponse> {
-        return repository.remote.characters.getCharacters(LIMIT, offset)
+        return getOffset.execute()
+            .flatMap { repository.remote.characters.getCharacters(LIMIT, it) }
             .doOnSuccess { response ->
-                offset += 20
                 val character: List<Character> = response.data.results.map {
                     Character(it.id, it.name, it.thumbnail.path, it.thumbnail.extension)
                 }

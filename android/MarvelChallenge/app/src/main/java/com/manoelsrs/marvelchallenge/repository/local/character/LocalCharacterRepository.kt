@@ -5,10 +5,15 @@ import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.repository.local.character.entity.CharactersDatabase
 import com.manoelsrs.marvelchallenge.repository.local.character.entity.CharactersDto
 import com.manoelsrs.marvelchallenge.repository.local.character.resources.LocalCharacterResources
+import io.reactivex.Single
 
 class LocalCharacterRepository(
     private val database: CharactersDatabase
 ) : LocalCharacterResources {
+
+    override fun getCharactersCount(): Single<Int> {
+        return database.charactersDao().getCharactersCount()
+    }
 
     override fun getCharacters(): DataSource.Factory<Int, Character> {
         return database.charactersDao().getCharacters()
