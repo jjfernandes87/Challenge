@@ -24,9 +24,9 @@ class GetCharacters(private val repository: Repository) {
     )
 
     fun loadMoreItems(): Single<CharactersResponse> {
-        offset += 20
         return repository.remote.characters.getCharacters(LIMIT, offset)
             .doOnSuccess { response ->
+                offset += 20
                 val character: List<Character> = response.data.results.map {
                     Character(it.id, it.name, it.thumbnail.path, it.thumbnail.extension)
                 }
