@@ -2,6 +2,7 @@ package com.manoelsrs.marvelchallenge.repository.local.character.resources
 
 import androidx.paging.DataSource
 import com.manoelsrs.marvelchallenge.model.Character
+import io.reactivex.Completable
 import io.reactivex.Single
 
 interface LocalCharacterResources {
@@ -10,5 +11,5 @@ interface LocalCharacterResources {
     fun insert(characters: List<Character>)
     fun insert(character: Character)
     fun delete(character: Character)
-    fun deleteAll()
+    fun deleteAll(): Completable
 }

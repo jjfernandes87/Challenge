@@ -5,6 +5,7 @@ import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.repository.local.character.entity.CharactersDatabase
 import com.manoelsrs.marvelchallenge.repository.local.character.entity.CharactersDto
 import com.manoelsrs.marvelchallenge.repository.local.character.resources.LocalCharacterResources
+import io.reactivex.Completable
 import io.reactivex.Single
 
 class LocalCharacterRepository(
@@ -38,7 +39,7 @@ class LocalCharacterRepository(
         )
     }
 
-    override fun deleteAll() {
+    override fun deleteAll(): Completable = Completable.fromCallable {
         database.charactersDao().deleteAll()
     }
 }

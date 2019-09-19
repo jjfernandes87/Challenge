@@ -19,7 +19,7 @@ class CharactersViewModel(
     val characters: LiveData<PagedList<Character>> = getCharacters.execute()
 
     init {
-        loadMoreItems()
+        updateItems()
     }
 
     fun viewState(): LiveData<CharactersViewState> = viewState
@@ -39,5 +39,16 @@ class CharactersViewModel(
     override fun onCleared() {
         compositeDisposable.clear()
         super.onCleared()
+    }
+
+    fun updateItems() {
+        getCharacters.updateItems()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { viewState.value = CharactersViewState.Loading(true) }
+            .subscribe(
+                { viewState.value = CharactersViewState.Loading(false) },
+                { viewState.value = CharactersViewState.Error("ERROR!") }
+            ).also { compositeDisposable.add(it) }
     }
 }

@@ -38,21 +38,12 @@ class CharactersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setCharactersList()
+        observeViewState()
+        swipeRefreshLayout.setOnRefreshListener { viewModel.updateItems() }
+    }
 
-        swipeRefreshLayout.setOnRefreshListener { viewModel.loadMoreItems() }
-
-        viewModel.viewState().observe(this, Observer { viewState: CharactersViewState ->
-            return@Observer when (viewState) {
-                is CharactersViewState.Error -> {
-                    /** Todo */
-                }
-                is CharactersViewState.Loading -> {
-                    swipeRefreshLayout.isRefreshing = viewState.isLoading
-                }
-            }
-        })
-
-        // Create adapter for the RecyclerView
+    private fun setCharactersList() {
         val adapter = ItemViewPagerAdapter()
         rvCharacters.layoutManager = GridLayoutManager(context, 2)
         rvCharacters.adapter = adapter
@@ -64,10 +55,22 @@ class CharactersFragment : Fragment() {
             }
         })
 
-        // Subscribe the adapter to the viewmodel, so the items in the adapter are refreshed
-        // when the list changes
         viewModel.characters.observe(this, Observer { item: PagedList<Character> ->
             adapter.submitList(item)
+        })
+    }
+
+    private fun observeViewState() {
+        viewModel.viewState().observe(this, Observer { viewState: CharactersViewState ->
+            return@Observer when (viewState) {
+                is CharactersViewState.Error -> {
+                    swipeRefreshLayout.isRefreshing = false
+                    /** Todo */
+                }
+                is CharactersViewState.Loading -> {
+                    swipeRefreshLayout.isRefreshing = viewState.isLoading
+                }
+            }
         })
     }
 }

@@ -27,11 +27,19 @@ class GetCharacters(
     fun loadMoreItems(): Single<CharactersResponse> {
         return getOffset.execute()
             .flatMap { repository.remote.characters.getCharacters(LIMIT, it) }
-            .doOnSuccess { response ->
-                val character: List<Character> = response.data.results.map {
-                    Character(it.id, it.name, it.thumbnail.path, it.thumbnail.extension)
-                }
-                repository.local.character.insert(character)
-            }
+            .doOnSuccess { saveCharacters(it) }
+    }
+
+    fun updateItems(): Single<CharactersResponse> {
+        return repository.local.character.deleteAll().toSingleDefault(Unit)
+            .flatMap { repository.remote.characters.getCharacters(LIMIT, 0) }
+            .doOnSuccess { saveCharacters(it) }
+    }
+
+    private fun saveCharacters(response: CharactersResponse) {
+        val character: List<Character> = response.data.results.map {
+            Character(it.id, it.name, it.thumbnail.path, it.thumbnail.extension)
+        }
+        repository.local.character.insert(character)
     }
 }
