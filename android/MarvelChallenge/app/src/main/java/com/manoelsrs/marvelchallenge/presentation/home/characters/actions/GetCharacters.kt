@@ -3,6 +3,7 @@ package com.manoelsrs.marvelchallenge.presentation.home.characters.actions
 import androidx.paging.Config
 import androidx.paging.toLiveData
 import com.manoelsrs.marvelchallenge.model.Character
+import com.manoelsrs.marvelchallenge.presentation.home.characters.producers.CharacterProducer
 import com.manoelsrs.marvelchallenge.repository.Repository
 import com.manoelsrs.marvelchallenge.repository.remote.characters.responses.CharactersResponse
 import io.reactivex.Single
@@ -49,9 +50,7 @@ class GetCharacters(
     }
 
     private fun saveCharacters(response: CharactersResponse) {
-        val character: List<Character> = response.data.results.map {
-            Character(it.id, it.name, it.description, it.thumbnail.path, it.thumbnail.extension)
-        }
+        val character: List<Character> = response.data.results.map { CharacterProducer.execute(it) }
         repository.local.character.insert(character)
     }
 }
