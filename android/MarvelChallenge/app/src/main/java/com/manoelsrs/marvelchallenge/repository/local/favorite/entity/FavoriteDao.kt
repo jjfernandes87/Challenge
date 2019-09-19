@@ -1,13 +1,13 @@
 package com.manoelsrs.marvelchallenge.repository.local.favorite.entity
 
+import androidx.paging.DataSource
 import androidx.room.*
-import io.reactivex.Single
 
 @Dao
 interface FavoriteDao {
 
     @Query("SELECT * FROM ${FavoriteDto.TABLE} ORDER BY name")
-    fun getFavorites(): Single<List<FavoriteDto>>
+    fun getFavorites(): DataSource.Factory<Int, FavoriteDto>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(favorite: FavoriteDto)

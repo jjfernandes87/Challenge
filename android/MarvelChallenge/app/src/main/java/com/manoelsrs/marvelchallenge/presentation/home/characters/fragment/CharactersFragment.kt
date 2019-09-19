@@ -70,7 +70,7 @@ class CharactersFragment : Fragment() {
         rvCharacters.layoutManager = GridLayoutManager(context, 2)
         rvCharacters.adapter = adapter
 
-        adapter.setOnClickListener { Log.d("PERSONAGEM", it.name) }
+        adapter.setOnClickListener { viewModel.saveFavorite(it) }
 
         rvCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
