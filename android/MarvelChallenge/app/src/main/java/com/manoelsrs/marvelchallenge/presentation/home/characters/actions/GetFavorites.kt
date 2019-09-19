@@ -6,7 +6,6 @@ import androidx.paging.PagedList
 import androidx.paging.toLiveData
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.repository.Repository
-import io.reactivex.Single
 
 class GetFavorites(private val repository: Repository) {
 
@@ -20,7 +19,13 @@ class GetFavorites(private val repository: Repository) {
         )
     }
 
-    fun updateItems(content: String): Single<List<Character>> {
-        return repository.local.favorite.getFavorites(content)
+    fun execute(search: String): LiveData<PagedList<Character>> {
+        return repository.local.favorite.getFavorites(search.toUpperCase()).toLiveData(
+            Config(
+                20,
+                enablePlaceholders = true,
+                maxSize = 60
+            )
+        )
     }
 }

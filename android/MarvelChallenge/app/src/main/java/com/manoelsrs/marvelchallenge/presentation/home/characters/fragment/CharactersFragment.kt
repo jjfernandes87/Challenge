@@ -2,16 +2,15 @@ package com.manoelsrs.marvelchallenge.presentation.home.characters.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.manoelsrs.marvelchallenge.R
+import com.manoelsrs.marvelchallenge.core.common.BaseFragment
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.ItemViewPagerAdapter
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.viewmodel.CharactersViewModel
@@ -19,12 +18,11 @@ import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.viewm
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_characters.*
 import javax.inject.Inject
 
-class CharactersFragment : Fragment() {
+class CharactersFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModel: CharactersViewModel
@@ -32,7 +30,6 @@ class CharactersFragment : Fragment() {
     @Inject
     lateinit var listener: Observable<String>
 
-    private val compositeDisposable = CompositeDisposable()
     private var contentSearch = ""
         set(value) {
             field = value
@@ -48,7 +45,7 @@ class CharactersFragment : Fragment() {
             .subscribe(
                 { contentSearch = it },
                 { /** TODO */ }
-            ).also { compositeDisposable.add(it) }
+            ).also { addDisposable(it) }
     }
 
     override fun onCreateView(
@@ -82,6 +79,7 @@ class CharactersFragment : Fragment() {
 
         viewModel.characters.observe(this, Observer { item: PagedList<Character> ->
             adapter.submitList(item)
+            setEmptyView(tvEmpy, item.isEmpty(), R.string.empty_characters_message)
         })
     }
 
@@ -100,7 +98,7 @@ class CharactersFragment : Fragment() {
     }
 
     override fun onDetach() {
-        compositeDisposable.clear()
+        dispose()
         super.onDetach()
     }
 }
