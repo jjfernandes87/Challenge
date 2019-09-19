@@ -5,27 +5,27 @@ import com.manoelsrs.marvelchallenge.presentation.home.details.producers.DataPro
 import com.manoelsrs.marvelchallenge.repository.Repository
 import io.reactivex.Single
 
-class GetComics(
+class GetSeries(
     private val repository: Repository,
     private val dataProducer: DataProducer,
-    private val saveComics: SaveComics
+    private val saveSeries: SaveSeries
 ) {
     companion object {
         private const val LIMIT = 20
     }
 
     fun execute(characterId: Int): Single<List<Data>> {
-        return repository.local.comic.deleteAll().toSingleDefault(characterId)
-            .flatMap { repository.remote.characters.getComics(it,LIMIT,0) }
+        return repository.local.serie.deleteAll().toSingleDefault(characterId)
+            .flatMap { repository.remote.characters.getSeries(it,LIMIT,0) }
             .map { dataProducer.produce(it) }
-            .flatMap { saveComics.execute(it) }
+            .flatMap { saveSeries.execute(it) }
     }
 
     fun loadMore(characterId: Int): Single<List<Data>> {
-        return repository.local.comic.getComicsCount()
-            .flatMap { repository.remote.characters.getComics(characterId, LIMIT, it) }
+        return repository.local.serie.getSeriesCount()
+            .flatMap { repository.remote.characters.getSeries(characterId, LIMIT, it) }
             .map { dataProducer.produce(it) }
-            .flatMap { saveComics.execute(it) }
-            .flatMap { repository.local.comic.getComics() }
+            .flatMap { saveSeries.execute(it) }
+            .flatMap { repository.local.serie.getSeries() }
     }
 }

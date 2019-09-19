@@ -15,6 +15,8 @@ class RemoteCharactersRepository(
     companion object {
         private const val publicKey = "00ce064b34a7f59482129d4b3a33ee1c"
         private const val privateKey = "cd06400f1b3a06ad536b3df852e919ecc6bdeaba"
+        private const val COMICS = "comics"
+        private const val SERIES = "series"
     }
 
     override fun getCharacters(limit: Int, offset: Int): Single<CharactersResponse> {
@@ -45,12 +47,26 @@ class RemoteCharactersRepository(
     }
 
     override fun getComics(characterId: Int, limit: Int, offset: Int): Single<CSResponse> {
+        return getData(characterId, limit, offset, COMICS)
+    }
+
+    override fun getSeries(characterId: Int, limit: Int, offset: Int): Single<CSResponse> {
+        return getData(characterId, limit, offset, SERIES)
+    }
+
+    private fun getData(
+        characterId: Int,
+        limit: Int,
+        offset: Int,
+        type: String
+    ): Single<CSResponse> {
         val ts = System.currentTimeMillis().toString()
-        return charactersServices.getComics(
+        return charactersServices.getData(
             timestamp = ts,
             apikey = publicKey,
             hash = md5Hash.produce(ts, publicKey, privateKey),
-            characterId = characterId, limit = limit, offset = offset
+            characterId = characterId, limit = limit, offset = offset,
+            type = type
         )
     }
 }

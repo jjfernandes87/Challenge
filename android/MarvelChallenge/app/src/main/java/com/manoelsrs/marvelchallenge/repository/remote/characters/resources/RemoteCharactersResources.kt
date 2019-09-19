@@ -12,4 +12,5 @@ interface RemoteCharactersResources {
         nameStartsWith: String = ""
     ): Single<CharactersResponse>
     fun getComics(characterId: Int, limit: Int, offset: Int): Single<CSResponse>
+    fun getSeries(characterId: Int, limit: Int, offset: Int): Single<CSResponse>
 }

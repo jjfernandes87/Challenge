@@ -39,6 +39,14 @@ class DetailsActivity : BaseActivity(), DetailsContract {
                     presenter.loadMoreComics()
             }
         })
+
+        rvSeries.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!rvSeries.canScrollHorizontally(1))
+                    presenter.loadMoreComics()
+            }
+        })
     }
 
     private fun setComicsRecycler() {

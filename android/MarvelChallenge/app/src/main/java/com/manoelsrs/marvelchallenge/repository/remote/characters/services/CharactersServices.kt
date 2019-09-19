@@ -30,9 +30,10 @@ interface CharactersServices {
         @Query("offset") offset: Int
     ): Single<CharactersResponse>
 
-    @GET("/v1/public/characters/{characterId}/comics")
-    fun getComics(
+    @GET("/v1/public/characters/{characterId}/{type}")
+    fun getData(
         @Path("characterId") characterId: Int,
+        @Path("type") type: String,
         @Query("ts") timestamp: String,
         @Query("apikey") apikey: String,
         @Query("hash") hash: String,
