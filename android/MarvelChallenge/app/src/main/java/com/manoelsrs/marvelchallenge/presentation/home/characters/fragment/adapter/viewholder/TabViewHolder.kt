@@ -8,12 +8,13 @@ import kotlinx.android.synthetic.main.character_item.view.*
 
 class TabViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(character: Character?) {
+    fun bind(character: Character?, onClick: (Character) -> Unit) {
         character?.run {
             itemView.tvCharacterName.text = name
             Picasso.get()
                 .load("${photo}/standard_xlarge.${photoExtension}")
                 .into(itemView.ivCharacterPhoto)
+            itemView.setOnClickListener { onClick(character) }
         }
     }
 }

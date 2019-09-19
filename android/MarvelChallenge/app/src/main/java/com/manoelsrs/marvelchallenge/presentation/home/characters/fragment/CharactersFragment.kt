@@ -2,6 +2,7 @@ package com.manoelsrs.marvelchallenge.presentation.home.characters.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,6 +69,8 @@ class CharactersFragment : Fragment() {
         val adapter = ItemViewPagerAdapter()
         rvCharacters.layoutManager = GridLayoutManager(context, 2)
         rvCharacters.adapter = adapter
+
+        adapter.setOnClickListener { Log.d("PERSONAGEM", it.name) }
 
         rvCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {

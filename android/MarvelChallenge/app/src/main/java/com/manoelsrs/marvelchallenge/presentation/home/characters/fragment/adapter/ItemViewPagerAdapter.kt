@@ -10,8 +10,13 @@ import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapt
 
 class ItemViewPagerAdapter : PagedListAdapter<Character, TabViewHolder>(diffCallback) {
 
+    private lateinit var onClick: (Character) -> Unit
+    fun setOnClickListener(onClick: (Character) -> Unit) {
+        this.onClick = onClick
+    }
+
     override fun onBindViewHolder(holder: TabViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onClick)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TabViewHolder =
