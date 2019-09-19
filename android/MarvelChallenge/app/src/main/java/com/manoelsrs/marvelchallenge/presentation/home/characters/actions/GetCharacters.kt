@@ -50,7 +50,7 @@ class GetCharacters(
 
     private fun saveCharacters(response: CharactersResponse) {
         val character: List<Character> = response.data.results.map {
-            Character(it.id, it.name, it.thumbnail.path, it.thumbnail.extension)
+            Character(it.id, it.name, it.description, it.thumbnail.path, it.thumbnail.extension)
         }
         repository.local.character.insert(character)
     }
