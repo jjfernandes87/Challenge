@@ -1,5 +1,6 @@
 package com.manoelsrs.marvelchallenge.presentation.home.details
 
+import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.core.common.BasePresenter
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.presentation.home.details.actions.GetComics
@@ -32,6 +33,7 @@ class DetailsPresenter(
     private fun loadPhoto(character: Character) {
         Picasso.get()
             .load("${character.photo}/landscape_incredible.${character.photoExtension}")
+            .error(R.mipmap.ic_launcher)
             .into(contract.getPhotoView())
     }
 
