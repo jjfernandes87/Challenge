@@ -13,14 +13,14 @@ import com.manoelsrs.marvelchallenge.model.Character
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class FavoritesFragment : Fragment(), CharactersFragmentContract {
+class FavoritesFragment : Fragment() {
 
-    @Inject
-    lateinit var presenter: FavoritesFragmentPresenter
+//    @Inject
+//    lateinit var presenter: FavoritesFragmentPresenter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        AndroidSupportInjection.inject(this)
+//        AndroidSupportInjection.inject(this)
     }
 
     override fun onCreateView(
@@ -32,15 +32,11 @@ class FavoritesFragment : Fragment(), CharactersFragmentContract {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.onCreate()
-    }
-
-    override fun updateCharacters(characters: List<Character>) {
-        //TODO()
+//        presenter.onCreate()
     }
 
     override fun onDetach() {
-        presenter.dispose()
+//        presenter.dispose()
         super.onDetach()
     }
 }

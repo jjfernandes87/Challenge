@@ -2,18 +2,16 @@ package com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adap
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.viewholder.TabViewHolder
 
-class ItemViewPagerAdapter : RecyclerView.Adapter<TabViewHolder>() {
+class ItemViewPagerAdapter : PagedListAdapter<Character, TabViewHolder>(diffCallback) {
 
-    private var items: List<ItemViewModel> = listOf()
-
-    fun setItems(newContent: List<Character>) {
-        items = newContent.map { Item(it) }
-        notifyDataSetChanged()
+    override fun onBindViewHolder(holder: TabViewHolder, position: Int) {
+        holder.bind(getItem(position))
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TabViewHolder =
@@ -22,9 +20,13 @@ class ItemViewPagerAdapter : RecyclerView.Adapter<TabViewHolder>() {
                 .inflate(R.layout.character_item, parent, false)
         )
 
-    override fun getItemCount(): Int = items.size
+    companion object {
+        private val diffCallback = object : DiffUtil.ItemCallback<Character>() {
+            override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean =
+                oldItem.id == newItem.id
 
-    override fun onBindViewHolder(holder: TabViewHolder, position: Int) {
-        holder.bind(items[position])
+            override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean =
+                oldItem == newItem
+        }
     }
 }

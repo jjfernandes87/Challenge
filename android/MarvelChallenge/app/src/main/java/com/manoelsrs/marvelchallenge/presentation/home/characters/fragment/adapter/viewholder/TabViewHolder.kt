@@ -2,16 +2,18 @@ package com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adap
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.ItemViewModel
+import com.manoelsrs.marvelchallenge.model.Character
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.character_item.view.*
 
 class TabViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(viewModel: ItemViewModel) {
-        itemView.tvCharacterName.text = viewModel.name
-        Picasso.get()
-            .load("${viewModel.photo}/standard_xlarge.${viewModel.photoExtension}")
-            .into(itemView.ivCharacterPhoto)
+    fun bind(character: Character?) {
+        character?.run {
+            itemView.tvCharacterName.text = name
+            Picasso.get()
+                .load("${photo}/standard_xlarge.${photoExtension}")
+                .into(itemView.ivCharacterPhoto)
+        }
     }
 }

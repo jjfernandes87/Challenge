@@ -2,8 +2,8 @@ package com.manoelsrs.marvelchallenge.di.module
 
 import com.manoelsrs.marvelchallenge.di.PerFragment
 import com.manoelsrs.marvelchallenge.presentation.home.characters.actions.GetCharacters
-import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.CharactersFragment
-import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.CharactersFragmentPresenter
+import com.manoelsrs.marvelchallenge.presentation.home.characters.actions.GetOffset
+import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.viewmodel.CharactersViewModel
 import com.manoelsrs.marvelchallenge.repository.Repository
 import dagger.Module
 import dagger.Provides
@@ -13,13 +13,16 @@ class CharactersFragmentModule {
 
     @PerFragment
     @Provides
-    fun providesCharactersFragmentPresenter(
-        fragment: CharactersFragment,
-        getCharacters: GetCharacters
-    ) =
-        CharactersFragmentPresenter(fragment, getCharacters)
+    fun providesGetOffsetAction(repository: Repository) =
+        GetOffset(repository)
 
     @PerFragment
     @Provides
-    fun providesGetCharactersAction(repository: Repository) = GetCharacters(repository)
+    fun providesGetCharactersAction(repository: Repository, getOffset: GetOffset) =
+        GetCharacters(repository, getOffset)
+
+    @PerFragment
+    @Provides
+    fun providesCharacterViewModel(getCharacters: GetCharacters) =
+        CharactersViewModel(getCharacters)
 }
