@@ -5,4 +5,9 @@ import io.reactivex.Single
 
 interface RemoteCharactersResources {
     fun getCharacters(limit: Int, offset: Int): Single<CharactersResponse>
+    fun getCharacters(
+        limit: Int,
+        offset: Int,
+        nameStartsWith: String = ""
+    ): Single<CharactersResponse>
 }

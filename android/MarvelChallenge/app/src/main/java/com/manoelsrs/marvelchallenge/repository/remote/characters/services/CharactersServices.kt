@@ -16,4 +16,15 @@ interface CharactersServices {
         @Query("limit") limit: Int,
         @Query("offset") offset: Int
     ): Single<CharactersResponse>
+
+    @GET("v1/public/characters")
+    fun getCharacters(
+        @Query("ts") timestamp: String,
+        @Query("apikey") apikey: String,
+        @Query("hash") hash: String,
+        @Query("nameStartsWith") nameStartsWith: String,
+        @Query("orderBy") orderBy: String = "name",
+        @Query("limit") limit: Int,
+        @Query("offset") offset: Int
+    ): Single<CharactersResponse>
 }

@@ -26,4 +26,20 @@ class RemoteCharactersRepository(
             offset = offset
         )
     }
+
+    override fun getCharacters(
+        limit: Int,
+        offset: Int,
+        nameStartsWith: String
+    ): Single<CharactersResponse> {
+        val ts = System.currentTimeMillis().toString()
+        return charactersServices.getCharacters(
+            timestamp = ts,
+            apikey = publicKey,
+            hash = md5Hash.produce(ts, publicKey, privateKey),
+            nameStartsWith = nameStartsWith,
+            limit = limit,
+            offset = offset
+        )
+    }
 }
