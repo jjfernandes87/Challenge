@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.core.common.BaseActivity
 import com.manoelsrs.marvelchallenge.databinding.ActivityDetailsBinding
@@ -30,6 +31,14 @@ class DetailsActivity : BaseActivity(), DetailsContract {
         setComicsRecycler()
         setSeriesRecycler()
         presenter.onCreate(intent.getParcelableExtra(CHARACTER))
+
+        rvComics.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!rvComics.canScrollHorizontally(1))
+                    presenter.loadMoreComics()
+            }
+        })
     }
 
     private fun setComicsRecycler() {

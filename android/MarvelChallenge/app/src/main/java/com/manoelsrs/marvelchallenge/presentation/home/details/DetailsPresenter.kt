@@ -36,9 +36,17 @@ class DetailsPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { contract.setComics(it) },
-                {
-                    it
-                }
+                { /** todo: error handle */ }
+            ).also { addDisposable(it) }
+    }
+
+    fun loadMoreComics() {
+        getComics.loadMore(character!!.id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { contract.setComics(it) },
+                { /** todo: error handle */ }
             ).also { addDisposable(it) }
     }
 }
