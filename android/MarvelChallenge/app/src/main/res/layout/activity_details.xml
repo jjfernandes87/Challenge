@@ -86,7 +86,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvComics"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:visibility="@{presenter.character.hasComics ? View.VISIBLE : View.GONE, default=visible}" />
 
@@ -103,7 +103,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvSeries"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:visibility="@{presenter.character.hasSeries ? View.VISIBLE : View.GONE, default=visible}" />
             </LinearLayout>

@@ -44,7 +44,7 @@ class DetailsActivity : BaseActivity(), DetailsContract {
     }
 
     private fun setSeriesRecycler() {
-        with(rvComics) {
+        with(rvSeries) {
             layoutManager = LinearLayoutManager(
                 this@DetailsActivity,
                 LinearLayoutManager.HORIZONTAL,

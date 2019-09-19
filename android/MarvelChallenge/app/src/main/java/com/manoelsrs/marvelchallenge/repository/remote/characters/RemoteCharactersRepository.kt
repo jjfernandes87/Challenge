@@ -2,6 +2,7 @@ package com.manoelsrs.marvelchallenge.repository.remote.characters
 
 import com.manoelsrs.marvelchallenge.repository.remote.characters.producers.MD5Hash
 import com.manoelsrs.marvelchallenge.repository.remote.characters.resources.RemoteCharactersResources
+import com.manoelsrs.marvelchallenge.repository.remote.characters.responses.CSResponse
 import com.manoelsrs.marvelchallenge.repository.remote.characters.responses.CharactersResponse
 import com.manoelsrs.marvelchallenge.repository.remote.characters.services.CharactersServices
 import io.reactivex.Single
@@ -40,6 +41,16 @@ class RemoteCharactersRepository(
             nameStartsWith = nameStartsWith,
             limit = limit,
             offset = offset
+        )
+    }
+
+    override fun getComics(characterId: Int, limit: Int, offset: Int): Single<CSResponse> {
+        val ts = System.currentTimeMillis().toString()
+        return charactersServices.getComics(
+            timestamp = ts,
+            apikey = publicKey,
+            hash = md5Hash.produce(ts, publicKey, privateKey),
+            characterId = characterId, limit = limit, offset = offset
         )
     }
 }
