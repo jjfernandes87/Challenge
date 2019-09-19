@@ -1,12 +1,13 @@
 package com.manoelsrs.marvelchallenge.presentation.home.details
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.core.common.BaseActivity
 import com.manoelsrs.marvelchallenge.databinding.ActivityDetailsBinding
-import com.manoelsrs.marvelchallenge.model.Character
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_details.*
 import javax.inject.Inject
 
 class DetailsActivity : BaseActivity(), DetailsContract {
@@ -23,6 +24,8 @@ class DetailsActivity : BaseActivity(), DetailsContract {
         binding.presenter = presenter
         presenter.onCreate(intent.getParcelableExtra(CHARACTER))
     }
+
+    override fun getPhotoView(): ImageView = ivCharacterPhoto
 
     override fun onDestroy() {
         presenter.dispose()
