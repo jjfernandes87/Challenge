@@ -8,6 +8,8 @@
         <variable
             name="presenter"
             type="com.manoelsrs.marvelchallenge.presentation.home.details.DetailsPresenter" />
+
+        <import type="android.view.View" />
     </data>
 
     <LinearLayout
@@ -30,10 +32,10 @@
                 android:fontFamily="@font/marvel_regular"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="@{presenter.name}"
+                android:singleLine="true"
+                android:text="@{presenter.character.name}"
                 android:textColor="@color/marvelsColor"
                 android:textSize="24sp"
-                android:singleLine="true"
                 tools:text="CHARACTER NAME" />
 
             <ImageButton
@@ -69,19 +71,41 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="12dp"
-                    android:text="@{presenter.description}" />
+                    android:text="@{presenter.character.description}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/marvel_regular"
+                    android:padding="8dp"
+                    android:text="@string/comics_title"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24sp"
+                    android:visibility="@{presenter.character.hasComics ? View.VISIBLE : View.GONE, default=visible}" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvComics"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:padding="12dp" />
+                    android:padding="12dp"
+                    android:visibility="@{presenter.character.hasComics ? View.VISIBLE : View.GONE, default=visible}" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/marvel_regular"
+                    android:padding="8dp"
+                    android:text="@string/series_title"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="24sp"
+                    android:visibility="@{presenter.character.hasSeries ? View.VISIBLE : View.GONE, default=visible}" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvSeries"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:padding="12dp" />
+                    android:padding="12dp"
+                    android:visibility="@{presenter.character.hasSeries ? View.VISIBLE : View.GONE, default=visible}" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
