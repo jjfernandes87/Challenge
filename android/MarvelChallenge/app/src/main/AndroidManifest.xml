@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.manoelsrs.marvelchallenge">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MarvelApp"
@@ -13,8 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".presentation.home.details.DetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".presentation.home.characters.CharactersActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.splash.SplashActivity"
             android:screenOrientation="portrait">

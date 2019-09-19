@@ -2,13 +2,11 @@ package com.manoelsrs.marvelchallenge.di.builder
 
 import com.manoelsrs.marvelchallenge.di.PerActivity
 import com.manoelsrs.marvelchallenge.di.PerFragment
-import com.manoelsrs.marvelchallenge.di.module.CharactersActivityModule
-import com.manoelsrs.marvelchallenge.di.module.CharactersFragmentModule
-import com.manoelsrs.marvelchallenge.di.module.FavoritesFragmentModule
-import com.manoelsrs.marvelchallenge.di.module.SplashActivityModule
+import com.manoelsrs.marvelchallenge.di.module.*
 import com.manoelsrs.marvelchallenge.presentation.home.characters.CharactersActivity
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.CharactersFragment
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.FavoritesFragment
+import com.manoelsrs.marvelchallenge.presentation.home.details.DetailsActivity
 import com.manoelsrs.marvelchallenge.presentation.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -31,4 +29,8 @@ abstract class ActivitiesBuilder {
     @PerFragment
     @ContributesAndroidInjector(modules = [(FavoritesFragmentModule::class)])
     abstract fun bindFavoritesFragment(): FavoritesFragment
+
+    @PerActivity
+    @ContributesAndroidInjector(modules = [(DetailsActivityModule::class)])
+    abstract fun bindDetailsActivity(): DetailsActivity
 }
