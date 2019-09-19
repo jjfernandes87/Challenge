@@ -16,6 +16,10 @@ import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapt
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.viewmodel.CharactersViewModel
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.viewmodel.CharactersViewState
 import dagger.android.support.AndroidSupportInjection
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_characters.*
 import javax.inject.Inject
 
@@ -24,9 +28,26 @@ class CharactersFragment : Fragment() {
     @Inject
     lateinit var viewModel: CharactersViewModel
 
+    @Inject
+    lateinit var listener: Observable<String>
+
+    private val compositeDisposable = CompositeDisposable()
+    private var contentSearch = ""
+        set(value) {
+            field = value
+            viewModel.updateItems(value)
+        }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         AndroidSupportInjection.inject(this)
+        listener
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { contentSearch = it },
+                { /** TODO */ }
+            ).also { compositeDisposable.add(it) }
     }
 
     override fun onCreateView(
@@ -40,7 +61,7 @@ class CharactersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setCharactersList()
         observeViewState()
-        swipeRefreshLayout.setOnRefreshListener { viewModel.updateItems() }
+        swipeRefreshLayout.setOnRefreshListener { viewModel.updateItems(contentSearch) }
     }
 
     private fun setCharactersList() {
@@ -51,7 +72,8 @@ class CharactersFragment : Fragment() {
         rvCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if (!rvCharacters.canScrollVertically(1)) viewModel.loadMoreItems()
+                if (!rvCharacters.canScrollVertically(1))
+                    viewModel.loadMoreItems(contentSearch)
             }
         })
 

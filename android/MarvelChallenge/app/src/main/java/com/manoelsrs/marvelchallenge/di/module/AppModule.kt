@@ -8,6 +8,7 @@ import com.manoelsrs.marvelchallenge.repository.local.character.entity.Character
 import com.manoelsrs.marvelchallenge.repository.local.character.entity.CharactersDto
 import dagger.Module
 import dagger.Provides
+import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Singleton
 
 @Module
@@ -21,6 +22,10 @@ class AppModule {
     @Singleton
     fun providesRepository(charactersDatabase: CharactersDatabase): Repository =
         Repository(charactersDatabase)
+
+    @Provides
+    @Singleton
+    fun providesSubject(): BehaviorSubject<String> = BehaviorSubject.create<String>()
 
     @Provides
     @Singleton

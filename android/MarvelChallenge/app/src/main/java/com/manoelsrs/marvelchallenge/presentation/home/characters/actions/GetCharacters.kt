@@ -24,16 +24,28 @@ class GetCharacters(
         )
     )
 
-    fun loadMoreItems(): Single<CharactersResponse> {
-        return getOffset.execute()
-            .flatMap { repository.remote.characters.getCharacters(LIMIT, it) }
-            .doOnSuccess { saveCharacters(it) }
+    fun loadMoreItems(content: String): Single<CharactersResponse> {
+        return if (content.isBlank()) {
+            getOffset.execute()
+                .flatMap { repository.remote.characters.getCharacters(LIMIT, it) }
+                .doOnSuccess { saveCharacters(it) }
+        } else {
+            getOffset.execute()
+                .flatMap { repository.remote.characters.getCharacters(LIMIT, it, content) }
+                .doOnSuccess { saveCharacters(it) }
+        }
     }
 
-    fun updateItems(): Single<CharactersResponse> {
-        return repository.local.character.deleteAll().toSingleDefault(Unit)
-            .flatMap { repository.remote.characters.getCharacters(LIMIT, 0) }
-            .doOnSuccess { saveCharacters(it) }
+    fun updateItems(content: String): Single<CharactersResponse> {
+        return if (content.isBlank()) {
+            repository.local.character.deleteAll().toSingleDefault(Unit)
+                .flatMap { repository.remote.characters.getCharacters(LIMIT, 0) }
+                .doOnSuccess { saveCharacters(it) }
+        } else {
+            repository.local.character.deleteAll().toSingleDefault(Unit)
+                .flatMap { repository.remote.characters.getCharacters(LIMIT, 0, content) }
+                .doOnSuccess { saveCharacters(it) }
+        }
     }
 
     private fun saveCharacters(response: CharactersResponse) {

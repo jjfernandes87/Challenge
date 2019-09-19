@@ -7,6 +7,8 @@ import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.viewm
 import com.manoelsrs.marvelchallenge.repository.Repository
 import dagger.Module
 import dagger.Provides
+import io.reactivex.Observable
+import io.reactivex.subjects.BehaviorSubject
 
 @Module
 class CharactersFragmentModule {
@@ -25,4 +27,8 @@ class CharactersFragmentModule {
     @Provides
     fun providesCharacterViewModel(getCharacters: GetCharacters) =
         CharactersViewModel(getCharacters)
+
+    @PerFragment
+    @Provides
+    fun providesSearchListener(subject: BehaviorSubject<String>): Observable<String> = subject
 }

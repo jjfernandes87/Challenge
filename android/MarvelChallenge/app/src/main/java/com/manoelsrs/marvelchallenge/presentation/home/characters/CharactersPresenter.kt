@@ -1,19 +1,17 @@
 package com.manoelsrs.marvelchallenge.presentation.home.characters
 
 import com.manoelsrs.marvelchallenge.core.common.BasePresenter
-import com.manoelsrs.marvelchallenge.model.Character
-import com.manoelsrs.marvelchallenge.repository.Repository
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import java.util.*
+import io.reactivex.subjects.BehaviorSubject
 
 class CharactersPresenter(
-    private val contract: CharactersContract
+    private val contract: CharactersContract,
+    private val subject: BehaviorSubject<String>
 ) : BasePresenter() {
 
     var search: String = ""
         set(value) {
             field = value
+            subject.onNext(value)
             notifyChange()
         }
 
