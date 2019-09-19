@@ -4,6 +4,7 @@ import com.manoelsrs.marvelchallenge.core.common.BasePresenter
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.presentation.home.details.actions.GetComics
 import com.manoelsrs.marvelchallenge.presentation.home.details.actions.GetSeries
+import com.manoelsrs.marvelchallenge.presentation.home.details.actions.SaveFavorite
 import com.squareup.picasso.Picasso
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -11,7 +12,8 @@ import io.reactivex.schedulers.Schedulers
 class DetailsPresenter(
     private val contract: DetailsContract,
     private val getComics: GetComics,
-    private val getSeries: GetSeries
+    private val getSeries: GetSeries,
+    private val saveFavorite: SaveFavorite
 ) : BasePresenter() {
 
     var character: Character? = null
@@ -71,5 +73,13 @@ class DetailsPresenter(
                 { contract.setSeries(it) },
                 { /** todo: error handle */ }
             ).also { addDisposable(it) }
+    }
+
+    fun saveFavorite() {
+        saveFavorite.execute(character!!)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+            .also { addDisposable(it) }
     }
 }

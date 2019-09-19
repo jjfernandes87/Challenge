@@ -1,4 +1,4 @@
-package com.manoelsrs.marvelchallenge.presentation.home.characters.actions
+package com.manoelsrs.marvelchallenge.presentation.home.details.actions
 
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.repository.Repository

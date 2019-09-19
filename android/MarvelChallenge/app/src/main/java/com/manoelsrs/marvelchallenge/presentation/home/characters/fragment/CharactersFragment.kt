@@ -70,7 +70,6 @@ class CharactersFragment : BaseFragment() {
         rvCharacters.adapter = adapter
 
         adapter.setOnClickListener {
-//            viewModel.saveFavorite(it)
             startActivity<DetailsActivity>(DetailsActivity.CHARACTER to it)
         }
 

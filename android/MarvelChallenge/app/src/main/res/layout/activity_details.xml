@@ -30,7 +30,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:fontFamily="@font/marvel_regular"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:padding="8dp"
                 android:singleLine="true"
                 android:text="@{presenter.character.name}"
@@ -46,6 +46,7 @@
                 android:background="@color/colorPrimaryDark"
                 android:padding="8dp"
                 android:src="@drawable/ic_star_white_24dp"
+                android:onClick="@{_ -> presenter.saveFavorite()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>

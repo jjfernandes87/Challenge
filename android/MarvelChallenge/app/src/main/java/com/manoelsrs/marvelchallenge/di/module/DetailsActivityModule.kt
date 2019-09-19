@@ -3,10 +3,7 @@ package com.manoelsrs.marvelchallenge.di.module
 import com.manoelsrs.marvelchallenge.di.PerActivity
 import com.manoelsrs.marvelchallenge.presentation.home.details.DetailsActivity
 import com.manoelsrs.marvelchallenge.presentation.home.details.DetailsPresenter
-import com.manoelsrs.marvelchallenge.presentation.home.details.actions.GetComics
-import com.manoelsrs.marvelchallenge.presentation.home.details.actions.GetSeries
-import com.manoelsrs.marvelchallenge.presentation.home.details.actions.SaveComics
-import com.manoelsrs.marvelchallenge.presentation.home.details.actions.SaveSeries
+import com.manoelsrs.marvelchallenge.presentation.home.details.actions.*
 import com.manoelsrs.marvelchallenge.presentation.home.details.producers.DataProducer
 import com.manoelsrs.marvelchallenge.repository.Repository
 import dagger.Module
@@ -29,6 +26,11 @@ class DetailsActivityModule {
 
     @PerActivity
     @Provides
+    fun providesSaveFavoriteAction(repository: Repository) =
+        SaveFavorite(repository)
+
+    @PerActivity
+    @Provides
     fun providesGetComicsAction(
         repository: Repository,
         dataProducer: DataProducer,
@@ -48,7 +50,7 @@ class DetailsActivityModule {
     fun providesDetailsPresenter(
         activity: DetailsActivity,
         getComics: GetComics,
-        getSeries: GetSeries
-    ) =
-        DetailsPresenter(activity, getComics, getSeries)
+        getSeries: GetSeries,
+        saveFavorite: SaveFavorite
+    ) = DetailsPresenter(activity, getComics, getSeries, saveFavorite)
 }

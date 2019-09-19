@@ -44,7 +44,7 @@ class DetailsActivity : BaseActivity(), DetailsContract {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!rvSeries.canScrollHorizontally(1))
-                    presenter.loadMoreComics()
+                    presenter.loadMoreSeries()
             }
         })
     }
