@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class CharactersDto(
     @PrimaryKey val id: Int,
     val name: String,
+    val description: String,
     val photo: String,
     val photoExtension: String
 ) {

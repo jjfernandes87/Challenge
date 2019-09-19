@@ -18,24 +18,36 @@ class LocalCharacterRepository(
 
     override fun getCharacters(): DataSource.Factory<Int, Character> {
         return database.charactersDao().getCharacters()
-            .map { Character(it.id, it.name, it.photo, it.photoExtension) }
+            .map { Character(it.id, it.name, it.description, it.photo, it.photoExtension) }
     }
 
     override fun insert(characters: List<Character>) {
         database.charactersDao().insert(characters.map {
-            CharactersDto(it.id, it.name, it.photo, it.photoExtension)
+            CharactersDto(it.id, it.name, it.description, it.photo, it.photoExtension)
         })
     }
 
     override fun insert(character: Character) {
         database.charactersDao().insert(
-            CharactersDto(character.id, character.name, character.photo, character.photoExtension)
+            CharactersDto(
+                character.id,
+                character.name,
+                character.description,
+                character.photo,
+                character.photoExtension
+            )
         )
     }
 
     override fun delete(character: Character) {
         database.charactersDao().delete(
-            CharactersDto(character.id, character.name, character.photo, character.photoExtension)
+            CharactersDto(
+                character.id,
+                character.name,
+                character.description,
+                character.photo,
+                character.photoExtension
+            )
         )
     }
 

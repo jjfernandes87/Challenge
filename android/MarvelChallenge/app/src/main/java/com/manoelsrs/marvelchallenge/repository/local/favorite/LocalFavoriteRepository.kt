@@ -11,12 +11,12 @@ class LocalFavoriteRepository(private val database: FavoriteDatabase) : LocalFav
 
     override fun getFavorites(): DataSource.Factory<Int, Character> {
         return database.favoriteDao().getFavorites()
-            .map { Character(it.id, it.name, it.photo, it.photoExtension) }
+            .map { Character(it.id, it.name, it.description, it.photo, it.photoExtension) }
     }
 
-    override fun getFavorites(search: String): DataSource.Factory<Int, Character>  {
+    override fun getFavorites(search: String): DataSource.Factory<Int, Character> {
         return database.favoriteDao().getFavoritesSearch(search)
-            .map { Character(it.id, it.name, it.photo, it.photoExtension) }
+            .map { Character(it.id, it.name, it.description, it.photo, it.photoExtension) }
     }
 
     override fun insert(favorite: Character): Completable = Completable.fromCallable {
@@ -24,6 +24,7 @@ class LocalFavoriteRepository(private val database: FavoriteDatabase) : LocalFav
             FavoriteDto(
                 favorite.id,
                 favorite.name,
+                favorite.description,
                 favorite.photo,
                 favorite.photoExtension
             )
@@ -35,6 +36,7 @@ class LocalFavoriteRepository(private val database: FavoriteDatabase) : LocalFav
             FavoriteDto(
                 favorite.id,
                 favorite.name,
+                favorite.description,
                 favorite.photo,
                 favorite.photoExtension
             )
