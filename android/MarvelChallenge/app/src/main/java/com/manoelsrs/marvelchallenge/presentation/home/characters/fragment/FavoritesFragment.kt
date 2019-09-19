@@ -15,11 +15,13 @@ import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.adapter.ItemViewPagerAdapter
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.viewmodel.CharactersViewState
 import com.manoelsrs.marvelchallenge.presentation.home.characters.fragment.viewmodel.FavoritesViewModel
+import com.manoelsrs.marvelchallenge.presentation.home.details.DetailsActivity
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_characters.*
+import org.jetbrains.anko.support.v4.startActivity
 import javax.inject.Inject
 
 class FavoritesFragment : BaseFragment() {
@@ -58,7 +60,9 @@ class FavoritesFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         rvCharacters.layoutManager = GridLayoutManager(context, 2)
         rvCharacters.adapter = adapter
-        adapter.setOnClickListener { Log.d("PERSONAGEM", it.name) }
+        adapter.setOnClickListener {
+            startActivity<DetailsActivity>(DetailsActivity.CHARACTER to it)
+        }
         swipeRefreshLayout.setOnRefreshListener { swipeRefreshLayout.isRefreshing = false }
         observeViewState()
         watchViewModel(adapter)

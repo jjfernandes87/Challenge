@@ -33,7 +33,7 @@
                 android:gravity="center_vertical"
                 android:padding="8dp"
                 android:singleLine="true"
-                android:text="@{presenter.character.name}"
+                android:text="@{presenter.character.name.toUpperCase()}"
                 android:textColor="@color/marvelsColor"
                 android:textSize="24sp"
                 tools:text="CHARACTER NAME" />
