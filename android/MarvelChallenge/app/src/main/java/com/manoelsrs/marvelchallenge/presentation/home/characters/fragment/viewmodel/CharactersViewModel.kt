@@ -19,14 +19,14 @@ class CharactersViewModel(
     val characters: LiveData<PagedList<Character>> = getCharacters.execute()
 
     init {
-        updateItems()
+        updateItems("")
     }
 
     fun viewState(): LiveData<CharactersViewState> = viewState
 
-    fun loadMoreItems() {
+    fun loadMoreItems(content: String) {
         //TODO: Handle error
-        getCharacters.loadMoreItems()
+        getCharacters.loadMoreItems(content)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { viewState.value = CharactersViewState.Loading(true) }
@@ -41,8 +41,8 @@ class CharactersViewModel(
         super.onCleared()
     }
 
-    fun updateItems() {
-        getCharacters.updateItems()
+    fun updateItems(content: String) {
+        getCharacters.updateItems(content)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { viewState.value = CharactersViewState.Loading(true) }
