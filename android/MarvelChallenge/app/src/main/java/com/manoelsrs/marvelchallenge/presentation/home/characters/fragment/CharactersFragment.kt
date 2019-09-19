@@ -98,4 +98,9 @@ class CharactersFragment : Fragment() {
             }
         })
     }
+
+    override fun onDetach() {
+        compositeDisposable.clear()
+        super.onDetach()
+    }
 }
