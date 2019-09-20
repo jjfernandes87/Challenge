@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = SerieDto.TABLE)
-class SerieDto(
+data class SerieDto(
     @PrimaryKey val id: Int,
     val title: String,
     val photo: String,

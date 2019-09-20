@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 @Dao
@@ -13,7 +14,7 @@ interface ComicDao {
     fun getComicsCount(): Single<Int>
 
     @Query("SELECT * FROM ${ComicDto.TABLE} ORDER BY title")
-    fun getComics(): Single<List<ComicDto>>
+    fun getComics(): Maybe<List<ComicDto>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(comicsDto: List<ComicDto>)

@@ -26,6 +26,6 @@ class GetSeries(
             .flatMap { repository.remote.characters.getSeries(characterId, LIMIT, it) }
             .map { dataProducer.produce(it) }
             .flatMap { saveSeries.execute(it) }
-            .flatMap { repository.local.serie.getSeries() }
+            .flatMap { repository.local.serie.getSeries().toSingle() }
     }
 }
