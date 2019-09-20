@@ -47,10 +47,29 @@ class DetailsActivityModule {
 
     @PerActivity
     @Provides
+    fun providesCheckFavoriteAction(repository: Repository) =
+        CheckFavorite(repository)
+
+    @PerActivity
+    @Provides
+    fun providesDeleteFavoriteAction(repository: Repository) =
+        DeleteFavorite(repository)
+
+    @PerActivity
+    @Provides
     fun providesDetailsPresenter(
         activity: DetailsActivity,
         getComics: GetComics,
         getSeries: GetSeries,
-        saveFavorite: SaveFavorite
-    ) = DetailsPresenter(activity, getComics, getSeries, saveFavorite)
+        saveFavorite: SaveFavorite,
+        checkFavorite: CheckFavorite,
+        deleteFavorite: DeleteFavorite
+    ) = DetailsPresenter(
+        activity,
+        getComics,
+        getSeries,
+        saveFavorite,
+        checkFavorite,
+        deleteFavorite
+    )
 }

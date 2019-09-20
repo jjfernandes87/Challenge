@@ -7,6 +7,7 @@ import com.manoelsrs.marvelchallenge.repository.local.favorite.entity.FavoriteDt
 import com.manoelsrs.marvelchallenge.repository.local.favorite.mappers.FavoriteMapper
 import com.manoelsrs.marvelchallenge.repository.local.favorite.resources.LocalFavoriteResources
 import io.reactivex.Completable
+import io.reactivex.Single
 
 class LocalFavoriteRepository(private val database: FavoriteDatabase) : LocalFavoriteResources {
 
@@ -18,6 +19,11 @@ class LocalFavoriteRepository(private val database: FavoriteDatabase) : LocalFav
     override fun getFavorites(search: String): DataSource.Factory<Int, Character> {
         return database.favoriteDao().getFavoritesSearch(search)
             .map { FavoriteMapper.toCharacter(it) }
+    }
+
+    override fun getFavoritesSingle(): Single<List<Character>> {
+        return database.favoriteDao().getFavoritesSingle()
+            .map { FavoriteMapper.toCharacters(it) }
     }
 
     override fun insert(favorite: Character): Completable = Completable.fromCallable {
