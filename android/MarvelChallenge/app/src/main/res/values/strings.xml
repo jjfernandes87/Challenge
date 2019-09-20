@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Marvel Challenge</string>
+    <string name="ok_button">OK</string>
+    <string name="yes_button">Yes</string>
+    <string name="no_button">No</string>
 
     <!-- Splash screen -->
     <string name="splash_text">MARVEL</string>
@@ -12,5 +15,20 @@
 
     <!-- Details screen -->
     <string name="comics_title">COMICS</string>
+    <string name="comics_error_message">A problem was occurred when we try to request COMICS</string>
     <string name="series_title">SERIES</string>
+    <string name="series_error_message">A problem was occurred when we try to request SERIES</string>
+    <string name="loading_title">Wait</string>
+    <string name="loading_message">Requesting information from @Marvel…</string>
+    <string name="favorite_title">Hey</string>
+    <string name="save_favorite_message">Do you want to save this favorite?</string>
+    <string name="delete_favorite_message">Do you want to delete this favorite?</string>
+    <string name="common_error_title">Sorry!</string>
+    <string name="common_error_message">A problem was occurred, try again!</string>
+
+    <!-- Http Error -->
+    <string name="noConnection">Please verify your connection</string>
+    <string name="timeout">We had a timeout problem, please contact us</string>
+    <string name="_400_499">Problem with your request, please contact us</string>
+    <string name="_500">Server temporarily offline</string>
 </resources>

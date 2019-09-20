@@ -17,6 +17,20 @@ object FavoriteMapper {
         )
     }
 
+    fun toCharacters(dtos: List<FavoriteDto>): List<Character> {
+        return dtos.map {
+            Character(
+                it.id,
+                it.name,
+                it.description,
+                it.photo,
+                it.photoExtension,
+                it.hasComics,
+                it.hasSeries
+            )
+        }
+    }
+
     fun toFavoriteDto(character: Character): FavoriteDto {
         return FavoriteDto(
             character.id,

@@ -25,14 +25,13 @@ class CharactersViewModel(
     fun viewState(): LiveData<CharactersViewState> = viewState
 
     fun loadMoreItems(content: String) {
-        //TODO: Handle error
         getCharacters.loadMoreItems(content)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { viewState.value = CharactersViewState.Loading(true) }
             .subscribe(
                 { viewState.value = CharactersViewState.Loading(false) },
-                { viewState.value = CharactersViewState.Error("ERROR!") }
+                { viewState.value = CharactersViewState.Error(it) }
             ).also { compositeDisposable.add(it) }
     }
 
@@ -48,7 +47,7 @@ class CharactersViewModel(
             .doOnSubscribe { viewState.value = CharactersViewState.Loading(true) }
             .subscribe(
                 { viewState.value = CharactersViewState.Loading(false) },
-                { viewState.value = CharactersViewState.Error("ERROR!") }
+                { viewState.value = CharactersViewState.Error(it) }
             ).also { compositeDisposable.add(it) }
     }
 }
