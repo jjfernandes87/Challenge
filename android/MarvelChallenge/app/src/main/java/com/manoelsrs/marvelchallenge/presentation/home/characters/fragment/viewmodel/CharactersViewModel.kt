@@ -6,14 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.presentation.home.characters.actions.GetCharacters
-import com.manoelsrs.marvelchallenge.presentation.home.characters.actions.SaveFavorite
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class CharactersViewModel(
-    private val getCharacters: GetCharacters,
-    private val saveFavorite: SaveFavorite
+    private val getCharacters: GetCharacters
 ) : ViewModel() {
 
     private val viewState: MutableLiveData<CharactersViewState> = MutableLiveData()
@@ -52,13 +50,5 @@ class CharactersViewModel(
                 { viewState.value = CharactersViewState.Loading(false) },
                 { viewState.value = CharactersViewState.Error("ERROR!") }
             ).also { compositeDisposable.add(it) }
-    }
-
-    fun saveFavorite(character: Character) {
-        saveFavorite.execute(character)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
-            .also { compositeDisposable.add(it) }
     }
 }

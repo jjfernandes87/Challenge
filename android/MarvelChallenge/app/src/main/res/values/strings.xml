@@ -9,4 +9,8 @@
     <!-- Fragment strings -->
     <string name="empty_favorites_message">NO FAVORITES FOUND!!</string>
     <string name="empty_characters_message">NO CHARACTERS FOUND!!</string>
+
+    <!-- Details screen -->
+    <string name="comics_title">COMICS</string>
+    <string name="series_title">SERIES</string>
 </resources>

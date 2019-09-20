@@ -7,8 +7,11 @@ import androidx.room.PrimaryKey
 data class FavoriteDto(
     @PrimaryKey val id: Int,
     val name: String,
+    val description: String,
     val photo: String,
-    val photoExtension: String
+    val photoExtension: String,
+    val hasComics: Boolean,
+    val hasSeries: Boolean
 ) {
     companion object {
         const val TABLE = "favorite_table"
