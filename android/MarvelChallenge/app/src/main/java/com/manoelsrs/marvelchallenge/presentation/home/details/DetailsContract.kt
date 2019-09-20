@@ -15,4 +15,5 @@ interface DetailsContract {
     fun getFavoriteListener(): Observable<Unit>
     fun getDeleteFavoriteListener(): Observable<Unit>
     fun showError(message: Int)
+    fun finish()
 }

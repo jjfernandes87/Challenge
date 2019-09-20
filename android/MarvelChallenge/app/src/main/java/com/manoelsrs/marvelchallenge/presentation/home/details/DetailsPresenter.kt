@@ -1,13 +1,18 @@
 package com.manoelsrs.marvelchallenge.presentation.home.details
 
+import androidx.room.EmptyResultSetException
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.core.common.BasePresenter
+import com.manoelsrs.marvelchallenge.core.extensions.friendlyMessage
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.presentation.home.details.actions.*
 import com.squareup.picasso.Picasso
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
+import java.net.SocketTimeoutException
+import java.util.concurrent.TimeoutException
 
 class DetailsPresenter(
     private val contract: DetailsContract,
@@ -45,7 +50,17 @@ class DetailsPresenter(
             .doOnSubscribe { contract.showLoading() }
             .subscribe(
                 { contract.stopLoading() },
-                { contract.showError(R.string.common_error_message) }
+                {
+                    with(contract) {
+                        stopLoading()
+                        when(it){
+                            is HttpException -> it.friendlyMessage()
+                            is TimeoutException -> R.string.timeout
+                            is SocketTimeoutException -> R.string.timeout
+                            else -> R.string.noConnection
+                        }.apply { showError(this) }
+                    }
+                }
             ).also { addDisposable(it) }
     }
 
