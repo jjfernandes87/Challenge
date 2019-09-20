@@ -1,6 +1,5 @@
 package com.manoelsrs.marvelchallenge.presentation.home.details
 
-import androidx.room.EmptyResultSetException
 import com.manoelsrs.marvelchallenge.R
 import com.manoelsrs.marvelchallenge.core.common.BasePresenter
 import com.manoelsrs.marvelchallenge.core.extensions.friendlyMessage
@@ -23,9 +22,20 @@ class DetailsPresenter(
     private val deleteFavorite: DeleteFavorite
 ) : BasePresenter() {
 
+    companion object {
+        private const val COMMOM_DESCRIPTION = "No information received!"
+    }
+
     var character: Character? = null
         set(value) {
             field = value
+            description = value?.description ?: COMMOM_DESCRIPTION
+            notifyChange()
+        }
+
+    var description: String = ""
+        set(value) {
+            field = if (value.isBlank()) COMMOM_DESCRIPTION else value
             notifyChange()
         }
 
@@ -53,7 +63,7 @@ class DetailsPresenter(
                 {
                     with(contract) {
                         stopLoading()
-                        when(it){
+                        when (it) {
                             is HttpException -> it.friendlyMessage()
                             is TimeoutException -> R.string.timeout
                             is SocketTimeoutException -> R.string.timeout
