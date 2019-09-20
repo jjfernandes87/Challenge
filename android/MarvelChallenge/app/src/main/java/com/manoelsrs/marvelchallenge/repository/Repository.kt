@@ -9,7 +9,7 @@ import com.manoelsrs.marvelchallenge.repository.local.serie.entity.SerieDatabase
 import com.manoelsrs.marvelchallenge.repository.remote.RemoteFactory
 import com.manoelsrs.marvelchallenge.repository.remote.RemoteRepository
 
-class Repository(
+open class Repository(
     charactersDatabase: CharactersDatabase,
     comicDatabase: ComicDatabase,
     favoriteDatabase: FavoriteDatabase,

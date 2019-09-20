@@ -3,7 +3,7 @@ package com.manoelsrs.marvelchallenge.presentation.home.characters.producers
 import com.manoelsrs.marvelchallenge.model.Character
 import com.manoelsrs.marvelchallenge.repository.remote.characters.responses.ResultsResponse
 
-object CharacterProducer {
+class CharacterProducer {
 
     fun execute(results: ResultsResponse): Character {
         return Character(
