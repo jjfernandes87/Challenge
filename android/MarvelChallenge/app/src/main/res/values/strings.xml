@@ -5,4 +5,8 @@
     <string name="splash_text">MARVEL</string>
     <string name="characters_text">CHARACTERS</string>
     <string name="favorites_text">FAVORITES</string>
+
+    <!-- Fragment strings -->
+    <string name="empty_favorites_message">NO FAVORITES FOUND!!</string>
+    <string name="empty_characters_message">NO CHARACTERS FOUND!!</string>
 </resources>
