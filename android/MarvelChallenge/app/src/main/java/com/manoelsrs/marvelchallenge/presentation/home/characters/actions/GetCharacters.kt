@@ -10,7 +10,8 @@ import io.reactivex.Single
 
 class GetCharacters(
     private val repository: Repository,
-    private val getOffset: GetOffset
+    private val getOffset: GetOffset,
+    private val characterProducer: CharacterProducer
 ) {
 
     companion object {
@@ -50,7 +51,7 @@ class GetCharacters(
     }
 
     private fun saveCharacters(response: CharactersResponse) {
-        val character: List<Character> = response.data.results.map { CharacterProducer.execute(it) }
+        val character: List<Character> = response.data.results.map { characterProducer.execute(it) }
         repository.local.character.insert(character)
     }
 }

@@ -26,6 +26,6 @@ class GetComics(
             .flatMap { repository.remote.characters.getComics(characterId, LIMIT, it) }
             .map { dataProducer.produce(it) }
             .flatMap { saveComics.execute(it) }
-            .flatMap { repository.local.comic.getComics() }
+            .flatMap { repository.local.comic.getComics().toSingle() }
     }
 }

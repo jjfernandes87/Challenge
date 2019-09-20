@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 @Dao
@@ -13,7 +14,7 @@ interface SerieDao {
     fun getSeriesCount(): Single<Int>
 
     @Query("SELECT * FROM ${SerieDto.TABLE} ORDER BY title")
-    fun getSeries(): Single<List<SerieDto>>
+    fun getSeries(): Maybe<List<SerieDto>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(serieDto: List<SerieDto>)

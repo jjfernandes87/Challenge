@@ -5,6 +5,7 @@ import com.manoelsrs.marvelchallenge.repository.local.serie.entity.SerieDatabase
 import com.manoelsrs.marvelchallenge.repository.local.serie.mappers.SerieMapper
 import com.manoelsrs.marvelchallenge.repository.local.serie.resources.LocalSerieResources
 import io.reactivex.Completable
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 class LocalSerieRepository(private val database: SerieDatabase) : LocalSerieResources {
@@ -13,7 +14,7 @@ class LocalSerieRepository(private val database: SerieDatabase) : LocalSerieReso
         return database.serieDao().getSeriesCount()
     }
 
-    override fun getSeries(): Single<List<Data>> {
+    override fun getSeries(): Maybe<List<Data>> {
         return database.serieDao().getSeries()
             .map { SerieMapper.toData(it) }
     }

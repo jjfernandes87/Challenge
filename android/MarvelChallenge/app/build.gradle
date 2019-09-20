@@ -18,6 +18,8 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "MARVEL_BASE_URL", MARVEL_BASE_URL)
+            buildConfigField("String", "MARVEL_PUBLIC_KEY", MARVEL_PUBLIC_KEY)
+            buildConfigField("String", "MARVEL_PRIVATE_KEY", MARVEL_PRIVATE_KEY)
         }
 
         release {
@@ -25,8 +27,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
             buildConfigField("String", "MARVEL_BASE_URL", MARVEL_BASE_URL)
+            buildConfigField("String", "MARVEL_PUBLIC_KEY", MARVEL_PUBLIC_KEY)
+            buildConfigField("String", "MARVEL_PRIVATE_KEY", MARVEL_PRIVATE_KEY)
         }
     }
+
+    testOptions.unitTests.includeAndroidResources = true
 
     androidExtensions {
         experimental = true
@@ -95,7 +101,18 @@ dependencies {
     //JUnit
     testImplementation 'junit:junit:4.12'
 
+    //Roboletric
+    testImplementation "org.robolectric:robolectric:4.2"
+
+    //Mockito
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation 'org.mockito:mockito-core:2.23.0'
+
+    //Android Testing Support Library's runner and rules
+    testImplementation "androidx.test:core:1.2.0"
+    androidTestImplementation "androidx.test:rules:1.3.0-alpha02"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+
     //Espresso
-    androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

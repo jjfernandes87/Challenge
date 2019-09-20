@@ -1,5 +1,6 @@
 package com.manoelsrs.marvelchallenge.repository.remote.characters
 
+import com.manoelsrs.marvelchallenge.BuildConfig
 import com.manoelsrs.marvelchallenge.repository.remote.characters.producers.MD5Hash
 import com.manoelsrs.marvelchallenge.repository.remote.characters.resources.RemoteCharactersResources
 import com.manoelsrs.marvelchallenge.repository.remote.characters.responses.CSResponse
@@ -13,8 +14,6 @@ class RemoteCharactersRepository(
 ) : RemoteCharactersResources {
 
     companion object {
-        private const val publicKey = "00ce064b34a7f59482129d4b3a33ee1c"
-        private const val privateKey = "cd06400f1b3a06ad536b3df852e919ecc6bdeaba"
         private const val COMICS = "comics"
         private const val SERIES = "series"
     }
@@ -23,8 +22,12 @@ class RemoteCharactersRepository(
         val ts = System.currentTimeMillis().toString()
         return charactersServices.getCharacters(
             timestamp = ts,
-            apikey = publicKey,
-            hash = md5Hash.produce(ts, publicKey, privateKey),
+            apikey = BuildConfig.MARVEL_PUBLIC_KEY,
+            hash = md5Hash.produce(
+                ts,
+                BuildConfig.MARVEL_PUBLIC_KEY,
+                BuildConfig.MARVEL_PRIVATE_KEY
+            ),
             limit = limit,
             offset = offset
         )
@@ -38,8 +41,12 @@ class RemoteCharactersRepository(
         val ts = System.currentTimeMillis().toString()
         return charactersServices.getCharacters(
             timestamp = ts,
-            apikey = publicKey,
-            hash = md5Hash.produce(ts, publicKey, privateKey),
+            apikey = BuildConfig.MARVEL_PUBLIC_KEY,
+            hash = md5Hash.produce(
+                ts,
+                BuildConfig.MARVEL_PUBLIC_KEY,
+                BuildConfig.MARVEL_PRIVATE_KEY
+            ),
             nameStartsWith = nameStartsWith,
             limit = limit,
             offset = offset
@@ -63,8 +70,12 @@ class RemoteCharactersRepository(
         val ts = System.currentTimeMillis().toString()
         return charactersServices.getData(
             timestamp = ts,
-            apikey = publicKey,
-            hash = md5Hash.produce(ts, publicKey, privateKey),
+            apikey = BuildConfig.MARVEL_PUBLIC_KEY,
+            hash = md5Hash.produce(
+                ts,
+                BuildConfig.MARVEL_PUBLIC_KEY,
+                BuildConfig.MARVEL_PRIVATE_KEY
+            ),
             characterId = characterId, limit = limit, offset = offset,
             type = type
         )
