@@ -8,5 +8,5 @@ Escolha a vaga à qual está aplicando:
 
 **Android**
 
-[Desenvolvedor Android](./README_Android_Senior.md)
+[Desenvolvedor Android](./README_Android.md)
 
