@@ -9,11 +9,6 @@ O objetivo é implementar um app onde podemos ver os a lista de personagens da M
 Para desenvolver o app você vai precisar usar o endpoint de "Characters" da API Marvel. 
 Mais informações: https://developer.marvel.com/docs.
 
-## API
-
-Para desenvolver o app você vai precisar usar o endpoint de "Characters" da API Marvel. 
-Mais informações: https://developer.marvel.com/docs.
-
 ## Interface
 
 A interface do app é dividida em 3 partes e deve ser desenvolvida conforme os pontos abaixo.
