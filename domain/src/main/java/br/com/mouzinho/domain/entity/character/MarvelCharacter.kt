@@ -1,6 +1,6 @@
 package br.com.mouzinho.domain.entity.character
 
-data class Character(
+data class MarvelCharacter(
     val comics: Comics?,
     val description: String?,
     val id: Int,

@@ -1,28 +1,32 @@
 package br.com.mouzinho.data.repository.character
 
-import br.com.mouzinho.data.entity.character.ApiCharacter
+import androidx.paging.PagedList
+import androidx.paging.RxPagedListBuilder
+import br.com.mouzinho.data.entity.character.ApiMarvelCharacter
 import br.com.mouzinho.data.network.ApiService
-import br.com.mouzinho.domain.entity.character.Character
-import br.com.mouzinho.domain.entity.character.CharacterResult
+import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.mapper.Mapper
 import br.com.mouzinho.domain.repository.character.CharacterRepository
 import io.reactivex.Observable
-import io.reactivex.rxkotlin.cast
 import javax.inject.Inject
 
 class CharacterRepositoryImpl @Inject constructor(
     private val apiService: ApiService,
-    private val characterMapper: Mapper<ApiCharacter, Character>
+    private val characterMapper: Mapper<ApiMarvelCharacter, MarvelCharacter>
 ) : CharacterRepository {
 
-    override fun getCharacters(limit: Int, offset: Int): Observable<CharacterResult> =
-        apiService.getCharacters(limit, offset)
-            .map { response ->
-                val characters =
-                    response.data?.results?.map(characterMapper::transform) ?: emptyList()
-                CharacterResult.Success(characters)
-            }
-            .cast<CharacterResult>()
-            .onErrorReturn { error -> CharacterResult.Failure(error) }
-            .startWith(CharacterResult.Loading)
+    private val pagingSource by lazy { CharacterPagingSource(apiService, characterMapper) }
+
+    override fun loadCharactersPagedList(pageSize: Int): Observable<PagedList<MarvelCharacter>> {
+        return RxPagedListBuilder(
+            pagingSource,
+            PagedList.Config.Builder().setEnablePlaceholders(false).setPageSize(pageSize).build()
+        )
+            .buildObservable()
+    }
+
+    override fun sendSearchNameToPagingSource(name: String) {
+        pagingSource.query = name
+        pagingSource.invalidate()
+    }
 }

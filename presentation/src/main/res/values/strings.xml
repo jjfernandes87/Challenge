@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MarvelApp</string>
+    <string name="error_message">Aconteceu um erro, por favor tente novamente...</string>
 </resources>

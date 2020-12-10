@@ -4,6 +4,6 @@ data class ApiData(
     val count: Int?,
     val limit: Int?,
     val offset: Int?,
-    val results: List<ApiCharacter>?,
+    val results: List<ApiMarvelCharacter>?,
     val total: Int?
 )

@@ -52,9 +52,6 @@ dependencies {
     api "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
     api "com.squareup.retrofit2:converter-gson:2.9.0"
 
-    //Paging Library
-    api "androidx.paging:paging-runtime-ktx:2.1.2"
-
     //Room
     api "androidx.room:room-runtime:2.2.5"
     api "androidx.room:room-ktx:2.2.5"

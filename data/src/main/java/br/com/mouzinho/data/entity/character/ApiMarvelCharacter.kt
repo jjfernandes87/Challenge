@@ -1,6 +1,6 @@
 package br.com.mouzinho.data.entity.character
 
-data class ApiCharacter(
+data class ApiMarvelCharacter(
     val comics: ApiComics?,
     val description: String?,
     val events: ApiEvents?,

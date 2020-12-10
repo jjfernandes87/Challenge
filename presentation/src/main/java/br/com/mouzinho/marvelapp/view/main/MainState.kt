@@ -1,10 +1,11 @@
 package br.com.mouzinho.marvelapp.view.main
 
-import br.com.mouzinho.domain.entity.character.Character
+import androidx.paging.PagedList
+import br.com.mouzinho.domain.entity.character.MarvelCharacter
 
 data class MainState(
     val loading: Boolean = true,
-    val characters: List<Character> = emptyList(),
+    val characters: PagedList<MarvelCharacter>? = null,
     val hasError: Boolean = false,
     val errorMessage: String? = null
 )

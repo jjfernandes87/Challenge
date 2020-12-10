@@ -14,7 +14,7 @@ import dagger.hilt.android.components.ApplicationComponent
 interface MapperModule {
 
     @Binds
-    fun bindCharacterMapper(impl: CharacterMapper): Mapper<ApiCharacter, Character>
+    fun bindCharacterMapper(impl: CharacterMapper): Mapper<ApiMarvelCharacter, MarvelCharacter>
 
     @Binds
     fun bindSeriesMapper(impl: SeriesMapper): Mapper<ApiSeries, Series>

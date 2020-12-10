@@ -2,7 +2,8 @@ package br.com.mouzinho.marvelapp.view.main
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import br.com.mouzinho.domain.entity.character.CharacterResult
+import androidx.paging.PagedList
+import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.interactor.character.GetCharacters
 import br.com.mouzinho.domain.scheduler.SchedulerProvider
 import io.reactivex.Observable
@@ -20,34 +21,15 @@ class MainViewModel @ViewModelInject constructor(
     private val initialState = MainState()
     private val disposables = CompositeDisposable()
 
-    fun loadCharacters() {
-        getCharacters(10, 0)
+    fun loadCharacters(pageSize: Int = 20) {
+        getCharacters(pageSize)
             .observeOn(schedulerProvider.ui())
-            .subscribe { result ->
-                when (result) {
-                    is CharacterResult.Success -> {
-                        statePublisher.onNext(
-                            initialState.copy(
-                                loading = false,
-                                characters = result.data
-                            )
-                        )
-                    }
-                    is CharacterResult.Failure -> {
-                        statePublisher.onNext(
-                            initialState.copy(
-                                loading = false,
-                                hasError = true,
-                                errorMessage = result.throwable.message
-                            )
-                        )
-                    }
-                    is CharacterResult.Loading -> {
-                        statePublisher.onNext(initialState)
-                    }
-                }
-            }
+            .subscribe(::onCharacterResultReceived)
             .addTo(disposables)
+    }
+
+    private fun onCharacterResultReceived(pagedList: PagedList<MarvelCharacter>) {
+        statePublisher.onNext(initialState.copy(loading = false, characters = pagedList))
     }
 
     override fun onCleared() {

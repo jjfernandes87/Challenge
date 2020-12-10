@@ -17,6 +17,10 @@ dependencies {
     //Coroutines
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1'
 
+    //Paging Library
+    api "androidx.paging:paging-runtime-ktx:2.1.2"
+    api "androidx.paging:paging-rxjava2-ktx:2.1.2"
+
     //RxJava
     api 'io.reactivex.rxjava2:rxjava:2.2.20'
     api 'io.reactivex.rxjava2:rxkotlin:2.4.0'

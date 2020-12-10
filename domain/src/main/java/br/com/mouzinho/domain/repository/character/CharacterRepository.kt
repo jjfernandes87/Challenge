@@ -1,9 +1,11 @@
 package br.com.mouzinho.domain.repository.character
 
-import br.com.mouzinho.domain.entity.character.CharacterResult
+import androidx.paging.PagedList
+import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import io.reactivex.Observable
 
 interface CharacterRepository {
 
-    fun getCharacters(limit: Int, offset: Int): Observable<CharacterResult>
+    fun loadCharactersPagedList(pageSize: Int): Observable<PagedList<MarvelCharacter>>
+    fun sendSearchNameToPagingSource(name: String)
 }

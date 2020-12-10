@@ -7,5 +7,5 @@ class GetCharacters @Inject constructor(
     private val characterRepository: CharacterRepository
 ) {
 
-    operator fun invoke(limit: Int, offset: Int) = characterRepository.getCharacters(limit, offset)
+    operator fun invoke(pageSize: Int) = characterRepository.loadCharactersPagedList(pageSize)
 }
