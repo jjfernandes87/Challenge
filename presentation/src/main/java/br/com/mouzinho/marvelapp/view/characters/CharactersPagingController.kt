@@ -4,6 +4,7 @@ import android.view.View
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.entity.character.Thumbnail
 import br.com.mouzinho.marvelapp.CharacterBindingModel_
+import br.com.mouzinho.marvelapp.ErrorBindingModel_
 import br.com.mouzinho.marvelapp.LoadingBindingModel_
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.ViewHolderCharacterBinding
@@ -18,7 +19,7 @@ class CharactersPagingController @Inject constructor(
     private val onViewClick: (MarvelCharacter) -> Unit,
     private val onFavoriteClick: (MarvelCharacter) -> Unit,
 ) : PagedListEpoxyController<MarvelCharacter>() {
-    var isLoading = false
+    var loadStatus: LoadMarvelCharactersStatus = LoadMarvelCharactersStatus.LOAD
         set(value) {
             field = value
             requestModelBuild()
@@ -52,14 +53,27 @@ class CharactersPagingController @Inject constructor(
     }
 
     override fun addModels(models: List<EpoxyModel<*>>) {
-        if (isLoading) {
-            super.addModels(
+        when (loadStatus) {
+            LoadMarvelCharactersStatus.LOAD -> super.addModels(
                 models
-                    .plus(LoadingBindingModel_().id(LOADING_ID))
+                    .plus(
+                        LoadingBindingModel_()
+                            .id(LOADING_ID)
+                            .spanSizeOverride { _, _, _ -> 2 }
+                    )
                     .distinct()
             )
-        } else
-            super.addModels(models.distinct())
+            LoadMarvelCharactersStatus.ERROR -> super.addModels(
+                models
+                    .plus(
+                        ErrorBindingModel_()
+                            .id(LOADING_ID)
+                            .spanSizeOverride { _, _, _ -> 2 }
+                    )
+                    .distinct()
+            )
+            else -> super.addModels(models.distinct())
+        }
     }
 
     companion object {

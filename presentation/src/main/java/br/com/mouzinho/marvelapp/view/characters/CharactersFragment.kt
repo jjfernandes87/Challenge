@@ -42,6 +42,9 @@ class CharactersFragment : Fragment() {
 
     private fun setupUi() {
         setupRecyclerViewWithEpoxy()
+        binding?.swipeRefresh?.setOnRefreshListener {
+            viewModel.reloadCharacters()
+        }
     }
 
     private fun observeViewState() {
@@ -53,8 +56,14 @@ class CharactersFragment : Fragment() {
     }
 
     private fun render(state: CharactersViewState) {
-        epoxyController.isLoading = state.loading
+        epoxyController.loadStatus = when {
+            state.loading -> LoadMarvelCharactersStatus.LOAD
+            state.hasError -> LoadMarvelCharactersStatus.ERROR
+            state.reloaded -> LoadMarvelCharactersStatus.RELOAD
+            else -> LoadMarvelCharactersStatus.LOADED
+        }
         epoxyController.submitList(state.characters)
+        binding?.swipeRefresh?.isRefreshing = false
     }
 
     private fun setupRecyclerViewWithEpoxy() {

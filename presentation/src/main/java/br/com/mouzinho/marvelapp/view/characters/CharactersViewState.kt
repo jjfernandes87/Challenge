@@ -7,5 +7,6 @@ data class CharactersViewState(
     val loading: Boolean = true,
     val characters: PagedList<MarvelCharacter>? = null,
     val hasError: Boolean = false,
+    val reloaded: Boolean = false,
     val errorMessage: String? = null
 )

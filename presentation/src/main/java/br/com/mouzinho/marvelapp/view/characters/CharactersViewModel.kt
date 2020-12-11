@@ -25,12 +25,33 @@ class CharactersViewModel @ViewModelInject constructor(
         getCharacters(pageSize)
             .observeOn(schedulerProvider.ui())
             .doOnSubscribe { statePublisher.onNext(initialState) }
-            .subscribe(::onCharacterResultReceived)
+            .subscribe(::onCharactersReceived, ::onError)
             .addTo(disposables)
     }
 
-    private fun onCharacterResultReceived(pagedList: PagedList<MarvelCharacter>) {
+    fun reloadCharacters(pageSize: Int = 20) {
+        getCharacters(pageSize)
+            .observeOn(schedulerProvider.ui())
+            .subscribe(::onCharactersReload, ::onError)
+            .addTo(disposables)
+    }
+
+    private fun onCharactersReceived(pagedList: PagedList<MarvelCharacter>) {
         statePublisher.onNext(initialState.copy(loading = false, characters = pagedList))
+    }
+
+    private fun onCharactersReload(pagedList: PagedList<MarvelCharacter>) {
+        statePublisher.onNext(initialState.copy(loading = false, reloaded = true, characters = pagedList))
+    }
+
+    private fun onError(throwable: Throwable) {
+        statePublisher.onNext(
+            initialState.copy(
+                loading = false,
+                hasError = true,
+                errorMessage = throwable.message
+            )
+        )
     }
 
     override fun onCleared() {

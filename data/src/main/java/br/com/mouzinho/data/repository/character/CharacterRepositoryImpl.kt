@@ -8,6 +8,7 @@ import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.mapper.Mapper
 import br.com.mouzinho.domain.repository.character.CharacterRepository
 import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
 class CharacterRepositoryImpl @Inject constructor(
@@ -15,15 +16,20 @@ class CharacterRepositoryImpl @Inject constructor(
     private val characterMapper: Mapper<ApiMarvelCharacter, MarvelCharacter>
 ) : CharacterRepository {
 
-    private val pagingSource by lazy { CharacterPagingSource(apiService, characterMapper) }
+    private val pagingPublisher = PublishSubject.create<PagedList<MarvelCharacter>>()
+    private val pagingSource = CharacterPagingSource(apiService, characterMapper, pagingPublisher)
 
     override fun loadCharactersPagedList(pageSize: Int): Observable<PagedList<MarvelCharacter>> {
-        return RxPagedListBuilder(
-            pagingSource,
-            PagedList.Config.Builder().setEnablePlaceholders(true).setPageSize(pageSize).build()
-        )
-            .buildObservable()
+        createPagingObservable(pageSize)
+        return pagingPublisher.hide()
     }
+
+    private fun createPagingObservable(pageSize: Int) = RxPagedListBuilder(
+        pagingSource,
+        PagedList.Config.Builder().setEnablePlaceholders(true).setPageSize(pageSize).build()
+    )
+        .buildObservable()
+        .also { observable -> observable.subscribe(pagingPublisher) }
 
     override fun sendSearchNameToPagingSource(name: String) {
         pagingSource.query = name

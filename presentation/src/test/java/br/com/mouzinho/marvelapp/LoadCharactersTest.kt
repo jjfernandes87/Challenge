@@ -39,10 +39,20 @@ class LoadCharactersTest {
     @Test
     fun testLoadingAndGetCharacters() {
         val pagedList = mockPagedList(marvelCharactersMock())
-        Mockito.`when`(repository.loadCharactersPagedList(any())).thenReturn(Observable.just(pagedList))
+        Mockito.`when`(repository.loadCharactersPagedList(any()))
+            .thenReturn(Observable.just(pagedList))
         viewModel.loadCharacters()
         testObserver.assertValueAt(0) { it.loading }
         testObserver.assertValueAt(1) { !it.loading && it.characters != null }
+    }
+
+    @Test
+    fun testError() {
+        Mockito.`when`(repository.loadCharactersPagedList(any()))
+            .thenReturn(Observable.error(Throwable("Deu ruim")))
+        viewModel.loadCharacters()
+        testObserver.assertValueAt(0) { it.loading }
+        testObserver.assertValueAt(1) { !it.loading && it.hasError && it.errorMessage == "Deu ruim" }
     }
 
     private fun marvelCharactersMock() = listOf(
