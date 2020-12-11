@@ -23,7 +23,7 @@ class CharacterDataSource(
     ) {
         charactersRequest(params.pageSize, params.requestedStartPosition)
             .subscribe { response ->
-                callback.onResult(mapToCharacters(response), 0, response.data?.total ?: 0)
+                callback.onResult(mapToCharacters(response), 0, response.data?.total ?: response.data?.count ?: 0)
             }
             .addTo(disposables)
     }

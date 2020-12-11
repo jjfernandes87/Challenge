@@ -24,6 +24,7 @@ class MainViewModel @ViewModelInject constructor(
     fun loadCharacters(pageSize: Int = 20) {
         getCharacters(pageSize)
             .observeOn(schedulerProvider.ui())
+            .doOnSubscribe { statePublisher.onNext(initialState) }
             .subscribe(::onCharacterResultReceived)
             .addTo(disposables)
     }
