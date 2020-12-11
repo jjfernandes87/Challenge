@@ -20,7 +20,7 @@ class CharacterRepositoryImpl @Inject constructor(
     override fun loadCharactersPagedList(pageSize: Int): Observable<PagedList<MarvelCharacter>> {
         return RxPagedListBuilder(
             pagingSource,
-            PagedList.Config.Builder().setEnablePlaceholders(false).setPageSize(pageSize).build()
+            PagedList.Config.Builder().setEnablePlaceholders(true).setPageSize(pageSize).build()
         )
             .buildObservable()
     }

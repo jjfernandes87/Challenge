@@ -2,10 +2,14 @@ package br.com.mouzinho.marvelapp.view.characters
 
 import android.view.View
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
+import br.com.mouzinho.domain.entity.character.Thumbnail
 import br.com.mouzinho.marvelapp.CharacterBindingModel_
 import br.com.mouzinho.marvelapp.LoadingBindingModel_
+import br.com.mouzinho.marvelapp.R
+import br.com.mouzinho.marvelapp.databinding.ViewHolderCharacterBinding
 import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController
+import com.bumptech.glide.Glide
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -33,6 +37,15 @@ class CharactersPagingController @Inject constructor(
             CharacterBindingModel_()
                 .id(item.id)
                 .character(item)
+                .onBind { model, view, _ ->
+                    (view.dataBinding as? ViewHolderCharacterBinding)?.let { binding ->
+                        val thumbnail = model.character().thumbnail
+                        Glide.with(binding.root.context.applicationContext)
+                            .load("${thumbnail?.path}/${Thumbnail.SIZE_LANDSCAPE_MEDIUM}.${thumbnail?.extension}")
+                            .placeholder(R.drawable.thumb_placeholder)
+                            .into(binding.imageViewAvatar)
+                    }
+                }
                 .onFavoriteClickListener(View.OnClickListener { onFavoriteClick(item) })
                 .onViewClickListener(View.OnClickListener { onViewClick(item) })
         }
@@ -42,7 +55,7 @@ class CharactersPagingController @Inject constructor(
         if (isLoading) {
             super.addModels(
                 models
-                    .plus(LoadingBindingModel_().id(LOADING_ID).spanSizeOverride { _, _, _ -> 2 })
+                    .plus(LoadingBindingModel_().id(LOADING_ID))
                     .distinct()
             )
         } else

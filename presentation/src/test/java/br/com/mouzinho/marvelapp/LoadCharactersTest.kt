@@ -6,8 +6,8 @@ import br.com.mouzinho.domain.interactor.character.GetCharacters
 import br.com.mouzinho.domain.repository.character.CharacterRepository
 import br.com.mouzinho.domain.scheduler.SchedulerProvider
 import br.com.mouzinho.marvelapp.di.TestSchedulerProvider
-import br.com.mouzinho.marvelapp.view.main.MainState
-import br.com.mouzinho.marvelapp.view.main.MainViewModel
+import br.com.mouzinho.marvelapp.view.characters.CharactersViewModel
+import br.com.mouzinho.marvelapp.view.characters.CharactersViewState
 import com.nhaarman.mockitokotlin2.any
 import io.reactivex.Observable
 import io.reactivex.observers.TestObserver
@@ -19,8 +19,8 @@ import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
 class LoadCharactersTest {
-    lateinit var viewModel: MainViewModel
-    lateinit var testObserver: TestObserver<MainState>
+    lateinit var viewModel: CharactersViewModel
+    lateinit var testObserver: TestObserver<CharactersViewState>
     lateinit var testSchedulerProvider: SchedulerProvider
     lateinit var getCharacters: GetCharacters
 
@@ -32,7 +32,7 @@ class LoadCharactersTest {
         MockitoAnnotations.initMocks(this)
         testSchedulerProvider = TestSchedulerProvider()
         getCharacters = GetCharacters(repository)
-        viewModel = MainViewModel(getCharacters, testSchedulerProvider)
+        viewModel = CharactersViewModel(getCharacters, testSchedulerProvider)
         testObserver = viewModel.stateObservable.test()
     }
 
@@ -46,7 +46,8 @@ class LoadCharactersTest {
     }
 
     private fun marvelCharactersMock() = listOf(
-        MarvelCharacter(null, "", 1, "", "", null, null)
+        MarvelCharacter(null, "", 1, "", "", null, null),
+        MarvelCharacter(null, "", 2, "", "", null, null)
     )
 
     private fun <T> mockPagedList(list: List<T>): PagedList<T> {

@@ -8,7 +8,7 @@ import javax.inject.Inject
 class ThumbnailMapper @Inject constructor() : Mapper<ApiThumbnail, Thumbnail> {
 
     override fun transform(input: ApiThumbnail) = Thumbnail(
-        extension = input.extension ?: ".jpg",
-        path = input.extension ?: ""
+        extension = input.extension ?: "jpg",
+        path = input.path?.replace("http", "https") ?: ""
     )
 }

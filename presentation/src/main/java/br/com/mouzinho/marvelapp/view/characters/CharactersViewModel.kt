@@ -1,4 +1,4 @@
-package br.com.mouzinho.marvelapp.view.main
+package br.com.mouzinho.marvelapp.view.characters
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
@@ -11,14 +11,14 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.PublishSubject
 
-class MainViewModel @ViewModelInject constructor(
+class CharactersViewModel @ViewModelInject constructor(
     private val getCharacters: GetCharacters,
     private val schedulerProvider: SchedulerProvider
 ) : ViewModel() {
-    val stateObservable: Observable<MainState> by lazy { statePublisher.hide() }
+    val stateObservable: Observable<CharactersViewState> by lazy { statePublisher.hide() }
 
-    private val statePublisher by lazy { PublishSubject.create<MainState>() }
-    private val initialState = MainState()
+    private val statePublisher by lazy { PublishSubject.create<CharactersViewState>() }
+    private val initialState = CharactersViewState()
     private val disposables = CompositeDisposable()
 
     fun loadCharacters(pageSize: Int = 20) {
