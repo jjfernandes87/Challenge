@@ -44,7 +44,7 @@ class FavoritesCharactersViewModel @ViewModelInject constructor(
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribeBy { list ->
-                statePublisher.onNext(ShowFavorites(list))
+                statePublisher.onNext(ShowFavorites(list, fromSearch = true))
             }
             .addTo(disposables)
     }

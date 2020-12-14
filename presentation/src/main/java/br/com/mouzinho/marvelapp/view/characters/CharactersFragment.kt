@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentCharactersBinding
-import br.com.mouzinho.marvelapp.extensions.FragmentExtensions.showToast
+import br.com.mouzinho.marvelapp.extensions.showToast
 import br.com.mouzinho.marvelapp.view.main.MainViewModel
 import br.com.mouzinho.marvelapp.view.main.MainViewState
 import dagger.hilt.android.AndroidEntryPoint

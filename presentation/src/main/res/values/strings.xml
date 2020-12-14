@@ -9,4 +9,7 @@
     <string name="favorites_character_title">Favorites</string>
     <string name="character_title">Characters</string>
     <string name="search">Search</string>
+    <string name="not_found">Not found</string>
+    <string name="not_found_on_search">Sorry, no results found :(</string>
+    <string name="nothing_here">Seems like you have nothing here yet :(</string>
 </resources>

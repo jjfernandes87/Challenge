@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentFavoritesBinding
-import br.com.mouzinho.marvelapp.extensions.FragmentExtensions.showToast
+import br.com.mouzinho.marvelapp.extensions.showToast
 import br.com.mouzinho.marvelapp.view.favorites.FavoritesCharactersViewState.*
 import br.com.mouzinho.marvelapp.view.main.MainViewModel
 import br.com.mouzinho.marvelapp.view.main.MainViewState
@@ -80,6 +81,11 @@ class FavoritesCharactersFragment : Fragment() {
             when (state) {
                 is ShowFavorites -> {
                     swipeRefresh.isRefreshing = false
+                    includedEmptyView.root.isVisible = state.favorites.isEmpty()
+                    includedEmptyView.textView.setText(
+                        if (state.fromSearch) R.string.not_found_on_search
+                        else R.string.nothing_here
+                    )
                     adapter?.submitList(state.favorites)
                 }
                 is ShowLoading -> { /*TODO*/
