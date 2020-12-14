@@ -17,6 +17,6 @@ interface ApiService {
     fun searchCharacters(
         @Query("limit") limit: Int,
         @Query("offset") offset: Int,
-        @Query("name") name: String
+        @Query("nameStartsWith") name: String
     ): Observable<ApiCharacterResponse>
 }

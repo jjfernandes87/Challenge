@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">MarvelApp</string>
-    <string name="error_message">Aconteceu um erro, por favor tente novamente...</string>
-    <string name="update_favorite_error">Falha ao salvar favorito, tente novamente mais tarde</string>
-    <string name="saved_as_favorite">Personagem salvo na lista de favoritos</string>
-    <string name="removed_from_favorites">Personagem removido da lista de favoritos</string>
-    <string name="generic_error">Ocorreu um erro, tente novamente mais tarde.</string>
-    <string name="loading">Carregando...</string>
+    <string name="error_message">Something wrong happened, please try again later.</string>
+    <string name="update_favorite_error">Fail to save your favorite, please try again later.</string>
+    <string name="saved_as_favorite">Character saved as favorite.</string>
+    <string name="removed_from_favorites">Character removed from favorites.</string>
+    <string name="generic_error">Something wrong happened, please try again later.</string>
+    <string name="loading">Loading…</string>
+    <string name="favorites_character_title">Favorites</string>
+    <string name="character_title">Characters</string>
+    <string name="search">Search</string>
 </resources>
