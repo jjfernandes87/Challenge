@@ -2,9 +2,10 @@ package br.com.mouzinho.marvelapp.view.favorites
 
 import br.com.mouzinho.domain.entity.favorite.FavoriteCharacter
 
-data class FavoritesCharactersViewState(
-    val favorites: List<FavoriteCharacter> = emptyList(),
-    val loading: Boolean = true,
-    val hasError: Boolean = false,
-    val errorMessage: String = ""
-)
+sealed class FavoritesCharactersViewState {
+    data class ShowFavorites(val favorites: List<FavoriteCharacter>) : FavoritesCharactersViewState()
+    object ShowLoading : FavoritesCharactersViewState()
+    object HideLoading : FavoritesCharactersViewState()
+    object ShowRemovedMessage : FavoritesCharactersViewState()
+    data class ShowError(val message: String) : FavoritesCharactersViewState()
+}

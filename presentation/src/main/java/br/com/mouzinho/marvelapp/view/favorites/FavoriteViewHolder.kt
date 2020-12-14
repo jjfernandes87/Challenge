@@ -12,11 +12,11 @@ class FavoriteViewHolder private constructor(
     private val binding: ViewHolderFavoriteBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(favoriteCharacter: FavoriteCharacter) {
+    fun bind(favoriteCharacter: FavoriteCharacter, onRemoveFromFavoriteClick: (FavoriteCharacter) -> Unit) {
         with(binding) {
             this.favorite = favoriteCharacter
-            imageViewFavorite.setOnClickListener { }
-            rootLayout.setOnClickListener { }
+            imageViewFavorite.setOnClickListener { onRemoveFromFavoriteClick(favoriteCharacter) }
+            rootLayout.setOnClickListener { /*TODO*/ }
             favoriteCharacter.landscapeThumbnailUrl?.let { url ->
                 Glide.with(root.context.applicationContext)
                     .load(url)

@@ -6,7 +6,8 @@ import androidx.paging.PagedList
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.interactor.character.GetCharacters
 import br.com.mouzinho.domain.interactor.character.ReloadCharacters
-import br.com.mouzinho.domain.interactor.favorite.UpdateFavorite
+import br.com.mouzinho.domain.interactor.character.SearchCharacters
+import br.com.mouzinho.domain.interactor.character.UpdateFavorite
 import br.com.mouzinho.domain.resources.StringResources
 import br.com.mouzinho.domain.scheduler.SchedulerProvider
 import io.reactivex.Observable
@@ -19,6 +20,7 @@ class CharactersViewModel @ViewModelInject constructor(
     private val getCharacters: GetCharacters,
     private val updateFavorite: UpdateFavorite,
     private val reload: ReloadCharacters,
+    private val searchCharacters: SearchCharacters,
     private val schedulerProvider: SchedulerProvider,
     private val strings: StringResources
 ) : ViewModel() {
@@ -37,6 +39,10 @@ class CharactersViewModel @ViewModelInject constructor(
 
     fun reloadCharacters() {
         reload()
+    }
+
+    fun search(text: String) {
+        searchCharacters(text)
     }
 
     fun updateCharacterFromFavorites(character: MarvelCharacter) {

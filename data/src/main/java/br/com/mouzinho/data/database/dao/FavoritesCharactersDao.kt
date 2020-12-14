@@ -10,6 +10,9 @@ interface FavoritesCharactersDao {
     @Query("SELECT * FROM DbFavoriteCharacter")
     fun getAll(): Observable<List<DbFavoriteCharacter>>
 
+    @Query("SELECT * FROM DbFavoriteCharacter WHERE name LIKE :name")
+    fun getAllByName(name: String): Observable<List<DbFavoriteCharacter>>
+
     @Query("SELECT * FROM DbFavoriteCharacter WHERE id = :id")
     fun getById(id: Int): List<DbFavoriteCharacter>
 

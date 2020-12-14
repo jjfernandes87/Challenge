@@ -4,7 +4,7 @@ import androidx.paging.PagedList
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.interactor.character.GetCharacters
 import br.com.mouzinho.domain.interactor.character.ReloadCharacters
-import br.com.mouzinho.domain.interactor.favorite.UpdateFavorite
+import br.com.mouzinho.domain.interactor.character.UpdateFavorite
 import br.com.mouzinho.domain.repository.character.MarvelCharacterRepository
 import br.com.mouzinho.domain.repository.favorite.FavoritesMarvelCharacterRepository
 import br.com.mouzinho.domain.resources.StringResources

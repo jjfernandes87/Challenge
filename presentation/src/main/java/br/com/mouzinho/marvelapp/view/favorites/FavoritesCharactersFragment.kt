@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentFavoritesBinding
+import br.com.mouzinho.marvelapp.extensions.FragmentExtensions.showToast
+import br.com.mouzinho.marvelapp.view.main.MainViewModel
+import br.com.mouzinho.marvelapp.view.main.MainViewState
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -16,6 +20,7 @@ import io.reactivex.rxkotlin.addTo
 class FavoritesCharactersFragment : Fragment() {
     private var binding: FragmentFavoritesBinding? = null
     private val viewModel by viewModels<FavoritesCharactersViewModel>()
+    private val mainViewModel by viewModels<MainViewModel>(ownerProducer = { requireParentFragment() })
     private val disposables = CompositeDisposable()
     private var adapter: FavoritesAdapter? = null
 
@@ -28,6 +33,7 @@ class FavoritesCharactersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupUi()
         observeViewState()
+        observeMainViewState()
     }
 
     override fun onDestroyView() {
@@ -40,7 +46,7 @@ class FavoritesCharactersFragment : Fragment() {
     private fun setupUi() {
         binding?.run {
             swipeRefresh.setOnRefreshListener { viewModel.loadFavorites() }
-            if (adapter == null) adapter = FavoritesAdapter()
+            if (adapter == null) adapter = FavoritesAdapter(viewModel::removeFavorite)
             recyclerView.adapter = adapter
         }
     }
@@ -49,10 +55,32 @@ class FavoritesCharactersFragment : Fragment() {
         viewModel.stateObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(::onNextState).addTo(disposables)
     }
 
+    private fun observeMainViewState() {
+        mainViewModel.stateObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(::onNextMainViewState)
+            .addTo(disposables)
+    }
+
+    private fun onNextMainViewState(state: MainViewState) {
+        when (state) {
+            is MainViewState.Search -> viewModel.search(state.text)
+        }
+    }
+
     private fun onNextState(state: FavoritesCharactersViewState) {
         binding?.run {
-            swipeRefresh.isRefreshing = false
-            adapter?.submitList(state.favorites)
+            when (state) {
+                is FavoritesCharactersViewState.ShowFavorites -> {
+                    swipeRefresh.isRefreshing = false
+                    adapter?.submitList(state.favorites)
+                }
+                is FavoritesCharactersViewState.ShowLoading -> { /*TODO*/
+                }
+                is FavoritesCharactersViewState.HideLoading -> {/*TODO*/
+                }
+                is FavoritesCharactersViewState.ShowError -> { /*TODO*/
+                }
+                is FavoritesCharactersViewState.ShowRemovedMessage -> showToast(R.string.removed_from_favorites)
+            }
         }
     }
 }

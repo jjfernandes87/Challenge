@@ -5,14 +5,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import br.com.mouzinho.domain.entity.favorite.FavoriteCharacter
 
-class FavoritesAdapter : ListAdapter<FavoriteCharacter, FavoriteViewHolder>(Diff) {
+class FavoritesAdapter(
+    private val onRemoveFromFavoriteClick: (FavoriteCharacter) -> Unit
+) : ListAdapter<FavoriteCharacter, FavoriteViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
         return FavoriteViewHolder.inflate(parent)
     }
 
     override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onRemoveFromFavoriteClick)
     }
 
     companion object Diff : DiffUtil.ItemCallback<FavoriteCharacter>() {

@@ -35,4 +35,7 @@ interface MapperModule {
 
     @Binds
     fun bindDbFavoriteCharacterToFavoriteCharacterMapper(impl: DbFavoriteCharacterToFavoriteCharacterMapper): Mapper<DbFavoriteCharacter, FavoriteCharacter>
+
+    @Binds
+    fun bindFavoriteCharacterToDbFavoriteCharacterMapper(impl: FavoriteCharacterToDbFavoriteCharacterMapper): Mapper<FavoriteCharacter, DbFavoriteCharacter>
 }

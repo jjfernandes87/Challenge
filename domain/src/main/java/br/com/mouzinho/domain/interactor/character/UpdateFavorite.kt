@@ -1,4 +1,4 @@
-package br.com.mouzinho.domain.interactor.favorite
+package br.com.mouzinho.domain.interactor.character
 
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.repository.favorite.FavoritesMarvelCharacterRepository

@@ -2,13 +2,14 @@ package br.com.mouzinho.marvelapp.view.main
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import br.com.mouzinho.domain.interactor.character.SearchCharacter
+import io.reactivex.subjects.PublishSubject
 
-class MainViewModel @ViewModelInject constructor(
-    private val searchCharacter: SearchCharacter
-) : ViewModel() {
+class MainViewModel @ViewModelInject constructor() : ViewModel() {
+    val stateObservable by lazy { statePublisher.hide() }
+
+    private val statePublisher by lazy { PublishSubject.create<MainViewState>() }
 
     fun search(name: String) {
-        searchCharacter(name)
+        statePublisher.onNext(MainViewState.Search(name))
     }
 }

@@ -12,8 +12,9 @@ import javax.inject.Inject
 
 class FavoritesMarvelCharacterRepositoryImpl @Inject constructor(
     private val dao: FavoritesCharactersDao,
-    private val favoriteToDbFavoriteMapper: Mapper<MarvelCharacter, DbFavoriteCharacter>,
-    private val dbFavoriteToFavoriteMapper: Mapper<DbFavoriteCharacter, FavoriteCharacter>
+    private val marvelCharacterToDbFavoriteMapper: Mapper<MarvelCharacter, DbFavoriteCharacter>,
+    private val dbFavoriteToFavoriteMapper: Mapper<DbFavoriteCharacter, FavoriteCharacter>,
+    private val favoriteToDbFavoriteMapper: Mapper<FavoriteCharacter, DbFavoriteCharacter>
 ) : FavoritesMarvelCharacterRepository {
 
     override fun getFavoriteById(id: Int): Single<List<FavoriteCharacter>> {
@@ -21,18 +22,28 @@ class FavoritesMarvelCharacterRepositoryImpl @Inject constructor(
     }
 
     override fun saveAsFavorite(character: MarvelCharacter): Single<Boolean> {
-        return Single.fromCallable { dao.insert(favoriteToDbFavoriteMapper.transform(character)) }
+        return Single.fromCallable { dao.insert(marvelCharacterToDbFavoriteMapper.transform(character)) }
             .map { it != (-1).toLong() }
             .onErrorReturnItem(false)
     }
 
     override fun removeFromFavorites(character: MarvelCharacter): Single<Boolean> {
-        return Single.fromCallable { dao.delete(favoriteToDbFavoriteMapper.transform(character)) }
+        return Single.fromCallable { dao.delete(marvelCharacterToDbFavoriteMapper.transform(character)) }
+            .map { it != -1 }
+            .onErrorReturnItem(false)
+    }
+
+    override fun removeFromFavorites(favorite: FavoriteCharacter): Single<Boolean> {
+        return Single.fromCallable { dao.delete(favoriteToDbFavoriteMapper.transform(favorite)) }
             .map { it != -1 }
             .onErrorReturnItem(false)
     }
 
     override fun loadAllFavorites(): Observable<List<FavoriteCharacter>> {
-        return dao.getAll().map(dbFavoriteToFavoriteMapper::transform)
+        return dao.getAll().map(dbFavoriteToFavoriteMapper::transform).onErrorReturnItem(emptyList())
+    }
+
+    override fun search(name: String): Observable<List<FavoriteCharacter>> {
+        return dao.getAllByName("%$name%").map(dbFavoriteToFavoriteMapper::transform).onErrorReturnItem(emptyList())
     }
 }
