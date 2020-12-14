@@ -75,10 +75,6 @@ class CharactersViewModel @ViewModelInject constructor(
         statePublisher.onNext(CharactersViewState.CharactersLoaded(pagedList))
     }
 
-    private fun onCharactersReload(pagedList: PagedList<MarvelCharacter>) {
-        statePublisher.onNext(CharactersViewState.CharactersLoaded(pagedList))
-    }
-
     private fun onError(throwable: Throwable) {
         statePublisher.onNext(CharactersViewState.Error(throwable.message ?: strings.genericErrorMessage))
     }

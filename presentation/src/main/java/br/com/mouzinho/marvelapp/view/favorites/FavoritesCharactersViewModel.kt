@@ -54,7 +54,10 @@ class FavoritesCharactersViewModel @ViewModelInject constructor(
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribeBy { success ->
-                if (success) statePublisher.onNext(ShowRemovedMessage)
+                if (success) {
+                    statePublisher.onNext(ShowRemovedMessage)
+                    statePublisher.onNext(ReloadCharacters)
+                }
             }
             .addTo(disposables)
     }

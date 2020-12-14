@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentFavoritesBinding
 import br.com.mouzinho.marvelapp.extensions.FragmentExtensions.showToast
+import br.com.mouzinho.marvelapp.view.favorites.FavoritesCharactersViewState.*
 import br.com.mouzinho.marvelapp.view.main.MainViewModel
 import br.com.mouzinho.marvelapp.view.main.MainViewState
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,34 +53,43 @@ class FavoritesCharactersFragment : Fragment() {
     }
 
     private fun observeViewState() {
-        viewModel.stateObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(::onNextState).addTo(disposables)
+        viewModel
+            .stateObservable
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::onNextState)
+            .addTo(disposables)
     }
 
     private fun observeMainViewState() {
-        mainViewModel.stateObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(::onNextMainViewState)
+        mainViewModel
+            .stateObservable
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(::onNextMainViewState)
             .addTo(disposables)
     }
 
     private fun onNextMainViewState(state: MainViewState) {
         when (state) {
             is MainViewState.Search -> viewModel.search(state.text)
+            else -> Unit
         }
     }
 
     private fun onNextState(state: FavoritesCharactersViewState) {
         binding?.run {
             when (state) {
-                is FavoritesCharactersViewState.ShowFavorites -> {
+                is ShowFavorites -> {
                     swipeRefresh.isRefreshing = false
                     adapter?.submitList(state.favorites)
                 }
-                is FavoritesCharactersViewState.ShowLoading -> { /*TODO*/
+                is ShowLoading -> { /*TODO*/
                 }
-                is FavoritesCharactersViewState.HideLoading -> {/*TODO*/
+                is HideLoading -> {/*TODO*/
                 }
-                is FavoritesCharactersViewState.ShowError -> { /*TODO*/
+                is ShowError -> { /*TODO*/
                 }
-                is FavoritesCharactersViewState.ShowRemovedMessage -> showToast(R.string.removed_from_favorites)
+                is ShowRemovedMessage -> showToast(R.string.removed_from_favorites)
+                is ReloadCharacters -> mainViewModel.reloadCharacters()
             }
         }
     }

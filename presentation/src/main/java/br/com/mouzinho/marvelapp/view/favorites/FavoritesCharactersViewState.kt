@@ -7,5 +7,6 @@ sealed class FavoritesCharactersViewState {
     object ShowLoading : FavoritesCharactersViewState()
     object HideLoading : FavoritesCharactersViewState()
     object ShowRemovedMessage : FavoritesCharactersViewState()
+    object ReloadCharacters : FavoritesCharactersViewState()
     data class ShowError(val message: String) : FavoritesCharactersViewState()
 }

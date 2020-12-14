@@ -12,4 +12,8 @@ class MainViewModel @ViewModelInject constructor() : ViewModel() {
     fun search(name: String) {
         statePublisher.onNext(MainViewState.Search(name))
     }
+
+    fun reloadCharacters() {
+        statePublisher.onNext(MainViewState.Reload)
+    }
 }

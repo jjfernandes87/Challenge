@@ -101,6 +101,7 @@ class CharactersFragment : Fragment() {
     private fun onNextMainViewState(state: MainViewState) {
         when (state) {
             is MainViewState.Search -> viewModel.search(state.text)
+            is MainViewState.Reload -> viewModel.reloadCharacters()
         }
     }
 

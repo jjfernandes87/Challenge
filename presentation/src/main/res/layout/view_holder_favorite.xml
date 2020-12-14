@@ -9,14 +9,6 @@
         <variable
             name="favorite"
             type="br.com.mouzinho.domain.entity.favorite.FavoriteCharacter" />
-
-        <variable
-            name="onFavoriteClickListener"
-            type="android.view.View.OnClickListener" />
-
-        <variable
-            name="onViewClickListener"
-            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,7 +16,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
-        android:onClick="@{onViewClickListener}"
         android:orientation="vertical"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp">
@@ -70,7 +61,6 @@
                     android:id="@+id/image_view_favorite"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:onClick="@{onFavoriteClickListener}"
                     android:src="@android:drawable/btn_star_big_on"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
