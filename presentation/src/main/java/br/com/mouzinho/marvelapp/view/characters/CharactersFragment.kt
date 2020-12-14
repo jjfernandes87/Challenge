@@ -81,13 +81,13 @@ class CharactersFragment : Fragment() {
                 adapter?.updateFavorite(state.character)
                 showToast(R.string.removed_from_favorites)
             }
-            is CharactersViewState.Loading -> {
-                binding?.layoutProgress?.isVisible = true
-            }
             is CharactersViewState.CharactersLoaded -> {
                 binding?.swipeRefresh?.isRefreshing = false
                 binding?.layoutProgress?.isVisible = false
                 adapter?.submitList(state.characters)
+            }
+            is CharactersViewState.ToggleLoading -> {
+                binding?.layoutProgress?.isVisible = state.isLoading
             }
             is CharactersViewState.Error -> {
                 binding?.swipeRefresh?.isRefreshing = false

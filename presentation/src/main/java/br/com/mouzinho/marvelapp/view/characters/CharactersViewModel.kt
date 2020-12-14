@@ -2,8 +2,8 @@ package br.com.mouzinho.marvelapp.view.characters
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
+import br.com.mouzinho.domain.entity.character.MarvelCharacterLoadResult
 import br.com.mouzinho.domain.interactor.character.GetCharacters
 import br.com.mouzinho.domain.interactor.character.ReloadCharacters
 import br.com.mouzinho.domain.interactor.character.SearchCharacters
@@ -32,8 +32,7 @@ class CharactersViewModel @ViewModelInject constructor(
     fun loadCharacters(pageSize: Int = 20) {
         getCharacters(pageSize)
             .observeOn(schedulerProvider.ui())
-            .doOnSubscribe { statePublisher.onNext(CharactersViewState.Loading) }
-            .subscribe(::onCharactersReceived, ::onError)
+            .subscribe(::onCharacterLoadResult, ::onError)
             .addTo(disposables)
     }
 
@@ -71,8 +70,12 @@ class CharactersViewModel @ViewModelInject constructor(
         statePublisher.onNext(CharactersViewState.FavoriteUpdateError(strings.updateFavoriteError))
     }
 
-    private fun onCharactersReceived(pagedList: PagedList<MarvelCharacter>) {
-        statePublisher.onNext(CharactersViewState.CharactersLoaded(pagedList))
+    private fun onCharacterLoadResult(result: MarvelCharacterLoadResult) {
+        when (result) {
+            is MarvelCharacterLoadResult.Created -> statePublisher.onNext(CharactersViewState.CharactersLoaded(result.list))
+            is MarvelCharacterLoadResult.Loading -> statePublisher.onNext(CharactersViewState.ToggleLoading(result.isLoading))
+            is MarvelCharacterLoadResult.Error -> onError(result.error)
+        }
     }
 
     private fun onError(throwable: Throwable) {
