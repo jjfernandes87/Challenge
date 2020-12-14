@@ -3,7 +3,11 @@ package br.com.mouzinho.marvelapp
 import androidx.paging.PagedList
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.interactor.character.GetCharacters
-import br.com.mouzinho.domain.repository.character.CharacterRepository
+import br.com.mouzinho.domain.interactor.character.ReloadCharacters
+import br.com.mouzinho.domain.interactor.favorite.UpdateFavorite
+import br.com.mouzinho.domain.repository.character.MarvelCharacterRepository
+import br.com.mouzinho.domain.repository.favorite.FavoritesMarvelCharacterRepository
+import br.com.mouzinho.domain.resources.StringResources
 import br.com.mouzinho.domain.scheduler.SchedulerProvider
 import br.com.mouzinho.marvelapp.di.TestSchedulerProvider
 import br.com.mouzinho.marvelapp.view.characters.CharactersViewModel
@@ -23,45 +27,52 @@ class LoadCharactersTest {
     lateinit var testObserver: TestObserver<CharactersViewState>
     lateinit var testSchedulerProvider: SchedulerProvider
     lateinit var getCharacters: GetCharacters
+    lateinit var updateFavorite: UpdateFavorite
+    lateinit var reloadCharacter: ReloadCharacters
 
     @Mock
-    lateinit var repository: CharacterRepository
+    lateinit var repositoryCharacters: MarvelCharacterRepository
+    @Mock
+    lateinit var repositoryFavorites: FavoritesMarvelCharacterRepository
+    @Mock
+    lateinit var stringResources: StringResources
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
         testSchedulerProvider = TestSchedulerProvider()
-        getCharacters = GetCharacters(repository)
-        viewModel = CharactersViewModel(getCharacters, testSchedulerProvider)
+        getCharacters = GetCharacters(repositoryCharacters)
+        updateFavorite = UpdateFavorite(repositoryFavorites)
+        reloadCharacter = ReloadCharacters(repositoryCharacters)
+        viewModel = CharactersViewModel(getCharacters, updateFavorite, reloadCharacter, testSchedulerProvider, stringResources)
         testObserver = viewModel.stateObservable.test()
     }
 
     @Test
     fun testLoadingAndGetCharacters() {
         val pagedList = mockPagedList(marvelCharactersMock())
-        Mockito.`when`(repository.loadCharactersPagedList(any()))
+        Mockito.`when`(repositoryCharacters.loadCharactersPagedList(any()))
             .thenReturn(Observable.just(pagedList))
         viewModel.loadCharacters()
-        testObserver.assertValueAt(0) { it.loading }
-        testObserver.assertValueAt(1) { !it.loading && it.characters != null }
+        testObserver.assertValueAt(0) {
+            it is CharactersViewState.Loading
+        }
+        testObserver.assertValueAt(1) {
+            it is CharactersViewState.CharactersLoaded
+        }
     }
 
     @Test
     fun testErrorWhenLoadingCharacters() {
-        Mockito.`when`(repository.loadCharactersPagedList(any()))
+        Mockito.`when`(repositoryCharacters.loadCharactersPagedList(any()))
             .thenReturn(Observable.error(Throwable("Deu ruim")))
         viewModel.loadCharacters()
-        testObserver.assertValueAt(0) { it.loading }
-        testObserver.assertValueAt(1) { !it.loading && it.hasError && it.errorMessage == "Deu ruim" }
-    }
-
-    @Test
-    fun testReloadCharacters() {
-        val pagedList = mockPagedList(marvelCharactersMock())
-        Mockito.`when`(repository.loadCharactersPagedList(any()))
-            .thenReturn(Observable.just(pagedList))
-        viewModel.reloadCharacters()
-        testObserver.assertValueAt(0) { !it.loading && it.characters != null && !it.hasError && it.reloaded }
+        testObserver.assertValueAt(0) {
+            it is CharactersViewState.Loading
+        }
+        testObserver.assertValueAt(1) {
+            it is CharactersViewState.Error
+        }
     }
 
     private fun marvelCharactersMock() = listOf(
@@ -69,7 +80,7 @@ class LoadCharactersTest {
         MarvelCharacter(null, "", 2, "", "", null, null)
     )
 
-    private fun <T> mockPagedList(list: List<T>): PagedList<T> {
+    fun <T> mockPagedList(list: List<T>): PagedList<T> {
         val pagedList = Mockito.mock(PagedList::class.java) as PagedList<T>
         Mockito.`when`(pagedList.get(ArgumentMatchers.anyInt())).then { invocation ->
             val index = invocation.arguments.first() as Int

@@ -1,0 +1,58 @@
+package br.com.mouzinho.marvelapp.view.favorites
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import br.com.mouzinho.marvelapp.databinding.FragmentFavoritesBinding
+import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+
+@AndroidEntryPoint
+class FavoritesCharactersFragment : Fragment() {
+    private var binding: FragmentFavoritesBinding? = null
+    private val viewModel by viewModels<FavoritesCharactersViewModel>()
+    private val disposables = CompositeDisposable()
+    private var adapter: FavoritesAdapter? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupUi()
+        observeViewState()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        disposables.clear()
+        binding = null
+        adapter = null
+    }
+
+    private fun setupUi() {
+        binding?.run {
+            swipeRefresh.setOnRefreshListener { viewModel.loadFavorites() }
+            if (adapter == null) adapter = FavoritesAdapter()
+            recyclerView.adapter = adapter
+        }
+    }
+
+    private fun observeViewState() {
+        viewModel.stateObservable.observeOn(AndroidSchedulers.mainThread()).subscribe(::onNextState).addTo(disposables)
+    }
+
+    private fun onNextState(state: FavoritesCharactersViewState) {
+        binding?.run {
+            swipeRefresh.isRefreshing = false
+            adapter?.submitList(state.favorites)
+        }
+    }
+}

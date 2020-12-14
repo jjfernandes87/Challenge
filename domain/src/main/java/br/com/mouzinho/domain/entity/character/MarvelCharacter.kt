@@ -8,4 +8,5 @@ data class MarvelCharacter(
     val resourceURI: String,
     val series: Series?,
     val thumbnail: Thumbnail?,
+    var isFavorite: Boolean = false
 )

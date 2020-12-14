@@ -7,12 +7,16 @@
     <data>
 
         <variable
-            name="character"
-            type="br.com.mouzinho.domain.entity.character.MarvelCharacter" />
+            name="favorite"
+            type="br.com.mouzinho.domain.entity.favorite.FavoriteCharacter" />
 
         <variable
-            name="favorited"
-            type="Boolean" />
+            name="onFavoriteClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onViewClickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -20,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
+        android:onClick="@{onViewClickListener}"
         android:orientation="vertical"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp">
@@ -51,7 +56,7 @@
                     android:layout_marginEnd="6dp"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:text="@{character.name}"
+                    android:text="@{favorite.name}"
                     android:textColor="#000"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -65,8 +70,8 @@
                     android:id="@+id/image_view_favorite"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@{favorited ? @android:drawable/btn_star_big_on : @android:drawable/btn_star_big_off}"
-                    tools:src="@android:drawable/btn_star_big_off"
+                    android:onClick="@{onFavoriteClickListener}"
+                    android:src="@android:drawable/btn_star_big_on"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

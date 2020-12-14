@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.ActivityMainBinding
-import br.com.mouzinho.marvelapp.view.characters.CharactersFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupUi() {
         supportFragmentManager
             .beginTransaction()
-            .replace(binding.fragmentContainer.id, CharactersFragment())
+            .replace(binding.fragmentContainer.id, MainFragment())
             .commit()
     }
 }

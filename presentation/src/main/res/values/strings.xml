@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MarvelApp</string>
     <string name="error_message">Aconteceu um erro, por favor tente novamente...</string>
+    <string name="update_favorite_error">Falha ao salvar favorito, tente novamente mais tarde</string>
+    <string name="saved_as_favorite">Personagem salvo na lista de favoritos</string>
+    <string name="removed_from_favorites">Personagem removido da lista de favoritos</string>
+    <string name="generic_error">Ocorreu um erro, tente novamente mais tarde.</string>
+    <string name="loading">Carregando...</string>
 </resources>

@@ -1,8 +1,10 @@
 package br.com.mouzinho.marvelapp.di
 
+import br.com.mouzinho.data.database.entity.DbFavoriteCharacter
 import br.com.mouzinho.data.entity.character.*
 import br.com.mouzinho.data.mapper.*
 import br.com.mouzinho.domain.entity.character.*
+import br.com.mouzinho.domain.entity.favorite.FavoriteCharacter
 import br.com.mouzinho.domain.mapper.Mapper
 import dagger.Binds
 import dagger.Module
@@ -27,4 +29,10 @@ interface MapperModule {
 
     @Binds
     fun bindThumbnailMapper(impl: ThumbnailMapper): Mapper<ApiThumbnail, Thumbnail>
+
+    @Binds
+    fun bindMarvelCharacterToDbFavoriteCharacterMapper(impl: MarvelCharacterToDbFavoriteCharacterMapper): Mapper<MarvelCharacter, DbFavoriteCharacter>
+
+    @Binds
+    fun bindDbFavoriteCharacterToFavoriteCharacterMapper(impl: DbFavoriteCharacterToFavoriteCharacterMapper): Mapper<DbFavoriteCharacter, FavoriteCharacter>
 }

@@ -1,11 +1,11 @@
 package br.com.mouzinho.domain.interactor.character
 
-import br.com.mouzinho.domain.repository.character.CharacterRepository
+import br.com.mouzinho.domain.repository.character.MarvelCharacterRepository
 import javax.inject.Inject
 
 class GetCharacters @Inject constructor(
-    private val characterRepository: CharacterRepository
+    private val marvelCharacterRepository: MarvelCharacterRepository
 ) {
 
-    operator fun invoke(pageSize: Int) = characterRepository.loadCharactersPagedList(pageSize)
+    operator fun invoke(pageSize: Int) = marvelCharacterRepository.loadCharactersPagedList(pageSize)
 }

@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentCharactersBinding
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,7 +19,7 @@ import io.reactivex.rxkotlin.addTo
 @AndroidEntryPoint
 class CharactersFragment : Fragment() {
     private val viewModel by viewModels<CharactersViewModel>()
-    private val epoxyController by lazy { CharactersPagingController({}, {}) }
+    private var adapter: CharactersAdapter? = null
     private var binding: FragmentCharactersBinding? = null
     private val disposables = CompositeDisposable()
 
@@ -38,6 +41,7 @@ class CharactersFragment : Fragment() {
         super.onDestroyView()
         disposables.clear()
         binding = null
+        adapter = null
     }
 
     private fun setupUi() {
@@ -51,29 +55,47 @@ class CharactersFragment : Fragment() {
         viewModel
             .stateObservable
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::render)
+            .subscribe(::onNextState)
             .addTo(disposables)
     }
 
-    private fun render(state: CharactersViewState) {
-        epoxyController.loadStatus = when {
-            state.loading -> LoadMarvelCharactersStatus.LOAD
-            state.hasError -> LoadMarvelCharactersStatus.ERROR
-            state.reloaded -> LoadMarvelCharactersStatus.RELOAD
-            else -> LoadMarvelCharactersStatus.LOADED
+    private fun onNextState(state: CharactersViewState) {
+        when (state) {
+            is CharactersViewState.FavoriteSaved -> {
+                adapter?.updateFavorite(state.character)
+                showToast(getString(R.string.saved_as_favorite))
+            }
+            is CharactersViewState.FavoriteRemoved -> {
+                adapter?.updateFavorite(state.character)
+                showToast(getString(R.string.removed_from_favorites))
+            }
+            is CharactersViewState.Loading -> {
+                binding?.layoutProgress?.isVisible = true
+            }
+            is CharactersViewState.CharactersLoaded -> {
+                binding?.swipeRefresh?.isRefreshing = false
+                binding?.layoutProgress?.isVisible = false
+                adapter?.submitList(state.characters)
+            }
+            is CharactersViewState.Error -> {
+                binding?.swipeRefresh?.isRefreshing = false
+            }
+            is CharactersViewState.FavoriteUpdateError -> {
+                showToast(state.message)
+            }
         }
-        epoxyController.submitList(state.characters)
-        binding?.swipeRefresh?.isRefreshing = false
+    }
+
+    private fun showToast(message: String) {
+        context?.let { Toast.makeText(it, message, Toast.LENGTH_SHORT).show() }
     }
 
     private fun setupRecyclerViewWithEpoxy() {
         binding?.run {
             val layoutManager = GridLayoutManager(context, 2)
-            epoxyController.spanCount = 2
-            recyclerView.adapter = epoxyController.adapter
-            layoutManager.spanSizeLookup = epoxyController.spanSizeLookup
+            if (adapter == null) adapter = CharactersAdapter(viewModel::updateCharacterFromFavorites, {/*TODO*/ })
+            recyclerView.adapter = adapter
             recyclerView.layoutManager = layoutManager
-            recyclerView.setRemoveAdapterWhenDetachedFromWindow(true)
         }
     }
 }
