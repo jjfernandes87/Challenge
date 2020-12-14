@@ -49,14 +49,16 @@ class CharacterDataSource(
     }
 
     private fun onLoadInitial(response: ApiCharacterResponse, callback: LoadInitialCallback<MarvelCharacter>) {
+        val responseSize = response.data?.count
+        val totalSize = response.data?.total
+        val isEmpty = totalSize == null || responseSize == null || totalSize == 0 || responseSize == 0
         callback.onResult(
             matchWithFavorites(mapToMarvelCharacters(response)),
             0,
-            response.data?.total ?: response.data?.count ?: 0
+            totalSize ?: responseSize ?: 0
         )
-        if (response.data?.total == 0)
-            pagingPublisher.onNext(MarvelCharacterLoadResult.Empty)
         pagingPublisher.onNext(MarvelCharacterLoadResult.Loading(isLoading = false))
+        pagingPublisher.onNext(MarvelCharacterLoadResult.ListCondition(isEmpty))
     }
 
     private fun matchWithFavorites(list: List<MarvelCharacter>): List<MarvelCharacter> {

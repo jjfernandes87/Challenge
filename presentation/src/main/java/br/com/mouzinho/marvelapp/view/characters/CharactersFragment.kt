@@ -89,6 +89,15 @@ class CharactersFragment : Fragment() {
             is CharactersViewState.ToggleLoading -> {
                 binding?.layoutProgress?.isVisible = state.isLoading
             }
+            is CharactersViewState.ToggleEmptyView -> {
+                binding?.includedEmptyView?.run {
+                    root.isVisible = state.isEmpty
+                    textView.setText(
+                        if (state.fromSearch) R.string.not_found_on_search
+                        else R.string.nothing_here
+                    )
+                }
+            }
             is CharactersViewState.Error -> {
                 binding?.swipeRefresh?.isRefreshing = false
             }

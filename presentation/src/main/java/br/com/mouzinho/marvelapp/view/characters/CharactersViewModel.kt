@@ -74,6 +74,7 @@ class CharactersViewModel @ViewModelInject constructor(
         when (result) {
             is MarvelCharacterLoadResult.Created -> statePublisher.onNext(CharactersViewState.CharactersLoaded(result.list))
             is MarvelCharacterLoadResult.Loading -> statePublisher.onNext(CharactersViewState.ToggleLoading(result.isLoading))
+            is MarvelCharacterLoadResult.ListCondition -> statePublisher.onNext(CharactersViewState.ToggleEmptyView(result.isEmpty))
             is MarvelCharacterLoadResult.Error -> onError(result.error)
         }
     }

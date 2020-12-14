@@ -6,5 +6,5 @@ sealed class MarvelCharacterLoadResult {
     data class Created(val list: PagedList<MarvelCharacter>) : MarvelCharacterLoadResult()
     data class Error(val error: Throwable) : MarvelCharacterLoadResult()
     data class Loading(val isLoading: Boolean) : MarvelCharacterLoadResult()
-    object Empty : MarvelCharacterLoadResult()
+    data class ListCondition(val isEmpty: Boolean) : MarvelCharacterLoadResult()
 }
