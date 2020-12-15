@@ -75,14 +75,14 @@ class FavoritesCharactersViewModel @ViewModelInject constructor(
             .doAfterTerminate { sendHideLoadingDelayedToWaitTransition() }
             .subscribeBy(
                 onSuccess = { statePublisher.onNext(GoToDetails(it)) },
-                onError = { statePublisher.onNext(ShowError(it.message ?: strings.genericErrorMessage)) }
+                onError = { statePublisher.onNext(ShowError(strings.genericErrorMessage)) }
             )
             .addTo(disposables)
     }
 
     private fun sendHideLoadingDelayedToWaitTransition() {
         Single.just(Unit)
-            .delaySubscription(200, TimeUnit.MILLISECONDS)
+            .delaySubscription(500, TimeUnit.MILLISECONDS)
             .subscribeBy { statePublisher.onNext(ToggleLoading(false)) }
             .addTo(disposables)
     }

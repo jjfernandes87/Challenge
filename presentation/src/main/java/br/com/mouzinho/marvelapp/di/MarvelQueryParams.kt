@@ -7,7 +7,7 @@ data class MarvelQueryParams(
 ) {
 
     companion object {
-        const val PUBLIC_API_KEY_VALUE = "909954490eb16b54a3386a548d1aacb3"
-        const val PRIVATE_API_KEY_VALUE = "2f72d188ec40d13456fc802e2fe325ed47548a7e"
+        const val PUBLIC_API_KEY_VALUE = "c77f2f149122efe47fb9c00a378bd7cc"
+        const val PRIVATE_API_KEY_VALUE = "1647fd9473668b369241dff5a628314b813c0b47"
     }
 }

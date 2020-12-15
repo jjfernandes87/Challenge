@@ -102,7 +102,12 @@ class CharactersFragment : Fragment() {
                 }
             }
             is CharactersViewState.Error -> {
-                binding?.swipeRefresh?.isRefreshing = false
+                binding?.run {
+                    swipeRefresh.isRefreshing = false
+                    includedProgressView.root.isVisible = false
+                    includedEmptyView.root.isVisible = true
+                    includedEmptyView.textView.text = getString(R.string.generic_error)
+                }
             }
             is CharactersViewState.FavoriteUpdateError -> {
                 showToast(state.message)

@@ -14,6 +14,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.PublishSubject
+import java.util.concurrent.TimeUnit
 
 class CharacterDetailsViewModel @ViewModelInject constructor(
     private val getMediaDetails: GetMediaDetails,
