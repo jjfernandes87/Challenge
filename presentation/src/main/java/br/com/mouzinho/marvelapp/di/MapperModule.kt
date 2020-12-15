@@ -4,7 +4,7 @@ import br.com.mouzinho.data.database.entity.DbFavoriteCharacter
 import br.com.mouzinho.data.entity.*
 import br.com.mouzinho.data.mapper.*
 import br.com.mouzinho.domain.entity.character.*
-import br.com.mouzinho.domain.entity.comic.ComicDetails
+import br.com.mouzinho.domain.entity.comic.MediaDetails
 import br.com.mouzinho.domain.entity.favorite.FavoriteCharacter
 import br.com.mouzinho.domain.mapper.Mapper
 import dagger.Binds
@@ -41,5 +41,5 @@ interface MapperModule {
     fun bindFavoriteCharacterToDbFavoriteCharacterMapper(impl: FavoriteCharacterToDbFavoriteCharacterMapper): Mapper<FavoriteCharacter, DbFavoriteCharacter>
 
     @Binds
-    fun bindApiComicDetailsToComicDetailsMapper(impl: ApiComicDetailsToComicDetails): Mapper<ApiComicDetails, ComicDetails>
+    fun bindApiMediaDetailsToMediaDetailsMapper(impl: ApiMediaDetailsToMediaDetails): Mapper<ApiMediaDetails, MediaDetails>
 }

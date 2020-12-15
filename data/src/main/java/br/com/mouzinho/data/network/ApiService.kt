@@ -1,10 +1,11 @@
 package br.com.mouzinho.data.network
 
 import br.com.mouzinho.data.entity.ApiCharacterResponse
-import br.com.mouzinho.data.entity.ApiComicResponse
+import br.com.mouzinho.data.entity.ApiDiaResponse
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.Url
 
@@ -26,5 +27,10 @@ interface ApiService {
     @GET
     fun getComicDetails(
         @Url url: String,
-    ): Single<ApiComicResponse>
+    ): Single<ApiDiaResponse>
+
+    @GET("v1/public/characters/{id}")
+    fun getCharacterInfo(
+        @Path("id") id: Int,
+    ): Single<ApiCharacterResponse>
 }

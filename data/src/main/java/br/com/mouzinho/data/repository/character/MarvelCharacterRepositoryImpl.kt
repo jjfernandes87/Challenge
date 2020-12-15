@@ -10,13 +10,14 @@ import br.com.mouzinho.domain.entity.character.MarvelCharacterPagingResult
 import br.com.mouzinho.domain.mapper.Mapper
 import br.com.mouzinho.domain.repository.character.MarvelCharacterRepository
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 
 class MarvelCharacterRepositoryImpl @Inject constructor(
-    apiService: ApiService,
-    characterMapper: Mapper<ApiMarvelCharacter, MarvelCharacter>,
-    favoritesDao: FavoritesCharactersDao
+    private val apiService: ApiService,
+    private val characterMapper: Mapper<ApiMarvelCharacter, MarvelCharacter>,
+    private val favoritesDao: FavoritesCharactersDao
 ) : MarvelCharacterRepository {
     private val pagingPublisher = PublishSubject.create<MarvelCharacterPagingResult>()
     private val pagingSource = CharacterDataSourceFactory(apiService, favoritesDao, characterMapper, pagingPublisher)
@@ -42,6 +43,19 @@ class MarvelCharacterRepositoryImpl @Inject constructor(
     override fun sendSearchNameToPagingSource(name: String) {
         pagingSource.query = name
         pagingSource.invalidate()
+    }
+
+    override fun loadCharacterInfo(id: Int): Single<MarvelCharacter> {
+        return apiService.getCharacterInfo(id)
+            .map { response ->
+                response.data?.results
+                    ?.firstOrNull()
+                    ?.let(characterMapper::transform)
+                    ?.apply {
+                        isFavorite = favoritesDao.getById(id).isNotEmpty()
+                    }
+                    ?: throw Exception("Character not found")
+            }
     }
 
     override fun reload() {

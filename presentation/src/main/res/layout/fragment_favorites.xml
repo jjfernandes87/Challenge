@@ -30,6 +30,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:visibility="gone" />
+
+            <include
+                android:id="@+id/included_progress_view"
+                layout="@layout/included_progress_view"
+                android:visibility="gone" />
         </FrameLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

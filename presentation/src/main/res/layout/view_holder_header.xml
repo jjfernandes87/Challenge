@@ -16,6 +16,7 @@
             android:paddingHorizontal="14dp"
             tools:targetApi="o"
             android:textSize="16sp"
+            android:textStyle="bold"
             android:text="@{text}"
             tools:text="Label" />
 </layout>

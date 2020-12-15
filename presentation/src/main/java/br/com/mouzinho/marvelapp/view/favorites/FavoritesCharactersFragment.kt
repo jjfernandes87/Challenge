@@ -8,10 +8,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentFavoritesBinding
 import br.com.mouzinho.marvelapp.extensions.showDialog
 import br.com.mouzinho.marvelapp.extensions.showToast
+import br.com.mouzinho.marvelapp.navigator.Navigator
+import br.com.mouzinho.marvelapp.view.characterDetails.CharacterDetailsFragment
 import br.com.mouzinho.marvelapp.view.favorites.FavoritesCharactersViewState.*
 import br.com.mouzinho.marvelapp.view.main.MainViewModel
 import br.com.mouzinho.marvelapp.view.main.MainViewState
@@ -50,7 +53,7 @@ class FavoritesCharactersFragment : Fragment() {
     private fun setupUi() {
         binding?.run {
             swipeRefresh.setOnRefreshListener { viewModel.loadFavorites() }
-            if (adapter == null) adapter = FavoritesAdapter(viewModel::removeFavorite)
+            if (adapter == null) adapter = FavoritesAdapter(viewModel::removeFavorite, viewModel::loadMarvelCharacterInfo)
             recyclerView.adapter = adapter
         }
     }
@@ -93,7 +96,13 @@ class FavoritesCharactersFragment : Fragment() {
                 is ShowError -> showDialog(getString(R.string.error_title), state.message)
                 is ShowRemovedMessage -> showToast(R.string.removed_from_favorites)
                 is ReloadCharacters -> mainViewModel.reloadCharacters()
+                is GoToDetails -> goToCharacterDetails(state.marvelCharacter)
+                is ToggleLoading -> includedProgressView.root.isVisible = state.isLoading
             }
         }
+    }
+
+    private fun goToCharacterDetails(marvelCharacter: MarvelCharacter) {
+        Navigator.navigateTo(CharacterDetailsFragment.newInstance(marvelCharacter), marvelCharacter.name)
     }
 }

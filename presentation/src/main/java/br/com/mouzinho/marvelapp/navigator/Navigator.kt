@@ -13,7 +13,7 @@ import io.reactivex.subjects.PublishSubject
 object Navigator {
 
     sealed class NavAction {
-        data class Push(val fragment: Fragment, val title: String, val animate: Boolean) : NavAction()
+        data class Push(val fragment: Fragment, val title: String) : NavAction()
         data class PopUpTo(val fragmentClass: Class<*>) : NavAction()
         object PopUp : NavAction()
     }
@@ -22,8 +22,8 @@ object Navigator {
 
     fun observable(): Observable<NavAction> = navigationPublisher.hide()
 
-    fun navigateTo(fragment: Fragment, title: String, animate: Boolean = false) =
-        navigationPublisher.onNext(Push(fragment, title, animate))
+    fun navigateTo(fragment: Fragment, title: String) =
+        navigationPublisher.onNext(Push(fragment, title))
 
     fun popUp() = navigationPublisher.onNext(PopUp)
 

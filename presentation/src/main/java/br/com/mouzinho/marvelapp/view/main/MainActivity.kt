@@ -81,10 +81,7 @@ class MainActivity : AppCompatActivity() {
     private fun onPushNewFragment(action: Push) {
         supportFragmentManager
             .beginTransaction()
-            .apply {
-                if (action.animate)
-                    setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-            }
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
             .addToBackStack(action.fragment::class.java.simpleName)
             .add(binding.fragmentContainer.id, action.fragment)
             .commit()
