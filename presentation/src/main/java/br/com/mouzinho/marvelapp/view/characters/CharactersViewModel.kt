@@ -3,7 +3,7 @@ package br.com.mouzinho.marvelapp.view.characters
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
-import br.com.mouzinho.domain.entity.character.MarvelCharacterLoadResult
+import br.com.mouzinho.domain.entity.character.MarvelCharacterPagingResult
 import br.com.mouzinho.domain.interactor.character.GetCharacters
 import br.com.mouzinho.domain.interactor.character.ReloadCharacters
 import br.com.mouzinho.domain.interactor.character.SearchCharacters
@@ -31,7 +31,7 @@ class CharactersViewModel @ViewModelInject constructor(
 
     fun loadCharacters(pageSize: Int = 20) {
         getCharacters(pageSize)
-            .observeOn(schedulerProvider.ui())
+            .observeOn(schedulerProvider.main())
             .subscribe(::onCharacterLoadResult, ::onError)
             .addTo(disposables)
     }
@@ -47,7 +47,7 @@ class CharactersViewModel @ViewModelInject constructor(
     fun updateCharacterFromFavorites(character: MarvelCharacter) {
         updateFavorite(character)
             .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
+            .observeOn(schedulerProvider.main())
             .subscribeBy { state ->
                 when (state) {
                     UpdateFavorite.State.SAVED -> onFavoriteSaved(character)
@@ -70,12 +70,12 @@ class CharactersViewModel @ViewModelInject constructor(
         statePublisher.onNext(CharactersViewState.FavoriteUpdateError(strings.updateFavoriteError))
     }
 
-    private fun onCharacterLoadResult(result: MarvelCharacterLoadResult) {
+    private fun onCharacterLoadResult(result: MarvelCharacterPagingResult) {
         when (result) {
-            is MarvelCharacterLoadResult.Created -> statePublisher.onNext(CharactersViewState.CharactersLoaded(result.list))
-            is MarvelCharacterLoadResult.Loading -> statePublisher.onNext(CharactersViewState.ToggleLoading(result.isLoading))
-            is MarvelCharacterLoadResult.ListCondition -> statePublisher.onNext(CharactersViewState.ToggleEmptyView(result.isEmpty))
-            is MarvelCharacterLoadResult.Error -> onError(result.error)
+            is MarvelCharacterPagingResult.Created -> statePublisher.onNext(CharactersViewState.CharactersLoaded(result.list))
+            is MarvelCharacterPagingResult.Loading -> statePublisher.onNext(CharactersViewState.ToggleLoading(result.isLoading))
+            is MarvelCharacterPagingResult.ListCondition -> statePublisher.onNext(CharactersViewState.ToggleEmptyView(result.isEmpty))
+            is MarvelCharacterPagingResult.Error -> onError(result.error)
         }
     }
 

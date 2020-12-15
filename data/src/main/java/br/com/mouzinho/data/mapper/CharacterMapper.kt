@@ -1,9 +1,9 @@
 package br.com.mouzinho.data.mapper
 
-import br.com.mouzinho.data.entity.character.ApiMarvelCharacter
-import br.com.mouzinho.data.entity.character.ApiComics
-import br.com.mouzinho.data.entity.character.ApiSeries
-import br.com.mouzinho.data.entity.character.ApiThumbnail
+import br.com.mouzinho.data.entity.ApiMarvelCharacter
+import br.com.mouzinho.data.entity.ApiComics
+import br.com.mouzinho.data.entity.ApiSeries
+import br.com.mouzinho.data.entity.ApiThumbnail
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.domain.entity.character.Comics
 import br.com.mouzinho.domain.entity.character.Series

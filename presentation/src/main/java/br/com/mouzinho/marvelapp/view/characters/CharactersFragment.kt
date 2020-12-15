@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
+import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentCharactersBinding
 import br.com.mouzinho.marvelapp.extensions.showToast
+import br.com.mouzinho.marvelapp.navigator.Navigator
+import br.com.mouzinho.marvelapp.view.characterDetails.CharacterDetailsFragment
 import br.com.mouzinho.marvelapp.view.main.MainViewModel
 import br.com.mouzinho.marvelapp.view.main.MainViewState
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +24,7 @@ import io.reactivex.rxkotlin.addTo
 @AndroidEntryPoint
 class CharactersFragment : Fragment() {
     private val viewModel by viewModels<CharactersViewModel>()
-    private val mainViewModel by viewModels<MainViewModel>(ownerProducer = { requireParentFragment() })
+    private val mainViewModel by activityViewModels<MainViewModel>()
     private var adapter: CharactersAdapter? = null
     private var binding: FragmentCharactersBinding? = null
     private val disposables = CompositeDisposable()
@@ -83,11 +86,11 @@ class CharactersFragment : Fragment() {
             }
             is CharactersViewState.CharactersLoaded -> {
                 binding?.swipeRefresh?.isRefreshing = false
-                binding?.layoutProgress?.isVisible = false
+                binding?.includedProgressView?.root?.isVisible = false
                 adapter?.submitList(state.characters)
             }
             is CharactersViewState.ToggleLoading -> {
-                binding?.layoutProgress?.isVisible = state.isLoading
+                binding?.includedProgressView?.root?.isVisible = state.isLoading
             }
             is CharactersViewState.ToggleEmptyView -> {
                 binding?.includedEmptyView?.run {
@@ -116,10 +119,12 @@ class CharactersFragment : Fragment() {
 
     private fun setupRecyclerViewWithEpoxy() {
         binding?.run {
-            val layoutManager = GridLayoutManager(context, 2)
-            if (adapter == null) adapter = CharactersAdapter(viewModel::updateCharacterFromFavorites, {/*TODO*/ })
+            if (adapter == null) adapter = CharactersAdapter(viewModel::updateCharacterFromFavorites, ::goToDetails)
             recyclerView.adapter = adapter
-            recyclerView.layoutManager = layoutManager
         }
+    }
+
+    private fun goToDetails(marvelCharacter: MarvelCharacter) {
+        Navigator.navigateTo(CharacterDetailsFragment.newInstance(marvelCharacter), marvelCharacter.name)
     }
 }

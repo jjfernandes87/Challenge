@@ -1,4 +1,4 @@
-package br.com.mouzinho.data.entity.character
+package br.com.mouzinho.data.entity
 
 data class ApiMarvelCharacter(
     val comics: ApiComics?,

@@ -23,7 +23,9 @@
                     android:layout_height="match_parent"
                     android:clipChildren="false"
                     android:clipToPadding="false"
-                    app:spanCount="2" />
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    tools:listitem="@layout/view_holder_character" />
 
                 <include
                     android:id="@+id/included_empty_view"
@@ -35,25 +37,9 @@
             </FrameLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_progress"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/loading"
-                android:textSize="14sp" />
-        </LinearLayout>
+        <include
+            android:id="@+id/included_progress_view"
+            layout="@layout/included_progress_view"
+            android:visibility="gone" />
     </FrameLayout>
 </layout>

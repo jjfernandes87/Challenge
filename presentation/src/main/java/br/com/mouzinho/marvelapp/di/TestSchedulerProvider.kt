@@ -7,7 +7,7 @@ class TestSchedulerProvider : SchedulerProvider {
 
     override fun io() = Schedulers.trampoline()
 
-    override fun ui() = Schedulers.trampoline()
+    override fun main() = Schedulers.trampoline()
 
     override fun computation() = Schedulers.trampoline()
 }

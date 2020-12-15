@@ -2,12 +2,12 @@ package br.com.mouzinho.data.repository.character
 
 import androidx.paging.PositionalDataSource
 import br.com.mouzinho.data.database.dao.FavoritesCharactersDao
-import br.com.mouzinho.data.entity.character.ApiCharacterResponse
-import br.com.mouzinho.data.entity.character.ApiMarvelCharacter
+import br.com.mouzinho.data.entity.ApiCharacterResponse
+import br.com.mouzinho.data.entity.ApiMarvelCharacter
 import br.com.mouzinho.data.errorHandler.ErrorHandler.toAppError
 import br.com.mouzinho.data.network.ApiService
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
-import br.com.mouzinho.domain.entity.character.MarvelCharacterLoadResult
+import br.com.mouzinho.domain.entity.character.MarvelCharacterPagingResult
 import br.com.mouzinho.domain.mapper.Mapper
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
@@ -20,7 +20,7 @@ class CharacterDataSource(
     private val apiService: ApiService,
     private val favoritesDao: FavoritesCharactersDao,
     private val mapper: Mapper<ApiMarvelCharacter, MarvelCharacter>,
-    private val pagingPublisher: PublishSubject<MarvelCharacterLoadResult>,
+    private val pagingPublisher: PublishSubject<MarvelCharacterPagingResult>,
     private val query: String? = null
 ) : PositionalDataSource<MarvelCharacter>() {
     private val disposables = CompositeDisposable()
@@ -30,11 +30,11 @@ class CharacterDataSource(
         callback: LoadInitialCallback<MarvelCharacter>
     ) {
         charactersRequest(params.pageSize, params.requestedStartPosition)
-            .doOnSubscribe { pagingPublisher.onNext(MarvelCharacterLoadResult.Loading(isLoading = true)) }
+            .doOnSubscribe { pagingPublisher.onNext(MarvelCharacterPagingResult.Loading(isLoading = true)) }
             .delaySubscription(300, TimeUnit.MILLISECONDS)
             .subscribeBy(
                 onNext = { onLoadInitial(it, callback) },
-                onError = { pagingPublisher.onNext(MarvelCharacterLoadResult.Error(it.toAppError())) }
+                onError = { pagingPublisher.onNext(MarvelCharacterPagingResult.Error(it.toAppError())) }
             )
             .addTo(disposables)
     }
@@ -43,7 +43,7 @@ class CharacterDataSource(
         charactersRequest(params.loadSize, params.startPosition)
             .subscribeBy(
                 onNext = { response -> callback.onResult(matchWithFavorites(mapToMarvelCharacters(response))) },
-                onError = { pagingPublisher.onNext(MarvelCharacterLoadResult.Error(it.toAppError())) }
+                onError = { pagingPublisher.onNext(MarvelCharacterPagingResult.Error(it.toAppError())) }
             )
             .addTo(disposables)
     }
@@ -57,8 +57,8 @@ class CharacterDataSource(
             0,
             totalSize ?: responseSize ?: 0
         )
-        pagingPublisher.onNext(MarvelCharacterLoadResult.Loading(isLoading = false))
-        pagingPublisher.onNext(MarvelCharacterLoadResult.ListCondition(isEmpty))
+        pagingPublisher.onNext(MarvelCharacterPagingResult.Loading(isLoading = false))
+        pagingPublisher.onNext(MarvelCharacterPagingResult.ListCondition(isEmpty))
     }
 
     private fun matchWithFavorites(list: List<MarvelCharacter>): List<MarvelCharacter> {

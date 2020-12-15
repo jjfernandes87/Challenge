@@ -8,7 +8,7 @@ import javax.inject.Inject
 class DefaultSchedulerProvider @Inject constructor() : SchedulerProvider {
     override fun io() = Schedulers.io()
 
-    override fun ui() = AndroidSchedulers.mainThread()
+    override fun main() = AndroidSchedulers.mainThread()
 
     override fun computation() = Schedulers.computation()
 }

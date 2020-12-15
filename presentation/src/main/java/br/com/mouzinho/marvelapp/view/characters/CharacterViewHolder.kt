@@ -1,6 +1,7 @@
 package br.com.mouzinho.marvelapp.view.characters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
@@ -19,9 +20,8 @@ class CharacterViewHolder private constructor(
     ) {
         with(binding) {
             this.character = character
-            favorited = character?.isFavorite ?: false
-            imageViewFavorite.setOnClickListener { character?.let { onFavoriteClickListener(character) } }
-            rootLayout.setOnClickListener { character?.let { onCharacterClickListener(character) } }
+            this.onFavoriteClickListener = View.OnClickListener { character?.let { onFavoriteClickListener(character) } }
+            this.onRootClickListener = View.OnClickListener { character?.let { onCharacterClickListener(character) } }
             character?.thumbnail?.let { thumbnail ->
                 Glide.with(root.context.applicationContext)
                     .load(thumbnail.landscapeMediumUrl)

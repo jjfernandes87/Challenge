@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="text"
+            type="String" />
+    </data>
+
+        <TextView
+            android:id="@+id/text_view_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:justificationMode="inter_word"
+            android:paddingHorizontal="14dp"
+            tools:targetApi="o"
+            android:textSize="16sp"
+            android:text="@{text}"
+            tools:text="Label" />
+</layout>

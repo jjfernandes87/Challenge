@@ -18,7 +18,7 @@ class MainViewPagerAdapter(
         else -> CharactersFragment()
     }
 
-    override fun getPageTitle(position: Int) = when(position) {
+    override fun getPageTitle(position: Int) = when (position) {
         1 -> context.getString(R.string.favorites_character_title)
         else -> context.getString(R.string.character_title)
     }

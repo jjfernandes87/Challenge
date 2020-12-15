@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentFavoritesBinding
+import br.com.mouzinho.marvelapp.extensions.showDialog
 import br.com.mouzinho.marvelapp.extensions.showToast
 import br.com.mouzinho.marvelapp.view.favorites.FavoritesCharactersViewState.*
 import br.com.mouzinho.marvelapp.view.main.MainViewModel
@@ -22,7 +24,7 @@ import io.reactivex.rxkotlin.addTo
 class FavoritesCharactersFragment : Fragment() {
     private var binding: FragmentFavoritesBinding? = null
     private val viewModel by viewModels<FavoritesCharactersViewModel>()
-    private val mainViewModel by viewModels<MainViewModel>(ownerProducer = { requireParentFragment() })
+    private val mainViewModel by activityViewModels<MainViewModel>()
     private val disposables = CompositeDisposable()
     private var adapter: FavoritesAdapter? = null
 
@@ -88,12 +90,7 @@ class FavoritesCharactersFragment : Fragment() {
                     )
                     adapter?.submitList(state.favorites)
                 }
-                is ShowLoading -> { /*TODO*/
-                }
-                is HideLoading -> {/*TODO*/
-                }
-                is ShowError -> { /*TODO*/
-                }
+                is ShowError -> showDialog(getString(R.string.error_title), state.message)
                 is ShowRemovedMessage -> showToast(R.string.removed_from_favorites)
                 is ReloadCharacters -> mainViewModel.reloadCharacters()
             }

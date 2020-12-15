@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.viewpager.widget.ViewPager
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.animations.DepthPageTransformer
 import br.com.mouzinho.marvelapp.databinding.FragmentMainBinding
-import com.jakewharton.rxbinding3.appcompat.queryTextChangeEvents
 import com.jakewharton.rxbinding3.appcompat.queryTextChanges
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.disposables.CompositeDisposable
@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 @AndroidEntryPoint
 class MainFragment : Fragment() {
     private var binding: FragmentMainBinding? = null
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by activityViewModels<MainViewModel>()
     private val disposables = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,11 +56,28 @@ class MainFragment : Fragment() {
 
     private fun setupUi() {
         binding?.run {
-            context?.let { context ->
-                viewPager.adapter = MainViewPagerAdapter(context, childFragmentManager)
-                viewPager.setPageTransformer(true, DepthPageTransformer())
-                tabLayout.setupWithViewPager(viewPager)
-            }
+            includedToolbar.toolbar.title = getString(R.string.character_title)
+            viewModel.setupToolbar(includedToolbar.toolbar)
+            viewPager.adapter = MainViewPagerAdapter(requireContext(), childFragmentManager)
+            viewPager.setupPageChangedListener()
+            tabLayout.setupWithViewPager(viewPager)
         }
+    }
+
+    private fun ViewPager.setupPageChangedListener() {
+        setPageTransformer(true, DepthPageTransformer())
+        addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                //Nothing to do
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                //Nothing to do
+            }
+
+            override fun onPageSelected(position: Int) {
+                viewModel.updateToolbarTitle(adapter?.getPageTitle(position)?.toString() ?: getString(R.string.app_name))
+            }
+        })
     }
 }

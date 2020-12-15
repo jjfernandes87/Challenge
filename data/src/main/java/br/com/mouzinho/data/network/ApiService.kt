@@ -1,9 +1,12 @@
 package br.com.mouzinho.data.network
 
-import br.com.mouzinho.data.entity.character.ApiCharacterResponse
+import br.com.mouzinho.data.entity.ApiCharacterResponse
+import br.com.mouzinho.data.entity.ApiComicResponse
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface ApiService {
 
@@ -19,4 +22,9 @@ interface ApiService {
         @Query("offset") offset: Int,
         @Query("nameStartsWith") name: String
     ): Observable<ApiCharacterResponse>
+
+    @GET
+    fun getComicDetails(
+        @Url url: String,
+    ): Single<ApiComicResponse>
 }

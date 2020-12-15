@@ -1,6 +1,6 @@
-package br.com.mouzinho.data.entity.character
+package br.com.mouzinho.data.entity
 
-data class ApiSeries(
+data class ApiComics(
     val available: Int?,
     val collectionURI: String?,
     val items: List<ApiItem>?,

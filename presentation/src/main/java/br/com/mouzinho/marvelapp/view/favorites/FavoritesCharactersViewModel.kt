@@ -32,9 +32,7 @@ class FavoritesCharactersViewModel @ViewModelInject constructor(
     fun loadFavorites() {
         getFavorites()
             .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
-            .doOnSubscribe { statePublisher.onNext(ShowLoading) }
-            .doAfterTerminate { statePublisher.onNext(HideLoading) }
+            .observeOn(schedulerProvider.main())
             .subscribeBy { statePublisher.onNext(ShowFavorites(it)) }
             .addTo(disposables)
     }
@@ -42,7 +40,7 @@ class FavoritesCharactersViewModel @ViewModelInject constructor(
     fun search(text: String) {
         searchFavorites(text)
             .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
+            .observeOn(schedulerProvider.main())
             .subscribeBy { list ->
                 statePublisher.onNext(ShowFavorites(list, fromSearch = true))
             }
@@ -52,7 +50,7 @@ class FavoritesCharactersViewModel @ViewModelInject constructor(
     fun removeFavorite(favoriteCharacter: FavoriteCharacter) {
         removeFromFavorites(favoriteCharacter)
             .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
+            .observeOn(schedulerProvider.main())
             .subscribeBy { success ->
                 if (success) {
                     statePublisher.onNext(ShowRemovedMessage)

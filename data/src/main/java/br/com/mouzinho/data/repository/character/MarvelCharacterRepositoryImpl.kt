@@ -3,10 +3,10 @@ package br.com.mouzinho.data.repository.character
 import androidx.paging.PagedList
 import androidx.paging.RxPagedListBuilder
 import br.com.mouzinho.data.database.dao.FavoritesCharactersDao
-import br.com.mouzinho.data.entity.character.ApiMarvelCharacter
+import br.com.mouzinho.data.entity.ApiMarvelCharacter
 import br.com.mouzinho.data.network.ApiService
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
-import br.com.mouzinho.domain.entity.character.MarvelCharacterLoadResult
+import br.com.mouzinho.domain.entity.character.MarvelCharacterPagingResult
 import br.com.mouzinho.domain.mapper.Mapper
 import br.com.mouzinho.domain.repository.character.MarvelCharacterRepository
 import io.reactivex.Observable
@@ -18,10 +18,10 @@ class MarvelCharacterRepositoryImpl @Inject constructor(
     characterMapper: Mapper<ApiMarvelCharacter, MarvelCharacter>,
     favoritesDao: FavoritesCharactersDao
 ) : MarvelCharacterRepository {
-    private val pagingPublisher = PublishSubject.create<MarvelCharacterLoadResult>()
+    private val pagingPublisher = PublishSubject.create<MarvelCharacterPagingResult>()
     private val pagingSource = CharacterDataSourceFactory(apiService, favoritesDao, characterMapper, pagingPublisher)
 
-    override fun loadCharactersPagedList(pageSize: Int): Observable<MarvelCharacterLoadResult> {
+    override fun loadCharactersPagedList(pageSize: Int): Observable<MarvelCharacterPagingResult> {
         createPagingObservable(pageSize)
         return pagingPublisher.hide()
     }
@@ -33,8 +33,8 @@ class MarvelCharacterRepositoryImpl @Inject constructor(
         .buildObservable()
         .also { observable ->
             observable
-                .map<MarvelCharacterLoadResult> {
-                    MarvelCharacterLoadResult.Created(it)
+                .map<MarvelCharacterPagingResult> {
+                    MarvelCharacterPagingResult.Created(it)
                 }
                 .subscribe(pagingPublisher)
         }

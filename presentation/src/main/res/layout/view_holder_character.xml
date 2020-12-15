@@ -11,8 +11,12 @@
             type="br.com.mouzinho.domain.entity.character.MarvelCharacter" />
 
         <variable
-            name="favorited"
-            type="Boolean" />
+            name="onFavoriteClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onRootClickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -22,6 +26,7 @@
         android:layout_margin="6dp"
         android:orientation="vertical"
         app:cardCornerRadius="4dp"
+        android:onClick="@{onRootClickListener}"
         app:cardElevation="4dp">
 
         <LinearLayout
@@ -66,7 +71,8 @@
                     android:id="@+id/image_view_favorite"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@{favorited ? @android:drawable/btn_star_big_on : @android:drawable/btn_star_big_off}"
+                    android:onClick="@{onFavoriteClickListener}"
+                    android:src="@{character.isFavorite ? @android:drawable/btn_star_big_on : @android:drawable/btn_star_big_off}"
                     tools:src="@android:drawable/btn_star_big_off"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

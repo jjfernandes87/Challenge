@@ -9,6 +9,14 @@
         <variable
             name="favorite"
             type="br.com.mouzinho.domain.entity.favorite.FavoriteCharacter" />
+
+        <variable
+            name="onRemoveFromFavoriteClickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onRootClickListener"
+            type="android.view.View.OnClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -18,6 +26,7 @@
         android:layout_margin="6dp"
         android:orientation="vertical"
         app:cardCornerRadius="4dp"
+        android:onClick="@{onRootClickListener}"
         app:cardElevation="4dp">
 
         <LinearLayout
@@ -61,6 +70,7 @@
                     android:id="@+id/image_view_favorite"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:onClick="@{onRemoveFromFavoriteClickListener}"
                     android:src="@android:drawable/btn_star_big_on"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

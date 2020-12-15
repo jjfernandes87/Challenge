@@ -1,7 +1,7 @@
 package br.com.mouzinho.data.mapper
 
-import br.com.mouzinho.data.entity.character.ApiItem
-import br.com.mouzinho.data.entity.character.ApiSeries
+import br.com.mouzinho.data.entity.ApiItem
+import br.com.mouzinho.data.entity.ApiSeries
 import br.com.mouzinho.domain.entity.character.Item
 import br.com.mouzinho.domain.entity.character.Series
 import br.com.mouzinho.domain.mapper.Mapper

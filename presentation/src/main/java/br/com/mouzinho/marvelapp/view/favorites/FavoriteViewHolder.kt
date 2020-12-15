@@ -1,6 +1,7 @@
 package br.com.mouzinho.marvelapp.view.favorites
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.mouzinho.domain.entity.favorite.FavoriteCharacter
@@ -15,8 +16,8 @@ class FavoriteViewHolder private constructor(
     fun bind(favoriteCharacter: FavoriteCharacter, onRemoveFromFavoriteClick: (FavoriteCharacter) -> Unit) {
         with(binding) {
             this.favorite = favoriteCharacter
-            imageViewFavorite.setOnClickListener { onRemoveFromFavoriteClick(favoriteCharacter) }
-            rootLayout.setOnClickListener { /*TODO*/ }
+            this.onRemoveFromFavoriteClickListener = View.OnClickListener { onRemoveFromFavoriteClick(favoriteCharacter) }
+            this.onRootClickListener = View.OnClickListener { /*TODO*/  }
             favoriteCharacter.landscapeThumbnailUrl?.let { url ->
                 Glide.with(root.context.applicationContext)
                     .load(url)
