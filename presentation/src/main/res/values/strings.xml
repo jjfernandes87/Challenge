@@ -7,6 +7,7 @@
     <string name="update_favorite_status">Update favorite status</string>
     <string name="removed_from_favorites">Character removed from favorites.</string>
     <string name="generic_error">Something wrong happened, please try again later.</string>
+    <string name="network_error">Please check your network connection and try again later.</string>
     <string name="loading">Loading…</string>
     <string name="favorites_character_title">Favorites</string>
     <string name="character_title">Characters</string>

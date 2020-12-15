@@ -11,8 +11,10 @@ import androidx.fragment.app.viewModels
 import br.com.mouzinho.domain.entity.character.MarvelCharacter
 import br.com.mouzinho.marvelapp.R
 import br.com.mouzinho.marvelapp.databinding.FragmentCharactersBinding
+import br.com.mouzinho.marvelapp.extensions.showDialog
 import br.com.mouzinho.marvelapp.extensions.showToast
 import br.com.mouzinho.marvelapp.navigator.Navigator
+import br.com.mouzinho.marvelapp.util.hasInternetConnection
 import br.com.mouzinho.marvelapp.view.characterDetails.CharacterDetailsFragment
 import br.com.mouzinho.marvelapp.view.main.MainViewModel
 import br.com.mouzinho.marvelapp.view.main.MainViewState
@@ -130,6 +132,10 @@ class CharactersFragment : Fragment() {
     }
 
     private fun goToDetails(marvelCharacter: MarvelCharacter) {
+        if (context?.hasInternetConnection() == false) {
+            showDialog(getString(R.string.error_title), getString(R.string.network_error))
+            return
+        }
         Navigator.navigateTo(CharacterDetailsFragment.newInstance(marvelCharacter), marvelCharacter.name)
     }
 }
