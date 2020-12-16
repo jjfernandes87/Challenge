@@ -1,6 +1,8 @@
 package br.com.mouzinho.domain.entity.character
 
-data class Thumbnail(val extension: String, val path: String) {
+import java.io.Serializable
+
+data class Thumbnail(val extension: String, val path: String) : Serializable {
 
     val landscapeMediumUrl get() = "${path}/${SIZE_LANDSCAPE_MEDIUM}.${extension}"
     val landscapeXLargeUrl get() = "${path}/${SIZE_LANDSCAPE_XLARGE}.${extension}"
