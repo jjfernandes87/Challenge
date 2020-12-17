@@ -31,7 +31,7 @@ class CharacterDataSource(
     ) {
         charactersRequest(params.pageSize, params.requestedStartPosition)
             .doOnSubscribe { pagingPublisher.onNext(MarvelCharacterPagingResult.Loading(isLoading = true)) }
-            .delaySubscription(300, TimeUnit.MILLISECONDS)
+            .delaySubscription(100, TimeUnit.MILLISECONDS)
             .subscribeBy(
                 onNext = { onLoadInitial(it, callback) },
                 onError = { pagingPublisher.onNext(MarvelCharacterPagingResult.Error(it.toAppError())) }
