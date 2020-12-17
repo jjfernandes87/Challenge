@@ -10,7 +10,6 @@ import br.com.mouzinho.domain.interactor.favorite.SearchFavorites
 import br.com.mouzinho.domain.resources.StringResources
 import br.com.mouzinho.domain.scheduler.SchedulerProvider
 import br.com.mouzinho.marvelapp.view.favorites.FavoritesCharactersViewState.*
-import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
@@ -31,10 +30,6 @@ class FavoritesCharactersViewModel @ViewModelInject constructor(
 
     private val statePublisher by lazy { PublishSubject.create<FavoritesCharactersViewState>() }
     private val disposables = CompositeDisposable()
-
-    init {
-        loadFavorites()
-    }
 
     fun loadFavorites() {
         getFavorites()

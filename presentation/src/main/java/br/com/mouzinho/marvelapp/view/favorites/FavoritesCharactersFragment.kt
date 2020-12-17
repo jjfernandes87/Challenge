@@ -41,6 +41,7 @@ class FavoritesCharactersFragment : Fragment() {
         setupUi()
         observeViewState()
         observeMainViewState()
+        viewModel.loadFavorites()
     }
 
     override fun onDestroyView() {
