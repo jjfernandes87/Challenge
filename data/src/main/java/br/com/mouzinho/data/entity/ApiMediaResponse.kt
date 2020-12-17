@@ -1,6 +1,6 @@
 package br.com.mouzinho.data.entity
 
-data class ApiDiaResponse(
+data class ApiMediaResponse(
     val data: ApiMediaResult
 )
 

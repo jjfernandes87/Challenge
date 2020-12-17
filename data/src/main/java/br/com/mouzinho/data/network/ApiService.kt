@@ -1,7 +1,7 @@
 package br.com.mouzinho.data.network
 
 import br.com.mouzinho.data.entity.ApiCharacterResponse
-import br.com.mouzinho.data.entity.ApiDiaResponse
+import br.com.mouzinho.data.entity.ApiMediaResponse
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -25,9 +25,9 @@ interface ApiService {
     ): Observable<ApiCharacterResponse>
 
     @GET
-    fun getComicDetails(
+    fun getMediaDetails(
         @Url url: String,
-    ): Single<ApiDiaResponse>
+    ): Single<ApiMediaResponse>
 
     @GET("v1/public/characters/{id}")
     fun getCharacterInfo(

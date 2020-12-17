@@ -15,7 +15,7 @@ class MediaRepositoryImpl @Inject constructor(
 ) : MediaRepository {
 
     override fun getMediaDetails(url: String): Single<MediaDetails> {
-        return apiService.getComicDetails(url.httpToHttps())
+        return apiService.getMediaDetails(url.httpToHttps())
             .map { response -> response.data.results.let(mapper::transform).firstOrNull() ?: throw Exception("Comics null") }
     }
 }
