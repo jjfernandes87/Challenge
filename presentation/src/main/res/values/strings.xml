@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MarvelApp</string>
+    <string name="error_title">Oh no!</string>
+    <string name="error_message">Something wrong happened, please try again later.</string>
+    <string name="update_favorite_error">Fail to save your favorite, please try again later.</string>
+    <string name="saved_as_favorite">Character saved as favorite.</string>
+    <string name="update_favorite_status">Update favorite status</string>
+    <string name="removed_from_favorites">Character removed from favorites.</string>
+    <string name="generic_error">Something wrong happened, please try again later.</string>
+    <string name="network_error">Please check your network connection and try again later.</string>
+    <string name="loading">Loading…</string>
+    <string name="favorites_character_title">Favorites</string>
+    <string name="character_title">Characters</string>
+    <string name="search">Search</string>
+    <string name="not_found">Not found</string>
+    <string name="not_found_on_search">Sorry, no results found :(</string>
+    <string name="nothing_here">Seems like you have nothing here yet :(</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula ex sit amet mi laoreet cursus nec sed libero. Curabitur vel nisi vitae est sagittis semper. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut sem turpis, cursus maximus fringilla vel, viverra vitae mauris.</string>
+    <string name="empty_media_message">Wow, it looks like we don\'t have anything here :(</string>
+    <string name="comics">Comics</string>
+    <string name="series">Series</string>
+</resources>
