@@ -31,13 +31,13 @@ Mais informações: https://developer.marvel.com/docs.
 - [x] Descrição do personagem :space_invader: se houver, caso contrário exibir uma mensagem  *"sem descrição."* .
 - [x] Lista horizontal de Comics *(se houver)*.
 - [x] Lista horizontal de Series *(se houver)*.
+- [x] Interface de lista vazia, :no_mobile_phones: erro ou sem internet.
 
 ### Favoritos
 
 - [x] Listagem dos personagens favoritados pelo usuário.
 - [x] Não há limite de personagens a serem favoritados :metal:.
 - [x] Favoritos devem ser persistidos localmente para serem acessados offline.
-- [x] Interface de lista vazia, :no_mobile_phones: erro ou sem internet.
 
 ### Wireframe
 
@@ -49,7 +49,7 @@ Abaixo :eyes: temos os wireframes das telas do app.
 
 ## Requisitos Essenciais
 
-- [x] Usar Swift 4.
+- [x] Usar Swift 5.
 - [x] Interface no Storyboard usando Auto Layout.
 - [x] App universal, desenvolva uma interface que se adapte a telas maiores.
 - [x] Tratamento para :no_mobile_phones: falha de conexão.
