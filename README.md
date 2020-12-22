@@ -1,12 +1,12 @@
 # Desafio
 
-Escolha a vaga à qual está aplicando:
+:ballot_box_with_check: Escolha a vaga :rocket: à qual está aplicando:
 
 **iOS**
 
-[Desenvolvedor iOS](./README_iOS.md)
+:heavy_check_mark: [Desenvolvedor iOS](./README_iOS.md)
 
 **Android**
 
-[Desenvolvedor Android](./README_Android.md)
+:heavy_check_mark: [Desenvolvedor Android](./README_Android.md)
 
