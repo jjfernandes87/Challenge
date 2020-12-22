@@ -50,6 +50,7 @@ Abaixo :eyes: temos os wireframes das telas do app.
 ## Requisitos Essenciais
 
 - [x] Usar Kotlin.
+- [x] Injeção de dependência com Dagger ou similar.
 - [x] Desenvolver o App em uma arquitetura robusta.
 - [x] Tratamento para :no_mobile_phones: falha de conexão.
 - [x] O teste não pode apresentar crash :boom:.
