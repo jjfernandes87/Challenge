@@ -31,13 +31,13 @@ Mais informações: https://developer.marvel.com/docs.
 - [x] Descrição do personagem :space_invader: se houver, caso contrário exibir uma mensagem  *"sem descrição."* .
 - [x] Lista horizontal de Comics *(se houver)*.
 - [x] Lista horizontal de Series *(se houver)*.
+- [x] Interface de lista vazia, :no_mobile_phones: erro ou sem internet.
 
 ### Favoritos
 
 - [x] Listagem dos personagens favoritados pelo usuário.
 - [x] Não há limite de personagens a serem favoritados :metal:.
 - [x] Favoritos devem ser persistidos localmente para serem acessados offline.
-- [x] Interface de lista vazia, :no_mobile_phones: erro ou sem internet.
 
 ### Wireframe
 
