@@ -64,5 +64,6 @@ Abaixo :eyes: temos os wireframes das telas do app.
 
 ## Observações
 
-- [x] Fique a vontade :point_up: para usar quantas bibliotecas quiser ou designer partner que você achar pertinente em sua solução. Estamos interessados em saber se você está atualizado com as melhores práticas em desenvolvimento Android. Um código bem organizado e que se preocupe com o alto desempenho :chart_with_downwards_trend: será um diferencial.
+- [x] Fique a vontade :point_up: para usar quantas bibliotecas quiser ou designer partner que você achar pertinente em sua solução. Estamos interessados em saber se você está atualizado com as melhores práticas em desenvolvimento Android. 
+- [x] Um código bem organizado e que se preocupe com o alto desempenho :chart_with_downwards_trend: será um diferencial.
 - [x] Fique a vontade :wave: para trabalhar com os dados usando UserDefault, SQLite, Realm ou cache de serviço.
