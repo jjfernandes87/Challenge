@@ -15,9 +15,9 @@ Mais informações: https://developer.marvel.com/docs.
 
 ### Home - Characters
 
-- [x] Listagem dos personagens ordenados por ordem alfabética.
+- [x] Listagem dos personagens ordenados por ordem :abc: alfabética.
 - [x] Botão para favoritar :star: personagem nas células.
-- [x] Pull-to-refresh para atualizar a lista.
+- [x] Pull-to-refresh :arrows_counterclockwise: para atualizar a lista.
 - [x] Altenar modo de exibição entre **grid** ou **list**.
 - [x] Paginação na lista:
     - Carregar **20 personagens** :space_invader: por vez, baixando a próxima página ao chegar no fim da lista.
@@ -35,9 +35,9 @@ Mais informações: https://developer.marvel.com/docs.
 
 ### Favoritos
 
-- [x] Listagem dos personagens favoritados pelo usuário.
+- [x] Listagem dos personagens favoritados pelo usuário *(exibindo apenas o nome e imagem do personagem)*.
 - [x] Não há limite de personagens a serem favoritados :metal:.
-- [x] Favoritos devem ser persistidos localmente para serem acessados offline.
+- [x] Favoritos devem ser persistidos (apenas nome e imagem do personagem) localmente para serem acessados offline.
 
 ### Wireframe
 
@@ -51,7 +51,6 @@ Abaixo :eyes: temos os wireframes das telas do app.
 
 - [x] Usar Swift 5.
 - [x] Interface no Storyboard usando Auto Layout.
-- [x] App universal, desenvolva uma interface que se adapte a telas maiores.
 - [x] Tratamento para :no_mobile_phones: falha de conexão.
 - [x] O teste não pode apresentar crash :boom:.
 - [x] Testes unitários.
@@ -59,11 +58,12 @@ Abaixo :eyes: temos os wireframes das telas do app.
 
 ## Bônus
 
-- [ ] **Barra de busca** para filtrar lista de pesonagens por nome.
+- [ ] App universal, desenvolva uma interface que se adapte a telas maiores.
 - [ ] Testes de interface :+1:.
-- [ ] Integração com fastlane para cobertura de testes.
+- [ ] Integração com fastlane para cobertura :bar_chart: de testes.
 
 ## Observações
 
 - [x] Você pode :point_up: utilizar bibliotecas de terceiros e gerenciadores de dependências (CocoaPods, Carthage, etc) como preferir.
+- [x] Fique a vontade :wave: para trabalhar com os dados usando UserDefault, CoreData, Realm ou cache de serviço.
 - [x] Foque o desenvolvimento nos requisitos essenciais. O bônus vai diferenciar você dos outros candidatos, mas **os requisitos essenciais são mais importantes**.
