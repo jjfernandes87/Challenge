@@ -15,9 +15,9 @@ Mais informações: https://developer.marvel.com/docs.
 
 ### Home - Characters
 
-- [x] Listagem dos personagens ordenados por ordem alfabética.
+- [x] Listagem dos personagens ordenados por ordem :abc: alfabética.
 - [x] Botão para favoritar :star: personagem nas células.
-- [x] Pull-to-refresh para atualizar a lista.
+- [x] Pull-to-refresh :arrows_counterclockwise: para atualizar a lista.
 - [x] Altenar modo de exibição entre **grid** ou **list**.
 - [x] Paginação na lista:
     - Carregar **20 personagens** :space_invader: por vez, baixando a próxima página ao chegar no fim da lista.
@@ -35,9 +35,9 @@ Mais informações: https://developer.marvel.com/docs.
 
 ### Favoritos
 
-- [x] Listagem dos personagens favoritados pelo usuário.
+- [x] Listagem dos personagens favoritados pelo usuário *(exibindo apenas o nome e imagem do personagem)*.
 - [x] Não há limite de personagens a serem favoritados :metal:.
-- [x] Favoritos devem ser persistidos localmente para serem acessados offline.
+- [x] Favoritos devem ser persistidos (apenas nome e imagem do personagem) localmente para serem acessados offline.
 
 ### Wireframe
 
@@ -50,17 +50,19 @@ Abaixo :eyes: temos os wireframes das telas do app.
 ## Requisitos Essenciais
 
 - [x] Usar Kotlin.
-- [x] Injeção de dependência com Dagger ou similar.
+- [x] Injeção :syringe: de dependência com Dagger ou similar.
 - [x] Desenvolver o App em uma arquitetura robusta.
 - [x] Tratamento para :no_mobile_phones: falha de conexão.
-- [x] O teste não pode apresentar crash :boom:.
-- [x] Testes unitários.
+- [x] O app não pode apresentar crash :boom:.
+- [x] Testes :clipboard: unitários.
 
 ## Bônus
 
+- [ ] Desenvolva uma interface que se adapte a telas maiores *(ex.: Tablet)*.
 - [ ] **Barra de busca** para filtrar lista de pesonagens por nome.
 - [ ] Testes de interface :+1:.
 
 ## Observações
 
-- [x] Fique a vontade para usar quantas bibliotecas quiser ou designer partner que você achar pertinente em sua solução. Estamos interessados em saber se você está atualizado com as melhores práticas em desenvolvimento Android. Um código bem organizado e que se preocupe com o alto desempenho será um diferencial.
+- [x] Fique a vontade :point_up: para usar quantas bibliotecas quiser ou designer partner que você achar pertinente em sua solução. Estamos interessados em saber se você está atualizado com as melhores práticas em desenvolvimento Android. Um código bem organizado e que se preocupe com o alto desempenho :chart_with_downwards_trend: será um diferencial.
+- [x] Fique a vontade :wave: para trabalhar com os dados usando UserDefault, SQLite, Realm ou cache de serviço.
