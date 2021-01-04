@@ -67,3 +67,4 @@ Abaixo :eyes: temos os wireframes das telas do app.
 - [x] Você pode :point_up: utilizar bibliotecas de terceiros e gerenciadores de dependências (CocoaPods, Carthage, etc) como preferir.
 - [x] Fique a vontade :wave: para trabalhar com os dados usando UserDefault, CoreData, Realm ou cache de serviço.
 - [x] Foque o desenvolvimento nos requisitos essenciais. O bônus vai diferenciar você dos outros candidatos, mas **os requisitos essenciais são mais importantes**.
+
