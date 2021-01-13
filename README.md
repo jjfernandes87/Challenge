@@ -1,12 +1,5 @@
 # Desafio
 
-Escolha a vaga à qual está aplicando:
+Segue meu aplicativo para a vaga de [Desenvolvedor iOS](https://github.com/fegoulart/marvelCharactersApp)
 
-**iOS**
-
-[Desenvolvedor iOS](./README_iOS.md)
-
-**Android**
-
-[Desenvolvedor Android](./README_Android.md)
-
+Fernando Luiz Goulart - fegoulart@gmail.com - https://www.linkedin.com/in/fernando-luiz-goulart-205212/
