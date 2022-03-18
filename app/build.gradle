@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
+    id 'org.jlleitschuh.gradle.ktlint'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+}
+
+
+android {
+    namespace 'paixao.leonardo.marvel.heroes'
+    compileSdk 31
+    defaultConfig {
+        applicationId "paixao.leonardo.marvel.heroes"
+        minSdk 23
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+            sourceSets {
+                main.java.srcDirs += 'build/generated/ksp/debug/kotlin/'
+            }
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            sourceSets {
+                main.java.srcDirs += 'build/generated/ksp/release/kotlin/'
+            }
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    viewBinding{
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation libs.bundles.android
+    implementation libs.bundles.service
+    implementation libs.bundles.di
+}
