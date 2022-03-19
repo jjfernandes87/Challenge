@@ -1,0 +1,21 @@
+plugins {
+    id 'kotlin'
+    id 'org.jetbrains.kotlin.plugin.serialization'
+    id 'org.jlleitschuh.gradle.ktlint'
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "11"
+}
+
+dependencies {
+    implementation libs.bundles.di
+    implementation libs.bundles.service
+    implementation libs.bundles.test
+}

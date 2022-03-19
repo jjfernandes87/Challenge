@@ -31,7 +31,7 @@ mockWebServer = "4.9.3"
 [libraries]
 
 # DI
-kodein = { module = "org.kodein.di:kodein-di-framework-android-x-viewmodel", version.ref = "kodein" }
+kodein = { module = "org.kodein.di:kodein-di", version.ref = "kodein" }
 
 # Service
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }

@@ -1,19 +1,22 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
 pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
+        repositories {
+            gradlePluginPortal()
+            google()
+            mavenCentral()
+        }
 }
 
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview "TYPESAFE_PROJECT_ACCESSORS"
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
         google()
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
     versionCatalogs {
         libs {
@@ -24,4 +27,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MarvelHeroes"
 include ":app"
-include ":home"
+include ':network'
