@@ -2,4 +2,5 @@
 <resources>
     <string name="characters">Characters</string>
     <string name="favorites">Favorites</string>
+    <string name="character_1">Character 1</string>
 </resources>
