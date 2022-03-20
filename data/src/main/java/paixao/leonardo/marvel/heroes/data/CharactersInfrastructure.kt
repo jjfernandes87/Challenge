@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.lib
+package paixao.leonardo.marvel.heroes.data
 
 import paixao.leonardo.marvel.heroes.domain.models.Character
 import paixao.leonardo.marvel.heroes.domain.services.CharacterService

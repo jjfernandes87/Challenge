@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.lib.models
+package paixao.leonardo.marvel.heroes.data.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

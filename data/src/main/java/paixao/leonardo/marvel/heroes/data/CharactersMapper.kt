@@ -1,8 +1,8 @@
-package paixao.leonardo.marvel.heroes.lib
+package paixao.leonardo.marvel.heroes.data
 
+import paixao.leonardo.marvel.heroes.data.models.CharactersResponse
+import paixao.leonardo.marvel.heroes.data.models.ImageResponse
 import paixao.leonardo.marvel.heroes.domain.models.Character
-import paixao.leonardo.marvel.heroes.lib.models.CharactersResponse
-import paixao.leonardo.marvel.heroes.lib.models.ImageResponse
 
 object CharactersMapper {
 

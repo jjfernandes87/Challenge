@@ -1,6 +1,6 @@
-package paixao.leonardo.marvel.heroes.lib
+package paixao.leonardo.marvel.heroes.data
 
-import paixao.leonardo.marvel.heroes.lib.models.CharactersResponse
+import paixao.leonardo.marvel.heroes.data.models.CharactersResponse
 import retrofit2.http.GET
 
 interface MarvelGateway {
