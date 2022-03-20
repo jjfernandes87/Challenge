@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 
 object RetrofitBuilder {
-    private const val BASE_URL = "http://gateway.marvel.com/v1/public/"
+    private const val BASE_URL = "http://gateway.marvel.com/"
     private val contentType = "application/json".toMediaType()
     private val json = Json {
         ignoreUnknownKeys = true
