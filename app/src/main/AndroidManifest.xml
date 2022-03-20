@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="paixao.leonardo.marvel.heroes">
 
     <application
-        tools:targetApi="31"
-        android:allowBackup="true">
-       <!-- android:icon="TODO()"
-        android:label="TODO()"
-        android:roundIcon="TODO()"
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_avengers"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_avengers"
         android:supportsRtl="true"
-        android:theme="TODO()" -->
-
-
-    </application>
+        android:theme="@style/MarvelHeroesTheme" />
 
 </manifest>

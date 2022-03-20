@@ -10,7 +10,7 @@ android {
     compileSdk 31
     defaultConfig {
         applicationId "paixao.leonardo.marvel.heroes"
-        minSdk 23
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -51,5 +51,8 @@ dependencies {
     implementation libs.bundles.di
 
     implementation project(':platform:network')
+    implementation project(':domain')
     implementation project(':data')
+    implementation project(':platform:core')
+    implementation project(':feature-characters')
 }
