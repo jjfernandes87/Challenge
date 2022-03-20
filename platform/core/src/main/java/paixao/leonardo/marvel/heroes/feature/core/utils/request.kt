@@ -5,7 +5,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.supervisorScope
 import kotlinx.coroutines.withContext
 import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelException
-import paixao.leonardo.marvel.heroes.feature.core.exceptions.UnknownMarvelError
 
 suspend fun <T> request(
     dispatcher: CoroutineDispatcher = Dispatchers.IO,
@@ -26,5 +25,5 @@ internal fun Throwable.toInfrastructureError(): MarvelException =
         else -> HttpErrorTransformer.transform(this) ?: toUnknownException()
     }
 
-fun Throwable.toUnknownException(): UnknownMarvelError =
-    UnknownMarvelError(error = this)
+fun Throwable.toUnknownException(): MarvelException.UnknownMarvelError =
+    MarvelException.UnknownMarvelError(error = this)
