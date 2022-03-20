@@ -9,7 +9,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        minSdk 23
+        minSdk 26
         targetSdk 31
     }
 
@@ -34,7 +34,7 @@ android {
 
 dependencies {
     implementation project(':domain')
-    implementation project(path: ':platform:core')
+    implementation project(path: ':platform:network')
 
     implementation libs.bundles.android
     implementation libs.bundles.di
