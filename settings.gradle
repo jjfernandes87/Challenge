@@ -27,4 +27,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "MarvelHeroes"
 include ":app"
-include ':network'
+include ':platform:network'
+include ':platform:core'
+include ':data'
+include ':domain'
+include ':feature-characters'
