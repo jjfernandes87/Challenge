@@ -13,7 +13,6 @@ import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent.Finish
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent.Start
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent.Success
-import retrofit2.HttpException
 
 fun <T> stateMachine(
     dispatcher: CoroutineDispatcher = Dispatchers.Default,
@@ -27,12 +26,4 @@ fun <T> stateMachine(
         .flowOn(dispatcher)
 
 private fun Throwable.toMarvelException(): MarvelException =
-    when (this) {
-        is HttpException -> {
-            when (this.code()) {
-                404 -> MarvelException.ResourceNotFound
-                else -> MarvelException.UnknownMarvelError(this)
-            }
-        }
-        else -> MarvelException.UnknownMarvelError(this)
-    }
+    MarvelException.UnknownMarvelError(this)
