@@ -5,7 +5,6 @@ import paixao.leonardo.marvel.heroes.data.models.ImageResponse
 import paixao.leonardo.marvel.heroes.domain.models.Character
 
 object CharactersMapper {
-
     fun toDomain(response: CharactersResponse) =
         response.data.results.map { characterResponse ->
             characterResponse.run {
@@ -15,7 +14,7 @@ object CharactersMapper {
                 )
             }
         }
-}
 
-private fun ImageResponse.toDomain(): String =
-    path + extension
+    private fun ImageResponse.toDomain(): String =
+        "$path.$extension"
+}

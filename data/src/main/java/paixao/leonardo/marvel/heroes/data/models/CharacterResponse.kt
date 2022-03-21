@@ -10,7 +10,7 @@ data class CharactersResponse(
 
 @Serializable
 data class CharacterResponse(
-    val id: String,
+    val id: Int,
     val name: String,
     val description: String? = null,
     val modified: String,
