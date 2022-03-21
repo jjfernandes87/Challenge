@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'org.jlleitschuh.gradle.ktlint'
+    id 'org.jetbrains.kotlin.plugin.serialization'
 }
 
 android {

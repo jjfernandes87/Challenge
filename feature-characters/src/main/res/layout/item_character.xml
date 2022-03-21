@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    app:strokeColor="@color/gray_800"
+    app:strokeWidth="1dp">
 
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <com.google.android.material.textview.MaterialTextView
-        style="@style/MarvelFontWithMargins.Medium"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:text="@string/character_1"
-        android:textColor="@color/darkGrey1"
-        app:drawableEndCompat="@drawable/ic_star" />
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center">
 
-</RelativeLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterName"
+            style="@style/MarvelFontWithMargins.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageView"
+            android:layout_centerHorizontal="true"
+            android:text="@string/character_1"
+            android:textColor="@color/darkGrey1"
+            app:drawableEndCompat="@drawable/ic_star" />
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

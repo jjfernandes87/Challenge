@@ -20,7 +20,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         libs {
-            from(files("C:\\Users\\teste\\Documents\\Desafio XP\\Challenge\\gradle\\wrapper\\libs.versions.toml"))
+            from(files("\\gradle\\wrapper\\libs.versions.toml"))
         }
     }
 }
