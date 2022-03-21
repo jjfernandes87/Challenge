@@ -1,6 +1,7 @@
 package paixao.leonardo.marvel.heroes.feature.network.di
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.instance
@@ -26,10 +27,14 @@ object NetworkingModule {
         }
 
         bind<OkHttpClient>() with singleton {
+            val httpLogger = HttpLoggingInterceptor().apply {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
             val authInterceptor = instance<AuthorizationInterceptor>()
             OkHttpClient
                 .Builder()
                 .addInterceptor(authInterceptor)
+                .addInterceptor(httpLogger)
                 .build()
         }
 
