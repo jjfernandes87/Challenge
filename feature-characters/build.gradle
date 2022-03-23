@@ -38,7 +38,7 @@ android {
 
 dependencies {
     implementation libs.bundles.android
-    implementation libs.bundles.di
+    implementation libs.bundles.diAndroid
     implementation libs.bundles.service
     implementation libs.bundles.test
 
