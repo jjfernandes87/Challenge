@@ -22,15 +22,21 @@ internal class CharacterViewModel(
         favoriteCharacterService.retrieveFavoriteCharacters()
     }
 
-    fun saveFavoriteCharacter(
+    fun saveOrRemoveFavoriteCharacter(
         character: MarvelCharacter
     ): Flow<StateMachineEvent<Boolean>> =
         stateMachine {
-            _lastUpdatedCharacters[character.id] = true
-            favoriteCharacterService.removeFavoriteCharacter(character)
-            true
+            val isFavorite = retrieveRealFavoriteStatus(character)
+            if (isFavorite) {
+                favoriteCharacterService.removeFavoriteCharacter(character)
+                _lastUpdatedCharacters[character.id] = false
+                false
+            } else {
+                favoriteCharacterService.saveFavoriteCharacter(character)
+                _lastUpdatedCharacters[character.id] = true
+                true
+            }
         }
-
 
     fun removeFavoriteCharacter(
         character: MarvelCharacter

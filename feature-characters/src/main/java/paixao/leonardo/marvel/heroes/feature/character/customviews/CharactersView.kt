@@ -2,6 +2,7 @@ package paixao.leonardo.marvel.heroes.feature.character.customviews
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
@@ -82,24 +83,18 @@ class CharacterView @JvmOverloads constructor(
         character: MarvelCharacter,
         imageView: AppCompatImageView
     ) {
-        val isFavorite = viewModel.retrieveRealFavoriteStatus(character)
-        if (isFavorite) {
-            viewModel.removeFavoriteCharacter(character = character)
-        } else {
-            viewModel.saveFavoriteCharacter(character = character)
-        }
-            .collectIn(lifecycleScope) { event ->
-                when (event) {
-                    is StateMachineEvent.Start -> println(event.toString())
-                    is StateMachineEvent.Success -> handleSuccessSaving(
-                        character,
-                        imageView,
-                        event.value
-                    )
-                    is StateMachineEvent.Failure -> println(event.toString())
-                    is StateMachineEvent.Finish -> println(event.toString())
-                }
+        viewModel.saveOrRemoveFavoriteCharacter(character).collectIn(lifecycleScope) { event ->
+            when (event) {
+                is StateMachineEvent.Start -> println(event.toString())
+                is StateMachineEvent.Success -> handleSuccessSaving(
+                    character,
+                    imageView,
+                    event.value
+                )
+                is StateMachineEvent.Failure -> println(event.toString())
+                is StateMachineEvent.Finish -> println(event.toString())
             }
+        }
     }
 
     private fun handleSuccessSaving(
@@ -107,14 +102,13 @@ class CharacterView @JvmOverloads constructor(
         imageView: AppCompatImageView,
         isSaved: Boolean
     ) {
-        val imsRes = if (isSaved) R.drawable.ic_filled_star
-        else R.drawable.ic_star
-        println("RESULT ------------> $imsRes ------- $isSaved")
-        val drawable = context.getDrawable(imsRes)
-        imageView.setImageDrawable(drawable)
+        val imsRes = if (isSaved)
+            R.drawable.ic_filled_star
+        else
+            R.drawable.ic_star
 
-        //viewModel.updateFavoriteCharactersComponent(character)
-
+        AppCompatResources.getDrawable(context, imsRes).let(imageView::setImageDrawable)
+        viewModel.updateFavoriteCharactersComponent(character)
     }
 
     private companion object {
