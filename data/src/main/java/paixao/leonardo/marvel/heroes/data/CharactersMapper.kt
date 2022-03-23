@@ -9,6 +9,8 @@ object CharactersMapper {
         response.data.results.map { characterResponse ->
             characterResponse.run {
                 Character(
+                    id = id,
+                    description = description,
                     name = name,
                     imageUrl = imageResponse.toDomain()
                 )

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'org.jetbrains.kotlin.plugin.serialization'
     id 'org.jlleitschuh.gradle.ktlint'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -42,9 +43,11 @@ dependencies {
     implementation project(':platform:network')
     implementation project(path: ':platform:core')
 
-    implementation libs.bundles.di
+    implementation libs.bundles.diAndroid
     implementation libs.bundles.service
     implementation libs.bundles.test
+    implementation libs.bundles.room
+    kapt libs.bundles.roomCompiler
 
 
 }

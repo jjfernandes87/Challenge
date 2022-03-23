@@ -17,6 +17,9 @@ serializationConverter = "0.8.0"
 retrofit = "2.9.0"
 okHttp3 ="4.6.0"
 
+#Room
+room = "2.4.1"
+
 # Android
 constraintLayout = "2.0.4"
 materialDesign = "1.5.0"
@@ -35,6 +38,7 @@ mockWebServer = "4.9.3"
 
 # DI
 kodein = { module = "org.kodein.di:kodein-di", version.ref = "kodein" }
+kodein-android = { module = "org.kodein.di:kodein-di-framework-android-x", version.ref = "kodein" }
 
 # Service
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
@@ -44,6 +48,8 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 okHttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okHttp3" }
 okHttpLogging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okHttp3" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+room = { module = "androidx.room:room-runtime", version.ref = "room"}
+roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room"}
 
 # Android
 materialDesign = { module = "com.google.android.material:material", version.ref = "materialDesign" }
@@ -63,6 +69,9 @@ mockWebServer = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "
 
 [bundles]
 di = ["kodein"]
+diAndroid = ["kodein", "kodein-android"]
+room = ["room"]
+roomCompiler = ["roomCompiler"]
 service = ["coroutines-android", "serialization", "serialization-converter", "retrofit", "okHttp", "okHttpLogging"]
 android = ["materialDesign", "appCompat", "lifecycle-runtime", "lifecycle-viewModel", "lifecycle-extensions", "groupie", "groupie-viewBinding", "constraint-layout", "glide"]
 test = ["junit", "coroutines-test", "mockk", "mockWebServer"]
