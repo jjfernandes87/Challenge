@@ -11,6 +11,7 @@ import paixao.leonardo.marvel.heroes.data.MarvelGateway
 import paixao.leonardo.marvel.heroes.data.room.AppDatabase
 import paixao.leonardo.marvel.heroes.data.room.FavoritesCharacterCacheDao
 import paixao.leonardo.marvel.heroes.domain.services.CharacterService
+import paixao.leonardo.marvel.heroes.domain.services.FavoriteCharacterService
 import paixao.leonardo.marvel.heroes.feature.network.RetrofitBuilder
 import paixao.leonardo.marvel.heroes.feature.network.RetrofitBuilder.buildGateway
 
@@ -22,7 +23,7 @@ object DataModule {
         bind<AppDatabase>() with singleton {
             Room.databaseBuilder(
                 instance(),
-                AppDatabase::class.java, "database-name"
+                AppDatabase::class.java, "favorite-characters-database"
             ).build()
         }
 
@@ -31,12 +32,20 @@ object DataModule {
             database.userDao()
         }
 
-        bind<CharacterService>() with provider {
+        bind<CharactersInfrastructure>() with provider {
             val api = RetrofitBuilder(okHttpClient = instance()).buildGateway<MarvelGateway>()
             CharactersInfrastructure(
                 api = api,
                 favoritesDao = instance()
             )
+        }
+
+        bind<CharacterService>() with provider {
+            instance<CharactersInfrastructure>()
+        }
+
+        bind<FavoriteCharacterService>() with provider {
+            instance<CharactersInfrastructure>()
         }
     }
 }

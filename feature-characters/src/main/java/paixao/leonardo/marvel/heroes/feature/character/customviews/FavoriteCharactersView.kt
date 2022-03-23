@@ -8,7 +8,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import org.kodein.di.DIAware
 import org.kodein.di.android.closestDI
-import paixao.leonardo.marvel.heroes.domain.models.Character
+import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
 import paixao.leonardo.marvel.heroes.feature.character.CharacterViewModel
 import paixao.leonardo.marvel.heroes.feature.character.entries.CharacterItemEntry
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent
@@ -52,7 +52,7 @@ class FavoriteCharactersView @JvmOverloads constructor(
         }
     }
 
-    private fun populateCharacterRv(characters: List<Character>) {
+    private fun populateCharacterRv(characters: List<MarvelCharacter>) {
         val items = characters.map(::CharacterItemEntry)
         gridAdapter.addAll(items)
     }

@@ -2,27 +2,49 @@ package paixao.leonardo.marvel.heroes.feature.character
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.Flow
-import paixao.leonardo.marvel.heroes.domain.models.Character
-import paixao.leonardo.marvel.heroes.domain.services.CharacterService
+import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
+import paixao.leonardo.marvel.heroes.domain.services.CharactersHandler
+import paixao.leonardo.marvel.heroes.domain.services.FavoriteCharacterService
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.stateMachine
 
 internal class CharacterViewModel(
-    private val characterService: CharacterService
+    private val charactersHandler: CharactersHandler,
+    private val favoriteCharacterService: FavoriteCharacterService
 ) : ViewModel() {
-    fun retrieveCharacters(): Flow<StateMachineEvent<List<Character>>> = stateMachine {
-        characterService.retrieveCharacter()
+    private val _lastUpdatedCharacters = mutableMapOf<Int, Boolean>()
+
+    fun retrieveCharacters(): Flow<StateMachineEvent<List<MarvelCharacter>>> = stateMachine {
+        charactersHandler.retrieveCharacters()
     }
 
-    fun retrieveFavoriteCharacter(): Flow<StateMachineEvent<List<Character>>> = stateMachine{
-        characterService.retrieveFavoriteCharacters()
+    fun retrieveFavoriteCharacter(): Flow<StateMachineEvent<List<MarvelCharacter>>> = stateMachine {
+        favoriteCharacterService.retrieveFavoriteCharacters()
     }
 
-    fun saveFavoriteCharacter(character: Character): Flow<StateMachineEvent<Unit>> = stateMachine {
-        characterService.saveFavoriteCharacter(character)
+    fun saveFavoriteCharacter(
+        character: MarvelCharacter
+    ): Flow<StateMachineEvent<Boolean>> =
+        stateMachine {
+            _lastUpdatedCharacters[character.id] = true
+            favoriteCharacterService.removeFavoriteCharacter(character)
+            true
+        }
+
+
+    fun removeFavoriteCharacter(
+        character: MarvelCharacter
+    ): Flow<StateMachineEvent<Boolean>> =
+        stateMachine {
+            favoriteCharacterService.removeFavoriteCharacter(character)
+            _lastUpdatedCharacters[character.id] = false
+            false
+        }
+
+    fun updateFavoriteCharactersComponent(character: MarvelCharacter) {
+        //TODO()
     }
 
-    fun removeFavoriteCharacter(character: Character): Flow<StateMachineEvent<Unit>> = stateMachine {
-        characterService.removeFavoriteCharacter(character)
-    }
+    fun retrieveRealFavoriteStatus(character: MarvelCharacter) =
+        _lastUpdatedCharacters.getOrDefault(character.id, character.isFavorite)
 }

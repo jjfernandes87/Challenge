@@ -4,7 +4,9 @@ import org.kodein.di.DI
 import org.kodein.di.bind
 import org.kodein.di.instance
 import org.kodein.di.provider
+import paixao.leonardo.marvel.heroes.domain.services.CharactersHandler
 import paixao.leonardo.marvel.heroes.feature.character.CharacterViewModel
+import paixao.leonardo.marvel.heroes.feature.character.CharactersAgent
 
 object CharacterModule {
     private const val MODULE_NAME = "feature-character-module"
@@ -13,7 +15,15 @@ object CharacterModule {
 
         bind<CharacterViewModel>() with provider {
             CharacterViewModel(
-                characterService = instance()
+                charactersHandler = instance(),
+                favoriteCharacterService = instance()
+            )
+        }
+
+        bind<CharactersHandler>() with provider {
+            CharactersAgent(
+                characterService = instance(),
+                favoriteCharacterService = instance()
             )
         }
 

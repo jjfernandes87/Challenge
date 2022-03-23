@@ -1,22 +1,23 @@
 package paixao.leonardo.marvel.heroes.data.room
 
 import paixao.leonardo.marvel.heroes.data.room.models.FavoriteCharacterCache
-import paixao.leonardo.marvel.heroes.domain.models.Character
+import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
 
 object FavoritesCacheMapper {
-    fun toDomain(cache: List<FavoriteCharacterCache>): List<Character> =
+    fun toDomain(cache: List<FavoriteCharacterCache>): List<MarvelCharacter> =
         cache.map { favoritesCharactersCache ->
             favoritesCharactersCache.run {
-                Character(
+                MarvelCharacter(
                     id = id,
                     name = name,
                     description = description,
-                    imageUrl = imageUrl
+                    imageUrl = imageUrl,
+                    isFavorite = true
                 )
             }
         }
 
-    fun toCached(character: Character): FavoriteCharacterCache =
+    fun toCached(character: MarvelCharacter): FavoriteCharacterCache =
         character.run {
             FavoriteCharacterCache(
                 id = id,
