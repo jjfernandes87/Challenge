@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.feature.character
+package paixao.leonardo.marvel.heroes.feature.character.entries
 
 import android.view.View
 import com.bumptech.glide.Glide
@@ -7,7 +7,7 @@ import paixao.leonardo.marvel.heroes.domain.models.Character
 import paixao.leonardo.marvel.heroes.feature.R
 import paixao.leonardo.marvel.heroes.feature.databinding.ItemCharacterBinding
 
-class CharacterEntry(private val character: Character) : BindableItem<ItemCharacterBinding>() {
+class CharacterItemEntry(private val character: Character) : BindableItem<ItemCharacterBinding>() {
     override fun bind(viewBinding: ItemCharacterBinding, position: Int) {
         viewBinding.apply {
             characterName.text = character.name

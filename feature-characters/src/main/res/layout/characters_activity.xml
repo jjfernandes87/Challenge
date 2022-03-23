@@ -41,32 +41,11 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/charactersRv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_above="@+id/buttonRequest"
-        android:layout_below="@id/tabLayout"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
-    <!--
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/tabLayout"
-            android:layout_marginTop="8dp" />-->
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonRequest"
-        style="@style/MarvelFont.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/white"
-        android:text="Request"
-        android:textColor="@color/primaryRed"
-        app:strokeColor="@color/primaryRed"
-        app:strokeWidth="1dp" />
+            android:layout_marginTop="8dp" />
 
 </RelativeLayout>
