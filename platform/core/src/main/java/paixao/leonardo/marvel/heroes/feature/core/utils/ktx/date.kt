@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.feature.core.ktx
+package paixao.leonardo.marvel.heroes.feature.core.utils.ktx
 
 import okhttp3.internal.UTC
 import java.text.DateFormat

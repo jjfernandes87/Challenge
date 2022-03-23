@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.feature.core.ktx
+package paixao.leonardo.marvel.heroes.feature.core.utils.ktx
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
