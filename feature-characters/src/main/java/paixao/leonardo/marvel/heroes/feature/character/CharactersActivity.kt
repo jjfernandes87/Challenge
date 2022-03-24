@@ -13,7 +13,6 @@ import paixao.leonardo.marvel.heroes.feature.character.entries.CharacterListEntr
 import paixao.leonardo.marvel.heroes.feature.character.entries.FavoriteCharactersEntry
 import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelException
 import paixao.leonardo.marvel.heroes.feature.core.utils.OnTabSelectedListener
-import paixao.leonardo.marvel.heroes.feature.core.utils.isInvisble
 import paixao.leonardo.marvel.heroes.feature.core.utils.isVisible
 import paixao.leonardo.marvel.heroes.feature.core.utils.selfInject
 import paixao.leonardo.marvel.heroes.feature.databinding.CharactersActivityBinding
@@ -28,9 +27,9 @@ class CharactersActivity : AppCompatActivity(), DIAware {
         GroupAdapter<GroupieViewHolder>()
     }
 
-    private val pageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+    private val viewPagerCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
-            binding.tabLayout.setScrollPosition(position, 0F, true)
+            binding.tabLayout.getTabAt(position)?.select()
         }
     }
 
@@ -44,7 +43,7 @@ class CharactersActivity : AppCompatActivity(), DIAware {
 
     private fun setupViewPager() {
         binding.viewPager.adapter = tabAdapter
-        binding.viewPager.registerOnPageChangeCallback(pageChangeCallback)
+        binding.viewPager.registerOnPageChangeCallback(this.viewPagerCallback)
 
         binding.tabLayout.addOnTabSelectedListener(
             OnTabSelectedListener { position ->
@@ -55,13 +54,12 @@ class CharactersActivity : AppCompatActivity(), DIAware {
 
     private fun handleLoading(isLoading: Boolean) {
         binding.errorView.root.isVisible = false
-        binding.tabLayout.isInvisble = true
+        binding.viewPager.isVisible = !isLoading
         binding.loadingView.isVisible = isLoading
     }
 
     private fun handleError(error: MarvelException, onRetry: () -> Unit) {
         binding.viewPager.viewPager.isVisible = false
-        binding.tabLayout.isVisible = false
         binding.loadingView.isVisible = false
         (binding.errorView.root).apply {
             visibility = View.VISIBLE
@@ -71,7 +69,6 @@ class CharactersActivity : AppCompatActivity(), DIAware {
                 retryAction = onRetry
             )
         }
-        binding.errorView.root.bringToFront()
     }
 
     private fun initializeViews() {

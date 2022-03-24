@@ -97,7 +97,6 @@ class CharacterView @JvmOverloads constructor(
         viewModel.saveOrRemoveFavoriteCharacter(character).collectIn(lifecycleScope) { event ->
             when (event) {
                 is StateMachineEvent.Success -> handleSuccessSaving(
-                    character,
                     imageView,
                     event.value
                 )
@@ -112,7 +111,6 @@ class CharacterView @JvmOverloads constructor(
     }
 
     private fun handleSuccessSaving(
-        character: MarvelCharacter,
         imageView: AppCompatImageView,
         isSaved: Boolean
     ) {
@@ -123,7 +121,6 @@ class CharacterView @JvmOverloads constructor(
             R.drawable.ic_star
 
         AppCompatResources.getDrawable(context, imsRes).let(imageView::setImageDrawable)
-        viewModel.updateFavoriteCharactersComponent(character)
     }
 
     private companion object {

@@ -3,4 +3,5 @@
     <string name="characters">Personagens da Mavel</string>
     <string name="favorites">Favoritos</string>
     <string name="error_saving_favorites">Não foi possível salvar como favorito. :(</string>
+    <string name="error_removing_favorites">Não foi remover o personagem da lista de favoritos :( </string>
 </resources>

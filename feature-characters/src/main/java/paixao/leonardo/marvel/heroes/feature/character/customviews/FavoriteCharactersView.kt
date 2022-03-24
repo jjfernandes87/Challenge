@@ -2,13 +2,16 @@ package paixao.leonardo.marvel.heroes.feature.character.customviews
 
 import android.content.Context
 import android.util.AttributeSet
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import kotlinx.coroutines.flow.consumeAsFlow
 import org.kodein.di.DIAware
 import org.kodein.di.android.closestDI
 import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
+import paixao.leonardo.marvel.heroes.feature.R
 import paixao.leonardo.marvel.heroes.feature.character.CharacterViewModel
 import paixao.leonardo.marvel.heroes.feature.character.entries.CharacterItemEntry
 import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelException
@@ -45,6 +48,7 @@ class FavoriteCharactersView @JvmOverloads constructor(
         super.onFinishInflate()
         initializeAdapter()
         retrieveFavoriteCharacters()
+        handleDataChange()
     }
 
     private fun retrieveFavoriteCharacters() {
@@ -59,6 +63,13 @@ class FavoriteCharactersView @JvmOverloads constructor(
         }
     }
 
+    private fun handleDataChange() {
+        viewModel.listenFavoriteCharactersChange().consumeAsFlow().collectIn(lifecycleScope) {
+            gridAdapter.clear()
+            retrieveFavoriteCharacters()
+        }
+    }
+
     private fun handleInitializingLoading() {
         if (isInitializing) {
             isInitializing = false
@@ -68,8 +79,32 @@ class FavoriteCharactersView @JvmOverloads constructor(
     }
 
     private fun populateCharacterRv(characters: List<MarvelCharacter>) {
-        val items = characters.map(::CharacterItemEntry)
+        handleLoading(false)
+        val items = characters.map { character ->
+            CharacterItemEntry(
+                character = character,
+                action = { removedFavoriteCharacter, _ ->
+                    removeFavoriteChar(removedFavoriteCharacter)
+                }
+            )
+        }
         gridAdapter.addAll(items)
+    }
+
+    private fun removeFavoriteChar(
+        character: MarvelCharacter
+    ) {
+        viewModel.saveOrRemoveFavoriteCharacter(character).collectIn(lifecycleScope) { event ->
+            when (event) {
+                is StateMachineEvent.Success -> {}
+                is StateMachineEvent.Failure -> showErrorToast()
+                else -> Unit
+            }
+        }
+    }
+
+    private fun showErrorToast() {
+        Toast.makeText(context, R.string.error_removing_favorites, Toast.LENGTH_LONG).show()
     }
 
     private fun initializeAdapter() {
