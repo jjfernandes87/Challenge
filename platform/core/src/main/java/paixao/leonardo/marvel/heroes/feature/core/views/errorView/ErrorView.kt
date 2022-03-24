@@ -2,6 +2,7 @@ package paixao.leonardo.marvel.heroes.feature.core.views.errorView
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
 import paixao.leonardo.marvel.heroes.feature.core.databinding.ErrorViewBinding
@@ -21,8 +22,8 @@ class ErrorView @JvmOverloads constructor(
         backAction: (() -> Unit)? = null,
         retryAction: (() -> Unit)? = null
     ) {
+        Log.e(ERROR_TAG + marvelException.stackTrace, marvelException.toString())
         val errorPresentation = ErrorPresentationMapper(marvelException = marvelException)
-
         setupView(errorPresentation = errorPresentation)
         setupBackButton(backAction = backAction)
         setupRetryAction(retryAction = retryAction)
@@ -51,5 +52,9 @@ class ErrorView @JvmOverloads constructor(
                 retryAction()
             }
         }
+    }
+
+    private companion object {
+        const val ERROR_TAG = "Error ---------> "
     }
 }

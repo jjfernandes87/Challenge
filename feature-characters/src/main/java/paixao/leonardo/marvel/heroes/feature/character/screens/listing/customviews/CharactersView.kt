@@ -44,14 +44,16 @@ class CharacterView @JvmOverloads constructor(
         }
     }
 
-    var handleError: (MarvelException, OnRetry) -> Unit = { _, _ -> }
     var handleLoading: (Boolean) -> Unit = {}
+    var handleError: (MarvelException, OnRetry) -> Unit = { _, _ -> }
+    var navigateToDetails: (MarvelCharacter, AppCompatImageView) -> Unit = {_, _ ->}
 
     override fun onFinishInflate() {
         super.onFinishInflate()
         initializeAdapter()
         retrieveCharacterList()
     }
+
 
     private fun retrieveCharacterList() {
         viewModel.retrieveCharacters().collectIn(lifecycleScope) { event ->
@@ -72,12 +74,13 @@ class CharacterView @JvmOverloads constructor(
         val items = characters.map { character ->
             CharacterItemEntry(
                 character = character,
-                action = { clickedCharacter, imageView ->
+                favoriteAction = { clickedCharacter, imageView ->
                     saveOrRemoveFavoriteCharacter(
                         clickedCharacter,
                         imageView
                     )
-                }
+                },
+                navigateToDetailsAction = navigateToDetails
             )
         }
         gridAdapter.addAll(items)
@@ -106,7 +109,7 @@ class CharacterView @JvmOverloads constructor(
         }
     }
 
-    private fun showErrorToast(){
+    private fun showErrorToast() {
         Toast.makeText(context, R.string.error_saving_favorites, Toast.LENGTH_LONG).show()
     }
 

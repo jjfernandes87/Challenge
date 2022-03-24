@@ -1,5 +1,6 @@
 package paixao.leonardo.marvel.heroes.feature.character.screens.listing
 
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -9,12 +10,15 @@ import paixao.leonardo.marvel.heroes.domain.services.FavoriteCharacterService
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.stateMachine
 
+typealias CharacterDetailsAndImgView = Pair<MarvelCharacter, AppCompatImageView>
+
 internal class CharacterViewModel(
     private val charactersHandler: CharactersHandler,
     private val favoriteCharacterService: FavoriteCharacterService
 ) : ViewModel() {
     private val _lastUpdatedCharacters = mutableMapOf<Int, Boolean>()
     private val _notifyFavoritesCharacterDataChange = Channel<MarvelCharacter>()
+    private var _lastCharacterDetailsBeforeNavToDetails: CharacterDetailsAndImgView? = null
 
     fun retrieveCharacters(): Flow<StateMachineEvent<List<MarvelCharacter>>> = stateMachine {
         charactersHandler.retrieveCharacters()
@@ -44,6 +48,25 @@ internal class CharacterViewModel(
 
     fun listenFavoriteCharactersChange() = _notifyFavoritesCharacterDataChange
 
-    private fun retrieveRealFavoriteStatus(character: MarvelCharacter) =
+    fun storeCharacterStatusBeforeNavigateToDetails(
+        character: MarvelCharacter,
+        imageView: AppCompatImageView
+    ) {
+        _lastCharacterDetailsBeforeNavToDetails = character to imageView
+    }
+
+    fun lastCharacterStatusBeforeNavigateToDetails() = _lastCharacterDetailsBeforeNavToDetails
+
+    fun storeLastUpdatedCharacter(character: MarvelCharacter) {
+        _lastCharacterDetailsBeforeNavToDetails = null
+        _lastUpdatedCharacters[character.id] = character.isFavorite
+    }
+
+    fun retrieveRealFavoriteStatus(character: MarvelCharacter) =
         _lastUpdatedCharacters.getOrDefault(character.id, character.isFavorite)
+
+    suspend fun notifyFavoriteListViewDataChanged(character: MarvelCharacter) {
+        _notifyFavoritesCharacterDataChange.send(character)
+    }
+
 }

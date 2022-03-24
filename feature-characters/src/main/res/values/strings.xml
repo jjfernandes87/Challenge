@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="characters">Personagens da Mavel</string>
+    <string name="characters">Personagens</string>
     <string name="favorites">Favoritos</string>
     <string name="error_saving_favorites">Não foi possível salvar como favorito. :(</string>
     <string name="error_removing_favorites">Não foi remover o personagem da lista de favoritos :( </string>
+
+
+    <string name="character_details_empty_description">Descrição do personagem não encontrada </string>
+    <string name="list_character_title">Personagens da Mavel</string>
 </resources>

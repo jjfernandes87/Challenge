@@ -3,6 +3,7 @@ package paixao.leonardo.marvel.heroes.feature.character.screens.listing.customvi
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.xwray.groupie.GroupAdapter
@@ -43,6 +44,7 @@ class FavoriteCharactersView @JvmOverloads constructor(
 
     var handleError: (MarvelException, OnRetry) -> Unit = { _, _ -> }
     var handleLoading: (Boolean) -> Unit = {}
+    var navigateToDetails: (MarvelCharacter, AppCompatImageView) -> Unit = {_, _ ->}
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -83,9 +85,10 @@ class FavoriteCharactersView @JvmOverloads constructor(
         val items = characters.map { character ->
             CharacterItemEntry(
                 character = character,
-                action = { removedFavoriteCharacter, _ ->
+                favoriteAction = { removedFavoriteCharacter, _ ->
                     removeFavoriteChar(removedFavoriteCharacter)
-                }
+                },
+                navigateToDetailsAction = navigateToDetails
             )
         }
         gridAdapter.addAll(items)

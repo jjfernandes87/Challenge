@@ -6,4 +6,4 @@ data class MarvelCharacter(
     val description: String?,
     val imageUrl: String,
     val isFavorite: Boolean = false
-)
+) : java.io.Serializable

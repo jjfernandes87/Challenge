@@ -11,7 +11,7 @@
         app:buttonGravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Characters"
+        app:title="@string/list_character_title"
         app:titleMargins="8dp" />
 
     <com.google.android.material.tabs.TabLayout

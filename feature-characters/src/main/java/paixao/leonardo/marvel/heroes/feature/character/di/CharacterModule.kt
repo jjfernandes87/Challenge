@@ -5,6 +5,7 @@ import org.kodein.di.bind
 import org.kodein.di.instance
 import org.kodein.di.provider
 import paixao.leonardo.marvel.heroes.domain.services.CharactersHandler
+import paixao.leonardo.marvel.heroes.feature.character.screens.details.CharacterDetailsViewModel
 import paixao.leonardo.marvel.heroes.feature.character.screens.listing.CharacterViewModel
 import paixao.leonardo.marvel.heroes.feature.character.screens.listing.CharactersAgent
 
@@ -23,6 +24,12 @@ object CharacterModule {
         bind<CharactersHandler>() with provider {
             CharactersAgent(
                 characterService = instance(),
+                favoriteCharacterService = instance()
+            )
+        }
+
+        bind<CharacterDetailsViewModel>() with provider {
+            CharacterDetailsViewModel(
                 favoriteCharacterService = instance()
             )
         }

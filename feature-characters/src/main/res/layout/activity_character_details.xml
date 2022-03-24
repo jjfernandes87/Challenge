@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".character.screens.details.CharacterDetailsActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:buttonGravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:titleMargins="8dp"
+        tools:title="Deadpool" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icStar"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        tools:srcCompat="@drawable/ic_star"
+        android:layout_marginEnd="12dp"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/characterImageView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:shapeAppearanceOverlay="@style/Shape.Rouded"
+        app:srcCompat="@drawable/img_success"
+        app:strokeColor="@color/gray_800"
+        app:strokeWidth="1.5dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/characterDescription"
+        style="@style/MarvelFontWithMargins.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/characterImageView"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vulputate consequat sapien, sed rhoncus neque condimentum non. Phasellus egestas varius urna. Nam eu varius justo. Vivamus blandit consectetur quam, et dapibus sem malesuada eu. Suspendisse tincidunt et lectus a mattis. Aenean vitae neque lacinia, lacinia lorem a, tristique est. Aenean ut erat ex. Mauris nec nibh vitae arcu tempor tincidunt." />
+
+    <include
+        android:id="@+id/errorView"
+        layout="@layout/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

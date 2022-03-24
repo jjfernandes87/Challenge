@@ -13,7 +13,8 @@ import paixao.leonardo.marvel.heroes.feature.databinding.ItemCharacterBinding
 
 class CharacterItemEntry(
     private val character: MarvelCharacter,
-    private val action: (MarvelCharacter, AppCompatImageView) -> Unit = { _, _ -> }
+    private val favoriteAction: (MarvelCharacter, AppCompatImageView) -> Unit = { _, _ -> },
+    private val navigateToDetailsAction: (MarvelCharacter, AppCompatImageView) -> Unit = { _, _ -> }
 ) : BindableItem<ItemCharacterBinding>() {
     override fun bind(viewBinding: ItemCharacterBinding, position: Int) {
         viewBinding.apply {
@@ -23,13 +24,15 @@ class CharacterItemEntry(
                 .load(character.imageUrl)
                 .into(viewBinding.imageView)
 
+            viewBinding.imageView.setOnClickListener {
+                navigateToDetailsAction(character, viewBinding.starImg)
+            }
+
             viewBinding.starImg.apply {
                 val starImgDrawable = context.retrieveStarImgDrawable(character)
-
                 starImgDrawable?.let(::setImageDrawable)
-
                 setOnClickListener {
-                    action(character, viewBinding.starImg)
+                    favoriteAction(character, viewBinding.starImg)
                 }
             }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Shape" />
+
+    <style name="Shape.Rouded">
+        <item name="cornerSize">15%</item>
+    </style>
+</resources>
