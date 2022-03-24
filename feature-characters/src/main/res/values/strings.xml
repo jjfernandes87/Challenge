@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="characters">Characters</string>
-    <string name="favorites">Favorites</string>
-    <string name="character_1">Character 1</string>
+    <string name="characters">Personagens da Mavel</string>
+    <string name="favorites">Favoritos</string>
+    <string name="error_saving_favorites">Não foi possível salvar como favorito. :(</string>
 </resources>

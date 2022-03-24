@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -43,9 +44,9 @@
                 android:layout_marginBottom="0dp"
                 android:layout_toStartOf="@+id/starImg"
                 android:paddingVertical="10dp"
-                android:text="@string/character_1"
                 android:textColor="@color/darkGrey1"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Thor, o todo poderoso" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/starImg"
