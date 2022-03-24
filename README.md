@@ -15,13 +15,13 @@ O projeto é multimodulo e foi feito com a arquiteura MVVM.
 ![image](https://user-images.githubusercontent.com/9469620/159884526-6f651a69-88f5-4e9c-a0d0-e6761e23389d.png)
 
 
-As dependenica foram feitas com Versions Catalogs (https://docs.gradle.org/current/userguide/platforms.html#sec:sharing-catalogs)
-Conexão com API: Retrofit + HttpCLient + OkHttp
-Deserialização de objetos: Json + Kotlin serialization
-Para autenticar as chamadas foi feito uso de um Interceptor.
-Injeção de dependencia: Kodein
-Método para salvar dados em database local: Room
-Renderização de imagens: Glide
+- As dependenica foram feitas com Versions Catalogs (https://docs.gradle.org/current/userguide/platforms.html#sec:sharing-catalogs)
+- Conexão com API: Retrofit + HttpCLient + OkHttp
+- Deserialização de objetos: Json + Kotlin serialization
+- Para autenticar as chamadas foi feito uso de um Interceptor.
+- Injeção de dependencia: Kodein
+- Método para salvar dados em database local: Room
+- Renderização de imagens: Glide
 
 
 ![image](https://user-images.githubusercontent.com/9469620/159884603-95aff5fb-e4f2-4975-9a28-65a122f56a19.png)
