@@ -1,6 +1,6 @@
 # Desafio Android
 
-Nesse desafio foi feito o consumo da API da Marvel (https://developer.marvel.com/docs#!/public/getCreatorCollection_get_0) para ser apresentadas as seguintes telas:
+Nesse desafio foi feito o consumo da API da Marvel (https://developer.marvel.com/docs#!/public/getCreatorCollection_get_0) para serem apresentadas as seguintes telas:
 
 - Tela 1: Através de uma TabLayout + ViewPager2, foi listado os 20 primeiros personagens da mavel, em ordem alfabética (Padrão da API) na primeira tabview, e na segunda foi apresentada a lista de personagens favoritos. 
 
