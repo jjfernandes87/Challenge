@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.feature.character
+package paixao.leonardo.marvel.heroes.feature.character.screens.listing
 
 import android.os.Bundle
 import android.view.View
@@ -9,8 +9,8 @@ import com.xwray.groupie.GroupieViewHolder
 import kotlinx.android.synthetic.main.characters_activity.view.*
 import org.kodein.di.DI
 import org.kodein.di.DIAware
-import paixao.leonardo.marvel.heroes.feature.character.entries.CharacterListEntry
-import paixao.leonardo.marvel.heroes.feature.character.entries.FavoriteCharactersEntry
+import paixao.leonardo.marvel.heroes.feature.character.screens.listing.entries.CharacterListEntry
+import paixao.leonardo.marvel.heroes.feature.character.screens.listing.entries.FavoriteCharactersEntry
 import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelException
 import paixao.leonardo.marvel.heroes.feature.core.utils.OnTabSelectedListener
 import paixao.leonardo.marvel.heroes.feature.core.utils.isVisible

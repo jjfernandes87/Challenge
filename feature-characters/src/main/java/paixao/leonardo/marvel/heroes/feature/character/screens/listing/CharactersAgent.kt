@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.feature.character
+package paixao.leonardo.marvel.heroes.feature.character.screens.listing
 
 import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
 import paixao.leonardo.marvel.heroes.domain.services.CharacterService

@@ -4,8 +4,13 @@
 
     <application>
         <activity
-            android:name="paixao.leonardo.marvel.heroes.feature.character.CharactersActivity"
-            android:exported="true">
+            android:name=".character.screens.details.CharacterDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".character.screens.listing.CharactersActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

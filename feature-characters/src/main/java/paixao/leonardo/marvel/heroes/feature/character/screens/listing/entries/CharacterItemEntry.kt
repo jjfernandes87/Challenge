@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.feature.character.entries
+package paixao.leonardo.marvel.heroes.feature.character.screens.listing.entries
 
 import android.content.Context
 import android.graphics.drawable.Drawable

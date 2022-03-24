@@ -1,4 +1,4 @@
-package paixao.leonardo.marvel.heroes.feature.character
+package paixao.leonardo.marvel.heroes.feature.character.screens.listing
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.Channel
