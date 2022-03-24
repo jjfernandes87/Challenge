@@ -10,7 +10,7 @@ Nesse desafio foi feito o consumo da API da Marvel (https://developer.marvel.com
 
 # Arquitetura e Tecnologias Utilizadas:
 
-O projeto é multimodulo e foi feito com a arquiteura MVVM.
+O projeto é multimodulo e foi feito com a arquitera MVVM.
 
 ![image](https://user-images.githubusercontent.com/9469620/159884526-6f651a69-88f5-4e9c-a0d0-e6761e23389d.png)
 
