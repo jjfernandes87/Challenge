@@ -26,4 +26,5 @@ fun <T> stateMachine(
         .flowOn(dispatcher)
 
 private fun Throwable.toMarvelException(): MarvelException =
-    MarvelException.UnknownMarvelError(this)
+    if (this is MarvelException) this else
+        MarvelException.UnknownMarvelError(this)

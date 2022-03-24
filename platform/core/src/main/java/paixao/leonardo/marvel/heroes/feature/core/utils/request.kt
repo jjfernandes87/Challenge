@@ -8,7 +8,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
 import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelException
 import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelSerializationException
-import retrofit2.HttpException
 
 suspend fun <T> request(
     dispatcher: CoroutineDispatcher = Dispatchers.IO,
@@ -27,8 +26,7 @@ suspend fun <T> request(
 internal fun Throwable.toInfrastructureError(): MarvelException =
     when (this) {
         is SerializationException -> MarvelSerializationException(this) // TODO(NOT MAPPING TO SERIALIZATION ERROR)
-        is HttpException -> HttpErrorTransformer.transform(this) ?: toUnknownException()
-        else -> toUnknownException()
+        else -> HttpErrorTransformer.transform(this) ?: toUnknownException()
     }
 
 fun Throwable.toUnknownException(): MarvelException.UnknownMarvelError =

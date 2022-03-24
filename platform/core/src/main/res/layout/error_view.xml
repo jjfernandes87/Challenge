@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paixao.leonardo.marvel.heroes.feature.core.views.errorView.ErrorView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/errorImageView"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="24dp"
+        android:scaleType="centerInside"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        tools:srcCompat="@drawable/img_success" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/errorTitle"
+        style="@style/MarvelFontWithMargins.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/errorImageView"
+        tools:text="Opss.. something went wrong" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/errorSubtitle"
+        style="@style/MarvelFontWithMargins.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/errorTitle"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Verify you connection" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backButton"
+        style="@style/MarvelButton.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/error_view_back_button_label"
+        app:layout_constraintBottom_toTopOf="@+id/retryButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/retryButton"
+        style="@style/MarvelButton.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/error_view_try_again_button_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</paixao.leonardo.marvel.heroes.feature.core.views.errorView.ErrorView>

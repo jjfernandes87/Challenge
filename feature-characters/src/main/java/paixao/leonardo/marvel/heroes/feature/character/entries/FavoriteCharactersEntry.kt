@@ -3,10 +3,18 @@ package paixao.leonardo.marvel.heroes.feature.character.entries
 import android.view.View
 import com.xwray.groupie.viewbinding.BindableItem
 import paixao.leonardo.marvel.heroes.feature.R
+import paixao.leonardo.marvel.heroes.feature.character.customviews.OnRetry
+import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelException
 import paixao.leonardo.marvel.heroes.feature.databinding.ItemFavoriteCharacterListBinding
 
-class FavoriteCharactersEntry : BindableItem<ItemFavoriteCharacterListBinding>() {
-    override fun bind(viewBinding: ItemFavoriteCharacterListBinding, position: Int) {}
+class FavoriteCharactersEntry(
+    private val handleError: (MarvelException, OnRetry) -> Unit = { _, _ -> },
+    private val handleLoading: (Boolean) -> Unit
+) : BindableItem<ItemFavoriteCharacterListBinding>() {
+    override fun bind(viewBinding: ItemFavoriteCharacterListBinding, position: Int) {
+        viewBinding.root.handleError = handleError
+        viewBinding.root.handleLoading = handleLoading
+    }
 
     override fun getLayout(): Int = R.layout.item_favorite_character_list
 

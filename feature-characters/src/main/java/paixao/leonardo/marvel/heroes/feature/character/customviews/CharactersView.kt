@@ -2,6 +2,7 @@ package paixao.leonardo.marvel.heroes.feature.character.customviews
 
 import android.content.Context
 import android.util.AttributeSet
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -14,11 +15,14 @@ import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
 import paixao.leonardo.marvel.heroes.feature.R
 import paixao.leonardo.marvel.heroes.feature.character.CharacterViewModel
 import paixao.leonardo.marvel.heroes.feature.character.entries.CharacterItemEntry
+import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelException
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent
 import paixao.leonardo.marvel.heroes.feature.core.utils.ktx.collectIn
 import paixao.leonardo.marvel.heroes.feature.core.utils.lifecycleScope
 import paixao.leonardo.marvel.heroes.feature.core.utils.viewModel
 import paixao.leonardo.marvel.heroes.feature.databinding.ItemCharacterListBinding
+
+typealias OnRetry = () -> Unit
 
 class CharacterView @JvmOverloads constructor(
     context: Context,
@@ -40,6 +44,9 @@ class CharacterView @JvmOverloads constructor(
         }
     }
 
+    var handleError: (MarvelException, OnRetry) -> Unit = { _, _ -> }
+    var handleLoading: (Boolean) -> Unit = {}
+
     override fun onFinishInflate() {
         super.onFinishInflate()
         initializeAdapter()
@@ -49,15 +56,19 @@ class CharacterView @JvmOverloads constructor(
     private fun retrieveCharacterList() {
         viewModel.retrieveCharacters().collectIn(lifecycleScope) { event ->
             when (event) {
-                is StateMachineEvent.Start -> println(event.toString())
+                is StateMachineEvent.Start -> handleLoading(true)
                 is StateMachineEvent.Success -> populateCharacterRv(event.value)
-                is StateMachineEvent.Failure -> println(event.toString())
-                is StateMachineEvent.Finish -> println(event.toString())
+                is StateMachineEvent.Failure -> handleError(
+                    event.exception,
+                    ::retrieveCharacterList
+                )
+                else -> Unit
             }
         }
     }
 
     private fun populateCharacterRv(characters: List<MarvelCharacter>) {
+        handleLoading(false)
         val items = characters.map { character ->
             CharacterItemEntry(
                 character = character,
@@ -85,16 +96,19 @@ class CharacterView @JvmOverloads constructor(
     ) {
         viewModel.saveOrRemoveFavoriteCharacter(character).collectIn(lifecycleScope) { event ->
             when (event) {
-                is StateMachineEvent.Start -> println(event.toString())
                 is StateMachineEvent.Success -> handleSuccessSaving(
                     character,
                     imageView,
                     event.value
                 )
-                is StateMachineEvent.Failure -> println(event.toString())
-                is StateMachineEvent.Finish -> println(event.toString())
+                is StateMachineEvent.Failure -> showErrorToast()
+                else -> Unit
             }
         }
+    }
+
+    private fun showErrorToast(){
+        Toast.makeText(context, R.string.error_saving_favorites, Toast.LENGTH_LONG).show()
     }
 
     private fun handleSuccessSaving(
@@ -102,6 +116,7 @@ class CharacterView @JvmOverloads constructor(
         imageView: AppCompatImageView,
         isSaved: Boolean
     ) {
+        handleLoading(false)
         val imsRes = if (isSaved)
             R.drawable.ic_filled_star
         else

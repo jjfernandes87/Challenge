@@ -11,6 +11,7 @@ import org.kodein.di.android.closestDI
 import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
 import paixao.leonardo.marvel.heroes.feature.character.CharacterViewModel
 import paixao.leonardo.marvel.heroes.feature.character.entries.CharacterItemEntry
+import paixao.leonardo.marvel.heroes.feature.core.exceptions.MarvelException
 import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent
 import paixao.leonardo.marvel.heroes.feature.core.utils.ktx.collectIn
 import paixao.leonardo.marvel.heroes.feature.core.utils.lifecycleScope
@@ -29,11 +30,16 @@ class FavoriteCharactersView @JvmOverloads constructor(
     private val binding
         get() = ItemFavoriteCharacterListBinding.bind(this)
 
+    private var isInitializing: Boolean = true
+
     private val gridAdapter by lazy {
         GroupAdapter<GroupieViewHolder>().apply {
             spanCount = ADAPTER_COLUMNS
         }
     }
+
+    var handleError: (MarvelException, OnRetry) -> Unit = { _, _ -> }
+    var handleLoading: (Boolean) -> Unit = {}
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -44,11 +50,20 @@ class FavoriteCharactersView @JvmOverloads constructor(
     private fun retrieveFavoriteCharacters() {
         viewModel.retrieveFavoriteCharacter().collectIn(lifecycleScope) { event ->
             when (event) {
-                is StateMachineEvent.Start -> println(event.toString())
+                is StateMachineEvent.Start -> handleInitializingLoading()
                 is StateMachineEvent.Success -> populateCharacterRv(event.value)
-                is StateMachineEvent.Failure -> println(event.toString())
-                is StateMachineEvent.Finish -> println(event.toString())
+                is StateMachineEvent.Failure ->
+                    handleError(event.exception, ::retrieveFavoriteCharacters)
+                else -> Unit
             }
+        }
+    }
+
+    private fun handleInitializingLoading() {
+        if (isInitializing) {
+            isInitializing = false
+        } else {
+            handleLoading(true)
         }
     }
 

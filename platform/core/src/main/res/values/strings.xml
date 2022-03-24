@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="error_view_back_button_label">Voltar</string>
+    <string name="error_view_try_again_button_label">Tentar novamente</string>
+
+    <string name="error_connection_title">Opss.. Parece que algo deu errado</string>
+    <string name="error_connection_subtitle">Verifique sua conexão com a internet :)</string>
+
+    <string name="error_unknown_title">Desculpa! Não foi sua culpa. :( </string>
+    <string name="error_unknown_subtitle">Em breve consertaremos esse problema!</string>
+
+    <string name="error_not_found_title">Não encontramos o que você procura</string>
+    <string name="error_not_found_subtitle">:((</string>
+
+    <string name="error_serialization_title">Eita! algo inesperado aconteceu</string>
+    <string name="error_serialization_subtitle">Vamos consertar isso o mais rápido possível</string>
+
+</resources>
