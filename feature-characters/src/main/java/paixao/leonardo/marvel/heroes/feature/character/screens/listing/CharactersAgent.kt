@@ -9,9 +9,9 @@ internal class CharactersAgent(
     private val characterService: CharacterService,
     private val favoriteCharacterService: FavoriteCharacterService
 ) : CharactersHandler {
-    override suspend fun retrieveCharacters(): List<MarvelCharacter> {
+    override suspend fun retrieveCharacters(isRefreshing: Boolean): List<MarvelCharacter> {
         val favoriteCharacters = favoriteCharacterService.retrieveFavoriteCharacters()
-        val incomingCharacters = characterService.retrieveCharacters()
+        val incomingCharacters = characterService.retrieveCharacters(isRefreshing)
 
         val settledFavoriteList = incomingCharacters.map { character ->
             val isFavoriteCharacter = favoriteCharacters.any { it.id == character.id }

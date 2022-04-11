@@ -20,8 +20,8 @@ internal class CharacterViewModel(
     private val _notifyFavoritesCharacterDataChange = Channel<MarvelCharacter>()
     private var _lastCharacterDetailsBeforeNavToDetails: CharacterDetailsAndImgView? = null
 
-    fun retrieveCharacters(): Flow<StateMachineEvent<List<MarvelCharacter>>> = stateMachine {
-        charactersHandler.retrieveCharacters()
+    fun retrieveCharacters(isRefreshing: Boolean): Flow<StateMachineEvent<List<MarvelCharacter>>> = stateMachine {
+        charactersHandler.retrieveCharacters(isRefreshing)
     }
 
     fun retrieveFavoriteCharacter(): Flow<StateMachineEvent<List<MarvelCharacter>>> = stateMachine {

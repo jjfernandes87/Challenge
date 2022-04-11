@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CharactersResponse(
-    val data: BaseResponse<List<CharacterResponse>>
+    val data: PagedResponse<CharacterResponse>
 )
 
 @Serializable

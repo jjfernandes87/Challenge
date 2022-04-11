@@ -8,6 +8,7 @@ import org.kodein.di.provider
 import org.kodein.di.singleton
 import paixao.leonardo.marvel.heroes.data.CharactersInfrastructure
 import paixao.leonardo.marvel.heroes.data.MarvelGateway
+import paixao.leonardo.marvel.heroes.data.PagingHandler
 import paixao.leonardo.marvel.heroes.data.room.AppDatabase
 import paixao.leonardo.marvel.heroes.data.room.FavoritesCharacterCacheDao
 import paixao.leonardo.marvel.heroes.domain.services.CharacterService
@@ -36,7 +37,8 @@ object DataModule {
             val api = RetrofitBuilder(okHttpClient = instance()).buildGateway<MarvelGateway>()
             CharactersInfrastructure(
                 api = api,
-                favoritesDao = instance()
+                favoritesDao = instance(),
+                pagingHandler = instance()
             )
         }
 
@@ -46,6 +48,10 @@ object DataModule {
 
         bind<FavoriteCharacterService>() with provider {
             instance<CharactersInfrastructure>()
+        }
+
+        bind<PagingHandler>() with provider {
+            PagingHandler()
         }
     }
 }

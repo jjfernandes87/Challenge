@@ -51,12 +51,12 @@ class CharacterView @JvmOverloads constructor(
     override fun onFinishInflate() {
         super.onFinishInflate()
         initializeAdapter()
-        retrieveCharacterList()
+        retrieveCharacterList(true)
     }
 
 
-    private fun retrieveCharacterList() {
-        viewModel.retrieveCharacters().collectIn(lifecycleScope) { event ->
+    private fun retrieveCharacterList(isRefreshing: Boolean = false) {
+        viewModel.retrieveCharacters(isRefreshing).collectIn(lifecycleScope) { event ->
             when (event) {
                 is StateMachineEvent.Start -> handleLoading(true)
                 is StateMachineEvent.Success -> populateCharacterRv(event.value)
