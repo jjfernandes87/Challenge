@@ -20,6 +20,7 @@ room = "2.4.1"
 
 # Android
 constraintLayout = "2.0.4"
+androidXRecyclerView = "1.1.0"
 materialDesign = "1.5.0"
 appCompat = "1.4.1"
 lifecycle = "2.4.0"
@@ -61,6 +62,7 @@ groupie = { module = "com.github.lisawray.groupie:groupie", version.ref = "group
 groupie-viewBinding = { module = "com.github.lisawray.groupie:groupie-viewbinding", version.ref = "groupie" }
 constraint-layout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintLayout" }
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-recycler-view = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "androidXRecyclerView" }
 
 # Test
 junit = { module = "junit:junit", version.ref = "junit" }
@@ -74,5 +76,5 @@ diAndroid = ["kodein", "kodein-android"]
 room = ["room"]
 roomCompiler = ["roomCompiler"]
 service = ["coroutines-android", "serialization", "serialization-converter", "retrofit", "okHttp", "okHttpLogging"]
-android = ["materialDesign", "appCompat", "lifecycle-runtime", "lifecycle-viewModel", "lifecycle-extensions", "groupie", "groupie-viewBinding", "constraint-layout", "glide", "androidx-core"]
+android = ["materialDesign", "appCompat", "lifecycle-runtime", "lifecycle-viewModel", "lifecycle-extensions", "groupie", "groupie-viewBinding", "constraint-layout", "glide", "androidx-core", "androidx-recycler-view"]
 test = ["junit", "coroutines-test", "mockk", "mockWebServer"]

@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import org.kodein.di.DIAware
@@ -20,6 +22,7 @@ import paixao.leonardo.marvel.heroes.feature.core.stateMachine.StateMachineEvent
 import paixao.leonardo.marvel.heroes.feature.core.utils.ktx.collectIn
 import paixao.leonardo.marvel.heroes.feature.core.utils.lifecycleScope
 import paixao.leonardo.marvel.heroes.feature.core.utils.viewModel
+import paixao.leonardo.marvel.heroes.feature.core.views.errorView.EndlessRecyclerViewScrollListener
 import paixao.leonardo.marvel.heroes.feature.databinding.ItemCharacterListBinding
 
 typealias OnRetry = () -> Unit
@@ -37,6 +40,11 @@ class CharacterView @JvmOverloads constructor(
     private val binding
         get() = ItemCharacterListBinding.bind(this)
 
+    private val endlessScroll by lazy {
+        EndlessRecyclerViewScrollListener(
+            binding.charactersRv.layoutManager as LinearLayoutManager
+        ) { retrieveCharacters(isRefreshing = false) }
+    }
 
     private val gridAdapter by lazy {
         GroupAdapter<GroupieViewHolder>().apply {
@@ -46,31 +54,58 @@ class CharacterView @JvmOverloads constructor(
 
     var handleLoading: (Boolean) -> Unit = {}
     var handleError: (MarvelException, OnRetry) -> Unit = { _, _ -> }
-    var navigateToDetails: (MarvelCharacter, AppCompatImageView) -> Unit = {_, _ ->}
+    var navigateToDetails: (MarvelCharacter, AppCompatImageView) -> Unit = { _, _ -> }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
         initializeAdapter()
-        retrieveCharacterList(true)
+        retrieveCharacters(true)
+    }
+
+    private fun resetState() {
+        gridAdapter.clear()
+        endlessScroll.resetState()
+    }
+
+    private fun turnOnPagingEvents() {
+        binding.charactersRv.addOnScrollListener(endlessScroll)
+        doOnPreDraw { endlessScroll.locked = false }
+    }
+
+    private fun turnOffPagingEvents() {
+        endlessScroll.locked = true
+        binding.charactersRv.removeOnScrollListener(endlessScroll)
     }
 
 
-    private fun retrieveCharacterList(isRefreshing: Boolean = false) {
+    private fun retrieveCharacters(isRefreshing: Boolean = false) {
+        turnOffPagingEvents()
         viewModel.retrieveCharacters(isRefreshing).collectIn(lifecycleScope) { event ->
             when (event) {
-                is StateMachineEvent.Start -> handleLoading(true)
+                is StateMachineEvent.Start -> binding.refreshLayout.isRefreshing = true
                 is StateMachineEvent.Success -> populateCharacterRv(event.value)
-                is StateMachineEvent.Failure -> handleError(
-                    event.exception,
-                    ::retrieveCharacterList
-                )
+                is StateMachineEvent.Failure -> handleError(event)
                 else -> Unit
             }
+            turnOnPagingEvents()
         }
     }
 
+    private fun handleError(event: StateMachineEvent.Failure) {
+        binding.refreshLayout.isRefreshing = false
+        handleError(
+            event.exception,
+            ::retrieveCharacters
+        )
+    }
+
     private fun populateCharacterRv(characters: List<MarvelCharacter>) {
-        handleLoading(false)
+        binding.refreshLayout.isRefreshing = false
+        if (characters.isEmpty()) {
+            turnOffPagingEvents()
+            return
+        }
+
         val items = characters.map { character ->
             CharacterItemEntry(
                 character = character,
@@ -84,12 +119,18 @@ class CharacterView @JvmOverloads constructor(
             )
         }
         gridAdapter.addAll(items)
+
     }
 
     private fun initializeAdapter() {
         binding.charactersRv.apply {
             layoutManager = GridLayoutManager(context, gridAdapter.spanCount)
             adapter = gridAdapter
+        }
+
+        binding.refreshLayout.setOnRefreshListener {
+            retrieveCharacters(true)
+            resetState()
         }
     }
 
@@ -110,6 +151,7 @@ class CharacterView @JvmOverloads constructor(
     }
 
     private fun showErrorToast() {
+        binding.refreshLayout.isRefreshing = false
         Toast.makeText(context, R.string.error_saving_favorites, Toast.LENGTH_LONG).show()
     }
 
