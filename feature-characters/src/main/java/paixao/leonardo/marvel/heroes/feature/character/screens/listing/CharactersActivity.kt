@@ -111,7 +111,7 @@ class CharactersActivity : AppCompatActivity(), DIAware {
         }
 
         viewModel.storeCharacterStatusBeforeNavigateToDetails(
-            character = character,
+            character = updatedCharacter,
             imageView = imageView
         )
 

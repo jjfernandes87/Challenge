@@ -4,6 +4,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
 import paixao.leonardo.marvel.heroes.domain.services.CharactersHandler
 import paixao.leonardo.marvel.heroes.domain.services.FavoriteCharacterService
@@ -17,7 +18,7 @@ internal class CharacterViewModel(
     private val favoriteCharacterService: FavoriteCharacterService
 ) : ViewModel() {
     private val _lastUpdatedCharacters = mutableMapOf<Int, Boolean>()
-    private val _notifyFavoritesCharacterDataChange = Channel<MarvelCharacter>()
+    private val _notifyFavoritesCharacterDataChange = MutableSharedFlow<MarvelCharacter>()
     private var _lastCharacterDetailsBeforeNavToDetails: CharacterDetailsAndImgView? = null
 
     fun retrieveCharacters(isRefreshing: Boolean): Flow<StateMachineEvent<List<MarvelCharacter>>> = stateMachine {
@@ -42,7 +43,7 @@ internal class CharacterViewModel(
                 _lastUpdatedCharacters[character.id] = true
                 true
             }
-            _notifyFavoritesCharacterDataChange.send(character)
+            _notifyFavoritesCharacterDataChange.emit(character)
             result
         }
 
@@ -66,7 +67,7 @@ internal class CharacterViewModel(
         _lastUpdatedCharacters.getOrDefault(character.id, character.isFavorite)
 
     suspend fun notifyFavoriteListViewDataChanged(character: MarvelCharacter) {
-        _notifyFavoritesCharacterDataChange.send(character)
+        _notifyFavoritesCharacterDataChange.emit(character)
     }
 
 }

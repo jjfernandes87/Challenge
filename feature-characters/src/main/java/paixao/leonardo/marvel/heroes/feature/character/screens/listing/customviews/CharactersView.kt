@@ -2,6 +2,8 @@ package paixao.leonardo.marvel.heroes.feature.character.screens.listing.customvi
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageView
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import kotlinx.coroutines.flow.consumeAsFlow
 import org.kodein.di.DIAware
 import org.kodein.di.android.closestDI
 import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
@@ -24,6 +27,7 @@ import paixao.leonardo.marvel.heroes.feature.core.utils.lifecycleScope
 import paixao.leonardo.marvel.heroes.feature.core.utils.viewModel
 import paixao.leonardo.marvel.heroes.feature.core.views.errorView.EndlessRecyclerViewScrollListener
 import paixao.leonardo.marvel.heroes.feature.databinding.ItemCharacterListBinding
+
 
 typealias OnRetry = () -> Unit
 
@@ -60,6 +64,7 @@ class CharacterView @JvmOverloads constructor(
         super.onFinishInflate()
         initializeAdapter()
         retrieveCharacters(true)
+        handleFavoriteDataChange()
     }
 
     private fun resetState() {
@@ -77,6 +82,13 @@ class CharacterView @JvmOverloads constructor(
         binding.charactersRv.removeOnScrollListener(endlessScroll)
     }
 
+    private fun handleFavoriteDataChange() {
+        viewModel.listenFavoriteCharactersChange().collectIn(lifecycleScope) {
+            it.name
+            gridAdapter.groupCount
+            val inte = 1
+        }
+    }
 
     private fun retrieveCharacters(isRefreshing: Boolean = false) {
         turnOffPagingEvents()

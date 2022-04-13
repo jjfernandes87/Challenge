@@ -66,7 +66,7 @@ class FavoriteCharactersView @JvmOverloads constructor(
     }
 
     private fun handleDataChange() {
-        viewModel.listenFavoriteCharactersChange().consumeAsFlow().collectIn(lifecycleScope) {
+        viewModel.listenFavoriteCharactersChange().collectIn(lifecycleScope) {
             gridAdapter.clear()
             retrieveFavoriteCharacters()
         }
