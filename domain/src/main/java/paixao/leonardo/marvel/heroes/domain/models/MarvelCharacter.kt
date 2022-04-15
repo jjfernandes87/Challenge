@@ -5,5 +5,6 @@ data class MarvelCharacter(
     val name: String,
     val description: String?,
     val imageUrl: String,
-    val isFavorite: Boolean = false
+    val isFavorite: Boolean = false,
+    val position: Int
 ) : java.io.Serializable

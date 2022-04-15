@@ -43,7 +43,8 @@ internal class CharacterViewModel(
                 _lastUpdatedCharacters[character.id] = true
                 true
             }
-            _notifyFavoritesCharacterDataChange.emit(character)
+            val characterWithNewState = character.copy(isFavorite = !character.isFavorite)
+            _notifyFavoritesCharacterDataChange.emit(characterWithNewState)
             result
         }
 

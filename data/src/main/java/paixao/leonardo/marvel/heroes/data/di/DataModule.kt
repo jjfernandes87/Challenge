@@ -18,13 +18,14 @@ import paixao.leonardo.marvel.heroes.feature.network.RetrofitBuilder.buildGatewa
 
 object DataModule {
     private const val MODULE_NAME = "data"
+    private const val DATA_BASE_VERSION = "favorite-characters-database-1.0.0"
 
     val injections = DI.Module(MODULE_NAME) {
 
         bind<AppDatabase>() with singleton {
             Room.databaseBuilder(
                 instance(),
-                AppDatabase::class.java, "favorite-characters-database"
+                AppDatabase::class.java, DATA_BASE_VERSION
             ).build()
         }
 

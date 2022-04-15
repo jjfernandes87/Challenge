@@ -24,10 +24,12 @@ class CharactersInfrastructure(
                 PagingStatus.END -> null
             }
 
+
             if (queryParams != null) {
+                val skippedItems = queryParams.values.first()
                 val response = api.getCharacters(queryParams)
                 pagingHandler.updatePagingHandler(response.data)
-                CharactersMapper.toDomain(response)
+                CharactersMapper.toDomain(response, skippedItems)
             } else
                 emptyList()
         }

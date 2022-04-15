@@ -84,9 +84,17 @@ class CharacterView @JvmOverloads constructor(
 
     private fun handleFavoriteDataChange() {
         viewModel.listenFavoriteCharactersChange().collectIn(lifecycleScope) {
-            it.name
-            gridAdapter.groupCount
-            val inte = 1
+            val currentItem = try { gridAdapter.getGroupAtAdapterPosition(it.position)
+            } catch (error: Throwable){
+                null
+            }
+
+            if(currentItem != null){
+                val updateItem = retrieveCharacterEntry(it)
+                gridAdapter.removeGroupAtAdapterPosition(it.position)
+                gridAdapter.add(it.position, updateItem)
+            }
+
         }
     }
 
@@ -119,20 +127,23 @@ class CharacterView @JvmOverloads constructor(
         }
 
         val items = characters.map { character ->
-            CharacterItemEntry(
-                character = character,
-                favoriteAction = { clickedCharacter, imageView ->
-                    saveOrRemoveFavoriteCharacter(
-                        clickedCharacter,
-                        imageView
-                    )
-                },
-                navigateToDetailsAction = navigateToDetails
-            )
+            retrieveCharacterEntry(character)
         }
         gridAdapter.addAll(items)
 
     }
+
+    private fun retrieveCharacterEntry(character: MarvelCharacter) =
+        CharacterItemEntry(
+            character = character,
+            favoriteAction = { clickedCharacter, imageView ->
+                saveOrRemoveFavoriteCharacter(
+                    clickedCharacter,
+                    imageView
+                )
+            },
+            navigateToDetailsAction = navigateToDetails
+        )
 
     private fun initializeAdapter() {
         binding.charactersRv.apply {

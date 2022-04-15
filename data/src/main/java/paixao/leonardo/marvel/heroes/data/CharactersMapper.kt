@@ -5,14 +5,16 @@ import paixao.leonardo.marvel.heroes.data.models.ImageResponse
 import paixao.leonardo.marvel.heroes.domain.models.MarvelCharacter
 
 object CharactersMapper {
-    fun toDomain(response: CharactersResponse) =
-        response.data.results.map { characterResponse ->
+    fun toDomain(response: CharactersResponse, offSet: Int) =
+        response.data.results.mapIndexed { index, characterResponse ->
             characterResponse.run {
+                val realPosition = index + offSet
                 MarvelCharacter(
                     id = id,
                     description = description,
                     name = name,
-                    imageUrl = imageResponse.toDomain()
+                    imageUrl = imageResponse.toDomain(),
+                    position = realPosition
                 )
             }
         }

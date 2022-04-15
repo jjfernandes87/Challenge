@@ -12,7 +12,8 @@ object FavoritesCacheMapper {
                     name = name,
                     description = description,
                     imageUrl = imageUrl,
-                    isFavorite = true
+                    isFavorite = true,
+                    position = position
                 )
             }
         }
@@ -23,7 +24,8 @@ object FavoritesCacheMapper {
                 id = id,
                 name = name,
                 description = description,
-                imageUrl = imageUrl
+                imageUrl = imageUrl,
+                position = position
             )
         }
 }
